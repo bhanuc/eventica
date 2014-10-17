@@ -1,0 +1,11 @@
+	session, _ := sessionStore.Get(r, "p")
+	data := make(map[string]interface{})
+	flashes := make(map[string]FlashMessage)
+	id, ok := session.Values["user"].(string)
+	if ok {
+			//Rest of the logic
+	} else {
+		flashes["no_session"] = FlashMessage{"danger", "You are not logged in"}
+		data["flashes"] = flashes
+		data["redirect"] = "/user/login"
+	}
