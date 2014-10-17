@@ -196,7 +196,7 @@ func (u *User) FbAdd(name, email, id, token string) {
 	p.Name = name
 	u.FBId = id
 	u.FBToken = token
-	u.UserType = "admin"
+	u.UserType = "user"
 	u.ProfileStatus = false
 	u.UserProfile = p
 	if err := R.Create(u); err != nil {
