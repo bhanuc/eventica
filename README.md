@@ -5,7 +5,7 @@ This is a soon to be OpenSource event Management Portal made in GO
 ### To get things running ###
 
 ```
-sudo apt-get install libsasl2-dev bzr build-essential mercurial git-core
+sudo apt-get install libsasl2-dev bzr build-essential mercurial git-core sendmail
 Ensure mongodb is running , check using mongo command
 
 git clone https://github.com/bhanuc/eventica.git
