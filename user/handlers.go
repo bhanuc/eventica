@@ -60,7 +60,7 @@ func RegisterHandler(w http.ResponseWriter, r *http.Request) {
 		user := new(User)
 		user.Add(tu.Name, tu.Password, tu.Email, tu.Number, tu.AlternateNumber)
 		data["success"] = true
-		e["success"] = FlashMessage{"success", "Your registration was successful. Your registered Email ID is " + tu.Email + "."}
+		e["success"] = FlashMessage{"success", "Your registration is pending. Please check your inbox to activate your account"}
 		data["flashes"] = e
 		data["user"] = tu
 	} else {
@@ -157,6 +157,7 @@ func FbHandler(w http.ResponseWriter, r *http.Request) {
 func AuthenticateHandler(w http.ResponseWriter, r *http.Request) {
 	// get email + password
 	valid := false
+	unactive := false
 	data := make(map[string]interface{})
 	tc := struct {
 		Email      string `json:"email"`
@@ -171,10 +172,13 @@ func AuthenticateHandler(w http.ResponseWriter, r *http.Request) {
 	utility.ReadJson(r, &tc)
 	tc.Email = strings.Trim(tc.Email, " ")
 	user, err := R.FindOneByEmail(tc.Email)
+
 	// if user not found
 	if err != nil {
 		valid = false
-	} else {
+	} else { 
+		fmt.Println(user.ActiveStatus)
+		if user.ActiveStatus { //check email activation
 		// check if login allowed
 		if user.LoginAllowed() {
 			if valid = user.VerifyCredentials(tc.Email, tc.Password); valid == false {
@@ -184,6 +188,11 @@ func AuthenticateHandler(w http.ResponseWriter, r *http.Request) {
 			// login not allowed
 			flashes["Error"] = FlashMessage{"warning", "You have failed 3 login attempts in the last 15 Minutes. Please wait 15 Minutes from now on and try again."}
 		}
+			} else {
+				unactive = true
+				flashes["Error"] = FlashMessage{"warning", "Your Account is not yet Activated. Please Check your inbox or spam for the activation link. "}
+			}
+
 	}
 	data["valid"] = valid
 	if valid {
@@ -202,11 +211,43 @@ func AuthenticateHandler(w http.ResponseWriter, r *http.Request) {
 			}
 		}
 		session.Save(r, w)
+	} else if unactive {
+		data["flashes"] = flashes		
 	} else {
 		flashes["Error"] = FlashMessage{"danger", "Login not successful. Either a user with this email address doesn't exist or the email and password combination is wrong"}
-		data["flashes"] = flashes
+		data["flashes"] = flashes		
 	}
 
+	utility.WriteJson(w, data)
+}
+
+func ActHandler(w http.ResponseWriter, r *http.Request) {
+	data := make(map[string]interface{})
+	params := r.URL.Query()
+	
+	Uid := params["ui"][0]
+	Ustring :=  params["us"][0]
+	flashes := make(map[string]FlashMessage)
+	fmt.Print(Uid, Ustring, r.URL.Query()["ui"])
+
+	Uid = strings.Trim(Uid, " ")
+	user, err := R.FindOneByIdHex(Uid)
+	// if user not found
+	if err != nil {
+	} else { 
+		if user.ActiveStatus { 
+			flashes["Error"] = FlashMessage{"warning", "The Account is already Activated. "}
+			} else {
+				if user.ActiveCode == Ustring {
+					user.ActiveStatus = true
+					user.Update()
+					flashes["success"] = FlashMessage{"success", "Your Profile has been sucessfully activated."}
+			} else {
+				flashes["Error"] = FlashMessage{"warning", "The Activation url is wrong. Please Contact Support"}
+			}
+		}
+	} 
+		data["flashes"] = flashes
 	utility.WriteJson(w, data)
 }
 

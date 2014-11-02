@@ -11,6 +11,7 @@ import (
 	"labix.org/v2/mgo/bson"
 	"strings"
 	"time"
+	"encoding/base64"
 )
 
 type (
@@ -35,6 +36,8 @@ type (
 		College        string        `bson:"college" json:"college"`
 		UserType       string
 		ProfileStatus  bool
+		ActiveStatus   bool
+		ActiveCode     string
 	}
 
 	LoginEntry struct {
@@ -166,25 +169,45 @@ func (u *User) Add(name, password, email, number, alternatenumber string) {
 	p.Number = number
 	p.AlternateNumber = alternatenumber
 
-	u.UserType = "user"
+	u.UserType = "admin"
 	u.ProfileStatus = false
 	u.Password = strings.Trim(string(b[:]), "\x00")
 	u.UserProfile = p
+	u.ActiveStatus = false
+	//Making a random string for checking email
+	size := 32 // change the length of the generated random string here
+
+   rb := make([]byte,size)
+   _, err := rand.Read(rb)
+
+
+   if err != nil {
+      fmt.Println(err)
+   }
+
+   rs := base64.URLEncoding.EncodeToString(rb)
+
+	u.ActiveCode = rs
+
 	if err := R.Create(u); err != nil {
 		panic(err)
 	}
-	/*body := "Hi ,\n\n"
-	body += "welcome to " + Config.Host + ".\n"
-	body += "Your account has been created. You may log in with the following password:\n"
+	uid := u.Id.String()
+		slice := uid[13:37]
+	   			fmt.Println(slice)
+
+	body := "Hi ,\n\n"
+	body += "welcome to " + Config.Host + ".\nYour account has been created.To Activate your account, please visit techkrit.org/user/activate?ui=" + slice + "&us=" + u.ActiveCode + " . Copy and paste the link in the browser to activate.\nYou login credentials are \n password:\n"
 	body += password + "\n"
-	body += "and this email address.\n\n"
+	body += "email address.\n"
+	body += email+"\n"
 	body += "Regards,\n\n"
 	body += Config.Host + "team"
 
 	m := mail.NewMail(Config.MailFrom, []string{email}, "Welcome to "+Config.Host, body)
 	if err := m.Send(); err != nil {
 		panic(err)
-	}*/
+	}
 }
 func (u *User) FbAdd(name, email, id, token string) {
 	p := new(Profile)

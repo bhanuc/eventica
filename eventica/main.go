@@ -41,8 +41,8 @@ func main() {
 		Path:   "/",
 		MaxAge: 0,
 	}
-	user.New(mgoSession, sessionStore, "techkriti.org", "admin@techkriti.org", "local", "users")
-	team.Route_setter(mgoSession, sessionStore, "techkriti.org", "admin@techkriti.org", "local", "teams")
+	user.New(mgoSession, sessionStore, "techkriti.org", "noreply@techkriti.org", "local", "users")
+	team.Route_setter(mgoSession, sessionStore, "techkriti.org", "noreply@techkriti.org", "local", "teams")
 	// Thanks to Kamil Kisiel
 	router.PathPrefix("/user").Handler(user.Router)
 	router.PathPrefix("/team").Handler(team.Router)
@@ -181,6 +181,7 @@ func app(w http.ResponseWriter, r *http.Request) {
 	}
 	id, ok := session.Values["user"].(string)
 	if ok {
+		log.Println(session.Values["usertype"])
 		if session.Values["usertype"] == "user" {
 			u, _ := R.FindOneByIdHex(id)
 			profilestatus := u.ProfileStatus
