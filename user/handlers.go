@@ -52,6 +52,7 @@ func RegisterHandler(w http.ResponseWriter, r *http.Request) {
 	//	u := R.FindOneByCollege(tu.College)
 
 	if c > 0 {
+						fmt.Println(8)
 		e["Error"] = FlashMessage{"danger", "This Email ID is already registered. Please try using a different Email ID"}
 	}
 				fmt.Println(4)
