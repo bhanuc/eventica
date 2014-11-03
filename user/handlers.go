@@ -64,7 +64,7 @@ func RegisterHandler(w http.ResponseWriter, r *http.Request) {
 					fmt.Println(6)
 		user := new(User)
 		turn = false 
-		user.Add(tu.Name, tu.Password, tu.Email, tu.Number, tu.AlternateNumber)
+		go user.Add(tu.Name, tu.Password, tu.Email, tu.Number, tu.AlternateNumber)
 		data["success"] = true
 		e["success"] = FlashMessage{"success", "Your registration is pending. Please check your inbox to activate your account"}
 		data["flashes"] = e
