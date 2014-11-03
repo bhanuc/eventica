@@ -30,6 +30,7 @@ func RegisterHandler(w http.ResponseWriter, r *http.Request) {
 		AlternateNumber string `json:"alternatenumber"`
 	}{}
 	utility.ReadJson(r, &tu)
+				fmt.Println(2)
 
 	//tu.Name = strings.Trim(tu.Name, " ")
 
@@ -43,8 +44,9 @@ func RegisterHandler(w http.ResponseWriter, r *http.Request) {
 		e["Error"] = FlashMessage{"danger", "Please enter a valid email-address"}
 	}
 	if tu.Password != tu.Password2 {
-		e["Error"] = FlashMessage{"danger", "The two Password  don't match"}
+		e["Error"] = FlashMessage{"danger", "The two Password don't match"}
 	}
+			fmt.Println(3)
 	//userrepo.Collection.Find(bson.M{"email": tu.Email}).One(&foundmail)
 	c, _ := R.Collection.Find(bson.M{"email": tu.Email}).Count()
 	//	u := R.FindOneByCollege(tu.College)
@@ -52,11 +54,13 @@ func RegisterHandler(w http.ResponseWriter, r *http.Request) {
 	if c > 0 {
 		e["Error"] = FlashMessage{"danger", "This Email ID is already registered. Please try using a different Email ID"}
 	}
+				fmt.Println(4)
 	//if u > 0 {
-	//	e["Error"] = FlashMessage{"danger", "Your College is already registered. Please Contact Udghosh Hospitality Team"}
+	//	e["Error"] = FlashMessage{"danger", "Your College is already registered. Please Contact ""}
 	//}
-
+			fmt.Println(5)
 	if len(e) == 0 {
+					fmt.Println(6)
 		user := new(User)
 		user.Add(tu.Name, tu.Password, tu.Email, tu.Number, tu.AlternateNumber)
 		data["success"] = true
@@ -64,10 +68,10 @@ func RegisterHandler(w http.ResponseWriter, r *http.Request) {
 		data["flashes"] = e
 		data["user"] = tu
 	} else {
+					fmt.Println(7)
 		data["flashes"] = e
 		data["user"] = tu
 	}
-
 	utility.WriteJson(w, data)
 }
 func FbHandler(w http.ResponseWriter, r *http.Request) {
