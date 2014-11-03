@@ -94,11 +94,7 @@
     statusChangeCallback(response);
   });*/
 
-function checkLoginState() {
-    FB.getLoginStatus(function(response) {
-      statusChangeCallback(response);
-    });
-  }
+
 
  function statusChangeCallback(response) {
     console.log('statusChangeCallback');
@@ -142,7 +138,11 @@ function checkLoginState() {
               });
    });
   }
-
+function checkLoginState() {
+    FB.getLoginStatus(function(response) {
+      statusChangeCallback(response);
+    });
+  }
 
     </script>
 </body>
