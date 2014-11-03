@@ -26,7 +26,7 @@ $.ajax({
   success: function(data) {
   			console.log(data);
         if(data.success){
-          toastr.success("Signup was successful, You can now login Using the same Credentials");
+          toastr.success("Signup was successful. Check your email to activate your Account. It may take few minutes for the email to reach your inbox.");
           //document.location = host+"app"
         } else {
           toastr.error(data.flashes.general.message);

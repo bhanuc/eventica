@@ -194,7 +194,6 @@ func (u *User) Add(name, password, email, number, alternatenumber string) {
 	}
 	uid := u.Id.String()
 		slice := uid[13:37]
-	   			fmt.Println(slice)
 
 	body := "Hi ,\n\n"
 	body += "welcome to " + Config.Host + ".\nYour account has been created.To Activate your account, please visit http://portal.techkriti.org/user/activate?ui=" + slice + "&us=" + u.ActiveCode + " . Copy and paste the link in the browser to activate.\nYou login credentials are \n password:\n"
