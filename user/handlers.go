@@ -19,6 +19,7 @@ type FlashMessage struct {
 //var T = team.T
 
 func RegisterHandler(w http.ResponseWriter, r *http.Request) {
+	turn := true
 	data := make(map[string]interface{})
 	e := make(map[string]FlashMessage)
 	tu := struct {
@@ -30,7 +31,6 @@ func RegisterHandler(w http.ResponseWriter, r *http.Request) {
 		AlternateNumber string `json:"alternatenumber"`
 	}{}
 	utility.ReadJson(r, &tu)
-				fmt.Println(2)
 
 	//tu.Name = strings.Trim(tu.Name, " ")
 
@@ -51,7 +51,7 @@ func RegisterHandler(w http.ResponseWriter, r *http.Request) {
 	c, _ := R.Collection.Find(bson.M{"email": tu.Email}).Count()
 	//	u := R.FindOneByCollege(tu.College)
 
-	if c > 0 {
+	if c > 0 && turn {
 						fmt.Println(8)
 		e["Error"] = FlashMessage{"danger", "This Email ID is already registered. Please try using a different Email ID"}
 	}
@@ -63,6 +63,7 @@ func RegisterHandler(w http.ResponseWriter, r *http.Request) {
 	if len(e) == 0 {
 					fmt.Println(6)
 		user := new(User)
+		turn = false 
 		user.Add(tu.Name, tu.Password, tu.Email, tu.Number, tu.AlternateNumber)
 		data["success"] = true
 		e["success"] = FlashMessage{"success", "Your registration is pending. Please check your inbox to activate your account"}
