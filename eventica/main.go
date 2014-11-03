@@ -60,7 +60,7 @@ func main() {
 	router.PathPrefix("/").Handler(http.FileServer(http.Dir("./public/")))
 	http.Handle("/", router)
 	log.Println("Listening...")
-	http.ListenAndServe(":2368", nil)
+	http.ListenAndServe(":8080", nil)
 }
 
 func print_team(w http.ResponseWriter, r *http.Request) {

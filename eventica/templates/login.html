@@ -65,8 +65,8 @@
 </fb:login-button>
 </fb:login-button></div>
         </form>
-    </div>
     <div id='status'></div>
+    </div>
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="/js/jquery.js"></script>
     <script src="/js/bootstrap.min.js"></script>
@@ -89,10 +89,10 @@
     xfbml      : true,  // parse social plugins on this page
     version    : 'v2.1' // use version 2.1
   });
-    FB.getLoginStatus(function(response) {
+   /* FB.getLoginStatus(function(response) {
           localStorage.setItem('token',response.authResponse.accessToken);
     statusChangeCallback(response);
-  });
+  });*/
 }
 
  function statusChangeCallback(response) {
