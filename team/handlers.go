@@ -1,0 +1,333 @@
+package team
+
+import (
+	"fmt"
+	"github.com/eventica/user"
+	"github.com/eventica/utility"
+	"github.com/gorilla/mux"
+	_ "github.com/gorilla/sessions"
+	"net/http"
+)
+
+type FlashMessage struct {
+	Type    string `json:"type"`
+	Message string `json:"message"`
+}
+
+var R = user.R
+
+func CreateHandler(w http.ResponseWriter, r *http.Request) {
+	session, _ := sessionStore.Get(r, "p")
+	data := make(map[string]interface{})
+	id, ok := session.Values["user"].(string)
+	if ok {
+		e := make(map[string]FlashMessage)
+		tu := struct {
+			Name    string `json:"name"`
+			Members string `json:"members"`
+			Event    string `json:"event"`
+			Gender  string `json:"gender"`
+		}{}
+		utility.ReadJson(r, &tu)
+
+		if tu.Name == "" {
+			e["Error"] = FlashMessage{"danger", "Please fill in the name of team"}
+		}
+		if tu.Members == "" {
+			e["Error"] = FlashMessage{"danger", "Please add team members"}
+		}
+		u, _ := R.FindOneByIdHex(id)
+
+		//	d := T.CountByCollegenEvent(u.College, tu.Event)
+		//	fmt.Println(d)
+
+		//if d > 0 {
+		//	e["Error"] = FlashMessage{"danger", "You have already registered for this event. Repeat registration of same game is not allowed"}
+		//	data["flashes"] = e
+		//	data["team"] = tu
+		//} else {
+		_, err := T.FindOneByName(tu.Name)
+		// if team not found
+		if err != nil {
+			team := new(Team)
+			team.Add(tu.Name, tu.Members, tu.Event, tu.Gender, id, u.College)
+			data["success"] = true
+			e["success"] = FlashMessage{"success", "Your Team registration was successful."}
+			data["flashes"] = e
+			data["team"] = tu
+		} else {
+			e["Error"] = FlashMessage{"danger", "This team Name is already registered. Please choose a difference name for your team"}
+			data["flashes"] = e
+			data["team"] = tu
+		}
+		//	}
+		utility.WriteJson(w, data)
+
+	} else {
+		http.Redirect(w, r, "/login", 302)
+	}
+}
+
+func ApprovalHandler(w http.ResponseWriter, r *http.Request) {
+	session, _ := sessionStore.Get(r, "p")
+	data := make(map[string]interface{})
+	_, ok := session.Values["user"].(string)
+	if ok {
+		status := false
+		tc := struct {
+			Name      string `json:"name"`
+			CreatedBy string `json:"createdby"`
+		}{r.FormValue("name"), r.FormValue("createdby")}
+
+		flashes := make(map[string]FlashMessage)
+		team, err := T.FindOneByName(tc.Name)
+
+		// if team not found
+		if err != nil {
+			status = false
+		} else {
+			//check owner
+			if team.CreatedBy == tc.CreatedBy {
+				// request for moderation
+				team.RequestModeration()
+				http.Redirect(w, r, "/showteam", 302)
+			} else {
+				flashes["Error"] = FlashMessage{"danger", "Not your Team"}
+				data["flashes"] = flashes
+				utility.WriteJson(w, data)
+
+			}
+
+		}
+
+		data["success"] = status
+
+		//if !status {
+		//	flashes["invalid"] = FlashMessage{"danger", "Your Team seems to already passed by moderators"}
+		//	data["flashes"] = flashes
+		//	}
+	} else {
+		http.Redirect(w, r, "/login", 302)
+	}
+}
+
+func paymentHandler(w http.ResponseWriter, r *http.Request) {
+	data := make(map[string]interface{})
+	flashes := make(map[string]FlashMessage)
+	flashes["success"] = FlashMessage{"success", "Payment portal still under creation. Please be patience!!"}
+	data["flashes"] = flashes
+	utility.WriteJson(w, data)
+}
+
+func AllTeamHandler(w http.ResponseWriter, r *http.Request) {
+	session, _ := sessionStore.Get(r, "p")
+	data := make(map[string]interface{})
+	flashes := make(map[string]FlashMessage)
+	id, ok := session.Values["user"].(string)
+	if ok && session.Values["usertype"] == "user" {
+		u, err := T.FindAllByCreatedBy(id)
+		if err != nil {
+			flashes["Error"] = FlashMessage{"danger", "You need to Create a Team Before you can see all the teams"}
+			data["flashes"] = flashes
+		} else {
+			if len(u) == 0 {
+				flashes["Error"] = FlashMessage{"danger", "You need to Create a Team Before you can see all the teams"}
+				data["flashes"] = flashes
+			} else {
+				data["teams"] = u
+				data["success"] = true
+				flashes["AllTeams"] = FlashMessage{"success", "Your Teams have been fetched."}
+				data["flashes"] = flashes
+			}
+		}
+		utility.WriteJson(w, data)
+	} else {
+		http.Redirect(w, r, "/login", 302)
+	}
+}
+
+func ViewHandler(w http.ResponseWriter, r *http.Request) {
+	session, _ := sessionStore.Get(r, "p")
+	data := make(map[string]interface{})
+	flashes := make(map[string]FlashMessage)
+	_, ok := session.Values["user"].(string)
+	tc := struct {
+		Name string `json:"name"`
+	}{r.FormValue("name")}
+	if ok && session.Values["usertype"] == "admin" {
+		u, err := T.FindOneByName(tc.Name)
+		if err != nil {
+			flashes["No Team Present"] = FlashMessage{"danger", "Wrong team name"}
+			data["flashes"] = flashes
+			utility.WriteJson(w, data)
+		} else {
+			data["success"] = u
+			utility.WriteJson(w, data)
+		}
+	} else {
+		http.Redirect(w, r, "/login", 302)
+	}
+}
+
+func TeamAdminHandler(w http.ResponseWriter, r *http.Request) {
+	session, _ := sessionStore.Get(r, "p")
+	data := make(map[string]interface{})
+	flashes := make(map[string]FlashMessage)
+	_, ok := session.Values["user"].(string)
+	tc := struct {
+		Name string `json:"name"`
+	}{r.FormValue("name")}
+	if ok && session.Values["usertype"] == "admin" {
+		u, err := T.FindOneByName(tc.Name)
+		if err != nil {
+			flashes["No Team Present"] = FlashMessage{"danger", "Wrong team name"}
+			data["flashes"] = flashes
+			utility.WriteJson(w, data)
+		} else {
+			u.Approved = "Approved"
+			u.Update()
+			http.Redirect(w, r, "/app", 302)
+		}
+	} else {
+		http.Redirect(w, r, "/login", 302)
+	}
+}
+
+func DisTeamAdminHandler(w http.ResponseWriter, r *http.Request) {
+	session, _ := sessionStore.Get(r, "p")
+	data := make(map[string]interface{})
+	flashes := make(map[string]FlashMessage)
+	_, ok := session.Values["user"].(string)
+	tc := struct {
+		Name string `json:"name"`
+	}{r.FormValue("name")}
+	if ok && session.Values["usertype"] == "admin" {
+		u, err := T.FindOneByName(tc.Name)
+		if err != nil {
+			flashes["No Team Present"] = FlashMessage{"danger", "Wrong team name"}
+			data["flashes"] = flashes
+			utility.WriteJson(w, data)
+		} else {
+			u.Approved = "Declined"
+			u.Update()
+			http.Redirect(w, r, "/app", 302)
+		}
+	} else {
+		http.Redirect(w, r, "/login", 302)
+	}
+}
+
+func CommentAdminHandler(w http.ResponseWriter, r *http.Request) {
+	session, _ := sessionStore.Get(r, "p")
+	data := make(map[string]interface{})
+	flashes := make(map[string]FlashMessage)
+	_, ok := session.Values["user"].(string)
+	tc := struct {
+		Name     string `json:"name"`
+		Comments string `json:"comments"`
+	}{r.FormValue("name"), r.FormValue("comments")}
+	if ok && session.Values["usertype"] != "user" {
+		u, err := T.FindOneByName(tc.Name)
+		if err != nil {
+			flashes["No Team Present"] = FlashMessage{"danger", "Wrong team name"}
+			data["flashes"] = flashes
+			utility.WriteJson(w, data)
+		} else {
+			u.Comments = tc.Comments
+			u.Update()
+			http.Redirect(w, r, "/app", 302)
+		}
+	} else {
+		http.Redirect(w, r, "/login", 302)
+	}
+}
+
+func AllAdminHandler(w http.ResponseWriter, r *http.Request) {
+	session, _ := sessionStore.Get(r, "p")
+	data := make(map[string]interface{})
+	flashes := make(map[string]FlashMessage)
+	_, ok := session.Values["user"].(string)
+	if ok && session.Values["usertype"] != "user" {
+		u, err := T.FindAllByRequestMod()
+		if err != nil {
+			flashes["No Team Present"] = FlashMessage{"danger", "No teams are available for mod"}
+			data["Error"] = flashes
+		} else {
+			data["teams"] = u
+			data["success"] = true
+			flashes["AllTeams"] = FlashMessage{"success", "The Teams have been fetched."}
+			data["flashes"] = flashes
+		}
+		utility.WriteJson(w, data)
+	} else {
+		http.Redirect(w, r, "/login", 302)
+	}
+}
+func StatusHandler(w http.ResponseWriter, r *http.Request) {
+	session, _ := sessionStore.Get(r, "p")
+	data := make(map[string]interface{})
+	id, ok := session.Values["user"].(string)
+	tu := struct {
+		Name string `json:"name"`
+	}{}
+	params := mux.Vars(r)
+	tu.Name = params["name"]
+	fmt.Println(tu.Name)
+	if ok {
+		u, err := T.FindOneByName(tu.Name)
+		fmt.Println(err)
+		if err != nil {
+			data["Error"] = "Your Team was not found"
+		} else {
+			if id == u.CreatedBy {
+				data["sucess"] = u
+			} else {
+				data["Error"] = "Team was not created by you. So you cannot access it"
+			}
+		}
+	}
+	utility.WriteJson(w, data)
+}
+func CollegeAdminHandler(w http.ResponseWriter, r *http.Request) {
+	session, _ := sessionStore.Get(r, "p")
+	data := make(map[string]interface{})
+	_, ok := session.Values["user"].(string)
+	tu := struct {
+		College string `json:"college"`
+	}{}
+	params := mux.Vars(r)
+	tu.College = params["college"]
+	if ok && session.Values["usertype"] != "admin" {
+		u, err := T.FindAllByCollege(tu.College)
+		fmt.Println(err)
+		if err != nil {
+			data["Error"] = "No Teams Registered yet !!"
+		} else {
+			data["teams"] = u
+			data["success"] = true
+		}
+	}
+	utility.WriteJson(w, data)
+}
+
+func EventAdminHandler(w http.ResponseWriter, r *http.Request) {
+	session, _ := sessionStore.Get(r, "p")
+	data := make(map[string]interface{})
+	_, ok := session.Values["user"].(string)
+	tu := struct {
+		Event string `json:"event"`
+	}{}
+	params := mux.Vars(r)
+	tu.Event = params["event"]
+	if ok && session.Values["usertype"] != "admin" {
+		u, err := T.FindAllByEvent(tu.Event)
+		fmt.Println(err)
+		if err != nil {
+			data["Error"] = "No Teams Registered yet !!"
+		} else {
+			data["teams"] = u
+			data["success"] = true
+		}
+	}
+	utility.WriteJson(w, data)
+}
