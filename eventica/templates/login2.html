@@ -54,14 +54,14 @@
         </div>
     </div>
     <div class="container">
-        <form class="form-signin" action="/authenticate" method="POST" name="loginForm">
+        <form class="form-signin" name="loginForm">
             <img id="logo" src="/images/Techkriti.png" />
             <h2 class="form-signin-heading">Please sign in</h2>
-            <input id = "email"type="text" name="email" class="form-control" placeholder="Email" required autofocus>
-            <input id = "password"type="password" name="password" class="form-control" placeholder="Password" required>
+            <input id="email"type="text" name="email" class="form-control" placeholder="Email" required autofocus>
+            <input id="password"type="password" name="password" class="form-control" placeholder="Password" required>
             <input id="rememberme" name="rememberme" type="checkbox"  required>    Remember Me</input>
             <input type="hidden" name="csrf_token" value=/>
-            <button id= "loginbutton" class="btn btn-lg btn-primary btn-block" type="button">Sign in</button><fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
+            <button id="loginbutton" class="btn btn-lg btn-primary btn-block" type="button">Sign in</button><fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
 </fb:login-button>
 </fb:login-button></div>
         </form>

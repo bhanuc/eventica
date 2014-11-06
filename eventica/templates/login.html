@@ -6,71 +6,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Techkriti - ">
-<<<<<<< HEAD
     <link rel="shortcut icon" href="../../docs-assets/ico/favicon.png">
-=======
->>>>>>> ad1491fa93d95288e5329d6eecab8a92735e5099
     <link href='http://fonts.googleapis.com/css?family=Raleway:300' rel='stylesheet' type='text/css'>
 
     <title>Techkriti</title>
-
-<<<<<<< HEAD
-    <!-- Bootstrap core CSS -->
-    <!-- <link href="/css/bootstrap.css" rel="stylesheet"> -->
-    <link href="/bootstrap/css/bootstrap.css" rel="stylesheet">
-    <!-- Custom styles for this template -->
-    <link href="/css/main.css" rel="stylesheet">
-    <link href="/css/dashboard.css" rel="stylesheet">
-    <link href="/css/flat-ui.css" rel="stylesheet">
-    <link href="/css/toastr.min.css" rel="stylesheet">
-    <link href="/css/font-awesome.min.css" rel="stylesheet">
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
-    <link href='http://fonts.googleapis.com/css?family=Raleway:300' rel='stylesheet' type='text/css'>
-</head>
-
-<body>
-    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <!--<img class="navbar-logo" src="/images/logo_inv_small.png" />-->
-                <a class="navbar-brand" href="/">&nbsp;Techkriti</a>
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav navbar-right">
-                    <li>
-                        <a id="login-button" href="/login">
-                            <button type="button" class="btn btn-primary">Login</button>
-                        </a>
-                    </li>
-                    <li>
-                        <a id="login-button" href="/signup">
-                            <button type="button" class="btn btn-primary">Signup</button>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </div>
-    <div class="container">
-        <form class="form-signin" action="/authenticate" method="POST" name="loginForm">
-            <img id="logo" src="/images/Techkriti.png" />
-            <h2 class="form-signin-heading">Please sign in</h2>
-            <input id = "email"type="text" name="email" class="form-control" placeholder="Email" required autofocus>
-            <input id = "password"type="password" name="password" class="form-control" placeholder="Password" required>
-            <input id="rememberme" name="rememberme" type="checkbox"  required>    Remember Me</input>
-            <input type="hidden" name="csrf_token" value=/>
-            <button id= "loginbutton" class="btn btn-lg btn-primary btn-block" type="button">Sign in</button><fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
-</fb:login-button>
-</fb:login-button></div>
-        </form>
-=======
- 
+    
         <!-- Base Css Files -->
         <link href="assets/libs/jqueryui/ui-lightness/jquery-ui-1.10.4.custom.min.css" rel="stylesheet" />
         <link href="assets/libs/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
@@ -80,6 +20,7 @@
         <link href="assets/libs/nifty-modal/css/component.css" rel="stylesheet" />
         <link href="assets/libs/magnific-popup/magnific-popup.css" rel="stylesheet" /> 
         <link href="assets/libs/ios7-switch/ios7-switch.css" rel="stylesheet" /> 
+            <link href="/css/toastr.min.css" rel="stylesheet">
         <link href="assets/libs/pace/pace.css" rel="stylesheet" />
         <link href="assets/libs/sortable/sortable-theme-bootstrap.css" rel="stylesheet" />
         <link href="assets/libs/bootstrap-datepicker/css/datepicker.css" rel="stylesheet" />
@@ -109,57 +50,7 @@
         <link rel="apple-touch-icon" sizes="144x144" href="assets/img/apple-touch-icon-144x144.png" />
         <link rel="apple-touch-icon" sizes="152x152" href="assets/img/apple-touch-icon-152x152.png" />
     </head>
-    <body class="fixed-left login-page">
-        <!-- Modal Start -->
-          <!-- Modal Task Progress -->  
-  <div class="md-modal md-3d-flip-vertical" id="task-progress">
-    <div class="md-content">
-      <h3><strong>Task Progress</strong> Information</h3>
-      <div>
-        <p>CLEANING BUGS</p>
-        <div class="progress progress-xs for-modal">
-          <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%">
-          <span class="sr-only">80&#37; Complete</span>
-          </div>
-        </div>
-        <p>POSTING SOME STUFF</p>
-        <div class="progress progress-xs for-modal">
-          <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 65%">
-          <span class="sr-only">65&#37; Complete</span>
-          </div>
-        </div>
-        <p>BACKUP DATA FROM SERVER</p>
-        <div class="progress progress-xs for-modal">
-          <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 95%">
-          <span class="sr-only">95&#37; Complete</span>
-          </div>
-        </div>
-        <p>RE-DESIGNING WEB APPLICATION</p>
-        <div class="progress progress-xs for-modal">
-          <div class="progress-bar progress-bar-primary" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 100%">
-          <span class="sr-only">100&#37; Complete</span>
-          </div>
-        </div>
-        <p class="text-center">
-        <button class="btn btn-danger btn-sm md-close">Close</button>
-        </p>
-      </div>
-    </div>
-  </div>
-    
-  <!-- Modal Logout -->
-  <div class="md-modal md-just-me" id="logout-modal">
-    <div class="md-content">
-      <h3><strong>Logout</strong> Confirmation</h3>
-      <div>
-        <p class="text-center">Are you sure want to logout from this awesome system?</p>
-        <p class="text-center">
-        <button class="btn btn-danger md-close">Nope!</button>
-        <a href="login.html" class="btn btn-success md-close">Yeah, I'm sure</a>
-        </p>
-      </div>
-    </div>
-  </div>        <!-- Modal End -->    
+    <body class="fixed-left login-page"> 
   <!-- Begin page -->
   <div class="container">
     <div class="full-content-center">
@@ -167,25 +58,29 @@
       <div class="login-wrap animated flipInX">
         <div class="login-block">
           <img src="img/default-user.png" class="img-circle not-logged-avatar">
-          <form role="form" action="">
             <div class="form-group login-input">
             <i class="fa fa-user overlay"></i>
-            <input type="text" class="form-control text-input" placeholder="Username">
+            <input id = "email" type="text" class="form-control text-input" placeholder="Email" name="email" required>
             </div>
             <div class="form-group login-input">
-            <i class="fa fa-key overlay"></i>
-            <input type="password" class="form-control text-input" placeholder="********">
+            <input id = "password" type="password" class="form-control text-input" placeholder="********" name="password" required>
             </div>
-            
+            <div class="form-group login-input">
+            <input id="rememberme" name="rememberme" type="checkbox">Remember Me</input>
+            </div>
             <div class="row">
               <div class="col-sm-6">
-              <button type="submit" class="btn btn-success btn-block">LOGIN</button>
+              <button type="submit" class="btn btn-success btn-block" id= "loginbutton" type="button">LOGIN</button>
               </div>
               <div class="col-sm-6">
-              <a href="register.html" class="btn btn-default btn-block">Register</a>
+              <a href="/signup" class="btn btn-default btn-block">Register</a>
+              </div>
+            </div><br>            
+            <div class="row">
+             <div class="col-sm-12">
+              <div class="fb-login-button" data-max-rows="1" data-size="xlarge" data-show-faces="false" data-auto-logout-link="false"></div>
               </div>
             </div>
-          </form>
         </div>
       </div>
       
@@ -225,7 +120,6 @@
   <script src="assets/libs/prettify/prettify.js"></script>
 
   <script src="assets/js/init.js"></script>
->>>>>>> ad1491fa93d95288e5329d6eecab8a92735e5099
     <div id='status'></div>
     </div>
     <!-- Placed at the end of the document so the pages load faster -->

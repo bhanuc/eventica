@@ -1,4 +1,4 @@
-var host = "http://localhost:8080/"
+var host = "http://portal.techkriti.org/"
 
 function submitLogin() {
 $.ajax({
@@ -18,28 +18,11 @@ $.ajax({
      }
 });
 }
-function validate()
-{
- 
-   
-   if( document.loginForm.email.value == "" )
-   {
-     toastr.error( "Please provide your Email!" );
-     document.loginForm.email.focus() ;
-     return false;
-   }
-   if( document.loginForm.password.value == "" )
-   {
-     toastr.error( "Please provide your Password" );
-     document.loginForm.password.focus() ;
-     return false;
-   }
-   return( true );
-}
+
 function validateEmail()
 {
  
-   var emailID = document.loginForm.email.value;
+   var emailID = $('#email').val();
    atpos = emailID.indexOf("@");
    dotpos = emailID.lastIndexOf(".");
    if (atpos < 1 || ( dotpos - atpos < 2 )) 
@@ -65,6 +48,6 @@ if(e.which=='13'){
 });
 
 $('#loginbutton').click(function(){
-if(validate() && validateEmail())
+if(validateEmail())
     submitLogin();
 });
