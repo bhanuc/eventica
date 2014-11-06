@@ -1,0 +1,24 @@
+.side-menu {
+	width: 240px;
+	top: 0;
+	height: 500px;
+
+	z-index: 2;
+}
+
+.side-menu.left {
+	background: #fff;
+	position: absolute;
+	border-top: 1px solid #eee;
+}
+
+#container{
+	display: block;
+	width: 1000px;
+}
+
+.side-menu.left, #middle{
+	display: inline-block;
+	vertical-align: top;
+}
+

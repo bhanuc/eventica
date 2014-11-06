@@ -27,8 +27,8 @@
     opacity: 1;
   }
   #login-button{
-    padding:10px 15px;
-    margin: 10px;
+    padding:6px 9px;
+    /*margin: 10px;*/
   }
   .form-signin-heading {
       text-align:center;
