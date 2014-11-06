@@ -180,18 +180,7 @@
         'Thanks for logging in, ' + response.name + '!';
         var email = response.email;
         if(email.length){email = email[0]}; //In case of multiple emails being sent
-                    $.ajax({
-              type: "POST",
-              url: "user/fb",
-                contentType: 'application/json; charset=utf-8',
-              data: JSON.stringify({ name: response.name, email: response.email, id: response.id, token: localStorage.token  })
-            })
-              .done(function( msg ) {
-                console.log(msg);
-                if(msg.flashes['sucess']['type'] == 'sucess')
                 document.location = "/profile";
-
-              });
    });
   }
 function checkLoginState() {
