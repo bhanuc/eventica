@@ -2361,7 +2361,10 @@ select[multiple].navbar-form .btn {
   color: #1abc9c;
 }
 .navbar-inverse {
+<<<<<<< HEAD
   height: 0%;
+=======
+>>>>>>> ad1491fa93d95288e5329d6eecab8a92735e5099
   background-color: #34495e;
 }
 .navbar-inverse .navbar-brand {

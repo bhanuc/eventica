@@ -27,8 +27,13 @@
     opacity: 1;
   }
   #login-button{
+<<<<<<< HEAD
     padding:6px 9px;
     /*margin: 10px;*/
+=======
+    padding:10px 15px;
+    margin: 10px;
+>>>>>>> ad1491fa93d95288e5329d6eecab8a92735e5099
   }
   .form-signin-heading {
       text-align:center;

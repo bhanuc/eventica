@@ -1873,7 +1873,11 @@ button.navbar-toggle {
   padding: 5px 20px;
 }
 .breadcrumb {
+<<<<<<< HEAD
   top: 0px;
+=======
+  top: 50px;
+>>>>>>> ad1491fa93d95288e5329d6eecab8a92735e5099
   line-height: 30px;
   padding: 0px 15px;
   background: rgba(0,0,0,0.05);
