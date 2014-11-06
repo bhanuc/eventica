@@ -8,7 +8,7 @@ $.ajax({
   success: function(data) {
   			console.log(data);
         if(data.success){
-          toastr.success("Signup was successful, You can now login Using the same Credentials");
+          toastr.success("Your registration is pending. Please check your inbox/spam to activate your account. Email might take 5 min. for delivery. ");
           //document.location = host+"app"
         } else {
           toastr.error(data.flashes.Error.message);
