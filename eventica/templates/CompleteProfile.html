@@ -103,7 +103,7 @@
 <div class="topbar">
     <div class="topbar-left">
         <div class="logo">
-            <h1><a href=""><img src="/assets/img/logo.png" alt="Logo"></a></h1>
+            <h1><a style="color:white;">TechKriti</a></h1>
         </div>
         <button class="button-menu-mobile open-left">
         <i class="fa fa-bars"></i>
@@ -125,7 +125,7 @@
                     </li>
 
                     <li class="dropdown topbar-profile">
-                        <a href="" class="dropdown-toggle" data-toggle="dropdown"><span class="rounded-image topbar-profile-image"><img src="img/default-user.png"></span> Jane <strong>Doe</strong> <i class="fa fa-caret-down"></i></a>
+                        <a id="user-info" class="dropdown-toggle" data-toggle="dropdown"><span class="rounded-image topbar-profile-image"><img src="img/default-user.png"></span> Jane <strong>Doe</strong> <i class="fa fa-caret-down"></i></a>
                         <ul class="dropdown-menu">
                             <li><a href="">My Profile</a></li>
                             <li><a href="">Change Password</a></li>
@@ -233,5 +233,10 @@
     <script src="/assets/libs/prettify/prettify.js"></script>
 
     <script src="/assets/js/init.js"></script>
+    <script type="text/javascript">
+$( "#user-info" ).click(function() {
+$( this ).toggleClass( "open" );
+}); 
+    </script>
     </body>
 </html>
