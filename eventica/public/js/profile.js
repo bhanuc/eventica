@@ -14,22 +14,22 @@ var getprofile = function getprofile () {
           for (var i = 1; i <= profile.length - 1; i++) {
             switch (profile[i]) {
                 case "alternatenumber":
-            string = string+'<div class='row'><div class="col-md-6">Alternate person of contact</div>'+'<div class="col-md-6">not written</div>'+'</div>';
+            string = string+'<div class="row"><div class="col-md-6">Alternate person of contact</div>'+'<div class="col-md-6">not written</div>'+'</div>';
                break;
                 case "apnr":
-                string = string+'<div class='row'><div class="col-md-6">Arrival PNR</div><div class="col-md-6">'+(data.profile[profile[i]]|| ' ')+'</div></div>';
+                string = string+'<div class="row"><div class="col-md-6">Arrival PNR</div><div class="col-md-6">'+(data.profile[profile[i]]|| ' ')+'</div></div>';
                break;
                 case "adate":
-            string = string+'<div class='row'><div class="col-md-6">Arrival Date</div><div class="col-md-6">'+(data.profile[profile[i]]|| ' ')+'</div></div>';
+            string = string+'<div class="row"><div class="col-md-6">Arrival Date</div><div class="col-md-6">'+(data.profile[profile[i]]|| ' ')+'</div></div>';
                break;
                 case "dpnr":
-            string = string+'<div class='row'><div class="col-md-6">Departure PNR</div><div class="col-md-6">'+(data.profile[profile[i]]|| ' ')+'</div></div>';
+            string = string+'<div class="row"><div class="col-md-6">Departure PNR</div><div class="col-md-6">'+(data.profile[profile[i]]|| ' ')+'</div></div>';
                break;
                 case "ddate":
             string = string+'<div class="col-md-6">Departure Date</div><div class="col-md-6">'+(data.profile[profile[i]]|| ' ')+'</div></div>';
                break;
               default:
-                    string = string+'<div class='row'><div class="col-md-6">'+profile[i]+'</div><div class="col-md-6">'+(data.profile[profile[i]]|| ' ')+'</div>'+'</div>';
+                    string = string+'<div class="row"><div class="col-md-6">'+profile[i]+'</div><div class="col-md-6">'+(data.profile[profile[i]]|| ' ')+'</div>'+'</div>';
               }
             };
 	
