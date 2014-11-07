@@ -26,7 +26,7 @@ var getprofile = function getprofile () {
             string = string+'<div class="row"><div class="col-md-6">Departure PNR</div><div class="col-md-6">'+(data.profile[profile[i]]|| ' ')+'</div></div>';
                break;
                 case "ddate":
-            string = string+'<div class="col-md-6">Departure Date</div><div class="col-md-6">'+(data.profile[profile[i]]|| ' ')+'</div></div>';
+            string = string+'<div class="row"><div class="col-md-6">Departure Date</div><div class="col-md-6">'+(data.profile[profile[i]]|| ' ')+'</div></div>';
                break;
               default:
                     string = string+'<div class="row"><div class="col-md-6">'+profile[i]+'</div><div class="col-md-6">'+(data.profile[profile[i]]|| ' ')+'</div>'+'</div>';
