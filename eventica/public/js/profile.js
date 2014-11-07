@@ -52,7 +52,7 @@ $('#EditButton').click(function editbutton () {
 	continue;
 	}
   if(global.keys[i] == 'name' || global.keys[i] == 'email') {
-      form = form+'<div class="row"><div class="col-md-6">'+global.keys[i]+'</div><div class="col-md-6"><input type="text" value="'+(global.profile[global.keys[i]] || ' ')+'" id="'+global.keys[i]+'" name="profileForm" disabled ></div>';
+      form = form+'<div class="row"><div class="col-md-6">'+global.keys[i]+'</div><div class="col-md-6"><input type="text" value="'+(global.profile[global.keys[i]] || ' ')+'" id="'+global.keys[i]+'" name="profileForm" disabled ></div></div>';
             } else if(global.keys[i] == 'alternatenumber'){
             if(global.profile[global.keys[i]]){
            var input =  global.profile[global.keys[i]].split('$$');
