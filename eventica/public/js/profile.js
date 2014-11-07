@@ -29,7 +29,7 @@ var getprofile = function getprofile () {
             string = string+'<div class="row"><div class="col-md-6">Departure Date</div><div class="col-md-6">'+(data.profile[profile[i]]|| ' ')+'</div></div>';
                break;
               default:
-                    string = string+'<div class="row"><div class="col-md-6">'+profile[i]+'</div><div class="col-md-6">'+(data.profile[profile[i]]|| ' ')+'</div>'+'</div>';
+                    string = string+'<div class="row"><div class="col-md-6">'+profile[i]+'</div><div class="col-md-6">'+(data.profile[profile[i]]|| ' ')+'</div></div>';
               }
             };
 	
@@ -52,16 +52,16 @@ $('#EditButton').click(function editbutton () {
 	continue;
 	}
   if(global.keys[i] == 'name' || global.keys[i] == 'email') {
-      form = form+'<label>'+global.keys[i]+'</label>'+'<input type="text" value="'+(global.profile[global.keys[i]] || ' ')+'" id="'+global.keys[i]+'" name="profileForm" disabled ><br>';
+      form = form+'<div class="row"><div class="col-md-6">'+global.keys[i]+'</div><div class="col-md-6"><input type="text" value="'+(global.profile[global.keys[i]] || ' ')+'" id="'+global.keys[i]+'" name="profileForm" disabled ></div>';
             } else if(global.keys[i] == 'alternatenumber'){
             if(global.profile[global.keys[i]]){
            var input =  global.profile[global.keys[i]].split('$$');
-                    form = form+'<label> Alternate person of contact: </label>'+'<input type="text" value="'+input[0]+'" id="alternatenumber1" name="profileForm"  >  <input type="text" value="'+(input[1] || 'Not submitted')+'" id="alternatenumber2" name="profileForm"  > <input type="text" value="'+(input[2] || "Not submitted")+'" id="alternatenumber3" name="profileForm"  ><br>';
+                    form = form+'<div class="row"><div class="col-md-6"> Alternate person of contact: </div><div class="col-md-6"><input type="text" value="'+input[0]+'" id="alternatenumber1" name="profileForm"  >  <input type="text" value="'+(input[1] || 'Not submitted')+'" id="alternatenumber2" name="profileForm"  > <input type="text" value="'+(input[2] || "Not submitted")+'" id="alternatenumber3" name="profileForm"  ></div></div>';
             } else {
-                    form = form+'<label>Alternate person of contact:</label>'+'<input type="text" value="Name" id="alternatenumber1" name="profileForm"  >  <input type="text" value="Email" id="alternatenumber2" name="profileForm"  ><input type="text" value="Contact No" id="alternatenumber3" name="profileForm"  ><br>';   
+                    form = form+'<div class="row"><div class="col-md-6">Alternate person of contact:</div><div class="col-md-6"><input type="text" value="Name" id="alternatenumber1" name="profileForm"  >  <input type="text" value="Email" id="alternatenumber2" name="profileForm"  ><input type="text" value="Contact No" id="alternatenumber3" name="profileForm"  ></div></div>';   
                   } 
                 }  else {
-              form = form+'<label>'+global.keys[i]+'</label>'+'<input type="text" value="'+( global.profile[global.keys[i]] || ' ')+'" id="'+global.keys[i]+'" name="profileForm"><br>';
+              form = form+'<div class="row"><div class="col-md-6">'+global.keys[i]+'</div><div class="col-md-6"><input type="text" value="'+( global.profile[global.keys[i]] || ' ')+'" id="'+global.keys[i]+'" name="profileForm"></div></div>';
               } 
            }
              form = form + '</form>';
