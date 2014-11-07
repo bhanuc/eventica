@@ -152,7 +152,7 @@
  function statusChangeCallback(response) {
     console.log('statusChangeCallback');
     console.log(response);
-    if(!localStorage.token && response.status == 'connected'){
+    if(response.status == 'connected'){
         localStorage.setItem('token',response.authResponse.accessToken)
     }
     // The response object is returned with a status field that lets the
@@ -188,8 +188,9 @@
             })
               .done(function( msg ) {
                 console.log(msg);
-                if(msg.flashes['sucess']['type'] == 'sucess')
-
+                if(msg.flashes['sucess']['type'] == 'sucess'){
+                  document.location = '/profile'
+                }
               });
    });
   }

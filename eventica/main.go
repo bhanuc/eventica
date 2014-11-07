@@ -210,12 +210,5 @@ func app(w http.ResponseWriter, r *http.Request) {
 }
 
 func home(w http.ResponseWriter, r *http.Request) {
-	t, err := template.New("home.html").ParseFiles("templates/home.html")
-	if err != nil {
-		log.Println(err)
-	}
-	err = t.Execute(w, nil)
-	if err != nil {
-		log.Println(err)
-	}
+	http.Redirect(w, r, "/login", 302)
 }
