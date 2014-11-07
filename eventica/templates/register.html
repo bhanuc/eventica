@@ -85,7 +85,7 @@
             </div><br>            
             <div class="row">
              <div class="col-sm-12">
-              <div class="fb-login-button" data-max-rows="1" data-size="xlarge" data-show-faces="false" data-auto-logout-link="false"></div>
+              <div class="fb-login-button" data-max-rows="1" data-size="xlarge" data-show-faces="false" data-auto-logout-link="false" onclick="fblogin()"></div>
               </div>
             </div>
             </form>
@@ -126,7 +126,7 @@
   <script src="assets/libs/prettify/prettify.js"></script>
 
   <script src="assets/js/init.js"></script>
-
+x
 <script src="/js/jquery.js"></script>
     <script src="/js/register.js"></script>
     <script src="/js/bootstrap.min.js"></script>
@@ -155,7 +155,10 @@
 }
 
 
-
+ var fblogin = FB.getLoginStatus(function(response) {
+          localStorage.setItem('token',response.authResponse.accessToken);
+    statusChangeCallback(response);
+  });
  function statusChangeCallback(response) {
     console.log('statusChangeCallback');
     console.log(response);
