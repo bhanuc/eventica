@@ -1,9 +1,8 @@
 <!DOCTYPE html>
-<<<<<<< HEAD
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>Dashboard | Coco - Responsive Bootstrap Admin Template</title>   
+        <title>Profile</title>   
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="description" content="">
@@ -91,7 +90,7 @@
                 <p class="text-center">Are you sure want to logout from this awesome system?</p>
                 <p class="text-center">
                 <button class="btn btn-danger md-close">Nope!</button>
-                <a href="http://hubancreative.com/projects/templates/coco/corporate/login.html" class="btn btn-success md-close">Yeah, I'm sure</a>
+                <a href="/user/logout" class="btn btn-success md-close">Yeah, I'm sure</a>
                 </p>
             </div>
         </div>
@@ -128,11 +127,8 @@
                         <a  class="dropdown-toggle" data-toggle="dropdown"><span class="rounded-image topbar-profile-image"><img src="img/default-user.png"></span> Jane <strong>Doe</strong> <i class="fa fa-caret-down"></i></a>
                         <ul class="dropdown-menu">
                             <li><a href="">My Profile</a></li>
-                            <li><a href="">Change Password</a></li>
-                            <li><a href="">Account Setting</a></li>
                             <li class="divider"></li>
                             <li><a href=""><i class="icon-help-2"></i> Help</a></li>
-                            <li><a href="http://hubancreative.com/projects/templates/coco/corporate/lockscreen.html"><i class="icon-lock-1"></i> Lock me</a></li>
                             <li><a class="md-trigger" data-modal="logout-modal"><i class="icon-logout-1"></i> Logout</a></li>
                         </ul>
                     </li>
@@ -146,14 +142,6 @@
             <!-- Left Sidebar Start -->
         <div class="left side-menu">
             <div class="sidebar-inner slimscrollleft">
-               <!-- Search form -->
-                <form role="search" class="navbar-form">
-                    <div class="form-group">
-                        <input type="text" placeholder="Search" class="form-control">
-                        <button type="submit" class="btn search-button"><i class="fa fa-search"></i></button>
-                    </div>
-                </form>
-                <div class="clearfix"></div>
                 <!--- Profile -->
                 <div class="profile-info">
                     <div class="col-xs-4">
@@ -164,7 +152,7 @@
                         <div class="profile-buttons">
                           <a href="javascript:;"><i class="fa fa-envelope-o pulse"></i></a>
                           <a href="connect" class="open-right"><i class="fa fa-comments"></i></a>
-                          <a href="javascript:;" title="Sign Out"><i class="fa fa-power-off text-red-1"></i></a>
+                          <a href="/user/logout" title="Sign Out"><i class="fa fa-power-off text-red-1"></i></a>
                         </div>
                     </div>
                 </div>
