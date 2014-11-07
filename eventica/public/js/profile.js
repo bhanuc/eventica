@@ -34,6 +34,7 @@ var getprofile = function getprofile () {
             };
 	
           $('#profileedit').hide();
+        //  $('#SubmitButton').hide();
           $('#profileview').show().html(string)
   			} else {
   				toastr.error("Your Session seems to expired. Please Login again.")
