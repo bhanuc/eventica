@@ -46,22 +46,17 @@ func RegisterHandler(w http.ResponseWriter, r *http.Request) {
 	if tu.Password != tu.Password2 {
 		e["Error"] = FlashMessage{"danger", "The two Password don't match"}
 	}
-			fmt.Println(3)
 	//userrepo.Collection.Find(bson.M{"email": tu.Email}).One(&foundmail)
 	c, _ := R.Collection.Find(bson.M{"email": tu.Email}).Count()
 	//	u := R.FindOneByCollege(tu.College)
 
 	if c > 0 && turn {
-						fmt.Println(8)
 		e["Error"] = FlashMessage{"danger", "This Email ID is already registered. Please try using a different Email ID"}
 	}
-				fmt.Println(4)
 	//if u > 0 {
 	//	e["Error"] = FlashMessage{"danger", "Your College is already registered. Please Contact ""}
 	//}
-			fmt.Println(5)
 	if len(e) == 0 {
-					fmt.Println(6)
 		user := new(User)
 		turn = false 
 		go user.Add(tu.Name, tu.Password, tu.Email, tu.Number, tu.AlternateNumber)
@@ -70,11 +65,10 @@ func RegisterHandler(w http.ResponseWriter, r *http.Request) {
 		data["flashes"] = e
 		data["user"] = tu
 	} else {
-					fmt.Println(7)
 		data["flashes"] = e
 		data["user"] = tu
 	}
-	utility.WriteJson(w, data)
+	http.Redirect(w, r, "/login", 302)
 }
 func FbHandler(w http.ResponseWriter, r *http.Request) {
 	data := make(map[string]interface{})

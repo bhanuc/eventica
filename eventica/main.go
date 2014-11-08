@@ -57,6 +57,7 @@ func main() {
 	router.HandleFunc("/app", app).Methods("GET")
 	router.HandleFunc("/fb", fblogin).Methods("GET")
 	router.HandleFunc("/", home)
+	router.HandleFunc("/actsuccess", actsucces)
 	router.PathPrefix("/").Handler(http.FileServer(http.Dir("./public/")))
 	http.Handle("/", router)
 	log.Println("Listening...")
@@ -89,6 +90,16 @@ func profile(w http.ResponseWriter, r *http.Request) { //Example to get variable
 
 func login(w http.ResponseWriter, r *http.Request) {
 	t, err := template.New("login.html").ParseFiles("templates/login.html")
+	if err != nil {
+		log.Println(err)
+	}
+	err = t.Execute(w, nil)
+	if err != nil {
+		log.Println(err)
+	}
+}
+func actsucces(w http.ResponseWriter, r *http.Request) {
+	t, err := template.New("Actsucess.html").ParseFiles("templates/Actsucess.html")
 	if err != nil {
 		log.Println(err)
 	}

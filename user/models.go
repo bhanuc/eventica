@@ -196,12 +196,12 @@ func (u *User) Add(name, password, email, number, alternatenumber string) {
 		slice := uid[13:37]
 
 	body := "Hi ,\n\n"
-	body += "welcome to " + Config.Host + ".\nYour account has been created.To Activate your account, please visit http://portal.techkriti.org/user/activate?ui=" + slice + "&us=" + u.ActiveCode + " . Copy and paste the link in the browser to activate.\nYou login credentials are \n password:\n"
-	body += password + "\n"
-	body += "email address.\n"
-	body += email+"\n"
+	body += "welcome to " + Config.Host + ".\nYour account has been created.To Activate your account, please visit http://portal.techkriti.org/user/activate?ui=" + slice + "&us=" + u.ActiveCode + " . Copy and paste the link in the browser to activate.\nYou login credentials are \nEmail-Address.\n"
+	body += email + "\n"
+	body += "Password:\n"
+	body += password+"\n"
 	body += "Regards,\n\n"
-	body += Config.Host + "team"
+	body += Config.Host + " team"
 
 	m := mail.NewMail(Config.MailFrom, []string{email}, "Welcome to "+Config.Host, body)
 	if err := m.Send(); err != nil {
