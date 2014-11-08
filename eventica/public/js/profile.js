@@ -6,7 +6,8 @@ var getprofile = function getprofile () {
   type: 'GET',
   success: function(data) {
     console.log(data)
-
+    updatename();
+    updatepic();
   			if(data.profile){
           localStorage.setItem('name',data.profile.name);
           global.profile = data.profile;
@@ -135,5 +136,12 @@ var updatename = function(){
       if(localStorage.name){
         $('#side-name').html(localStorage.name);
         $('#top-name').html(localStorage.name);
+      } 
+};
+var updatepic = function(){
+      if(localStorage.fbpic){
+      var url ="//graph.facebook.com/"+sarfraz.anees+"/picture";
+        $('#side-pic').attr('src',localStorage.fbpic);
+        $('#top-pic').attr('src',localStorage.fbpic);
       } 
 };
