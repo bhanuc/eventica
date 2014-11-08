@@ -6,12 +6,15 @@ var getprofile = function getprofile () {
   type: 'GET',
   success: function(data) {
     console.log(data)
+
   			if(data.profile){
+          localStorage.setItem('name',data.profile.name);
           global.profile = data.profile;
           var profile = Object.keys(data.profile);
           global.keys = profile;
           var string = "";
           for (var i = 1; i <= profile.length - 1; i++) {
+            console.log(profile[i])
             switch (profile[i]) {
                 case "alternatenumber":
             string = string+'<div class="row"><div class="col-md-6">Alternate person of contact</div>'+'<div class="col-md-6">not written</div>'+'</div>';
@@ -128,3 +131,9 @@ $('#SubmitButton').click(function submitbutton () {
     }
 });
 
+var updatename = function(){
+      if(localStorage.name){
+        $('#side-name').html(localStorage.name);
+        $('#top-name').html(localStorage.name);
+      } 
+};
