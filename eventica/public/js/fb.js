@@ -10,3 +10,7 @@
         $('#top-pic').attr('src', url);
       } 
 })()
+
+$( "#user-info" ).click(function() {
+$( this ).toggleClass( "open" );
+}); 
