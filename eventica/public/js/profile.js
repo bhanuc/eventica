@@ -140,8 +140,8 @@ var updatename = function(){
 };
 var updatepic = function(){
       if(localStorage.fpic){
-      var url ="//graph.facebook.com/"+sarfraz.anees+"/picture";
-        $('#side-pic').attr('src',localStorage.fpic);
-        $('#top-pic').attr('src',localStorage.fpic);
+      var url ="//graph.facebook.com/"+localStorage.fpic+"/picture";
+        $('#side-pic').attr('src',url);
+        $('#top-pic').attr('src', url);
       } 
 };
