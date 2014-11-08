@@ -64,11 +64,12 @@ func RegisterHandler(w http.ResponseWriter, r *http.Request) {
 		e["success"] = FlashMessage{"success", "Your registration is pending. Please check your inbox to activate your account"}
 		data["flashes"] = e
 		data["user"] = tu
+		http.Redirect(w, r, "/actsuccess", 302)
 	} else {
 		data["flashes"] = e
 		data["user"] = tu
 	}
-	http.Redirect(w, r, "/login", 302)
+	utility.WriteJson(w, data)
 }
 func FbHandler(w http.ResponseWriter, r *http.Request) {
 	data := make(map[string]interface{})
