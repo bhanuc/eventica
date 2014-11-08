@@ -5,11 +5,7 @@ var getprofile = function getprofile () {
   url: '/api/user/profile',
   type: 'GET',
   success: function(data) {
-    console.log(data)
-    updatename();
-    updatepic();
   			if(data.profile){
-          localStorage.setItem('name',data.profile.name);
           global.profile = data.profile;
           var profile = Object.keys(data.profile);
           global.keys = profile;
@@ -131,17 +127,3 @@ $('#SubmitButton').click(function submitbutton () {
                   toastr.error("Your Session seems to expired. Please Login again.")
     }
 });
-
-var updatename = function(){
-      if(localStorage.name){
-        $('#side-name').html(localStorage.name);
-        $('#top-name').html(localStorage.name);
-      } 
-};
-var updatepic = function(){
-      if(localStorage.fpic){
-      var url ="//graph.facebook.com/"+localStorage.fpic+"/picture";
-        $('#side-pic').attr('src',url);
-        $('#top-pic').attr('src', url);
-      } 
-};

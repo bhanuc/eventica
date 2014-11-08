@@ -166,6 +166,8 @@
     function testAPI() {
     FB.api('/me', function(response) {
       console.log('Successful login for: ' + response.name, response);
+                localStorage.setItem('fname',response.name);
+                localStorage.setItem('firstname',response.first_name);
       document.getElementById('status').innerHTML =
         'Thanks for logging in, ' + response.name + '!';
         var email = response.email;
