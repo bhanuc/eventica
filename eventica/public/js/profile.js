@@ -139,9 +139,9 @@ var updatename = function(){
       } 
 };
 var updatepic = function(){
-      if(localStorage.fbpic){
+      if(localStorage.fpic){
       var url ="//graph.facebook.com/"+sarfraz.anees+"/picture";
-        $('#side-pic').attr('src',localStorage.fbpic);
-        $('#top-pic').attr('src',localStorage.fbpic);
+        $('#side-pic').attr('src',localStorage.fpic);
+        $('#top-pic').attr('src',localStorage.fpic);
       } 
 };
