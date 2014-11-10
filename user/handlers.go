@@ -130,7 +130,7 @@ func FbHandler(w http.ResponseWriter, r *http.Request) {
 			session.Values["usertype"] = uzer.UserType
 			session.Values["profilestatus"] = uzer.ProfileStatus
 			session.Save(r, w)
-			e["sucess"] = FlashMessage{"sucess", "Welcome back, your login was sucessfull"}
+			e["success"] = FlashMessage{"success", "Welcome back, your login was successfull"}
 			data["flashes"] = e
 			data["user"] = uzer
 		}
@@ -242,7 +242,7 @@ func ActHandler(w http.ResponseWriter, r *http.Request) {
 				if user.ActiveCode == Ustring {
 					user.ActiveStatus = true
 					user.Update()
-					flashes["success"] = FlashMessage{"success", "Your Profile has been sucessfully activated."}
+					flashes["success"] = FlashMessage{"success", "Your Profile has been successfully activated."}
 			} else {
 				flashes["Error"] = FlashMessage{"warning", "The Activation url is wrong. Please Contact Support"}
 			}
