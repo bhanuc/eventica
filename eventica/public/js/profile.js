@@ -106,7 +106,7 @@ $('#EditButton').click(function editbutton () {
               form = form+'<div class="row profile"><div class="col-md-6">College</div><div class="col-md-6"><input type="text" value="'+( global.profile[global.keys[i]] || ' ')+'" id="'+global.keys[i]+'" name="profileForm"></div></div>';
                break;
                case "ambassador":
-              form = form+'<div class="row profile"><div class="col-md-6">Are you a Ambassador</div><div class="col-md-6"><input type="checkbox" value="'+( global.profile[global.keys[i]] || '')+'" id="'+global.keys[i]+'" name="profileForm"></div></div>';
+              form = form+'<div class="row profile"><div class="col-md-6">Are you a Ambassador</div><div class="col-md-6"><input type="checkbox" value="'+( global.profile[global.keys[i]] || 'yes')+'" id="'+global.keys[i]+'" name="profileForm"></div></div>';
                break;
                case "branch":
               form = form+'<div class="row profile"><div class="col-md-6">Enter your Branch</div><div class="col-md-6"><input type="text" value="'+( global.profile[global.keys[i]] || ' ')+'" id="'+global.keys[i]+'" name="profileForm"></div></div>';
