@@ -4256,10 +4256,10 @@ a:focus .icon-vimeo {
   opacity: 0;
 }
 .login-page {
-  background: #7A868F;
+  background: rgba(13, 30, 42, 1);
 }
 .signup-page {
-  background: #7A868F;
+  background: rgba(13, 30, 42, 1);
 }
 .lock-page {
   background: #252932;
