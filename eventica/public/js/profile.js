@@ -116,7 +116,8 @@ $('#EditButton').click(function editbutton () {
                break;
               default:
               form = form+'<div class="row profile"><div class="col-md-6">'+global.keys[i]+'</div><div class="col-md-6"><input type="text" value="'+( global.profile[global.keys[i]] || ' ')+'" id="'+global.keys[i]+'" name="profileForm"></div></div>';
-              }
+              } 
+            }
              form = form + '</form>';
                         $('#profileview').hide();
                         $('#EditButton').hide();
