@@ -9,9 +9,7 @@
   background-color: #ffffff;
   color: #fff;
 }
-.row {
-  border: 2px solid black;
-}
+
 .btn-white-1:hover {
   background-color: #f2f2f2 !important;
   color: #fff;
