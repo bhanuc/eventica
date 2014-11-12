@@ -10,12 +10,12 @@ $('#submitbutton').click(function() {
         memberno = 4;
     } else if($("#subject").val() == "FPGA" || ("#subject").val() == "Impulse") {   
         memberno = 4;
-    } else if($("#subject").val()=="Electrade") {   
+    } else if($("#subject").val() == "Electrade") {   
         memberno = 3;
     } 
   var memberscontact = "";
   for(var i=0;i<memberno;i++){
-     memberscontact = memberscontact + $("#members"+(i+1)).val() + ':'+ $("#connum"+(i+1)).val() + ',';
+     memberscontact = memberscontact + $("#members"+(i+1)).val();
    }
 $.ajax({
   url: '/team/create',
@@ -76,7 +76,7 @@ $( "#subject" ).change(function () {
        // $('#sport').append('<tr><td width="150px">Vice Captain</td><td><input type="text" id="members'+(i+1)+'" class="demo-default" name="members" required></td><td width="180px">Contact Number</td><td><input type="number" id="connum'+(i+1)+'" class="demo-default" name="connum" required></td> </tr>');
        //}
        //else {
-        $('#sport').append('<tr><td width="150px">Member '+(i+1)+'</td><td><input type="text" id="members'+(i+1)+'" class="demo-default" name="members"></td><td width="180px">Contact Number</td><td><input type="number" id="connum'+(i+1)+'" class="demo-default" name="connum"></td> </tr>');
+        $('#sport').append('<tr><td width="150px">Member '+(i+1)+'</td><td><input type="text" id="members'+(i+1)+'" class="demo-default" name="members"></td></tr>');
    // }
     }
 });
