@@ -27,8 +27,31 @@ if(data.success ){
 });
  
 $( "#subject" ).change(function () {
-    var sportno = $("#subject").val();
-    console.log(sportno);
+    var evname = $("#subject").val();
+    var memberno = 0;
+    var comment = "";
+    console.log($("#subject").val());
+    if($("#subject").val()=="Skysparks" || $("#subject").val()=="Multirover" || $("#subject").val()=="Cruise Control"  || $("#subject").val()=="Hoverush") {   
+        memberno = 5;
+        comment = "";
+    } else if($("#subject").val()=="Embedded") {   
+        memberno = 5;
+        comment = "Only for Undergraduate students";
+    } else if($("#subject").val()=="IORC)") {   
+        memberno = 1;
+        comment = "";
+    } else if($("#subject").val()=="Electromania") {   
+        memberno = 4;
+        comment = "Only for Undergraduate students";
+    } else if($("#subject").val()=="FPGA" || ("#subject").val()=="Impulse") {   
+        memberno = 4;
+        comment = "";
+    } else if($("#subject").val()=="Electrade") {   
+        memberno = 3;
+        comment = "Only for Undergraduate students";
+    } 
+
+    $("#comment").html(comment) ;
 });
 
 /** checking should be done not in the callback the on click      
