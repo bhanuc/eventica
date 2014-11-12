@@ -37,7 +37,7 @@ $( "#subject" ).change(function () {
     } else if($("#subject").val()=="Embedded") {   
         memberno = 5;
         comment = "Only for Undergraduate students";
-    } else if($("#subject").val()=="IORC)") {   
+    } else if($("#subject").val()=="IORC") {   
         memberno = 1;
         comment = "";
     } else if($("#subject").val()=="Electromania") {   
