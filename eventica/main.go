@@ -99,7 +99,7 @@ func login(w http.ResponseWriter, r *http.Request) {
 	}
 }
 func actsucces(w http.ResponseWriter, r *http.Request) {
-	t, err := template.New("Actsucess.html").ParseFiles("templates/Actsucess.html")
+	t, err := template.New("Actsuccess.html").ParseFiles("templates/Actsuccess.html")
 	if err != nil {
 		log.Println(err)
 	}
