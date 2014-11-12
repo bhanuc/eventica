@@ -118,7 +118,7 @@ $('#EditButton').click(function editbutton () {
               form = form+'<div class="row profile"><div class="col-md-6">'+global.keys[i]+'</div><div class="col-md-6"><input type="text" value="'+( global.profile[global.keys[i]] || ' ')+'" id="'+global.keys[i]+'" name="profileForm"></div></div>';
               } 
             }
-             form = form + '<div class="row profile">(* Required)</div></form>';
+             form = form + '<div class="row profile">(* Required Fields)</div></form>';
                         $('#profileview').hide();
                         $('#EditButton').hide();
                        $('#profileedit').show();
