@@ -1,11 +1,18 @@
 $('#submitbutton').click(function() {
-  if($("#subject").val()=="Football" || $("#subject").val()=="Cricket"){
-        memberno=15;
-      } else if($("#subject").val()=="Table Tennis (B)" || $("#subject").val()=="Table Tennis (G)"){
-        memberno=2;
-      } else {
-        memberno=0;
-      }
+  var memberno = 0;
+ if($("#subject").val()=="Skysparks" || $("#subject").val()=="Multirover" || $("#subject").val()=="Cruise Control"  || $("#subject").val()=="Hoverush") {   
+        memberno = 5;
+    } else if($("#subject").val()=="Embedded") {   
+        memberno = 5;
+    } else if($("#subject").val()=="IORC") {   
+        memberno = 1;
+    } else if($("#subject").val()=="Electromania") {   
+        memberno = 4;
+    } else if($("#subject").val() == "FPGA" || ("#subject").val() == "Impulse") {   
+        memberno = 4;
+    } else if($("#subject").val()=="Electrade") {   
+        memberno = 3;
+    } 
   var memberscontact = "";
   for(var i=0;i<memberno;i++){
      memberscontact = memberscontact + $("#members"+(i+1)).val() + ':'+ $("#connum"+(i+1)).val() + ',';
