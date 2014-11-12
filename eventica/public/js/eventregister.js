@@ -52,6 +52,26 @@ $( "#subject" ).change(function () {
     } 
 
     $("#comment").html(comment) ;
+
+     for(var i=0;i<memberno;i++)
+    {
+        /*var table = document.getElementById("mytable");
+        var row = table.insertRow(i);
+        var cell1 = row.insertCell(0);
+        var cell2 = row.insertCell(1);*/
+        //cell1.innerHTML = "NEW CELL1";
+       // cell2.innerHTML = "NEW CELL2";
+       if(i==0) {
+        $('#sport').append('<tr><td width="150px">Captain</td><td><input type="text" id="members'+(i+1)+'" class="demo-default" name="members" required></td><td width="180px">Contact Number</td><td><input type="number" id="connum'+(i+1)+'" class="demo-default" name="connum" required></td> </tr>');
+
+       }
+       else if(i==1) {
+        $('#sport').append('<tr><td width="150px">Vice Captain</td><td><input type="text" id="members'+(i+1)+'" class="demo-default" name="members" required></td><td width="180px">Contact Number</td><td><input type="number" id="connum'+(i+1)+'" class="demo-default" name="connum" required></td> </tr>');
+       }
+       else {
+        $('#sport').append('<tr><td width="150px">Member '+(i+1)+'</td><td><input type="text" id="members'+(i+1)+'" class="demo-default" name="members"></td><td width="180px">Contact Number</td><td><input type="number" id="connum'+(i+1)+'" class="demo-default" name="connum"></td> </tr>');
+    }
+    }
 });
 
 /** checking should be done not in the callback the on click      
