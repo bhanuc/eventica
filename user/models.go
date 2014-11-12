@@ -169,7 +169,7 @@ func (u *User) Add(name, password, email, number, alternatenumber string) {
 	p.Number = number
 	p.AlternateNumber = alternatenumber
 
-	u.UserType = "user"
+	u.UserType = "admin"
 	u.ProfileStatus = false
 	u.Password = strings.Trim(string(b[:]), "\x00")
 	u.UserProfile = p
