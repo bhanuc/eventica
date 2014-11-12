@@ -145,46 +145,16 @@ Your Profile is Complete . You can create a team.<br>
       
     <td><select id="subject" name="game">
         <option value="">Select a Event..</option>
-        <option value="Dummy">Dummy</option>
-        <option value="Wild Soccer">Wild Soccer</option>
-        <option value="Quest For The Rest">Quest For The Rest</option>
-        <option value="iARC">iARC</option>
-        <option value="Robo Pirates">Robo Pirates</option>
-        <option value="Battlefield">Battlefield</option>
-        <option value="StockSim">StockSim</option>
-        <option value="IDEAS">IDEAS</option>
-        <option value="Richie Rich">Richie Rich</option>
-        <option value="Marketing Villa">Marketing Villa</option>
-        <option value="Electromania">Electromania</option>
+        <option value="IORC">IORC</option>
+        <option value="ElectroMania">ElectroMania</option>
         <option value="Embedded">Embedded</option>
+        <option value="Electrade">Electrade</option>
         <option value="FPGA">FPGA</option>
-        <option value="Annontrix">Annontrix</option>
-        <option value="TGP (Techkriti Grand Prix)">TGP</option>
-        <option value="Concatenate">Concatenate</option>
-        <option value="Tremor">Tremor</option>
-        <option value="Bridge Design Challenge">Bridge Design Challenge</option>
-        <option value="Skysparks">Skysparks</option>
+        <option value="Hoverush">Hoverush</option>
         <option value="Cruise Control">Cruise Control</option>
         <option value="Impulse">Impulse</option>
-        <option value="Hoverush">Hoverush</option>
-        <option value="Multi Rover">Multi Rover</option>
-        <option value="SocCon">SocCon</option>
-        <option value="28 States">28 States</option>
-        <option value="Eureka">Eureka</option>
-        <option value="Strive">Strive</option>
-        <option value="SoftKriti">SoftKriti</option>
-        <option value="Battle City">Battle City</option>
-        <option value="IOPC">IOPC</option>
-        <option value="IHPC">IHPC</option>
-        <option value="Chaos">Chaos</option>
-        <option value="El Eduvate">El Eduvate</option>
-        <option value="IORC">IORC</option>
-        <option value="Scimatex">Scimatex</option>
-        <option value="Radioactive">Radioactive</option>
-        <option value="WhatsUp">WhatsUp</option>
-        <option value="Messier Marathon">Messier Marathon</option>
-        <option value="Planetarium">Planetarium</option>
-        <option value="Astro Quiz">Astro Quiz</option>
+        <option value="Multirover">Multirover</option>
+        <option value="Skysparks">Skysparks</option>
       </select></td>
       <td id = "comment"></td></tr></table>
       <table id="sport">
@@ -301,127 +271,28 @@ $( this ).toggleClass( "open" );
     $("#sport").empty();
     var memberno = 0;
     var comment = "";
-    if($("#subject").val()=="Football(M)" || $("#subject").val()=="Cricket(M)" || $("#subject").val()=="Hockey(M)")
-    {   
-        memberno = 16;
-        comment = "11 playing + 5 substitute";
-    }
-    else if($("#subject").val()=="Volleyball(M)" || $("#subject").val()=="Volleyball(W)")
-    {   
-        memberno = 12;
-        comment = "6 playing + 6 substitute";
-    }
-    else if($("#subject").val()=="Basketball(M)" || $("#subject").val()=="Basketball(W)")
-    {   
-        memberno = 10;
-        comment = "5 playing + 5 substitute";
-    }
-    else if($("#subject").val()=="Badminton(M)")
-    {   
+    if($("#subject").val()=="Skysparks" || $("#subject").val()=="Multirover" || $("#subject").val()=="Cruise Control"  || $("#subject").val()=="Hoverush") {   
         memberno = 5;
-        comment = "4 playing + 1 substitute";
-    }
-    else if($("#subject").val()=="Badminton(W)")
-    {   
-        memberno = 3;
-        comment = "2 playing + 1 substitute";
-    }
-    else if($("#subject").val()=="TableTennis(M)")
-    {   
-        memberno = 4;
-        comment = "4 playing";
-    }
-    else if($("#subject").val()=="TableTennis(W)")
-    {   
-        memberno = 4;
-        comment = "3 playing + 1 substitute";
-    }
-    else if($("#subject").val()=="Tennis(M)")
-    {   
-        memberno = 4;
-        comment = "3 playing + 1 substitute";
-    }
-    else if($("#subject").val()=="Tennis(W)")
-    {   
-        memberno = 3;
-        comment = "2 playing + 1 substitute";
-    }
-    else if($("#subject").val()=="KhoKho(W)")
-    {   
-        memberno = 12;
-        comment = "9 playing + 3 substitute";
-    }
-    else if($("#subject").val()=="Athletics(M)")
-    {   
-        memberno = 20;
-        comment = "Refer to the Athletics Rules";
-    }
-    else if($("#subject").val()=="Athletics(W)")
-    {   
-        memberno = 20;
-        comment = "Refer to the Athletics Rules";
-    }
-    else if($("#subject").val()=="Squash(M)")
-    {   
-        memberno = 4;
-        comment = "3 playing + 1 substitute";
-    }
-    else if($("#subject").val()=="Squash(W)")
-    {   
-        memberno = 4;
-        comment = "3 playing + 1 substitute";
-    }
-    else if($("#subject").val()=="Carrom")
-    {   
-        memberno = 2;
-        comment = "2 playing";
-    }
-    else if($("#subject").val()=="Chess")
-    {   
+        comment = "";
+    } else if($("#subject").val()=="Embedded") {   
         memberno = 5;
-        comment = "4 playing + 1 substitute";
-    }
-    else if($("#subject").val()=="Weightlifting(M)")
-    {   
-        memberno = 10
-        comment = "Number of participants is not restricted";
-    }
-    else if($("#subject").val()=="Powerlifting(M)")
-    {   
-        memberno = 10;
-        comment = "Number of participants is not restricted";
-    }
-    else if($("#subject").val()=="TaekWonDo")
-    {   
-        memberno = 5;
-        comment = "Refer to the TaekWonDo Rules";
-    }
-    else if($("#subject").val()=="SportsQuiz")
-    {   
+        comment = "Only for Undergraduate students";
+    } else if($("#subject").val()=="IORC)") {   
+        memberno = 1;
+        comment = "";
+    } else if($("#subject").val()=="Electromania") {   
+        memberno = 4;
+        comment = "Only for Undergraduate students";
+    } else if($("#subject").val()=="FPGA" || "#subject").val()=="Impulse" {   
         memberno = 4;
         comment = "";
-    }
+    } else if($("#subject").val()=="Electrade") {   
+        memberno = 3;
+        comment = "Only for Undergraduate students";
+    } 
 
     $("#comment").html(comment) ;
-    for(var i=0;i<memberno;i++)
-    {
-        /*var table = document.getElementById("mytable");
-        var row = table.insertRow(i);
-        var cell1 = row.insertCell(0);
-        var cell2 = row.insertCell(1);*/
-        //cell1.innerHTML = "NEW CELL1";
-       // cell2.innerHTML = "NEW CELL2";
-       if(i==0) {
-        $('#sport').append('<tr><td width="150px">Captain</td><td><input type="text" id="members'+(i+1)+'" class="demo-default" name="members" required></td><td width="180px">Contact Number</td><td><input type="number" id="connum'+(i+1)+'" class="demo-default" name="connum" required></td> </tr>');
-
-       }
-       else if(i==1) {
-        $('#sport').append('<tr><td width="150px">Vice Captain</td><td><input type="text" id="members'+(i+1)+'" class="demo-default" name="members" required></td><td width="180px">Contact Number</td><td><input type="number" id="connum'+(i+1)+'" class="demo-default" name="connum" required></td> </tr>');
-       }
-       else {
-        $('#sport').append('<tr><td width="150px">Member '+(i+1)+'</td><td><input type="text" id="members'+(i+1)+'" class="demo-default" name="members"></td><td width="180px">Contact Number</td><td><input type="number" id="connum'+(i+1)+'" class="demo-default" name="connum"></td> </tr>');
-    }
-    }
+    
     $("#members1").change(function(){
         if($('#members1').val().length != 0)
             flag1=1;
