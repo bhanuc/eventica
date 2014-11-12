@@ -1,21 +1,22 @@
 $('#submitbutton').click(function() {
+      var evname = $("#subject").val();
   var memberno = 0;
- if($("#subject").val()=="Skysparks" || $("#subject").val()=="Multirover" || $("#subject").val()=="Cruise Control"  || $("#subject").val()=="Hoverush") {   
+ if(evname=="Skysparks" || evname=="Multirover" || evname=="Cruise Control"  || evname=="Hoverush") {   
         memberno = 5;
-    } else if($("#subject").val()=="Embedded") {   
+    } else if(evname=="Embedded") {   
         memberno = 5;
-    } else if($("#subject").val()=="IORC") {   
+    } else if(evname=="IORC") {   
         memberno = 1;
-    } else if($("#subject").val()=="Electromania") {   
+    } else if(evname=="Electromania") {   
         memberno = 4;
-    } else if($("#subject").val() == "FPGA" || ("#subject").val() == "Impulse") {   
+    } else if(evname == "FPGA" || evname == "Impulse") {   
         memberno = 4;
-    } else if($("#subject").val()=="Electrade") {   
+    } else if(evname == "Electrade") {   
         memberno = 3;
     } 
   var memberscontact = "";
   for(var i=0;i<memberno;i++){
-     memberscontact = memberscontact + $("#members"+(i+1)).val() + ':'+ $("#connum"+(i+1)).val() + ',';
+     memberscontact = memberscontact + $("#members"+(i+1)).val();
    }
 $.ajax({
   url: '/team/create',
@@ -37,23 +38,23 @@ $( "#subject" ).change(function () {
     var evname = $("#subject").val();
     var memberno = 0;
     var comment = "";
-    console.log($("#subject").val());
-    if($("#subject").val()=="Skysparks" || $("#subject").val()=="Multirover" || $("#subject").val()=="Cruise Control"  || $("#subject").val()=="Hoverush") {   
+
+    if(evname=="Skysparks" || evname=="Multirover" || evname=="Cruise Control"  || evname=="Hoverush") {   
         memberno = 5;
         comment = "";
-    } else if($("#subject").val()=="Embedded") {   
+    } else if(evname=="Embedded") {   
         memberno = 5;
         comment = "Only for Undergraduate students";
-    } else if($("#subject").val()=="IORC") {   
+    } else if(evname=="IORC") {   
         memberno = 1;
         comment = "";
-    } else if($("#subject").val()=="Electromania") {   
+    } else if(evname=="Electromania") {   
         memberno = 4;
         comment = "Only for Undergraduate students";
-    } else if($("#subject").val() == "FPGA" || ("#subject").val() == "Impulse") {   
+    } else if(evname == "FPGA" || evname== "Impulse") {   
         memberno = 4;
         comment = "";
-    } else if($("#subject").val()=="Electrade") {   
+    } else if(evname=="Electrade") {   
         memberno = 3;
         comment = "Only for Undergraduate students";
     } 
@@ -76,7 +77,7 @@ $( "#subject" ).change(function () {
        // $('#sport').append('<tr><td width="150px">Vice Captain</td><td><input type="text" id="members'+(i+1)+'" class="demo-default" name="members" required></td><td width="180px">Contact Number</td><td><input type="number" id="connum'+(i+1)+'" class="demo-default" name="connum" required></td> </tr>');
        //}
        //else {
-        $('#sport').append('<tr><td width="150px">Member '+(i+1)+'</td><td><input type="text" id="members'+(i+1)+'" class="demo-default" name="members"></td><td width="180px">Contact Number</td><td><input type="number" id="connum'+(i+1)+'" class="demo-default" name="connum"></td> </tr>');
+        $('#sport').append('<tr><td width="150px">Member '+(i+1)+'</td><td><input type="text" id="members'+(i+1)+'" class="demo-default" name="members"></td></tr>');
    // }
     }
 });
