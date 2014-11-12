@@ -1,16 +1,17 @@
 $('#submitbutton').click(function() {
+      var evname = $("#subject").val();
   var memberno = 0;
- if($("#subject").val()=="Skysparks" || $("#subject").val()=="Multirover" || $("#subject").val()=="Cruise Control"  || $("#subject").val()=="Hoverush") {   
+ if(evname=="Skysparks" || evname=="Multirover" || evname=="Cruise Control"  || evname=="Hoverush") {   
         memberno = 5;
-    } else if($("#subject").val()=="Embedded") {   
+    } else if(evname=="Embedded") {   
         memberno = 5;
-    } else if($("#subject").val()=="IORC") {   
+    } else if(evname=="IORC") {   
         memberno = 1;
-    } else if($("#subject").val()=="Electromania") {   
+    } else if(evname=="Electromania") {   
         memberno = 4;
-    } else if($("#subject").val() == "FPGA" || ("#subject").val() == "Impulse") {   
+    } else if(evname == "FPGA" || evname == "Impulse") {   
         memberno = 4;
-    } else if($("#subject").val() == "Electrade") {   
+    } else if(evname == "Electrade") {   
         memberno = 3;
     } 
   var memberscontact = "";
@@ -37,23 +38,23 @@ $( "#subject" ).change(function () {
     var evname = $("#subject").val();
     var memberno = 0;
     var comment = "";
-    console.log($("#subject").val());
-    if($("#subject").val()=="Skysparks" || $("#subject").val()=="Multirover" || $("#subject").val()=="Cruise Control"  || $("#subject").val()=="Hoverush") {   
+
+    if(evname=="Skysparks" || evname=="Multirover" || evname=="Cruise Control"  || evname=="Hoverush") {   
         memberno = 5;
         comment = "";
-    } else if($("#subject").val()=="Embedded") {   
+    } else if(evname=="Embedded") {   
         memberno = 5;
         comment = "Only for Undergraduate students";
-    } else if($("#subject").val()=="IORC") {   
+    } else if(evname=="IORC") {   
         memberno = 1;
         comment = "";
-    } else if($("#subject").val()=="Electromania") {   
+    } else if(evname=="Electromania") {   
         memberno = 4;
         comment = "Only for Undergraduate students";
-    } else if($("#subject").val() == "FPGA" || ("#subject").val() == "Impulse") {   
+    } else if(evname == "FPGA" || evname== "Impulse") {   
         memberno = 4;
         comment = "";
-    } else if($("#subject").val()=="Electrade") {   
+    } else if(evname=="Electrade") {   
         memberno = 3;
         comment = "Only for Undergraduate students";
     } 
