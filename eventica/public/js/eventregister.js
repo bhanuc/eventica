@@ -35,6 +35,7 @@ if(data.success ){
 });
  
 $( "#subject" ).change(function () {
+  $("#sport").empty();
     var evname = $("#subject").val();
     var memberno = 0;
     var comment = "";
