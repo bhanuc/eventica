@@ -1,4 +1,4 @@
-var host = "http://localhost:8080/"
+var host = "http://portal.techkriti.org/"
 function Register() {
 $.ajax({
   url: '/api/user/register',
@@ -8,8 +8,8 @@ $.ajax({
   success: function(data) {
   			console.log(data);
         if(data.success){
-          toastr.success("Your registration is pending. Please check your inbox/spam to activate your account. Email might take 5 min. for delivery. ");
-          //document.location = host+"app"
+         //toastr.success("Your registration is pending. Please check your inbox/spam to activate your account. Email might take 5 min. for delivery. ");
+          document.location = host+"/actsuccess"
         } else {
           toastr.error(data.flashes.Error.message);
         }
