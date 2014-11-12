@@ -43,7 +43,7 @@ $( "#subject" ).change(function () {
     } else if($("#subject").val()=="Electromania") {   
         memberno = 4;
         comment = "Only for Undergraduate students";
-    } else if($("#subject").val()=="FPGA" || ("#subject").val()=="Impulse") {   
+    } else if($("#subject").val() == "FPGA" || ("#subject").val() == "Impulse") {   
         memberno = 4;
         comment = "";
     } else if($("#subject").val()=="Electrade") {   
