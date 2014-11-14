@@ -39,10 +39,28 @@
 
         <style type="text/css">
 
+        .profile-image
+        {
+            border: 4px solid white;
+            box-shadow: -1px 1px 3px grey, 1px 1px 3px grey, 1px -1px 3px grey;
+        }
+
         .side-menu.left
         {
             position: fixed;
             box-shadow: 0 0 5px grey;
+            z-index: 100;
+        }
+
+        li#user-info
+        {
+            cursor: pointer;
+        }
+
+        .page-header
+        {
+            width: 80%;
+            margin: 70px auto;
         }
 
         .profile-info .col-xs-4
