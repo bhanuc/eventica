@@ -46,6 +46,24 @@
         <link rel="shortcut icon" href="/assets/img/favicon.ico">
         <script type="text/javascript" src="/js/jquery.js"></script>
         <script src="/js/script.js"></script>
+
+
+        <style type="text/css">
+
+        .profile-info .col-xs-4
+        {
+            padding: 10px;
+        }
+
+        .col-xs-8
+        {
+            padding: 10px;
+        }
+
+
+        </style>
+
+
     </head>
     <body class="fixed-left">
         <!-- Modal Start -->
@@ -141,14 +159,17 @@
             </ol>
             <div class="content">
                 <table id = "teams" style="border: 1px solid #000" border="1"></table>
-                <div style="color: Black">
+                <div style="color:black" class="dbcontent">
                     <h1 class="page-header">
                         Dashboard
-                    </h1><br>
+                    </h1>
+                    <p>
                     {{ if .Status }}
-                    Profile is complete . PLease Register for the dummy event to complete the registration. </div>
+                    Profile is complete . PLease Register for the dummy event to complete the registration.
                     {{ else }}
-                    Profile is incomplete . You cannot register for any event until you complete</div> it{{ end }}
+                    Profile is incomplete . You cannot register for any event until you complete it{{ end }}
+                    </p>
+                </div>
                 </div>
             </div>
         <script src="/js/bootstrap.min.js"></script>

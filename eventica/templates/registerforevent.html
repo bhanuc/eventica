@@ -40,6 +40,34 @@
         <![endif]-->
 
         <link rel="shortcut icon" href="/assets/img/favicon.ico">
+
+
+        <style type="text/css">
+
+        h1.page-header
+        {
+            width: 80%;
+            margin: 70px auto;
+            margin-bottom: 40px;
+        }
+
+        div#maincontent
+        {
+            width: 80%;
+            margin: 70px auto;
+        }
+
+        table
+        {
+            background: white;
+            padding: 10px; 
+            box-shadow: 0 0 3px grey;
+            border-radius: 3px;
+        }
+
+        </style>
+
+
     </head>
  <body class="fixed-left">
         
@@ -134,9 +162,9 @@
     <div class="content-page content">
         <h1 class="page-header">
             Register for a Event
-        </h1><div id ="maincontent">
+        </h1><div id ="maincontent"><p>
 {{ if .Status }}
-Your Profile is Complete . You can create a team.<br>
+Your Profile is Complete . You can create a team.</p>
 <table>
 <tr><td width="150px">Team Name</td><td><input type="text" id="teamname" name="name"></td></tr>
 
