@@ -8,7 +8,7 @@ $('#submitbutton').click(function() {
         memberno = 5;
     } else if(evname=="IORC" || evname == "29 States") {   
         memberno = 1;
-    } else if(evname=="Electromania") {   
+    } else if(evname=="ElectroMania") {   
         memberno = 5;
     } else if(evname== "Impulse" || evname== "Hackathon" || evname== "Iarc") {   
         memberno = 4;
