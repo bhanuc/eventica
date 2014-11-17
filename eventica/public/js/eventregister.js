@@ -4,7 +4,7 @@ $('#submitbutton').click(function() {
 
     if(evname=="Hoverush" || evname=="Do your due" || evname=="Marketing Villa" || evname=="Be the Tycoon" ||  evname=="IDEAS" || evname=="Battlefield" || evname=="Manoeuvre" || evname=="Shuffle" ) {   
         memberno = 5;
-    } else if(evname == "FPGA" || evname=="Embedded" || evname=="ElectroMania") {   
+    } else if(evname == "FPGA" || evname=="Embedded" || evname=="electromania") {   
         memberno = 5;
     } else if(evname=="IORC" || evname == "29 States") {   
         memberno = 1;
@@ -58,7 +58,7 @@ $( "#subject" ).change(function () {
     } else if(evname=="IORC" || evname == "29 States") {   
         memberno = 1;
         comment = "";
-    } else if(evname=="Electromania") {   
+    } else if(evname=="electromania") {   
         memberno = 5;
         comment = "Only for Undergraduate students";
     } else if(evname== "Impulse" || evname== "Hackathon" || evname== "Iarc") {   
