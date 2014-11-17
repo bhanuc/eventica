@@ -4,12 +4,10 @@ $('#submitbutton').click(function() {
 
     if(evname=="Hoverush" || evname=="Do your due" || evname=="Marketing Villa" || evname=="Be the Tycoon" ||  evname=="IDEAS" || evname=="Battlefield" || evname=="Manoeuvre" || evname=="Shuffle" ) {   
         memberno = 5;
-    } else if(evname == "FPGA" || evname=="Embedded") {   
+    } else if(evname == "FPGA" || evname=="Embedded" || evname=="ElectroMania") {   
         memberno = 5;
     } else if(evname=="IORC" || evname == "29 States") {   
         memberno = 1;
-    } else if(evname=="ElectroMania") {   
-        memberno = 5;
     } else if(evname== "Impulse" || evname== "Hackathon" || evname== "Iarc") {   
         memberno = 4;
     } else if(evname=="Electrade") {   
