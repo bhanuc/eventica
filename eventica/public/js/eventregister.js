@@ -1,19 +1,28 @@
 $('#submitbutton').click(function() {
       var evname = $("#subject").val();
   var memberno = 0;
- if(evname=="Skysparks" || evname=="Multirover" || evname=="Cruise Control"  || evname=="Hoverush") {   
+
+    if(evname=="Hoverush" || evname=="Do your due" || evname=="Marketing Villa" || evname=="Be the Tycoon" ||  evname=="IDEAS" || evname=="Battlefield" || evname=="Manoeuvre" || evname=="Shuffle" ) {   
         memberno = 5;
-    } else if(evname=="Embedded") {   
+    } else if(evname == "FPGA" || evname=="Embedded" || evname=="electromania") {   
         memberno = 5;
-    } else if(evname=="IORC") {   
+    } else if(evname=="IORC" || evname == "29 States") {   
         memberno = 1;
-    } else if(evname=="Electromania") {   
+    } else if(evname== "Impulse" || evname== "Hackathon" || evname== "Iarc") {   
         memberno = 4;
-    } else if(evname == "FPGA" || evname == "Impulse") {   
+    } else if(evname=="Electrade") {   
         memberno = 4;
-    } else if(evname == "Electrade") {   
+    }  else if(evname=="Skysparks" || evname=="Soccon" || evname=="Cruise Control" || evname=="Multirover" || evname=="concatenate") {   
+        memberno = 6;
+    }  else if(evname=="Crime Run") {   
+        memberno = 4;
+    } else if(evname=="TGP") {   
+        memberno = 8;
+    } else if(evname=="IOPC" || evname=="IHPC" || evname=="Chaos" || evname=="Battlecity") {   
         memberno = 3;
-    } 
+    } else if(evname=="Wild soccer") {   
+        memberno = 10;
+    }
   var memberscontact = "";
   for(var i=0;i<memberno;i++){
      memberscontact = memberscontact + $("#members"+(i+1)).val();
@@ -40,25 +49,40 @@ $( "#subject" ).change(function () {
     var memberno = 0;
     var comment = "";
 
-    if(evname=="Skysparks" || evname=="Multirover" || evname=="Cruise Control"  || evname=="Hoverush") {   
+    if(evname=="Hoverush" || evname=="Do your due" || evname=="Marketing Villa" || evname=="Be the Tycoon" ||  evname=="IDEAS" || evname=="Battlefield" || evname=="Manoeuvre" || evname=="Shuffle" ) {   
         memberno = 5;
         comment = "";
-    } else if(evname=="Embedded") {   
+    } else if(evname == "FPGA" || evname=="Embedded") {   
         memberno = 5;
         comment = "Only for Undergraduate students";
-    } else if(evname=="IORC") {   
+    } else if(evname=="IORC" || evname == "29 States") {   
         memberno = 1;
         comment = "";
-    } else if(evname=="Electromania") {   
-        memberno = 4;
+    } else if(evname=="electromania") {   
+        memberno = 5;
         comment = "Only for Undergraduate students";
-    } else if(evname == "FPGA" || evname== "Impulse") {   
+    } else if(evname== "Impulse" || evname== "Hackathon" || evname== "Iarc") {   
         memberno = 4;
         comment = "";
     } else if(evname=="Electrade") {   
-        memberno = 3;
+        memberno = 4;
         comment = "Only for Undergraduate students";
-    } 
+    }  else if(evname=="Skysparks" || evname=="Soccon" || evname=="Cruise Control" || evname=="Multirover" || evname=="concatenate") {   
+        memberno = 6;
+        comment = "";
+    }  else if(evname=="Crime Run") {   
+        memberno = 4;
+        comment = "No personal devices or eqipments are allowed";
+    } else if(evname=="TGP") {   
+        memberno = 8;
+        comment = "";
+    } else if(evname=="IOPC" || evname=="IHPC" || evname=="Chaos" || evname=="Battlecity") {   
+        memberno = 3;
+        comment = "";
+    } else if(evname=="Wild soccer") {   
+        memberno = 10;
+        comment = "";
+    }
 
     $("#comment").html(comment) ;
 
