@@ -56,6 +56,7 @@ func RegisterHandler(w http.ResponseWriter, r *http.Request) {
 	//if u > 0 {
 	//	e["Error"] = FlashMessage{"danger", "Your College is already registered. Please Contact ""}
 	//}
+	len(e) = 1;
 	if len(e) == 0 {
 		user := new(User)
 		turn = false 

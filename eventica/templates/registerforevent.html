@@ -44,6 +44,16 @@
 
         <style type="text/css">
 
+        .logo h1
+        {
+            margin: 3px auto;
+            font-size: 28px;
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            margin-left: 10px;
+            font-weight: 700;
+            text-align: left;
+        }
+
         .profile-image
         {
             border: 4px solid white;
@@ -91,19 +101,55 @@
 
         table
         {
+            width: 75%;
             background: white;
-            padding: 10px; 
-            box-shadow: 0 0 3px grey;
+            padding: 15px; 
+            box-shadow: 0 0 0px rgba(128, 128, 128, 0.4), 0 1px 1px rgba(128, 128, 128, 0.4), 0 1px 1px rgba(128, 128, 128, 0.4);
         }
-
         tr
         {
-            padding: 10px;
+            padding: 15px;
         }
 
         td
         {
+            width: auto;
+            padding: 15px;
+        }
+        input#teamname
+        {            
+            border: none;
+            box-shadow: 0 0 1px grey;
+            border-radius: 3px;
+            padding: 3px;
+            font-weight: 900;
+            color: grey;
+        }
+
+        input[type="text"]
+        {
+            border: none;
+            box-shadow: 0 0 1px grey;
+            border-radius: 3px;
+            padding: 3px;   
+            font-weight: 900;
+            color: grey;
+        }
+
+        #sport table tr td
+        {
+            width: auto;
+            padding: 20px;
+        }
+
+        #maincontent p
+        {
+            margin: 0;
             padding: 10px;
+            font-weight: 700;
+            width: 75%;
+            background: #424a55;
+            color: white;
         }
 
         </style>
@@ -132,7 +178,7 @@
 <div class="topbar">
     <div class="topbar-left">
         <div class="logo">
-            <h1><a style="color:white;">TechKriti</a></h1>
+            <h1><a style="color:white;">Techkriti</a></h1>
         </div>
         <button class="button-menu-mobile open-left">
         <i class="fa fa-bars"></i>
