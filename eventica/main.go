@@ -99,6 +99,18 @@ func login(w http.ResponseWriter, r *http.Request) {
 		log.Println(err)
 	}
 }
+
+func logintemp(w http.ResponseWriter, r *http.Request) {
+	t, err := template.New("login-backup.html").ParseFiles("templates/login-backup.html")
+	if err != nil {
+		log.Println(err)
+	}
+	err = t.Execute(w, nil)
+	if err != nil {
+		log.Println(err)
+	}
+}
+
 func actsucces(w http.ResponseWriter, r *http.Request) {
 	t, err := template.New("Actsuccess.html").ParseFiles("templates/Actsuccess.html")
 	if err != nil {
