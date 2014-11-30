@@ -1,0 +1,52 @@
+    <link href="/css/main.css" rel="stylesheet">
+    <link href="/css/dashboard.css" rel="stylesheet">
+    <link href="/css/flat-ui.css" rel="stylesheet">
+    <link href="/css/font-awesome.min.css" rel="stylesheet"
+<div class="container" ng-controller="UserController">
+    <form name="signupform" role="form" class="form-horizontal" ng-submit="registerUser()">
+    <fieldset>
+        <legend>Sign Up</legend>
+        <div class="form-group" ng-class="signupform.name.$invalid?'has-error':'has-success'">
+            <label for="name" class="col-sm-2 control-label">Name</label>
+            <div class="col-sm-10">
+                <input id="name" name="name" type="text" class="form-control" placeholder="First" ng-minlength="2" required ng-model="user.name">
+                <span class="help-block" ng-show="signupform.name.$pristine">Please enter your name</span>
+            </div>
+        </div>
+        <div class="form-group" ng-class="{'has-error': signupform.lastname.$invalid, 'has-success': signupform.lastname.$valid}">
+            <label for="lastname" class="col-sm-2 control-label">Surname</label>
+            <div class="col-sm-10">
+                <input id="lastname" name="lastname" type="text" class="form-control" placeholder="Last" ng-minlength="2" required ng-model="user.lastname">
+                <span class="help-block" ng-show="signupform.lastname.$pristine">Please enter your surname</span>
+            </div>
+        </div>
+        <div class="form-group" ng-class="signupform.email.$invalid?'has-error':'has-success'">
+            <label for="email" class="col-sm-2 control-label">Email</label>
+            <div class="col-sm-10">
+                <input id="email" name="email" type="email" class="form-control" placeholder="Email" required ng-minlength="6" ng-model="user.email">
+                <span class="help-block" ng-show="signupform.email.$pristine">Please enter your email address</span>
+                <span class="help-block" ng-show="signupform.email.$error.email">Please enter a valid email address</span>
+            </div>
+        </div>
+        <div class="form-group" ng-class="user.email != user.email2?'has-error':'has-success'">
+            <label for="email2" class="col-sm-2 control-label">Repeat Email</label>
+            <div class="col-sm-10">
+                <input id="email2" name="email2" type="email" class="form-control" placeholder="Repeat Email" required ng-minlength="6" ng-model="user.email2">
+                <span class="help-block" ng-show="signupform.email2.$pristine">Please repeat the previously entered email address</span>
+                <span class="help-block" ng-show="user.email != user.email2">The two email addresses must match</span>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <button type="submit" class="btn btn-primary" ng-disabled="signupform.$invalid">Sign up</button>
+            </div>
+        </div>
+    </fieldset>
+</form>
+</div>
+    <script src="/js/angular.js"></script>
+    <script src="/js/controllers.js"></script>
+    <script src="/js/services.js"></script>
+        <script src="/js/jquery.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/ui-bootstrap-0.10.0.min.js"></script>

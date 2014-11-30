@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Techkriti'15 | Register</title>
+    <meta name="title" content="Techkriti'15 | Register" />
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <link rel="icon" type="image/png" href="http://dev.techkriti.org/efactor/sponsors/images/zz.png">
+    <meta name="keywords" content="techkriti register, portal, registration portal, register for techkriti, login techkriti, signup techkriti, register for events, techkriti, IIT, Kanpur, IITK, entrepreneurship, technical, wildsoccer, competitions, shuffle, soccer, online events, business, iorc, ihpc, computing events, coding, techkriti'15" />
+    <meta name="description" content="Techkriti is the annual Technological and Entrepreneurial festival of IIT Kanpur to be held from 19th to 22nd March 2015. Register now to become a part of the biggest technical and entrepreneurial festival." />
+    <meta name="author" content="Techkriti, Web and Creative team">
+    <meta http-equiv="cache-control" content="public">
+    <meta http-equiv="expires" CONTENT="Mon, 22 Mar 2015 11:12:01 GMT">
+    <meta name="google-site-verification" content="ayn8VHIWCPaFinhKv_5tDWBxqA5_PxRBKHePcp-usxs" />
+    <meta property="og:title" content="Techkriti 2015" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="http://www.techkriti.org/" />
+    <meta property="og:image" content="http://www.techkriti.org/images/share_image.jpg" />
+    <meta property="og:site_name" content="Techkriti" />
+    <meta property="og:description" content="Techkriti is the annual Technological and Entrepreneurial festival of IIT Kanpur to be held from 19th to 22nd March 2015. Register now to become a part of the biggest technical and entrepreneurial festival." />
+    <meta property="fb:admins" content="100002130305547" />
+    <meta name="viewport" content="width=device-width">
+
+    <!-- Remove this line if you use the .htaccess -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+        <!-- Base Css Files -->
+        <link href="assets/libs/jqueryui/ui-lightness/jquery-ui-1.10.4.custom.min.css" rel="stylesheet" />
+        <link href="assets/libs/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+        <link href="assets/libs/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+        <link href="assets/libs/fontello/css/fontello.css" rel="stylesheet" />
+        <link href="assets/libs/animate-css/animate.min.css" rel="stylesheet" />
+        <link href="assets/libs/nifty-modal/css/component.css" rel="stylesheet" />
+        <link href="assets/libs/magnific-popup/magnific-popup.css" rel="stylesheet" /> 
+        <link href="assets/libs/ios7-switch/ios7-switch.css" rel="stylesheet" /> 
+            <link href="/css/toastr.min.css" rel="stylesheet">
+        <link href="assets/libs/pace/pace.css" rel="stylesheet" />
+        <link href="assets/libs/sortable/sortable-theme-bootstrap.css" rel="stylesheet" />
+        <link href="assets/libs/bootstrap-datepicker/css/datepicker.css" rel="stylesheet" />
+        <link href="assets/libs/jquery-icheck/skins/all.css" rel="stylesheet" />
+        <!-- Code Highlighter for Demo -->
+        <link href="assets/libs/prettify/github.css" rel="stylesheet" />
+        
+                <!-- Extra CSS Libraries Start -->
+                <link href="assets/css/style.css" rel="stylesheet" type="text/css" />
+                <!-- Extra CSS Libraries End -->
+        <link href="assets/css/style-responsive.css" rel="stylesheet" />
+
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+
+        <link rel="shortcut icon" href="img/favico.ico">
+
+        <style type="text/css">
+
+        .login-page
+        {
+          background-color: transparent;
+          background-image: url('img/bg14.jpg'); 
+          background-size: cover;
+        }
+
+        .full-content-center
+        {
+          margin: 2% auto;
+        }
+
+        .container
+        {
+          /*background-color: rgba(0,0,0,0.7);*/
+        }
+
+        .not-logged-avatar
+        {
+          width: 80px;
+          box-shadow: 0px 3px 3px rgba(0,0,0,0.5);
+          position: relative;
+          top: -55px;
+        }
+
+        .login-block
+        {
+          padding-top: 15px;
+          background: white;
+          padding-bottom: 15px;
+          min-width: 360px;
+        }
+
+        .login-wrap
+        {
+          background-color: transparent;
+        }
+
+        .login-wrap .login-input .text-input
+        {
+          background-color: transparent;
+          box-shadow: 0px 0px 3px rgba(0,0,0,0.5);
+          border: 1px solid rgba(255,255,255,0.1);
+          border-radius: 5px;
+          width: 260px;
+          margin: 0 auto;
+          position: relative;
+          top: -55px;
+        }
+
+        .login-wrap .login-input i.overlay
+        {
+          position: absolute;
+          top: -45px;
+          left: 60px;
+        }
+
+        .login-wrap .checkbox
+        {
+          width: 260px;
+          margin: 15px auto;
+        }
+
+        .icheckbox_square-aero, .iradio_square-aero
+        {
+          background-image: none;
+          color: black;
+          position: relative;
+          top: -55px;
+        }
+
+        b, strong
+        {
+          color: black;
+          position: relative;
+          top: -55px;
+        }
+
+        textarea, input[type="text"], input[type="password"], input[type="datetime"], input[type="datetime-local"], input[type="date"], input[type="month"], input[type="time"], input[type="week"], input[type="number"], input[type="email"], input[type="url"], input[type="search"], input[type="tel"], input[type="color"]
+        {
+          transition:none;
+          -webkit-transition:none;
+        }
+
+        input#rememberme
+        {
+          width: 15px;
+          height: 15px;
+          position: absolute;
+          top:0;
+          left: 25px;
+          color: black;
+        }
+
+        .row
+        {
+          width: 260px;
+          margin: 0 auto;
+        }
+
+        .col-sm-6
+        {
+          width: 50%;
+        }
+
+        .btn-success
+        {
+          background: transparent;
+          border: none;
+          box-shadow: 0px 0px 3px rgba(0,0,0,0.5);
+          font-size: 14px;
+          color: rgb(35, 81, 126);
+          font-weight: 700;
+          position: relative;
+          top: -55px;
+          text-transform: capitalize;
+        }
+
+        .btn-success:hover
+        {
+          background: transparent;
+          border: none;
+          color: rgb(35, 81, 126);
+          font-weight: 700;
+          box-shadow: 0px 0px 3px rgba(0,0,0,0.5);
+        }
+
+        .btn-default
+        {
+          background: transparent;
+          border: none;
+          color: rgb(35, 81, 126);
+          font-weight: 700;
+          box-shadow: 0px 0px 3px rgba(0,0,0,0.5);
+          font-size: 12px;
+          position: relative;
+          top: -55px;
+        }
+
+        .btn-default:hover
+        {
+          background: transparent;
+          border: none;
+          color: rgb(35, 81, 126);
+          font-weight: 700;
+          box-shadow: 0px 0px 3px rgba(0,0,0,0.5);
+        }
+
+        .login-wrap a
+        {
+          color: rgb(35, 81, 126);
+          font-weight: 700;
+          font-size: 14px;
+        }
+
+        .col-sm-12
+        {
+          width: 260px;
+          margin: 0 auto;
+        }
+
+        .fb-login-button
+        {
+          position: relative;
+          top: -55px;
+        }
+
+        </style>
+
+
+      </head>
+    <body class="fixed-left login-page"> 
+  <!-- Begin page -->
+  <div class="container">
+    <div class="full-content-center">
+      <p class="text-center"><a href="login.html#"><img src="/img/techkritifinallogo.png" alt="Logo" style="display: block;margin-left: auto;margin-right: auto;width:100%;min-width:350px;height:30%;line-height:100%;" ></a></p>
+      <div class="login-wrap animated flipInX">
+        <div class="login-block">
+          <img src="img/user2.png" class="img-circle not-logged-avatar">
+            <div class="form-group login-input">
+            Portal is closed now for Maintainence. It will reopen on Monday 1st December 2014.
+            </div><br>            
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    var resizefunc = [];
+  </script>
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  <script src="assets/libs/jquery/jquery-1.11.1.min.js"></script>
+  <script src="assets/libs/bootstrap/js/bootstrap.min.js"></script>
+  <script src="assets/libs/jqueryui/jquery-ui-1.10.4.custom.min.js"></script>
+  <script src="assets/libs/jquery-ui-touch/jquery.ui.touch-punch.min.js"></script>
+  <script src="assets/libs/jquery-detectmobile/detect.js"></script>
+  <script src="assets/libs/jquery-animate-numbers/jquery.animateNumbers.js"></script>
+  <script src="assets/libs/ios7-switch/ios7.switch.js"></script>
+  <script src="assets/libs/fastclick/fastclick.js"></script>
+  <script src="assets/libs/jquery-blockui/jquery.blockUI.js"></script>
+  <script src="assets/libs/bootstrap-bootbox/bootbox.min.js"></script>
+  <script src="assets/libs/jquery-slimscroll/jquery.slimscroll.js"></script>
+  <script src="assets/libs/jquery-sparkline/jquery-sparkline.js"></script>
+  <script src="assets/libs/nifty-modal/js/classie.js"></script>
+  <script src="assets/libs/nifty-modal/js/modalEffects.js"></script>
+  <script src="assets/libs/sortable/sortable.min.js"></script>
+  <script src="assets/libs/bootstrap-fileinput/bootstrap.file-input.js"></script>
+  <script src="assets/libs/bootstrap-select/bootstrap-select.min.js"></script>
+  <script src="assets/libs/bootstrap-select2/select2.min.js"></script>
+  <script src="assets/libs/magnific-popup/jquery.magnific-popup.min.js"></script> 
+  <script src="assets/libs/pace/pace.min.js"></script>
+  <script src="assets/libs/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+  <script src="assets/libs/jquery-icheck/icheck.min.js"></script>
+
+  <!-- Demo Specific JS Libraries -->
+  <script src="assets/libs/prettify/prettify.js"></script>
+
+  <script src="assets/js/init.js"></script>
+    <div id='status'></div>
+    </div>
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="/js/jquery.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/form.js"></script>
+    <script src="/js/toastr.min.js"></script>
+    </body>
+
+</html>

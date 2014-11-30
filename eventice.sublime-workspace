@@ -1,0 +1,988 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"set",
+				"setInterval(${0:func}, delay)	Window"
+			],
+			[
+				"fun",
+				"function(){\n	$0\n})();	(function(){\n	$0\n})();"
+			],
+			[
+				"on",
+				"onclick	Attr"
+			],
+			[
+				"onk",
+				"onkeyup	Attr"
+			],
+			[
+				"cons",
+				"content	Style CSS"
+			],
+			[
+				"j",
+				"j"
+			],
+			[
+				"in",
+				"index"
+			],
+			[
+				"pro",
+				"protocol"
+			],
+			[
+				"i",
+				"i"
+			],
+			[
+				"new",
+				"newutil"
+			],
+			[
+				"bac",
+				"background-color"
+			],
+			[
+				"you",
+				"your-client-secret-here"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "eventica/public/js/signup.js",
+			"settings":
+			{
+				"buffer_size": 1665,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "user/models.go",
+			"settings":
+			{
+				"buffer_size": 9227,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "eventica/templates/CompleteProfile.html",
+			"settings":
+			{
+				"buffer_size": 11055,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "eventica/public/js/profile.js",
+			"settings":
+			{
+				"buffer_size": 213263,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "user/handlers.go",
+			"settings":
+			{
+				"buffer_size": 11472,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "eventice",
+			"settings":
+			{
+				"buffer_size": 73,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/home/bhanuc/.config/sublime-text-3/Packages/GoSublime/USAGE.md",
+			"settings":
+			{
+				"buffer_size": 8539,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "eventica/templates/registerforevent.html",
+			"settings":
+			{
+				"buffer_size": 15819,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "eventica/templates/login.html",
+			"settings":
+			{
+				"buffer_size": 15053,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "eventica/templates/register.html",
+			"settings":
+			{
+				"buffer_size": 8803,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "eventica/templates/dashboard.html",
+			"settings":
+			{
+				"buffer_size": 11099,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "eventica/templates/home.html",
+			"settings":
+			{
+				"buffer_size": 2825,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "Searching 308 files for \".login-page\"\n\n/home/bhanuc/go/src/github.com/eventica/eventica/public/assets/css/style.css:\n 4259    opacity: 0;\n 4260  }\n 4261: .login-page {\n 4262    background: rgba(9, 66, 107, 1);\n 4263  }\n\n/home/bhanuc/go/src/github.com/eventica/eventica/public/css/style_corporate.css:\n 4252    opacity: 0;\n 4253  }\n 4254: .login-page {\n 4255    background: #7A868F;\n 4256  }\n\n/home/bhanuc/go/src/github.com/eventica/eventica/public/css/style_ichanged.css:\n 4252    opacity: 0;\n 4253  }\n 4254: .login-page {\n 4255    background: #7A868F;\n 4256  }\n\n3 matches across 3 files\n",
+			"settings":
+			{
+				"buffer_size": 588,
+				"line_ending": "Unix",
+				"name": "Find Results",
+				"scratch": true
+			}
+		},
+		{
+			"file": "eventica/public/assets/css/style.css",
+			"settings":
+			{
+				"buffer_size": 112972,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "eventica/public/js/register.js",
+			"settings":
+			{
+				"buffer_size": 2142,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"settings":
+			{
+				"buffer_size": 0,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 306.0,
+		"selected_items":
+		[
+			[
+				"Package Control: ",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 467.0
+	},
+	"console":
+	{
+		"height": 188.0,
+		"history":
+		[
+			"import urllib.request,os,hashlib; h = '7183a2d3e96f11eeadd761d777e62404' + 'e330c659d4bb41d3bdf022e94cab3cd0'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://sublime.wbond.net/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by) "
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/home/bhanuc/go/src/github.com/eventica",
+		"/home/bhanuc/go/src/github.com/eventica/eventica",
+		"/home/bhanuc/go/src/github.com/eventica/eventica/templates",
+		"/home/bhanuc/go/src/github.com/eventica/team",
+		"/home/bhanuc/go/src/github.com/eventica/user"
+	],
+	"file_history":
+	[
+		"/home/bhanuc/go/src/github.com/eventica/eventica/public/js/eventregister.js",
+		"/home/bhanuc/go/src/github.com/eventica/eventica/templates/admindashboard.html",
+		"/home/bhanuc/go/src/github.com/eventica/eventica/templates/showteam.html",
+		"/home/bhanuc/go/src/github.com/eventica/eventica/templates/register.html",
+		"/home/bhanuc/go/src/github.com/eventica/eventica/templates/register2.html",
+		"/home/bhanuc/go/src/github.com/eventica/eventica/templates/login.html",
+		"/home/bhanuc/go/src/github.com/eventica/eventica/templates/CompleteProfile.html",
+		"/home/bhanuc/go/src/github.com/eventica/eventica/public/js/profile.js",
+		"/home/bhanuc/go/src/github.com/eventica/eventica/public/js/selectize.js",
+		"/home/bhanuc/go/src/github.com/eventica/eventica/templates/Find Results",
+		"/home/bhanuc/go/src/github.com/eventica/user/handlers.go",
+		"/home/bhanuc/go/src/github.com/eventica/tech.conf",
+		"/home/bhanuc/go/src/github.com/eventica/eventica/public/js/register.js",
+		"/home/bhanuc/go/src/github.com/eventica/eventica/public/js/fb.js",
+		"/home/bhanuc/n/hubancreative.com/projects/templates/coco/corporate/index2.html",
+		"/home/bhanuc/go/src/github.com/eventica/eventica/public/assets/libs/bootstrap/css/bootstrap.min.css",
+		"/home/bhanuc/go/src/github.com/eventica/eventica/templates/registerforevent.html",
+		"/home/bhanuc/go/src/github.com/eventica/eventica/public/js/showteam.js",
+		"/home/bhanuc/go/src/github.com/eventica/eventica/templates/register3.html",
+		"/home/bhanuc/go/src/github.com/eventica/eventica/templates/login2.html",
+		"/home/bhanuc/.config/sublime-text-3/Packages/GoSublime/USAGE.md",
+		"/home/bhanuc/go/src/github.com/eventica/eventica/main.go",
+		"/home/bhanuc/go/src/github.com/eventica/eventica/templates/Actsuccess.html",
+		"/home/bhanuc/go/src/github.com/eventica/eventica/public/assets/css/style.css",
+		"/home/bhanuc/go/src/github.com/eventica/user/models.go",
+		"/home/bhanuc/go/src/github.com/eventica/eventica/public/js/form.js",
+		"/home/bhanuc/go/src/github.com/eventica/README.md",
+		"/home/bhanuc/go/src/github.com/eventica/eventica/templates/dashboard.html",
+		"/home/bhanuc/go/src/github.com/eventica/eventica/templates/dashboardv.html",
+		"/home/bhanuc/go/src/github.com/eventica/eventica/public/js/pages/fb.js",
+		"/home/bhanuc/go/src/github.com/eventica/eventica/public/img/techkritifinallogo.png",
+		"/home/bhanuc/go/src/github.com/eventica/eventica/public/hello.html",
+		"/home/bhanuc/go/src/github.com/eventica/eventica/templates/home.html",
+		"/media/bhanuc/AC80D41480D3E2BE/DATA/web/jutja/VivaGraphJS/demos/other/graphInsideGraph.html",
+		"/media/bhanuc/AC80D41480D3E2BE/DATA/consultant/Habmap/xml2json.js",
+		"/media/bhanuc/AC80D41480D3E2BE/DATA/consultant/Habmap/server/controllers/user.js",
+		"/media/bhanuc/AC80D41480D3E2BE/DATA/consultant/Habmap/server/controllers/tree.js",
+		"/media/bhanuc/AC80D41480D3E2BE/DATA/consultant/Habmap/server/models/sensorData.js",
+		"/media/bhanuc/AC80D41480D3E2BE/DATA/consultant/Habmap/server/models/sensor.js",
+		"/media/bhanuc/AC80D41480D3E2BE/DATA/consultant/Habmap/func.js",
+		"/media/bhanuc/AC80D41480D3E2BE/DATA/consultant/nhabmap/index.js",
+		"/media/bhanuc/AC80D41480D3E2BE/DATA/consultant/nhabmap/views/home.jade",
+		"/media/bhanuc/AC80D41480D3E2BE/DATA/web/jutja/public/kanban/assets/todo.js",
+		"/media/bhanuc/AC80D41480D3E2BE/DATA/web/jutja/public/kanban/assets/todo.css",
+		"/media/bhanuc/AC80D41480D3E2BE/DATA/web/jutja/route.js",
+		"/media/bhanuc/AC80D41480D3E2BE/DATA/web/jutja/jutja.js",
+		"/media/bhanuc/AC80D41480D3E2BE/DATA/web/jutja/config/app.js",
+		"/media/bhanuc/AC80D41480D3E2BE/DATA/web/jutja/model/project.js",
+		"/media/bhanuc/AC80D41480D3E2BE/DATA/web/jutja/views/kanban.ejs",
+		"/media/bhanuc/AC80D41480D3E2BE/DATA/web/jutja/views/index.ejs",
+		"/media/bhanuc/AC80D41480D3E2BE/DATA/web/jutja/about.txt",
+		"/media/bhanuc/AC80D41480D3E2BE/DATA/consultant/nhabmap/views/signup.ejs",
+		"/media/bhanuc/AC80D41480D3E2BE/DATA/consultant/nhabmap/views/home.ejs",
+		"/media/bhanuc/AC80D41480D3E2BE/DATA/consultant/nhabmap/model/user.js",
+		"/media/bhanuc/AC80D41480D3E2BE/DATA/consultant/nhabmap/auth.js",
+		"/media/bhanuc/AC80D41480D3E2BE/DATA/consultant/nhabmap/route.js",
+		"/media/bhanuc/AC80D41480D3E2BE/DATA/consultant/nhabmap/config/3rdparty_auth.js",
+		"/media/bhanuc/AC80D41480D3E2BE/DATA/consultant/nhabmap/README.md",
+		"/media/bhanuc/AC80D41480D3E2BE/DATA/web/jutja/README.md",
+		"/media/bhanuc/AC80D41480D3E2BE/DATA/web/jutja/www/intex.html",
+		"/media/bhanuc/AC80D41480D3E2BE/DATA/web/VivaGraphJS/Gruntfile.js"
+	],
+	"find":
+	{
+		"height": 38.0
+	},
+	"find_in_files":
+	{
+		"height": 102.0,
+		"where_history":
+		[
+			""
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": true,
+		"find_history":
+		[
+			"admin",
+			"\")",
+			" )",
+			".login-wrap",
+			"login",
+			"Techkriti",
+			".login-page",
+			"login",
+			"user",
+			"$(\"#subject\").val()",
+			"coco",
+			"sucess",
+			"<div class=\"row\">",
+			"                ",
+			".logi",
+			"http://hubancreative.com/",
+			"redirect",
+			"nav",
+			"nav4",
+			"nav",
+			"   \n",
+			"localstorage",
+			"Doe",
+			"Joe",
+			"Jo",
+			"'row'",
+			"\">'+(",
+			"dropdown-menu",
+			"morris",
+			"localStorage",
+			"validate",
+			"Print",
+			"print",
+			"Viva.Graph.View.svgGraphics",
+			"viva.graph.view",
+			"19",
+			"i",
+			"app",
+			"admin",
+			"login",
+			"count",
+			"Event",
+			"dpnr",
+			"Draft",
+			"''},\n",
+			"public",
+			"></",
+			"this.req.uri.query",
+			"this",
+			"this.req.uri.query",
+			"this.req.uri.query.r",
+			"RedisStore",
+			"redis",
+			"spdy",
+			"face",
+			"fb",
+			"button",
+			"register_event",
+			"event",
+			"node.data.isPinned",
+			"node.data.isPinned ",
+			"graph.forEachNode("
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"TECHKRITI",
+			"evname",
+			"success",
+			"<div class=\"row profile\">",
+			"\"row\"",
+			""
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 5,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "eventica/public/js/signup.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1665,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1122,
+								1122
+							],
+							[
+								1168,
+								1168
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 264.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 15,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "user/models.go",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 9227,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								4278,
+								4278
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/GoSublime/syntax/GoSublime-Go.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 4158.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "eventica/templates/CompleteProfile.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 11055,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 4026.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "eventica/public/js/profile.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 213263,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								210042,
+								210042
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 210.0,
+						"translation.y": 1980.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "user/handlers.go",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 11472,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1034,
+								1034
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/GoSublime/syntax/GoSublime-Go.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 743.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "eventice",
+					"semi_transient": true,
+					"settings":
+					{
+						"buffer_size": 73,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "/home/bhanuc/.config/sublime-text-3/Packages/GoSublime/USAGE.md",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 8539,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								5334,
+								5334
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Markdown/Markdown.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 2574.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 10,
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "eventica/templates/registerforevent.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 15819,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								8133,
+								8133
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 7678.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "eventica/templates/login.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 15053,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2627,
+								2627
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 308.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 8,
+					"type": "text"
+				},
+				{
+					"buffer": 9,
+					"file": "eventica/templates/register.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 8803,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1623,
+								1623
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 3080.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 9,
+					"type": "text"
+				},
+				{
+					"buffer": 10,
+					"file": "eventica/templates/dashboard.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 11099,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 4752.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
+					"type": "text"
+				},
+				{
+					"buffer": 11,
+					"file": "eventica/templates/home.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2825,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2759,
+								2759
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1096.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 7,
+					"type": "text"
+				},
+				{
+					"buffer": 12,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 588,
+						"regions":
+						{
+							"match":
+							{
+								"flags": 112,
+								"regions":
+								[
+									[
+										154,
+										165
+									],
+									[
+										338,
+										349
+									],
+									[
+										509,
+										520
+									]
+								],
+								"scope": ""
+							}
+						},
+						"selection":
+						[
+							[
+								82,
+								82
+							]
+						],
+						"settings":
+						{
+							"detect_indentation": false,
+							"line_numbers": false,
+							"output_tag": 1,
+							"result_base_dir": "",
+							"result_file_regex": "^([A-Za-z\\\\/<].*):$",
+							"result_line_regex": "^ +([0-9]+):",
+							"scroll_past_end": true,
+							"syntax": "Packages/Default/Find Results.hidden-tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 14,
+					"type": "text"
+				},
+				{
+					"buffer": 13,
+					"file": "eventica/public/assets/css/style.css",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 112972,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								90498,
+								90498
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/CSS/CSS.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 95182.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 13,
+					"type": "text"
+				},
+				{
+					"buffer": 14,
+					"file": "eventica/public/js/register.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2142,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1567,
+								1567
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 990.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 12,
+					"type": "text"
+				},
+				{
+					"buffer": 15,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 0,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 11,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 27.0
+	},
+	"input":
+	{
+		"height": 33.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.GoSublime-output":
+	{
+		"height": 124.0
+	},
+	"output.MarGo-output":
+	{
+		"height": 124.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"output.unsaved_changes":
+	{
+		"height": 142.0
+	},
+	"project": "eventice",
+	"replace":
+	{
+		"height": 70.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 332.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
