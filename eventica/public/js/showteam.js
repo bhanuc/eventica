@@ -1,6 +1,6 @@
 
 $.ajax({
-  url: '/team/all',
+  url: '/team/all2',
   type: 'GET',
   success: function(data) {
   			console.log(data);
@@ -13,6 +13,5 @@ $.ajax({
           $('#teams').html(str);
   			} else {
   			}
-          //success message mybe...
      }
 });

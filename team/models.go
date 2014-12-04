@@ -41,6 +41,7 @@ func (r TeamRepository) FindOneByName(name string) (result *Team, err error) {
 	err = r.Collection.Find(bson.M{"name": name}).One(result)
 	return
 }
+
 func (r TeamRepository) FindAllByCreatedBy(createdby string) (teams Teams, err error) {
 	err = r.Collection.Find(bson.M{"createdby": createdby}).All(&teams)
 	return

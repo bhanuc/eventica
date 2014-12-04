@@ -40,6 +40,7 @@ func Route_setter(ms *mgo.Session, ss *sessions.CookieStore, host, mailfrom, dbn
 	Router.HandleFunc("/team/register", ApprovalHandler).Methods("GET")               // Make the team ready for approval
 	Router.HandleFunc("/team/payment", paymentHandler).Methods("GET")                 // Once approved, this handles the payment logic
 	Router.HandleFunc("/team/all", AllTeamHandler).Methods("GET")                     //show all the teams
+	Router.HandleFunc("/team/all2", AllTeamHandler2).Methods("GET")                     //show all the teams
 	Router.HandleFunc("/team/status/{name}", StatusHandler).Methods("GET")            //show team status
 	Router.HandleFunc("/team/adminall", AllAdminHandler).Methods("GET")               //show all the teams
 	Router.HandleFunc("/team/adminall/{college}", CollegeAdminHandler).Methods("GET") //show all the teams

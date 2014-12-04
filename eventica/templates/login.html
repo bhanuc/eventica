@@ -55,7 +55,6 @@
 
         <link rel="shortcut icon" href="img/favico.ico">
 
-
         <style type="text/css">
 
         .login-page
@@ -237,9 +236,27 @@
       <div class="login-wrap animated flipInX">
         <div class="login-block">
           <img src="img/user2.png" class="img-circle not-logged-avatar">
-            <div class="form-group login-input"><center>
-           <strong>Portal is closed now for Maintainence. It will reopen on Monday 1st December 2014.</strong></center>
+            <div class="form-group login-input">
+            <i class="fa fa-user overlay"></i>
+            <input id = "email" type="text" class="form-control text-input" placeholder="Email" name="email" required>
+            </div>
+            <div class="form-group login-input">
+            <i class="fa fa-password overlay"></i>
+            <input id = "password" type="password" class="form-control text-input" placeholder="********" name="password" required>
+            <div class="checkbox"><label class=""><div class="icheckbox_square-aero" aria-checked="false" aria-disabled="false" style="position: relative;"><input id="rememberme" name="rememberme" type="checkbox" class="form-control" ></div><strong>Remember Me</a></strong></label></div>
+            <div class="row">
+              <div class="col-sm-6">
+              <button type="submit" class="btn btn-success btn-block" id= "loginbutton" type="button">Login</button>
+              </div>
+              <div class="col-sm-6">
+              <a href="/signup" class="btn btn-default btn-block">Register</a>
+              </div>
             </div><br>            
+            <div class="row">
+             <div class="col-sm-12">
+              <div class="fb-login-button" data-max-rows="1" data-size="xlarge" data-show-faces="false" data-auto-logout-link="false" scope="public_profile,email" onlogin="checkLoginState();"></div>
+              </div>
+            </div>
         </div>
       </div>
     </div>
@@ -282,7 +299,87 @@
     <script src="/js/bootstrap.min.js"></script>
     <script src="/js/form.js"></script>
     <script src="/js/toastr.min.js"></script>
+    <script type="text/javascript">
+   (function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_US/sdk.js";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));
+        
+  window.fbAsyncInit = function() {
+  FB.init({
+    appId      : '664781020306171',
+    cookie     : true,  // enable cookies to allow the server to access 
+                        // the session
+    xfbml      : true,  // parse social plugins on this page
+    version    : 'v2.1' // use version 2.1
+  });
+   /* FB.getLoginStatus(function(response) {
+          localStorage.setItem('token',response.authResponse.accessToken);
+    statusChangeCallback(response);
+  });*/
+}
 
-    </body>
+
+
+ function statusChangeCallback(response) {
+    console.log('statusChangeCallback');
+    console.log(response);
+    if(response.status == 'connected'){
+        localStorage.setItem('token',response.authResponse.accessToken)
+        localStorage.setItem('fpic',response.authResponse.userID)
+    }
+    // The response object is returned with a status field that lets the
+    // app know the current login status of the person.
+    // Full docs on the response object can be found in the documentation
+    // for FB.getLoginStatus().
+    if (response.status === 'connected') {
+      // Logged into your app and Facebook.
+      testAPI();
+    } else if (response.status === 'not_authorized') {
+      // The person is logged into Facebook, but not your app.
+      document.getElementById('status').innerHTML = 'Please log ' +
+        'into this app.';
+    } else {
+      // The person is not logged into Facebook, so we're not sure if
+      // they are logged into this app or not.
+      document.getElementById('status').innerHTML = 'Please log ' +
+        'into Facebook.';
+    }
+  }
+    function testAPI() {
+    FB.api('/me', function(response) {
+      console.log('Successful login for: ' + response.name, response);
+                localStorage.setItem('fname',response.name);
+                localStorage.setItem('firstname',response.first_name);
+      document.getElementById('status').innerHTML =
+        'Thanks for logging in, ' + response.name + '!';
+        var email = response.email;
+        if(email.length){email = email[0]}; //In case of multiple emails being sent
+                    $.ajax({
+              type: "POST",
+              url: "user/fb",
+                contentType: 'application/json; charset=utf-8',
+              data: JSON.stringify({ name: response.name, email: response.email, id: response.id, token: localStorage.token  })
+            })
+              .done(function( msg ) {
+                console.log(msg);
+                if(msg.flashes['success']['type'] == 'success'){
+                  document.location = '/profile'
+                }
+              });
+   });
+  }
+function checkLoginState() {
+  console.log('checkLoginState');
+    FB.getLoginStatus(function(response) {
+      statusChangeCallback(response);
+    });
+  }
+
+    </script>
+</body>
 
 </html>

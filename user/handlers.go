@@ -153,7 +153,7 @@ func FbHandler(w http.ResponseWriter, r *http.Request) {
 	data["flashes"] = e
 	utility.WriteJson(w, data)
 }
-
+/**
 func AuthenticateHandler(w http.ResponseWriter, r *http.Request) {
 	// get email + password
 	valid := false
@@ -193,6 +193,66 @@ func AuthenticateHandler(w http.ResponseWriter, r *http.Request) {
 				flashes["Error"] = FlashMessage{"warning", "Your Account is not yet Activated. Please Check your inbox or spam for the activation link. "}
 			}
 
+	}
+	data["valid"] = valid
+	if valid {
+		tu.Name = user.UserProfile.Name
+		data["user"] = tu
+		data["redirect"] = "/user/profile"
+		user.Login(r.UserAgent(), r.RemoteAddr)
+		session, _ := sessionStore.Get(r, "p")
+		session.Values["user"] = user.Id.Hex()
+		session.Values["usertype"] = user.UserType
+		session.Values["profilestatus"] = user.ProfileStatus
+		if tc.Rememberme {
+			session.Options = &sessions.Options{
+				Path:   "/",
+				MaxAge: 86400 * 30 * 12,
+			}
+		}
+		session.Save(r, w)
+	} else if unactive {
+		data["flashes"] = flashes		
+	} else {
+		flashes["Error"] = FlashMessage{"danger", "Login not successful. Either a user with this email address doesn't exist or the email and password combination is wrong"}
+		data["flashes"] = flashes		
+	}
+
+	utility.WriteJson(w, data)
+}
+**/
+func AuthenticateHandler(w http.ResponseWriter, r *http.Request) {
+	// get email + password
+	valid := false
+	unactive := false
+	data := make(map[string]interface{})
+	tc := struct {
+		Email      string `json:"email"`
+		Password   string `json:"password"`
+		Rememberme bool   `json:"string"`
+	}{}
+	tu := struct {
+		Name string `json:"name"`
+	}{}
+	flashes := make(map[string]FlashMessage)
+
+	utility.ReadJson(r, &tc)
+	tc.Email = strings.Trim(tc.Email, " ")
+	user, err := R.FindOneByEmail(tc.Email)
+
+	// if user not found
+	if err != nil {
+		valid = false
+	} else { 
+		// check if login allowed
+		if user.LoginAllowed() {
+			if valid = user.VerifyCredentials(tc.Email, tc.Password); valid == false {
+				user.FailLogin()
+			}
+		} else {
+			// login not allowed
+			flashes["Error"] = FlashMessage{"warning", "You have failed 3 login attempts in the last 15 Minutes. Please wait 15 Minutes from now on and try again."}
+		}
 	}
 	data["valid"] = valid
 	if valid {
@@ -292,7 +352,16 @@ func UpdateProfileHandler(w http.ResponseWriter, r *http.Request) {
 		} else {
 			p := new(Profile)
 			utility.ReadJson(r, &p)
-			u.UserProfile = p
+			u.UserProfile.Number = p.Number
+			u.UserProfile.College = p.College
+			u.UserProfile.AlternateNumber = p.AlternateNumber
+			u.UserProfile.Ambassador = p.Ambassador
+			u.UserProfile.Sex = p.Sex 
+			u.UserProfile.Branch = p.Branch
+			u.UserProfile.ArrivalPNR = p.ArrivalPNR 
+			u.UserProfile.ArrivalDate = p.ArrivalDate
+			u.UserProfile.DeparturePNR = p.DeparturePNR
+			u.UserProfile.DepartureDate = p.DepartureDate
 			u.Update()
 			if u.CheckProfile() {
 				u.ProfileStatus = true

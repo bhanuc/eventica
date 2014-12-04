@@ -3,15 +3,17 @@ package user
 import (
 	"code.google.com/p/go.crypto/bcrypt"
 	"crypto/rand"
+	"encoding/base64"
 	"fmt"
 	"github.com/dalu/mail"
 	"github.com/dchest/uniuri"
 	"io"
+	"io/ioutil"
 	"labix.org/v2/mgo"
 	"labix.org/v2/mgo/bson"
+	"strconv"
 	"strings"
 	"time"
-	"encoding/base64"
 )
 
 type (
@@ -23,7 +25,7 @@ type (
 		Password       string        `bson:"password" json:"password"`
 		ResetToken     string        `bson:"resettoken,omitempty" json:"resettoken"`
 		FBToken        string        `bson:"token,omitempty" json:"token"`
-		FBId           string        `bson:"id,omitempty" json:"id"`
+		FBId           string        `bson:"FBId,omitempty" json:"FBId"`
 		ResetSent      time.Time     `bson:"resetsent,omitempty" json:"resetsent"`
 		Created        time.Time     `bson:"created" json:"created"`
 		LoginHistory   []LoginEntry  `bson:"loginHistory" json:"loginhistory"`
@@ -35,9 +37,12 @@ type (
 		UserProfile    *Profile      `bson:"userprofile,omitempty" json:"userprofile"`
 		College        string        `bson:"college" json:"college"`
 		UserType       string
+		Teams          string
+		Tek_id         string `bson:"Tek_id" json:"Tek_id"`
 		ProfileStatus  bool
 		ActiveStatus   bool
 		ActiveCode     string
+		PaymentStatus  string
 	}
 
 	LoginEntry struct {
@@ -53,18 +58,49 @@ type (
 		College         string        `bson:"college" json:"college"`
 		Email           string        `bson:"email" json:"email"`
 		AlternateNumber string        `bson:",omitempty" json:"alternatenumber"`
-		Ambassador 		string        `bson:",omitempty" json:"ambassador"`
-		Sex				string        `bson:"sex" json:"sex"`
-		Branch			string        `bson:"branch" json:"branch"`
-		ArrivalPNR		string        `bson:"apnr" json:"apnr"`
+		Ambassador      string        `bson:",omitempty" json:"ambassador"`
+		Sex             string        `bson:"sex" json:"sex"`
+		Branch          string        `bson:"branch" json:"branch"`
+		ArrivalPNR      string        `bson:"apnr" json:"apnr"`
 		ArrivalDate     string        `bson:"adate" json:"adate"`
-		DeparturePNR	string        `bson:"dpnr" json:"dpnr"`
-		DepartureDate	string        `bson:"ddate" json:"ddate"`
+		DeparturePNR    string        `bson:"dpnr" json:"dpnr"`
+		DepartureDate   string        `bson:"ddate" json:"ddate"`
+		Tek_id          string
 	}
 	UserRepository struct {
 		Collection *mgo.Collection
 	}
 )
+
+func setup_tekid() (num int) {
+	fmt.Println("started read")
+	b, err := ioutil.ReadFile("input.txt")
+	if err != nil {
+		panic(err)
+	}
+	length := len(b)
+	fmt.Println(b[0], b[1], b[2], length)
+	num = 0
+
+	for i := 0; i < length; i++ {
+		num = num*10 + int((float64(b[i] - '0')))
+	}
+	num = num + 1
+	fmt.Println("in read", num)
+	for j := 0; j < 1; {
+		if R.FindCountByTekid(strconv.Itoa(num)) == 0 {
+			j = 2
+		} else {
+			num = num + 2
+		}
+	}
+	err = ioutil.WriteFile("input.txt", []byte(strconv.Itoa(num)), 0644)
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println("finished read")
+	return num
+}
 
 func (r UserRepository) Create(user *User) (err error) {
 	if user.Id.Hex() == "" {
@@ -80,6 +116,17 @@ func (r UserRepository) Create(user *User) (err error) {
 func (r UserRepository) FindOneByEmail(email string) (result *User, err error) {
 	result = new(User)
 	err = r.Collection.Find(bson.M{"email": email}).One(result)
+	return
+}
+
+func (r UserRepository) FindOneByTekID(id string) (result *User, err error) {
+	result = new(User)
+	fmt.Println(id)
+	err = r.Collection.Find(bson.M{"Tek_id": id}).One(result)
+	return
+}
+func (r UserRepository) FindCountByTekid(id string) (c int) {
+	c, _ = r.Collection.Find(bson.M{"Tek_id": id}).Count()
 	return
 }
 func (r UserRepository) FindOneByCollege(college string) (c int) {
@@ -149,13 +196,9 @@ func (u *User) CheckProfileStatus() bool {
 }
 
 func (u *User) Add(name, password, email, number, alternatenumber string) {
-	//password := uniuri.New()
-	//if Devmode {
-	//fmt.Printf("New User: %s, %s\n", email, password)
-	//}
+	tid := strconv.Itoa(setup_tekid())
 	b := []byte(password)
 	b, _ = bcrypt.GenerateFromPassword(b, 12)
-
 	p := new(Profile)
 	p.Id = bson.NewObjectId()
 	//p.Name = name
@@ -165,24 +208,25 @@ func (u *User) Add(name, password, email, number, alternatenumber string) {
 	p.Name = name
 	p.Number = number
 	p.AlternateNumber = alternatenumber
-
 	u.UserType = "user"
 	u.ProfileStatus = false
 	u.Password = strings.Trim(string(b[:]), "\x00")
 	u.UserProfile = p
+
+	u.Tek_id = tid
+	p.Tek_id = tid
 	u.ActiveStatus = false
 	//Making a random string for checking email
 	size := 32 // change the length of the generated random string here
 
-   rb := make([]byte,size)
-   _, err := rand.Read(rb)
+	rb := make([]byte, size)
+	_, err := rand.Read(rb)
 
+	if err != nil {
+		fmt.Println(err)
+	}
 
-   if err != nil {
-      fmt.Println(err)
-   }
-
-   rs := base64.URLEncoding.EncodeToString(rb)
+	rs := base64.URLEncoding.EncodeToString(rb)
 
 	u.ActiveCode = rs
 
@@ -190,13 +234,13 @@ func (u *User) Add(name, password, email, number, alternatenumber string) {
 		panic(err)
 	}
 	uid := u.Id.String()
-		slice := uid[13:37]
+	slice := uid[13:37]
 
 	body := "Hi ,\n\n"
 	body += "welcome to " + Config.Host + ".\nYour account has been created.To Activate your account, please visit http://portal.techkriti.org/user/activate?ui=" + slice + "&us=" + u.ActiveCode + " . Copy and paste the link in the browser to activate.\nYou login credentials are \nEmail-Address.\n"
 	body += email + "\n"
 	body += "Password:\n"
-	body += password+"\n"
+	body += password + "\n"
 	body += "Regards,\n\n"
 	body += Config.Host + " team"
 
@@ -205,7 +249,9 @@ func (u *User) Add(name, password, email, number, alternatenumber string) {
 		panic(err)
 	}
 }
+
 func (u *User) FbAdd(name, email, id, token string) {
+	tid := strconv.Itoa(setup_tekid())
 	p := new(Profile)
 	p.Id = bson.NewObjectId()
 	//p.Name = name
@@ -215,6 +261,8 @@ func (u *User) FbAdd(name, email, id, token string) {
 	p.Name = name
 	u.FBId = id
 	u.FBToken = token
+	u.Tek_id = tid
+	p.Tek_id = tid
 	u.UserType = "user"
 	u.ProfileStatus = false
 	u.UserProfile = p

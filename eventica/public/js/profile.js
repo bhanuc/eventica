@@ -11,7 +11,6 @@ var getprofile = function getprofile () {
           global.keys = profile;
           var string = "";
           for (var i = 1; i <= profile.length - 1; i++) {
-            console.log(profile[i])
             switch (profile[i]) {
                 case "alternatenumber":
             string = string+'<div class="row profile"><div class="col-md-6">Alternate person of contact</div>'+'<div class="col-md-6">not written</div>'+'</div>';
@@ -72,6 +71,8 @@ $('#EditButton').click(function editbutton () {
         
         switch (global.keys[i]) {
                 case "id":
+                break;
+                case "Tek_id":
                 break;
                 case "alternatenumber":
                   if(global.profile[global.keys[i]]){
