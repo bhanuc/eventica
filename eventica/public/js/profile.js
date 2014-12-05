@@ -13,7 +13,7 @@ var getprofile = function getprofile () {
           for (var i = 1; i <= profile.length - 1; i++) {
             switch (profile[i]) {
                 case "alternatenumber":
-            string = string+'<div class="row profile"><div class="col-md-6">Alternate person of contact</div>'+'<div class="col-md-6">not written</div>'+'</div>';
+            string = string+'<div class="row profile"><div class="col-md-6">Alternate person of contact</div>'+'<div class="col-md-6">'+(data.profile[profile[i]].split('$$').toString()|| '')+'</div>'+'</div>';
                break;
                 case "bookingid":
                 string = string+'<div class="row  profile"><div class="col-md-6">BookingID</div><div class="col-md-6">'+(data.profile[profile[i]]|| ' ')+'</div></div>';
