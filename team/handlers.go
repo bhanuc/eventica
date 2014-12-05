@@ -19,7 +19,7 @@ type FlashMessage struct {
 var R = user.R
 
 func Addteam(pid string, tek_id string) {
-	u, err := R.FindOneByTekID(tek_id)
+	u, err := R.FindOneByTechID(tek_id)
 	if err != nil {
 		fmt.Println(err)
 	} else {
@@ -62,14 +62,14 @@ func CreateHandler(w http.ResponseWriter, r *http.Request) {
 		for i := 0; i < mlength; i++ {
 			if members[i] != "" || members != nil {
 				index++
-				if R.FindCountByTekid(members[i]) != 0 {
+				if R.FindCountByTechid(members[i]) != 0 {
 					index2++
 				}
 			}
 		}
 		/**for _, member := range members {
 							//cnum, _ := strconv.Atoi(member)
-		 			if R.FindCountByTekid(member) == 0 {
+		 			if R.FindCountByTechid(member) == 0 {
 		 				index++
 		 			}
 		    	}**/

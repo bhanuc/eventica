@@ -5,16 +5,12 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="TECHKRITI - ">
+    <meta name="description" content="TECHKRITI">
     <link rel="shortcut icon" href="../../docs-assets/ico/favicon.png">
 
     <title>TECHKRITI</title>
 
-     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-        <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="description" content="TECHKRITI - ">
-
-        <!-- Base Css Files -->
+      <!-- Base Css Files -->
         <link href="/assets/libs/jqueryui/ui-lightness/jquery-ui-1.10.4.custom.min.css" rel="stylesheet" />
         <link href="/assets/libs/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
         <link href="/assets/libs/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
@@ -41,19 +37,7 @@
 
         <link rel="shortcut icon" href="/img/favico.ico">
 
-
-
         <style type="text/css">
-
-        .logo h1
-        {
-            margin: 3px auto;
-            font-size: 28px;
-            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-            margin-left: 10px;
-            font-weight: 700;
-            text-align: left;
-        }
 
         .profile-image
         {
@@ -63,8 +47,20 @@
 
         .side-menu.left
         {
+            position: fixed;
             box-shadow: 0 0 5px grey;
             z-index: 100;
+        }
+
+        li#user-info
+        {
+            cursor: pointer;
+        }
+
+        .page-header
+        {
+            width: 80%;
+            margin: 70px auto;
         }
 
         .profile-info .col-xs-4
@@ -77,87 +73,28 @@
             padding: 10px;
         }
 
-        li#user-info
-        {
-            cursor: pointer;
-        }
-
-        h1.page-header
-        {
-            width: 80%;
-            margin: 70px auto;
-            margin-bottom: 40px;
-        }
-
-        div#maincontent
-        {
-            width: 80%;
-            margin: 0 auto;
-        }
-
-        .btn-primary
-        {
-            margin-top: 25px;
-        }
-
         table
         {
-            width: 75%;
-            background: white;
-            padding: 15px; 
-            box-shadow: 0 0 0px rgba(128, 128, 128, 0.4), 0 1px 1px rgba(128, 128, 128, 0.4), 0 1px 1px rgba(128, 128, 128, 0.4);
-        }
-        tr
-        {
-            padding: 15px;
-        }
-
-        td
-        {
-            width: auto;
-            padding: 15px;
-        }
-        input#teamname
-        {            
             border: none;
-            box-shadow: 0 0 1px grey;
-            border-radius: 3px;
-            padding: 3px;
-            font-weight: 900;
-            color: grey;
+            text-transform: capitalize;
         }
 
-        input[type="text"]
+        td, th
         {
-            border: none;
-            box-shadow: 0 0 1px grey;
-            border-radius: 3px;
-            padding: 3px;   
-            font-weight: 900;
-            color: grey;
-        }
-
-        #sport table tr td
-        {
-            width: auto;
-            padding: 20px;
-        }
-
-        #maincontent p
-        {
-            margin: 0;
             padding: 10px;
-            font-weight: 700;
-            width: 75%;
+            text-transform: capitalize;
+        }
+
+        thead
+        {
             background: #424a55;
             color: white;
+            text-transform: capitalize;
         }
 
         </style>
 
-
     </head>
- <body class="fixed-left">
         
     <!-- Modal Logout -->
     <div class="md-modal md-just-me" id="logout-modal">
@@ -179,7 +116,7 @@
 <div class="topbar">
     <div class="topbar-left">
         <div class="logo">
-            <h1><a style="color:white;">Techkriti</a></h1>
+            <h1><a style="color:white;">TechKriti</a></h1>
         </div>
         <button class="button-menu-mobile open-left">
         <i class="fa fa-bars"></i>
@@ -189,7 +126,7 @@
     <div class="navbar navbar-default" role="navigation">
         <div class="container">
             <div class="navbar-collapse2">
-                <ul class="nav navbar-nav navbar-right top-navbar">
+                <ul class="nav navbar-nav navbar-right top-navbar" style="background-color: rgb(66, 74, 85);">
                     <li class="dropdown iconify ">
                         <a href="/app" class="dropdown-toggle"><b>Dashboard</b></a>
                     </li>
@@ -224,7 +161,7 @@
                 <!--- Profile -->
                 <div class="profile-info">
                     <div class="col-xs-4">
-                      <a  class="rounded-image profile-image"><img src="img/default-user.png" id="side-pic"></a>
+                      <a class="rounded-image profile-image"><img src="img/default-user.png" id="side-pic"></a>
                     </div>
                     <div class="col-xs-8">
                         <div class="profile-text">Welcome <b id="side-name">User</b></div>
@@ -248,98 +185,21 @@
         <!-- Left Sidebar End -->          
 
     <div class="content-page content">
+   
         <h1 class="page-header">
-            Register for a Event
-        </h1><div id ="maincontent"><p>
-{{ if .Status }}
-Your Profile is Complete . You can create a team.</p>
-<table>
-<tr><td width="150px">Team Name</td><td><input type="text" id="teamname" name="name"></td></tr>
-
-<tr><td width="300px">Event</td>   
-    <td><select id="subject" name="game">
-        <option value="">Select a Event..</option>
-        <option value="IORC">IORC</option>
-        <option value="electromania">ElectroMania</option>
-        <option value="Embedded">Embedded</option>
-        <option value="Electrade">Electrade</option>
-        <option value="FPGA">FPGA</option>
-        <option value="Hoverush">Hoverush</option>
-        <option value="Cruise Control">Cruise Control</option>
-        <option value="Impulse">Impulse</option>
-        <option value="Multirover">Multirover</option>
-        <option value="Skysparks">Skysparks</option>
-        <option value="Crime Run">Crime Run</option>
-        <option value="TGP">TGP</option>
-        <option value="IDEAS">IDEAS</option>
-        <option value="concatenate">Concatenate</option>
-        <option value="IOPC">IOPC</option>
-        <option value="Battlecity">Battlecity</option>
-        <option value="Iarc">Iarc</option>
-        <option value="Manoeuvre">Manoeuvre</option>
-        <option value="Shuffle">Shuffle</option>
-        <option value="Wild soccer">Wild soccer</option>
-        <option value="Chaos">Chaos</option>
-        <option value="Be the Tycoon">Be the Tycoon</option>
-        <option value="Marketing Villa">Marketing Villa</option>
-        <option value="Do your due">Do your due</option>
-        <option value="Battlefield">Battlefield</option>
-        <option value="Soccon">Soccon</option>
-        <option value="29 States">29 States</option>
-        <option value="IHPC">IHPC</option>
-      </select></td>
-      <td id = "comment"></td>
-      </tr></table>
-      <table id="sport">
-            <td><tr><b>Enter TechID of all the team Members including yours.You Can find the Tech-id in your profile section.</b></tr></td>
-      </table>
-    <button type="button" class="btn btn-primary" id="submitbutton">Submit</button>
+            Your Teams
+        </h1>
+        <h5>If you had made a team before 1st December then you need to register your team for the event. For any doubts contact Support</h5>
+        <div >
+            <table id = "teams" style="border: 1px solid #000" border="1" align="center">
+  
+</table>
+        </div>
     </div>
-</div>
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="/js/jquery.js"></script>
     <script src="/js/bootstrap.min.js"></script>
-           <script src="/js/toastr.min.js"></script>
-    <script src="/js/eventregister.js"></script>
- <script>
-        var resizefunc = [];
-    </script>
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="/assets/libs/jquery/jquery-1.11.1.min.js"></script>
-    <script src="/assets/libs/bootstrap/js/bootstrap.min.js"></script>
-    <script src="/assets/libs/jqueryui/jquery-ui-1.10.4.custom.min.js"></script>
-    <script src="/assets/libs/jquery-ui-touch/jquery.ui.touch-punch.min.js"></script>
-    <script src="/assets/libs/jquery-detectmobile/detect.js"></script>
-    <script src="/assets/libs/jquery-animate-numbers/jquery.animateNumbers.js"></script>
-    <script src="/assets/libs/ios7-switch/ios7.switch.js"></script>
-    <script src="/assets/libs/fastclick/fastclick.js"></script>
-    <script src="/assets/libs/jquery-blockui/jquery.blockUI.js"></script>
-    <script src="/assets/libs/bootstrap-bootbox/bootbox.min.js"></script>
-    <script src="/assets/libs/jquery-slimscroll/jquery.slimscroll.js"></script>
-    <script src="/assets/libs/jquery-sparkline/jquery-sparkline.js"></script>
-    <script src="/assets/libs/nifty-modal/js/classie.js"></script>
-    <script src="/assets/libs/nifty-modal/js/modalEffects.js"></script>
-    <script src="/assets/libs/sortable/sortable.min.js"></script>
-    <script src="/assets/libs/bootstrap-fileinput/bootstrap.file-input.js"></script>
-    <script src="/assets/libs/bootstrap-select/bootstrap-select.min.js"></script>
-    <script src="/assets/libs/bootstrap-select2/select2.min.js"></script>
-    <script src="/assets/libs/magnific-popup/jquery.magnific-popup.min.js"></script> 
-    <script src="/assets/libs/pace/pace.min.js"></script>
-    <script src="/assets/libs/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
-    <script src="/assets/libs/jquery-icheck/icheck.min.js"></script>
-
-    <!-- Demo Specific JS Libraries -->
-    <script src="/assets/libs/prettify/prettify.js"></script>
-
-    <script src="/assets/js/init.js"></script>
-
-{{ else }}
-Your Profile is incomplete. You cannot register for any event until you complete it
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="/js/jquery.js"></script>
-    <script src="/js/bootstrap.min.js"></script>
-    <script src="/js/toastr.min.js"></script>
-    <script type="text/javascript" src="js/selectize.min.js"></script>
+    <script src="/js/showteam.js"></script>
      <script>
         var resizefunc = [];
     </script>
@@ -371,8 +231,12 @@ Your Profile is incomplete. You cannot register for any event until you complete
     <script src="/assets/libs/prettify/prettify.js"></script>
 
     <script src="/assets/js/init.js"></script>
-    {{ end }}
-    <script src="/js/fb.js"></script>
+    <script type="text/javascript">
+$( "#user-info" ).click(function() {
+$( this ).toggleClass( "open" );
+}); 
+    </script>
+        <script src="/js/fb.js"></script>
 </body>
 
 </html>

@@ -58,7 +58,7 @@ func RegisterHandler(w http.ResponseWriter, r *http.Request) {
 	//}
 	if len(e) == 0 {
 		user := new(User)
-		turn = false 
+		turn = false
 		go user.Add(tu.Name, tu.Password, tu.Email, tu.Number, tu.AlternateNumber)
 		data["success"] = true
 		e["success"] = FlashMessage{"success", "Your registration is pending. Please check your inbox to activate your account"}
@@ -122,8 +122,8 @@ func FbHandler(w http.ResponseWriter, r *http.Request) {
 		fmt.Println(1)
 
 		if c > 0 {
-			fmt.Println(4)
 			// login into the account
+			uzer.CheckTechID()
 			session, _ := sessionStore.Get(r, "p")
 			session.Values["user"] = uzer.Id.Hex()
 			session.Values["usertype"] = uzer.UserType
@@ -153,6 +153,7 @@ func FbHandler(w http.ResponseWriter, r *http.Request) {
 	data["flashes"] = e
 	utility.WriteJson(w, data)
 }
+
 /**
 func AuthenticateHandler(w http.ResponseWriter, r *http.Request) {
 	// get email + password
@@ -176,7 +177,7 @@ func AuthenticateHandler(w http.ResponseWriter, r *http.Request) {
 	// if user not found
 	if err != nil {
 		valid = false
-	} else { 
+	} else {
 		fmt.Println(user.ActiveStatus)
 		if user.ActiveStatus { //check email activation
 		// check if login allowed
@@ -212,10 +213,10 @@ func AuthenticateHandler(w http.ResponseWriter, r *http.Request) {
 		}
 		session.Save(r, w)
 	} else if unactive {
-		data["flashes"] = flashes		
+		data["flashes"] = flashes
 	} else {
 		flashes["Error"] = FlashMessage{"danger", "Login not successful. Either a user with this email address doesn't exist or the email and password combination is wrong"}
-		data["flashes"] = flashes		
+		data["flashes"] = flashes
 	}
 
 	utility.WriteJson(w, data)
@@ -243,7 +244,7 @@ func AuthenticateHandler(w http.ResponseWriter, r *http.Request) {
 	// if user not found
 	if err != nil {
 		valid = false
-	} else { 
+	} else {
 		// check if login allowed
 		if user.LoginAllowed() {
 			if valid = user.VerifyCredentials(tc.Email, tc.Password); valid == false {
@@ -256,6 +257,7 @@ func AuthenticateHandler(w http.ResponseWriter, r *http.Request) {
 	}
 	data["valid"] = valid
 	if valid {
+		user.CheckTechID()
 		tu.Name = user.UserProfile.Name
 		data["user"] = tu
 		data["redirect"] = "/user/profile"
@@ -272,10 +274,10 @@ func AuthenticateHandler(w http.ResponseWriter, r *http.Request) {
 		}
 		session.Save(r, w)
 	} else if unactive {
-		data["flashes"] = flashes		
+		data["flashes"] = flashes
 	} else {
 		flashes["Error"] = FlashMessage{"danger", "Login not successful. Either a user with this email address doesn't exist or the email and password combination is wrong"}
-		data["flashes"] = flashes		
+		data["flashes"] = flashes
 	}
 
 	utility.WriteJson(w, data)
@@ -284,9 +286,9 @@ func AuthenticateHandler(w http.ResponseWriter, r *http.Request) {
 func ActHandler(w http.ResponseWriter, r *http.Request) {
 	data := make(map[string]interface{})
 	params := r.URL.Query()
-	
+
 	Uid := params["ui"][0]
-	Ustring :=  params["us"][0]
+	Ustring := params["us"][0]
 	flashes := make(map[string]FlashMessage)
 	fmt.Print(Uid, Ustring, r.URL.Query()["ui"])
 
@@ -294,20 +296,20 @@ func ActHandler(w http.ResponseWriter, r *http.Request) {
 	user, err := R.FindOneByIdHex(Uid)
 	// if user not found
 	if err != nil {
-	} else { 
-		if user.ActiveStatus { 
+	} else {
+		if user.ActiveStatus {
 			flashes["Error"] = FlashMessage{"warning", "The Account is already Activated. "}
-			} else {
-				if user.ActiveCode == Ustring {
-					user.ActiveStatus = true
-					user.Update()
-					flashes["success"] = FlashMessage{"success", "Your Profile has been successfully activated."}
+		} else {
+			if user.ActiveCode == Ustring {
+				user.ActiveStatus = true
+				user.Update()
+				flashes["success"] = FlashMessage{"success", "Your Profile has been successfully activated."}
 			} else {
 				flashes["Error"] = FlashMessage{"warning", "The Activation url is wrong. Please Contact Support"}
 			}
 		}
-	} 
-		data["flashes"] = flashes
+	}
+	data["flashes"] = flashes
 	utility.WriteJson(w, data)
 }
 
@@ -356,12 +358,10 @@ func UpdateProfileHandler(w http.ResponseWriter, r *http.Request) {
 			u.UserProfile.College = p.College
 			u.UserProfile.AlternateNumber = p.AlternateNumber
 			u.UserProfile.Ambassador = p.Ambassador
-			u.UserProfile.Sex = p.Sex 
+			u.UserProfile.Sex = p.Sex
 			u.UserProfile.Branch = p.Branch
-			u.UserProfile.ArrivalPNR = p.ArrivalPNR 
-			u.UserProfile.ArrivalDate = p.ArrivalDate
-			u.UserProfile.DeparturePNR = p.DeparturePNR
-			u.UserProfile.DepartureDate = p.DepartureDate
+			u.UserProfile.Year = p.Year
+			u.UserProfile.BookingID = p.BookingID
 			u.Update()
 			if u.CheckProfile() {
 				u.ProfileStatus = true

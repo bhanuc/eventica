@@ -38,7 +38,7 @@ type (
 		College        string        `bson:"college" json:"college"`
 		UserType       string
 		Teams          string
-		Tek_id         string `bson:"Tek_id" json:"Tek_id"`
+		Tech_id        string `bson:"Tech_id" json:"Tech_id"`
 		ProfileStatus  bool
 		ActiveStatus   bool
 		ActiveCode     string
@@ -61,11 +61,9 @@ type (
 		Ambassador      string        `bson:",omitempty" json:"ambassador"`
 		Sex             string        `bson:"sex" json:"sex"`
 		Branch          string        `bson:"branch" json:"branch"`
-		ArrivalPNR      string        `bson:"apnr" json:"apnr"`
-		ArrivalDate     string        `bson:"adate" json:"adate"`
-		DeparturePNR    string        `bson:"dpnr" json:"dpnr"`
-		DepartureDate   string        `bson:"ddate" json:"ddate"`
-		Tek_id          string
+		BookingID       string        `bson:"bookingid" json:"bookingid"`
+		Year            string        `bson:"year" json:"year"`
+		Tech_id         string
 	}
 	UserRepository struct {
 		Collection *mgo.Collection
@@ -88,7 +86,7 @@ func setup_tekid() (num int) {
 	num = num + 1
 	fmt.Println("in read", num)
 	for j := 0; j < 1; {
-		if R.FindCountByTekid(strconv.Itoa(num)) == 0 {
+		if R.FindCountByTechid(strconv.Itoa(num)) == 0 {
 			j = 2
 		} else {
 			num = num + 2
@@ -119,14 +117,14 @@ func (r UserRepository) FindOneByEmail(email string) (result *User, err error) {
 	return
 }
 
-func (r UserRepository) FindOneByTekID(id string) (result *User, err error) {
+func (r UserRepository) FindOneByTechID(id string) (result *User, err error) {
 	result = new(User)
 	fmt.Println(id)
-	err = r.Collection.Find(bson.M{"Tek_id": id}).One(result)
+	err = r.Collection.Find(bson.M{"Tech_id": id}).One(result)
 	return
 }
-func (r UserRepository) FindCountByTekid(id string) (c int) {
-	c, _ = r.Collection.Find(bson.M{"Tek_id": id}).Count()
+func (r UserRepository) FindCountByTechid(id string) (c int) {
+	c, _ = r.Collection.Find(bson.M{"Tech_id": id}).Count()
 	return
 }
 func (r UserRepository) FindOneByCollege(college string) (c int) {
@@ -191,6 +189,19 @@ func (u *User) CheckProfile() (stat bool) {
 	return
 }
 
+func (u *User) CheckTechID() {
+	if u.Tech_id == "" && u.UserProfile.Tech_id == "" {
+		tid := strconv.Itoa(setup_tekid())
+		u.Tech_id = tid
+		u.UserProfile.Tech_id = tid
+		u.Update()
+	} else if u.Tech_id != "" && u.UserProfile.Tech_id == "" {
+		u.UserProfile.Tech_id = u.Tech_id
+		u.Update()
+	}
+	return
+}
+
 func (u *User) CheckProfileStatus() bool {
 	return u.ProfileStatus
 }
@@ -213,8 +224,8 @@ func (u *User) Add(name, password, email, number, alternatenumber string) {
 	u.Password = strings.Trim(string(b[:]), "\x00")
 	u.UserProfile = p
 
-	u.Tek_id = tid
-	p.Tek_id = tid
+	u.Tech_id = tid
+	p.Tech_id = tid
 	u.ActiveStatus = false
 	//Making a random string for checking email
 	size := 32 // change the length of the generated random string here
@@ -261,8 +272,8 @@ func (u *User) FbAdd(name, email, id, token string) {
 	p.Name = name
 	u.FBId = id
 	u.FBToken = token
-	u.Tek_id = tid
-	p.Tek_id = tid
+	u.Tech_id = tid
+	p.Tech_id = tid
 	u.UserType = "user"
 	u.ProfileStatus = false
 	u.UserProfile = p
