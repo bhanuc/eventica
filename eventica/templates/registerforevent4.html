@@ -1,18 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="TECHKRITI - ">
-    <link rel="shortcut icon" href="../../docs-assets/ico/favicon.png">
-
-    <title>TECHKRITI</title>
-
-     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Dashboard -TECHKRITI'15</title>   
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="description" content="TECHKRITI - ">
+        <meta name="description" content="">
 
         <!-- Base Css Files -->
         <link href="/assets/libs/jqueryui/ui-lightness/jquery-ui-1.10.4.custom.min.css" rel="stylesheet" />
@@ -24,10 +17,21 @@
         <link href="/assets/libs/magnific-popup/magnific-popup.css" rel="stylesheet" /> 
         <link href="/assets/libs/ios7-switch/ios7-switch.css" rel="stylesheet" /> 
         <link href="/assets/libs/pace/pace.css" rel="stylesheet" />
+        <link href="/assets/libs/sortable/sortable-theme-bootstrap.css" rel="stylesheet" />
+        <link href="/assets/libs/bootstrap-datepicker/css/datepicker.css" rel="stylesheet" />
         <link href="/assets/libs/jquery-icheck/skins/all.css" rel="stylesheet" />
-            <link href="/css/toastr.min.css" rel="stylesheet">
         <!-- Code Highlighter for Demo -->
         <link href="/assets/libs/prettify/github.css" rel="stylesheet" />
+        
+                <!-- Extra CSS Libraries Start -->
+                <link href="/assets/libs/rickshaw/rickshaw.min.css" rel="stylesheet" type="text/css" />
+                <link href="/assets/libs/morrischart/morris.css" rel="stylesheet" type="text/css" />
+                <link href="/assets/libs/jquery-jvectormap/css/jquery-jvectormap-1.2.2.css" rel="stylesheet" type="text/css" />
+                <link href="/assets/libs/jquery-clock/clock.css" rel="stylesheet" type="text/css" />
+                <link href="/assets/libs/bootstrap-calendar/css/bic_calendar.css" rel="stylesheet" type="text/css" />
+                <link href="/assets/libs/sortable/sortable-theme-bootstrap.css" rel="stylesheet" type="text/css" />
+                <link href="/assets/libs/jquery-weather/simpleweather.css" rel="stylesheet" type="text/css" />
+                <link href="/assets/libs/bootstrap-xeditable/css/bootstrap-editable.css" rel="stylesheet" type="text/css" />
                 <link href="/assets/css/style.css" rel="stylesheet" type="text/css" />
                 <!-- Extra CSS Libraries End -->
         <link href="/assets/css/style-responsive.css" rel="stylesheet" />
@@ -41,7 +45,8 @@
 
         <link rel="shortcut icon" href="/img/favico.ico">
 
-
+        <script type="text/javascript" src="/js/jquery.js"></script>
+        <script src="/js/script.js"></script>
 
         <style type="text/css">
 
@@ -154,11 +159,9 @@
         }
 
         </style>
-
-
     </head>
- <body class="fixed-left">
-        
+    <body class="fixed-left">
+        <!-- Modal Start -->
     <!-- Modal Logout -->
     <div class="md-modal md-just-me" id="logout-modal">
         <div class="md-content">
@@ -172,14 +175,12 @@
             </div>
         </div>
     </div>        <!-- Modal End -->    
-    <!-- Begin page -->
-    <div id="wrapper">
-        
+    <!-- Begin page -->       
 <!-- Top Bar Start -->
 <div class="topbar">
     <div class="topbar-left">
         <div class="logo">
-            <h1><a style="color:white;">Techkriti</a></h1>
+            <h1><a style="color:white;">TechKriti</a></h1>
         </div>
         <button class="button-menu-mobile open-left">
         <i class="fa fa-bars"></i>
@@ -189,7 +190,7 @@
     <div class="navbar navbar-default" role="navigation">
         <div class="container">
             <div class="navbar-collapse2">
-                <ul class="nav navbar-nav navbar-right top-navbar">
+                <ul class="nav navbar-nav navbar-right top-navbar" style="background-color: rgb(66, 74, 85);">
                     <li class="dropdown iconify ">
                         <a href="/app" class="dropdown-toggle"><b>Dashboard</b></a>
                     </li>
@@ -224,7 +225,7 @@
                 <!--- Profile -->
                 <div class="profile-info">
                     <div class="col-xs-4">
-                      <a  class="rounded-image profile-image"><img src="img/default-user.png" id="side-pic"></a>
+                      <a class="rounded-image profile-image"><img src="img/default-user.png" id="side-pic"></a>
                     </div>
                     <div class="col-xs-8">
                         <div class="profile-text">Welcome <b id="side-name">User</b></div>
@@ -247,53 +248,66 @@
         </div>
         <!-- Left Sidebar End -->          
 
-    <div class="content-page content">
+<div >
         <h1 class="page-header">
-            Register for a Event
-        </h1><div id ="maincontent"><p>
+            Register for a Sport
+        </h1><div id ="maincontent">
 {{ if .Status }}
-Your Profile is Complete . You can create a team.</p>
+Your Profile is Complete . You can create a team.<br>
 <table>
 <tr><td width="150px">Team Name</td><td><input type="text" id="teamname" name="name"></td></tr>
 
-<tr><td width="300px">Event</td>   
+<tr><td width="300px">Event</td>
+
+      
     <td><select id="subject" name="game">
         <option value="">Select a Event..</option>
-        <option value="IORC">IORC</option>
-        <option value="electromania">ElectroMania</option>
+        <option value="Dummy">Dummy</option>
+        <option value="Wild Soccer">Wild Soccer</option>
+        <option value="Quest For The Rest">Quest For The Rest</option>
+        <option value="iARC">iARC</option>
+        <option value="Robo Pirates">Robo Pirates</option>
+        <option value="Battlefield">Battlefield</option>
+        <option value="StockSim">StockSim</option>
+        <option value="IDEAS">IDEAS</option>
+        <option value="Richie Rich">Richie Rich</option>
+        <option value="Marketing Villa">Marketing Villa</option>
+        <option value="Electromania">Electromania</option>
         <option value="Embedded">Embedded</option>
-        <option value="Electrade">Electrade</option>
         <option value="FPGA">FPGA</option>
-        <option value="Hoverush">Hoverush</option>
+        <option value="Annontrix">Annontrix</option>
+        <option value="TGP (Techkriti Grand Prix)">TGP</option>
+        <option value="Concatenate">Concatenate</option>
+        <option value="Tremor">Tremor</option>
+        <option value="Bridge Design Challenge">Bridge Design Challenge</option>
+        <option value="Skysparks">Skysparks</option>
         <option value="Cruise Control">Cruise Control</option>
         <option value="Impulse">Impulse</option>
-        <option value="Multirover">Multirover</option>
-        <option value="Skysparks">Skysparks</option>
-        <option value="Crime Run">Crime Run</option>
-        <option value="TGP">TGP</option>
-        <option value="IDEAS">IDEAS</option>
-        <option value="concatenate">Concatenate</option>
+        <option value="Hoverush">Hoverush</option>
+        <option value="Multi Rover">Multi Rover</option>
+        <option value="SocCon">SocCon</option>
+        <option value="28 States">28 States</option>
+        <option value="Eureka">Eureka</option>
+        <option value="Strive">Strive</option>
+        <option value="SoftKriti">SoftKriti</option>
+        <option value="Battle City">Battle City</option>
         <option value="IOPC">IOPC</option>
-        <option value="Battlecity">Battlecity</option>
-        <option value="Iarc">Iarc</option>
-        <option value="Manoeuvre">Manoeuvre</option>
-        <option value="Shuffle">Shuffle</option>
-        <option value="Wild soccer">Wild soccer</option>
-        <option value="Chaos">Chaos</option>
-        <option value="Be the Tycoon">Be the Tycoon</option>
-        <option value="Marketing Villa">Marketing Villa</option>
-        <option value="Do your due">Do your due</option>
-        <option value="Battlefield">Battlefield</option>
-        <option value="Soccon">Soccon</option>
-        <option value="29 States">29 States</option>
         <option value="IHPC">IHPC</option>
+        <option value="Chaos">Chaos</option>
+        <option value="El Eduvate">El Eduvate</option>
+        <option value="IORC">IORC</option>
+        <option value="Scimatex">Scimatex</option>
+        <option value="Radioactive">Radioactive</option>
+        <option value="WhatsUp">WhatsUp</option>
+        <option value="Messier Marathon">Messier Marathon</option>
+        <option value="Planetarium">Planetarium</option>
+        <option value="Astro Quiz">Astro Quiz</option>
       </select></td>
-      <td id = "comment"></td>
-      </tr></table>
+      <td id = "comment"></td></tr></table>
       <table id="sport">
-            <td><tr><b>Enter TechID of all the team Members including yours.You Can find the Tech-id in your profile section.</b></tr></td>
+
       </table>
-    <button type="button" class="btn btn-primary" id="submitbutton">Submit</button>
+            <button type="button" class="btn btn-primary" id="submitbutton">Submit</button>
     </div>
 </div>
     <!-- Placed at the end of the document so the pages load faster -->
@@ -301,37 +315,10 @@ Your Profile is Complete . You can create a team.</p>
     <script src="/js/bootstrap.min.js"></script>
            <script src="/js/toastr.min.js"></script>
     <script src="/js/eventregister.js"></script>
- <script>
-        var resizefunc = [];
+        <script type="text/javascript" src="js/selectize.js"></script>
+    <script>
+    $('#subject').selectize({create: true});
     </script>
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="/assets/libs/jquery/jquery-1.11.1.min.js"></script>
-    <script src="/assets/libs/bootstrap/js/bootstrap.min.js"></script>
-    <script src="/assets/libs/jqueryui/jquery-ui-1.10.4.custom.min.js"></script>
-    <script src="/assets/libs/jquery-ui-touch/jquery.ui.touch-punch.min.js"></script>
-    <script src="/assets/libs/jquery-detectmobile/detect.js"></script>
-    <script src="/assets/libs/jquery-animate-numbers/jquery.animateNumbers.js"></script>
-    <script src="/assets/libs/ios7-switch/ios7.switch.js"></script>
-    <script src="/assets/libs/fastclick/fastclick.js"></script>
-    <script src="/assets/libs/jquery-blockui/jquery.blockUI.js"></script>
-    <script src="/assets/libs/bootstrap-bootbox/bootbox.min.js"></script>
-    <script src="/assets/libs/jquery-slimscroll/jquery.slimscroll.js"></script>
-    <script src="/assets/libs/jquery-sparkline/jquery-sparkline.js"></script>
-    <script src="/assets/libs/nifty-modal/js/classie.js"></script>
-    <script src="/assets/libs/nifty-modal/js/modalEffects.js"></script>
-    <script src="/assets/libs/sortable/sortable.min.js"></script>
-    <script src="/assets/libs/bootstrap-fileinput/bootstrap.file-input.js"></script>
-    <script src="/assets/libs/bootstrap-select/bootstrap-select.min.js"></script>
-    <script src="/assets/libs/bootstrap-select2/select2.min.js"></script>
-    <script src="/assets/libs/magnific-popup/jquery.magnific-popup.min.js"></script> 
-    <script src="/assets/libs/pace/pace.min.js"></script>
-    <script src="/assets/libs/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
-    <script src="/assets/libs/jquery-icheck/icheck.min.js"></script>
-
-    <!-- Demo Specific JS Libraries -->
-    <script src="/assets/libs/prettify/prettify.js"></script>
-
-    <script src="/assets/js/init.js"></script>
 
 {{ else }}
 Your Profile is incomplete. You cannot register for any event until you complete it
@@ -340,7 +327,186 @@ Your Profile is incomplete. You cannot register for any event until you complete
     <script src="/js/bootstrap.min.js"></script>
     <script src="/js/toastr.min.js"></script>
     <script type="text/javascript" src="js/selectize.min.js"></script>
-     <script>
+
+
+
+    {{ end }}
+    <script >
+       /* document.getElementById("subject").onchange = newDiv;
+        function newDiv(e)
+        {
+            var sport=this.value;
+            var div = document.createElement('div');
+            div.id=sport;
+            document.getElementById("members").appendChild(div);
+            div.innerHTML = '<tr><td>Members</td><td><input type="text" id="members" class="demo-default" name="members"></td></tr>';
+        }
+        */
+        $(function(){
+  
+  $('#subject').change(function(){
+    $("#sport").empty();
+    var memberno = 0;
+    var comment = "";
+    if($("#subject").val()=="Football(M)" || $("#subject").val()=="Cricket(M)" || $("#subject").val()=="Hockey(M)")
+    {   
+        memberno = 16;
+        comment = "11 playing + 5 substitute";
+    }
+    else if($("#subject").val()=="Volleyball(M)" || $("#subject").val()=="Volleyball(W)")
+    {   
+        memberno = 12;
+        comment = "6 playing + 6 substitute";
+    }
+    else if($("#subject").val()=="Basketball(M)" || $("#subject").val()=="Basketball(W)")
+    {   
+        memberno = 10;
+        comment = "5 playing + 5 substitute";
+    }
+    else if($("#subject").val()=="Badminton(M)")
+    {   
+        memberno = 5;
+        comment = "4 playing + 1 substitute";
+    }
+    else if($("#subject").val()=="Badminton(W)")
+    {   
+        memberno = 3;
+        comment = "2 playing + 1 substitute";
+    }
+    else if($("#subject").val()=="TableTennis(M)")
+    {   
+        memberno = 4;
+        comment = "4 playing";
+    }
+    else if($("#subject").val()=="TableTennis(W)")
+    {   
+        memberno = 4;
+        comment = "3 playing + 1 substitute";
+    }
+    else if($("#subject").val()=="Tennis(M)")
+    {   
+        memberno = 4;
+        comment = "3 playing + 1 substitute";
+    }
+    else if($("#subject").val()=="Tennis(W)")
+    {   
+        memberno = 3;
+        comment = "2 playing + 1 substitute";
+    }
+    else if($("#subject").val()=="KhoKho(W)")
+    {   
+        memberno = 12;
+        comment = "9 playing + 3 substitute";
+    }
+    else if($("#subject").val()=="Athletics(M)")
+    {   
+        memberno = 20;
+        comment = "Refer to the Athletics Rules";
+    }
+    else if($("#subject").val()=="Athletics(W)")
+    {   
+        memberno = 20;
+        comment = "Refer to the Athletics Rules";
+    }
+    else if($("#subject").val()=="Squash(M)")
+    {   
+        memberno = 4;
+        comment = "3 playing + 1 substitute";
+    }
+    else if($("#subject").val()=="Squash(W)")
+    {   
+        memberno = 4;
+        comment = "3 playing + 1 substitute";
+    }
+    else if($("#subject").val()=="Carrom")
+    {   
+        memberno = 2;
+        comment = "2 playing";
+    }
+    else if($("#subject").val()=="Chess")
+    {   
+        memberno = 5;
+        comment = "4 playing + 1 substitute";
+    }
+    else if($("#subject").val()=="Weightlifting(M)")
+    {   
+        memberno = 10
+        comment = "Number of participants is not restricted";
+    }
+    else if($("#subject").val()=="Powerlifting(M)")
+    {   
+        memberno = 10;
+        comment = "Number of participants is not restricted";
+    }
+    else if($("#subject").val()=="TaekWonDo")
+    {   
+        memberno = 5;
+        comment = "Refer to the TaekWonDo Rules";
+    }
+    else if($("#subject").val()=="SportsQuiz")
+    {   
+        memberno = 4;
+        comment = "";
+    }
+
+    $("#comment").html(comment) ;
+    for(var i=0;i<memberno;i++)
+    {
+        /*var table = document.getElementById("mytable");
+        var row = table.insertRow(i);
+        var cell1 = row.insertCell(0);
+        var cell2 = row.insertCell(1);*/
+        //cell1.innerHTML = "NEW CELL1";
+       // cell2.innerHTML = "NEW CELL2";
+       if(i==0) {
+        $('#sport').append('<tr><td width="150px">Captain</td><td><input type="text" id="members'+(i+1)+'" class="demo-default" name="members" required></td><td width="180px">Contact Number</td><td><input type="number" id="connum'+(i+1)+'" class="demo-default" name="connum" required></td> </tr>');
+
+       }
+       else if(i==1) {
+        $('#sport').append('<tr><td width="150px">Vice Captain</td><td><input type="text" id="members'+(i+1)+'" class="demo-default" name="members" required></td><td width="180px">Contact Number</td><td><input type="number" id="connum'+(i+1)+'" class="demo-default" name="connum" required></td> </tr>');
+       }
+       else {
+        $('#sport').append('<tr><td width="150px">Member '+(i+1)+'</td><td><input type="text" id="members'+(i+1)+'" class="demo-default" name="members"></td><td width="180px">Contact Number</td><td><input type="number" id="connum'+(i+1)+'" class="demo-default" name="connum"></td> </tr>');
+    }
+    }
+    $("#members1").change(function(){
+        if($('#members1').val().length != 0)
+            flag1=1;
+        else
+            flag1=0;
+    });
+    $("#members2").change(function(){
+        if($('#members2').val().length != 0)
+            flag2=1;
+        else
+            flag2=0;
+    });
+    $("#connum1").change(function(){
+        if($('#connum1').val().length == 10 ||$('#connum1').val().length == 11 )
+            flag3=1;
+        else
+            flag3=0;
+    });
+    $("#connum2").change(function(){
+        if($('#connum2').val().length == 10 || $('#connum2').val().length == 11)
+            flag4=1;
+        else
+            flag4=0;
+    });
+    
+  });
+});
+
+        </script>
+
+        </div>
+
+    </div>
+    <!-- End of page -->
+        <!-- the overlay modal element -->
+    <div class="md-overlay"></div>
+    <!-- End of eoverlay modal -->
+    <script>
         var resizefunc = [];
     </script>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
@@ -371,8 +537,7 @@ Your Profile is incomplete. You cannot register for any event until you complete
     <script src="/assets/libs/prettify/prettify.js"></script>
 
     <script src="/assets/js/init.js"></script>
-    {{ end }}
-    <script src="/js/fb.js"></script>
-</body>
+        <script src="/js/fb.js"></script>
+        </body>
 
 </html>

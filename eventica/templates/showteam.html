@@ -1,16 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Dashboard -TECHKRITI'15</title>   
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="description" content="">
 
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="TECHKRITI">
-    <link rel="shortcut icon" href="../../docs-assets/ico/favicon.png">
-
-    <title>TECHKRITI</title>
-
-      <!-- Base Css Files -->
+        <!-- Base Css Files -->
         <link href="/assets/libs/jqueryui/ui-lightness/jquery-ui-1.10.4.custom.min.css" rel="stylesheet" />
         <link href="/assets/libs/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
         <link href="/assets/libs/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
@@ -20,10 +17,21 @@
         <link href="/assets/libs/magnific-popup/magnific-popup.css" rel="stylesheet" /> 
         <link href="/assets/libs/ios7-switch/ios7-switch.css" rel="stylesheet" /> 
         <link href="/assets/libs/pace/pace.css" rel="stylesheet" />
+        <link href="/assets/libs/sortable/sortable-theme-bootstrap.css" rel="stylesheet" />
+        <link href="/assets/libs/bootstrap-datepicker/css/datepicker.css" rel="stylesheet" />
         <link href="/assets/libs/jquery-icheck/skins/all.css" rel="stylesheet" />
-            <link href="/css/toastr.min.css" rel="stylesheet">
         <!-- Code Highlighter for Demo -->
         <link href="/assets/libs/prettify/github.css" rel="stylesheet" />
+        
+                <!-- Extra CSS Libraries Start -->
+                <link href="/assets/libs/rickshaw/rickshaw.min.css" rel="stylesheet" type="text/css" />
+                <link href="/assets/libs/morrischart/morris.css" rel="stylesheet" type="text/css" />
+                <link href="/assets/libs/jquery-jvectormap/css/jquery-jvectormap-1.2.2.css" rel="stylesheet" type="text/css" />
+                <link href="/assets/libs/jquery-clock/clock.css" rel="stylesheet" type="text/css" />
+                <link href="/assets/libs/bootstrap-calendar/css/bic_calendar.css" rel="stylesheet" type="text/css" />
+                <link href="/assets/libs/sortable/sortable-theme-bootstrap.css" rel="stylesheet" type="text/css" />
+                <link href="/assets/libs/jquery-weather/simpleweather.css" rel="stylesheet" type="text/css" />
+                <link href="/assets/libs/bootstrap-xeditable/css/bootstrap-editable.css" rel="stylesheet" type="text/css" />
                 <link href="/assets/css/style.css" rel="stylesheet" type="text/css" />
                 <!-- Extra CSS Libraries End -->
         <link href="/assets/css/style-responsive.css" rel="stylesheet" />
@@ -35,7 +43,11 @@
         <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
         <![endif]-->
 
-        <link rel="shortcut icon" href="/assets/img/favicon.ico">
+        <link rel="shortcut icon" href="/img/favico.ico">
+
+        <script type="text/javascript" src="/js/jquery.js"></script>
+        <script src="/js/script.js"></script>
+
 
         <style type="text/css">
 
@@ -47,7 +59,6 @@
 
         .side-menu.left
         {
-            position: fixed;
             box-shadow: 0 0 5px grey;
             z-index: 100;
         }
@@ -55,12 +66,6 @@
         li#user-info
         {
             cursor: pointer;
-        }
-
-        .page-header
-        {
-            width: 80%;
-            margin: 70px auto;
         }
 
         .profile-info .col-xs-4
@@ -73,29 +78,13 @@
             padding: 10px;
         }
 
-        table
-        {
-            border: none;
-            text-transform: capitalize;
-        }
-
-        td, th
-        {
-            padding: 10px;
-            text-transform: capitalize;
-        }
-
-        thead
-        {
-            background: #424a55;
-            color: white;
-            text-transform: capitalize;
-        }
 
         </style>
 
+
     </head>
-        
+    <body class="fixed-left">
+        <!-- Modal Start -->
     <!-- Modal Logout -->
     <div class="md-modal md-just-me" id="logout-modal">
         <div class="md-content">
@@ -109,9 +98,7 @@
             </div>
         </div>
     </div>        <!-- Modal End -->    
-    <!-- Begin page -->
-    <div id="wrapper">
-        
+    <!-- Begin page -->       
 <!-- Top Bar Start -->
 <div class="topbar">
     <div class="topbar-left">
@@ -189,17 +176,24 @@
         <h1 class="page-header">
             Your Teams
         </h1>
+        <center><h5>If you had made a team before 1st December then you need to register your team for the event. For any doubts contact Support</h5></center>
         <div >
             <table id = "teams" style="" align="center">
   
 </table>
         </div>
     </div>
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="/js/jquery.js"></script>
-    <script src="/js/bootstrap.min.js"></script>
-    <script src="/js/showteam.js"></script>
-     <script>
+        <script src="/js/jquery.js"></script>
+        <script src="/js/bootstrap.min.js"></script>
+            <script src="/js/showteam.js"></script>
+        </div>
+
+    </div>
+    <!-- End of page -->
+        <!-- the overlay modal element -->
+    <div class="md-overlay"></div>
+    <!-- End of eoverlay modal -->
+    <script>
         var resizefunc = [];
     </script>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
@@ -230,12 +224,7 @@
     <script src="/assets/libs/prettify/prettify.js"></script>
 
     <script src="/assets/js/init.js"></script>
-    <script type="text/javascript">
-$( "#user-info" ).click(function() {
-$( this ).toggleClass( "open" );
-}); 
-    </script>
         <script src="/js/fb.js"></script>
-</body>
+        </body>
 
 </html>

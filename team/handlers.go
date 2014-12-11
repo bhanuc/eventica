@@ -7,6 +7,8 @@ import (
 	"github.com/gorilla/mux"
 	_ "github.com/gorilla/sessions"
 	"net/http"
+	//"strconv"
+	"strings"
 )
 
 type FlashMessage struct {
@@ -16,6 +18,22 @@ type FlashMessage struct {
 
 var R = user.R
 
+func Addteam(pid string, tek_id string) {
+	u, err := R.FindOneByTechID(tek_id)
+	if err != nil {
+		fmt.Println(err)
+	} else {
+		fmt.Println(len(u.Teams), u, pid, tek_id)
+		fmt.Println("start push")
+		if u.Teams == "" {
+			u.Teams = pid
+		} else {
+			u.Teams = u.Teams + "," + pid
+		}
+		fmt.Println("pushed", u.Teams)
+		u.Update()
+	}
+}
 func CreateHandler(w http.ResponseWriter, r *http.Request) {
 	session, _ := sessionStore.Get(r, "p")
 	data := make(map[string]interface{})
@@ -25,7 +43,7 @@ func CreateHandler(w http.ResponseWriter, r *http.Request) {
 		tu := struct {
 			Name    string `json:"name"`
 			Members string `json:"members"`
-			Event    string `json:"event"`
+			Event   string `json:"event"`
 			Gender  string `json:"gender"`
 		}{}
 		utility.ReadJson(r, &tu)
@@ -36,31 +54,63 @@ func CreateHandler(w http.ResponseWriter, r *http.Request) {
 		if tu.Members == "" {
 			e["Error"] = FlashMessage{"danger", "Please add team members"}
 		}
-		u, _ := R.FindOneByIdHex(id)
-
-		//	d := T.CountByCollegenEvent(u.College, tu.Event)
-		//	fmt.Println(d)
-
-		//if d > 0 {
-		//	e["Error"] = FlashMessage{"danger", "You have already registered for this event. Repeat registration of same game is not allowed"}
-		//	data["flashes"] = e
-		//	data["team"] = tu
-		//} else {
-		_, err := T.FindOneByName(tu.Name)
-		// if team not found
-		if err != nil {
-			team := new(Team)
-			team.Add(tu.Name, tu.Members, tu.Event, tu.Gender, id, u.College)
-			data["success"] = true
-			e["success"] = FlashMessage{"success", "Your Team registration was successful."}
-			data["flashes"] = e
-			data["team"] = tu
-		} else {
-			e["Error"] = FlashMessage{"danger", "This team Name is already registered. Please choose a difference name for your team"}
-			data["flashes"] = e
-			data["team"] = tu
+		members := strings.Split(tu.Members, ",")
+		mlength := len(members)
+		fmt.Println(members, mlength)
+		index := 0
+		index2 := 0
+		for i := 0; i < mlength; i++ {
+			if members[i] != "" || members != nil {
+				index++
+				if R.FindCountByTechid(members[i]) != 0 {
+					index2++
+				}
+			}
 		}
-		//	}
+		/**for _, member := range members {
+							//cnum, _ := strconv.Atoi(member)
+		 			if R.FindCountByTechid(member) == 0 {
+		 				index++
+		 			}
+		    	}**/
+		fmt.Println(index2, index)
+		if index != index2 {
+			e["Error"] = FlashMessage{"danger", "Only Techid Needs to be entered. One of your members seems to be not registered"}
+			data["flashes"] = e
+		} else {
+			u, _ := R.FindOneByIdHex(id)
+
+			//	d := T.CountByCollegenEvent(u.College, tu.Event)
+			//	fmt.Println(d)
+
+			//if d > 0 {
+			//	e["Error"] = FlashMessage{"danger", "You have already registered for this event. Repeat registration of same game is not allowed"}
+			//	data["flashes"] = e
+			//	data["team"] = tu
+			//} else {
+			_, err := T.FindOneByName(tu.Name)
+			if err != nil {
+				fmt.Println("inside add team")
+				team := new(Team)
+				team.Add(tu.Name, tu.Members, tu.Event, tu.Gender, id, u.College)
+				fmt.Println("made team", members, team.Id)
+				for i := 0; i < len(members); i++ {
+					fmt.Println("in loop", i, members[i], string(team.Id))
+					if members[i] != "" || members != nil {
+						Addteam(team.Id.String(), members[i])
+					}
+				}
+				fmt.Println("completed team")
+				data["success"] = true
+				e["success"] = FlashMessage{"success", "Your Team registration was successful."}
+				data["flashes"] = e
+				data["team"] = tu
+			} else {
+				e["Error"] = FlashMessage{"danger", "This team Name is already registered. Please choose a difference name for your team"}
+				data["flashes"] = e
+				data["team"] = tu
+			}
+		}
 		utility.WriteJson(w, data)
 
 	} else {
@@ -135,6 +185,52 @@ func AllTeamHandler(w http.ResponseWriter, r *http.Request) {
 				data["flashes"] = flashes
 			} else {
 				data["teams"] = u
+				data["success"] = true
+				flashes["AllTeams"] = FlashMessage{"success", "Your Teams have been fetched."}
+				data["flashes"] = flashes
+			}
+		}
+		utility.WriteJson(w, data)
+	} else {
+		http.Redirect(w, r, "/login", 302)
+	}
+}
+
+func AllTeamHandler2(w http.ResponseWriter, r *http.Request) {
+	session, _ := sessionStore.Get(r, "p")
+	data := make(map[string]interface{})
+	flashes := make(map[string]FlashMessage)
+	id, ok := session.Values["user"].(string)
+	//t := new(Team)
+	if ok && session.Values["usertype"] == "user" {
+		u, err := R.FindOneByIdHex(id)
+		if err != nil {
+			http.Redirect(w, r, "/login", 302)
+		} else {
+			if len(u.Teams) == 0 {
+				flashes["Error"] = FlashMessage{"danger", "No One has Added to your Team."}
+				data["flashes"] = flashes
+			} else {
+				var teamz = strings.Split(u.Teams, ",")
+				temp_team := make([]Team, len(teamz))
+				fmt.Println(teamz, len(teamz))
+				for i := 0; i < len(teamz); i++ {
+					fmt.Println(i, teamz[i], teamz[i][13:37])
+					if teamz[i] != "" {
+						fmt.Println(teamz[i])
+						t, err := T.FindOneByIdHex(teamz[i][13:37])
+						if err == nil {
+							temp_team[i] = *t
+						}
+					}
+				}
+				/**for _, member := range u.Teams {
+					u, err := T.FindOneByIdHex(member)
+					if err == nil {
+						temp_team[len(temp_team)] = *u
+					}
+				} **/
+				data["teams"] = temp_team
 				data["success"] = true
 				flashes["AllTeams"] = FlashMessage{"success", "Your Teams have been fetched."}
 				data["flashes"] = flashes
