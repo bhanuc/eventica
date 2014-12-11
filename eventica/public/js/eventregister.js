@@ -2,11 +2,11 @@ $('#submitbutton').click(function() {
     var evname = $("#subject").val();
     var memberno = 0;
 
-    if (evname == "Hoverush" || evname == "Do your due" || evname == "Marketing Villa" || evname == "Be the Tycoon" || evname == "IDEAS" || evname == "Battlefield" || evname == "Manoeuvre" || evname == "Shuffle") {
+    if (evname == "Hoverush" ||  evname == "IDEAS" ||  evname == "Manoeuvre" || evname == "Shuffle") {
         memberno = 5;
     } else if (evname == "FPGA" || evname == "Embedded" || evname == "electromania") {
         memberno = 5;
-    } else if (evname == "IORC" || evname == "29 States") {
+    } else if (evname == "IORC" || evname == "Be the Tycoon" || evname == "29 States" ) {
         memberno = 1;
     } else if (evname == "Impulse" || evname == "Hackathon" || evname == "Iarc") {
         memberno = 4;
@@ -18,7 +18,7 @@ $('#submitbutton').click(function() {
         memberno = 4;
     } else if (evname == "TGP") {
         memberno = 8;
-    } else if (evname == "IOPC" || evname == "IHPC" || evname == "Chaos" || evname == "Battlecity") {
+    } else if (evname == "IOPC" || evname == "Battlefield" || evname == "Do your due" ||  evname == "IHPC" || evname == "Marketing Villa" || evname == "Chaos" || evname == "Battlecity") {
         memberno = 3;
     } else if (evname == "Wild soccer") {
         memberno = 10;
@@ -58,13 +58,19 @@ $("#subject").change(function() {
     var memberno = 0;
     var comment = "";
 
-    if (evname == "Hoverush" || evname == "Do your due" || evname == "Marketing Villa" || evname == "Be the Tycoon" || evname == "IDEAS" || evname == "Battlefield" || evname == "Manoeuvre" || evname == "Shuffle") {
+    if (evname == "Hoverush" || evname == "IDEAS" || evname == "Manoeuvre" || evname == "Shuffle") {
         memberno = 5;
         comment = "";
     } else if (evname == "FPGA" || evname == "Embedded") {
         memberno = 5;
         comment = "Only for Undergraduate students";
+    } else if (evname == "Marketing Villa" || evname == "Do your due" || evname == "Battlefield") {
+        memberno = 3;
+        comment = "2 Members are also allowed";
     } else if (evname == "IORC" || evname == "29 States") {
+        memberno = 1;
+        comment = "";
+    } else if (evname == "Be the Tycoon" ) {
         memberno = 1;
         comment = "";
     } else if (evname == "electromania") {

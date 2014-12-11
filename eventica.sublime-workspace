@@ -3,6 +3,82 @@
 	{
 		"selected_items":
 		[
+			[
+				"Pri",
+				"Println	n int, err error ƒ"
+			],
+			[
+				"tem",
+				"teamz	 ν"
+			],
+			[
+				"P",
+				"Println	n int, err error ƒ"
+			],
+			[
+				"ind",
+				"index"
+			],
+			[
+				"in",
+				"index2"
+			],
+			[
+				"al",
+				"alternatenumber"
+			],
+			[
+				"alte",
+				"AlternateNumber"
+			],
+			[
+				"Coll",
+				"College"
+			],
+			[
+				"mem",
+				"members"
+			],
+			[
+				"Te",
+				"Team"
+			],
+			[
+				"te",
+				"temp_team"
+			],
+			[
+				"s",
+				"string"
+			],
+			[
+				"Add",
+				"Addteam"
+			],
+			[
+				"us",
+				"user"
+			],
+			[
+				"fin",
+				"FindCountByTekid"
+			],
+			[
+				"pr",
+				"Println"
+			],
+			[
+				"len",
+				"length"
+			],
+			[
+				"Tek",
+				"Tekid"
+			],
+			[
+				"Pr",
+				"Println"
+			]
 		]
 	},
 	"buffers":
@@ -16,10 +92,10 @@
 			}
 		},
 		{
-			"file": "eventica/templates/admindashboard.html",
+			"file": "eventica/public/js/profile.js",
 			"settings":
 			{
-				"buffer_size": 2682,
+				"buffer_size": 212364,
 				"line_ending": "Unix"
 			}
 		},
@@ -27,47 +103,7 @@
 			"file": "eventica/templates/dashboard.html",
 			"settings":
 			{
-				"buffer_size": 11092,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "eventica/templates/login.html",
-			"settings":
-			{
-				"buffer_size": 10742,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "eventica/main.go",
-			"settings":
-			{
-				"buffer_size": 6229,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "eventica/templates/print_team.html",
-			"settings":
-			{
-				"buffer_size": 2535,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "eventica/templates/register.html",
-			"settings":
-			{
-				"buffer_size": 8797,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "eventica/templates/login2.html",
-			"settings":
-			{
-				"buffer_size": 6489,
+				"buffer_size": 11094,
 				"line_ending": "Unix"
 			}
 		},
@@ -75,31 +111,90 @@
 			"file": "eventica/templates/registerforevent.html",
 			"settings":
 			{
-				"buffer_size": 15812,
+				"buffer_size": 15550,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "eventica/templates/showteam.html",
+			"contents": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n  <meta http-equiv=\"Cache-control\" content=\"public\">\n	<title>Techkriti' 15 | Technical And Entrepreneurial Festival</title>\n<meta http-equiv=\"Content-type\" content=\"text/html; charset=utf-8\" />\n<link rel=\"icon\" type=\"image/png\" href=\"http://dev.techkriti.org/efactor/sponsors/images/zz.png\">\n<link rel=\"image_src\" href=\"http://www.techkriti.org/link_share.jpg\">\n<meta name=\"keywords\" content=\"techkriti, IIT, Kanpur, IITK, entrepreneurship, technical, battlefield, robowars, soccer, software, business plan, rubik, cube, tech, college fest,\nlectures, Talks, technology, competitions, events, workshops, exhibitions, science, fest, robotics, delhi, robotics, techfest, college festival, asia's largest, Engineer, Sukhwinder Singh, Marshall Strabala, Virtually Progressive World, Society\" />\n<meta name=\"description\" content=\"Techkriti is the annual Technical and Entrepreneurial festival of IIT Kanpur to be held from 19th to 22nd March 2015.\" />\n	<meta name=\"author\" content=\"Romit Choudhary\">\n	<META HTTP-EQUIV=\"EXPIRES\" CONTENT=\"Mon, 10 Nov 2015 11:12:01 GMT\">\n	<meta name=\"google-site-verification\" content=\"ayn8VHIWCPaFinhKv_5tDWBxqA5_PxRBKHePcp-usxs\" />\n	<meta property=\"og:title\" content=\"Techkriti 2015\" />\n<meta property=\"og:type\" content=\"website\" />\n<meta property=\"og:url\" content=\"http://techkriti.org/\" />\n<meta property=\"og:image\" content=\"http://dev.techkriti.org/link_share.jpg\" />\n<meta property=\"og:site_name\" content=\"Techkriti\" />\n<meta property=\"og:description\" content=\"Techkriti is the annual Technological and Entrepreneurial festival of IIT Kanpur to be held from 19th to 22nd March 2015.\" />\n<meta property=\"fb:admins\" content=\"100002130305547\" />\n\n	<link rel=\"stylesheet\" type=\"text/css\" href=\"/Homepage/files/temp/Common.css?1501\" media=\"screen, handheld, projection, tv\" charset=\"utf-8\"/>\n\n<link rel=\"stylesheet\" href=\"/Homepage/animations.css\" media=\"screen, handheld, projection, tv\">\n<link type=\"text/css\" rel=\"stylesheet\" href=\"css/rhinoslider-1.05.css\" />\n\n<script src=\"countdown.js\" type=\"text/javascript\"></script>\n<script type=\"text/javascript\" src=\"/Homepage/Common.js\"></script>\n<script type=\"text/javascript\" src=\"js/rhinoslider-1.05.min.js\"></script>\n<script type=\"text/javascript\" src=\"js/mousewheel.js\"></script>\n<script type=\"text/javascript\" src=\"js/jqueryeasing.js\"></script>	\n<script type=\"text/javascript\" src=\"/js/loader.js\"></script>\n<script type=\"text/javascript\">\n      $(document).ready(function(){\n        $('#slider').rhinoslider();\n      });\n\n      //for fb\n        var cache = jQuery.ajaxSettings.cache; \n        jQuery.ajaxSettings.cache = true;  \n        jQuery.getScript('http://connect.facebook.net/en_US/all.js', function() {      \n          FB.init({status: true, cookie: true, xfbml: true});    \n        });\n        jQuery.ajaxSettings.cache = cache;\n    </script>\n\n\n\n<style type=\"text/css\">\n#slider {\n        width:1300px;\n        height:550px;\n        \n        /*IE bugfix*/\n        padding:0;\n        margin:0;\n      }\n      \n      #slider li { list-style:none; }\n      \n      #page {\n        width:979px;\n        margin:20px auto;\n      }\n\n</style>\n\n</head>\n<body>\n<script>\n  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){\n  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),\n  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)\n  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');\n\n  ga('create', 'UA-45682203-1', 'techkriti.org');\n  ga('send', 'pageview');\n\n</script>\n  <div class=\"loader\">\n    <div class=\"wrapper\">\n      <div class='text'>\n        <div class=\"load\"></div>\n      </div>\n    </div>\n  </div>\n<script type=\"application/javascript\">\nvar images = [\n'/Homepage/images/tabs/competitions.png',\n'/Homepage/images/tabs/talks.png',\n'/Homepage/images/tabs/megaworld.png',\n'/Homepage/images/tabs/e-factor.jpg',\n'/Homepage/images/tabs/exhibition.jpg',\n'/Homepage/images/tabs/funT.jpg',\n'/Homepage/images/tabs/shows.jpg',\n'/Homepage/images/tabs/initiatives.jpg',\n'/transmission/357.GIF',\n'/transmission/competition.GIF',\n'/transmission/contacts.GIF',\n'/transmission/exhibition.GIF',\n'/transmission/sponsor.GIF',\n'/transmission/talks.GIF',\n'/transmission/workshop.GIF'\n];\n\n$(images).each(function() {\nvar image = $('<img />').attr('src', this);\n});\n\n/*var today = new Date();\nvar techkriti =  new Date(\"2014/03/06\");\nvar time_sec = Math.ceil((techkriti.getTime() - today.getTime())/1000);\nvar myCountdown1 = new Countdown({\n 	time: time_sec, // 86400 seconds = 1 day\n	width:300, \n	height:60,  \n	rangeHi:\"month\",\n	style:\"flip\"\n});*/\n$('#stage_jbeeb_3').css(\"z-index\",1000);\n</script>\n  <div>\n\n<!--  <div class=\"topVideo\" id='lopo' style='background-color:#222'>\n    <div class=\"closeWrap\">\n      <div class=\"bg\"></div>\n      <div class=\"icon\"></div>\n    </div>\n<!--    <div id=\"vimeoplayer0\" width=\"709\" height=\"90\">\n      <!--<div id=\"page\">\n      	<iframe width=\"978\" height=\"550\" src=\"//www.youtube.com/embed/KkSscKFQPBU\" frameborder=\"0\" allowfullscreen></iframe>\n        <!--<ul id=\"slider\">\n          <li><img src=\"tblog/img/post1.jpg\" alt=\"Techkriti Blig\" /></li>\n          <li><img src=\"img/slider/02.jpg\" alt=\"Robowars @ Techkriti\" /></li>\n          <li><img src=\"img/slider/03.jpg\" alt=\"Techkriti Blueprint\" /></li>\n          <li><img src=\"img/slider/04.jpg\" alt=\"Techkriti logo\" /></li>\n          <li><img src=\"img/slider/06.jpg\" alt=\"Engineer Day\" /></li>\n          <li><img src=\"img/slider/07.jpg\" alt=\"Sukhwinder @ Techkriti\" /></li>\n          <li><img src=\"img/slider/08.jpg\" alt=\"Closing Ceremony @Techkriti'13\" /></li>\n        </ul>\n      </div>\n    </div>\n  </div>-->\n\n  <div id=\"mainWrapper\">\n    <div id=\"skrollr-body\">\n      <div class=\"main\" style='background-color:#fff'>\n\n        <!-- Just for background-->\n         <div class='bottom'></div>\n        <div class=\"main_blocks\">\n          <div class=\"triangle_left animatedBlock\"></div>\n          <div class=\"triangle2 animatedBlock\"></div>\n          <div class=\"triangle1 animatedBlock\"></div>\n        </div>\n\n\n        <!--main_wrap-->\n        <fb:like class='fb_button' href=\"https://www.facebook.com/techkriti\" layout=\"button_count\" show_faces=\"false\" width=\"50\" height=\"35\" action=\"like\" colorscheme=\"light\" allowTransparency=\"true\"></fb:like>\n        <div class=\"g_button\">\n            <div class=\"g-plusone\" data-size=\"small\" data-annotation=\"none\" data-href=\"htts.google.c om/u/0/115536874387455284942/posts\"></div>\n        </div>\n        <div class=\"twit_button\">\n            <a href=\"https://twitter.com/techkriti_iitk\" class=\"twitter-follow-button\" data-show-count=\"false\" data-show-screen-name=\"false\"></a>\n        </div>\n\n        <div id=\"header\">\n          <div class=\"wrapper\">\n\n            <div class=\"logo\">\n              <h1>\n                <a>\n                  <img src=\"/Homepage/images/logo.png\" width=\"470\" alt=\"Techkriti'15 Logo\">\n                </a>\n              </h1>\n            </div>\n\n            <div class=\"moto animatedBlock\">\n              <div class=\"ribbon\">\n                <!--<span class=\"black\">LET US</span>\n                <span class=\"pink\">INTRODUCE</span>-->\n              </div>\n              <!--<h2><span class=\"pink\">WE ARE</span><span class=\"white\">TECHKRITI</span></h2>\n              <div class='arrow'><span></span>Asia's Largest <br/>Technical Festival<br/></div> -->\n            </div>\n\n            <div id=\"playReel\" class=\"animatedBlock\" style='right: -25px; top: 231px;'>\n              <div class=\"play\">\n                <div class=\"text\">\n                  <span></span>\n                  <!--<span class=\"pink\" style='color:white;'>Gallery</span>-->\n                </div>\n              </div>\n            </div>\n\n		<div id=\"playReel\" class=\"animatedBlock\" style='right: -155px; top: 21px;'>\n              <!--<div class=\"play2\">\n                <div class=\"text\">\n                  <span></span>\n                  <span class=\"pink\" style='color:white;'>Techkriti'14 is now over. We are thankful to all the sponsors and participants.</span>\n                </div>\n              </div>-->\n            </div>\n\n          </div>\n        </div>\n\n        <div class=\"caseStudies\">\n          <div class=\"wrapper\">\n            <div class=\"items animatedBlock\" data-0=\"top:300px;\" data-2500=\"top:-500px;\">\n              \n              <div class=\"item item-1\" rel=\"1\">\n                <div class=\"blocks-wrap\">\n                  \n                  <a href='/efactor'>\n                    <div class=\"block1 block\" data-0=\"left:-200px;\" data-500=\"left:-1px\" id='Efactor'>\n                      <div class=\"bg\"></div>\n                      <div class=\"text\">\n                        <h3>EFACTOR</h3>\n                      </div>\n                    </div>\n                  </a>\n\n                  <a href='/Competitions'>\n                    <div class=\"block2 block\" data-0=\"top:-200px\" data-500=\"top:0\" id='competition'>\n                      <div class=\"text\" style='top:210px;'>\n                        <h3>COMPETITIONS</h3>\n                      </div>\n                    </div>\n                  </a>\n                 \n                  <a href='/Workshops'>\n                    <div class=\"block3 block\" data-0=\"right:-200px\" data-500=\"right:0\" id='workshops'>\n                      <div class=\"bg\"></div>\n                      <div class=\"shadow\"></div>\n                        <div class=\"text\" style='top:170px;'>\n                            <h3>Workshops</h3>\n                        </div>\n                    </div>\n                  </a>\n                \n                </div>\n              </div>\n              \n              <div class=\"item item-2\" rel=\"2\">\n                <div class=\"blocks-wrap\">\n                  <a href=\"/Exhibitions\">\n                    <div class=\"block1 block\" data-0=\"left:-200px\" data-850=\"left:-1px\">\n                      <div class=\"bg\"></div>\n                      <div class=\"text\">\n                        <h3>EXHIBITIONS</h3>\n                      </div>\n                    </div>\n                  </a>\n                  <a href=\"/Talks\">\n                    <div class=\"block2 block\" data-0=\"top:-200px\" data-850=\"top:0\">\n                      <div class=\"text\">\n                        <h3>TALKS</h3>\n                      </div>\n                    </div>\n                  </a>\n                  <a href=\"/Shows\">\n                    <div class=\"block3 block\" data-0=\"right:-200px\" data-850=\"right:0\">\n                      <div class=\"bg\"></div>\n                      <div class=\"text\">\n                        <h3>SHOWS</h3>\n                      </div>\n                    </div>\n                  </a>\n                </div>\n              </div>\n              \n              <div class=\"item item-3\" rel=\"3\">\n                <div class=\"blocks-wrap\">\n                  <a href=\"/funT\">\n                    <div class=\"block1 block openBlock\" data-0=\"left:-200px\" data-1200=\"left:-1px\">\n                      <div class=\"bg\"></div>\n                      <div class=\"text\">\n                        <h3>FUN-T</h3>\n                      </div>\n                    </div>\n                  </a>\n                  <a href=\"/Megaworld\">\n                    <div class=\"block2 block\" data-0=\"top:-200px\" data-1200=\"top:0\">\n                      <div class=\"text\">\n                        <h3>MEGAWORLD</h3>\n                      </div>\n                    </div>\n                  </a>\n                  <a href=\"/Initiatives\">\n                    <div class=\"block3 block openBlock\" data-0=\"right:-200px\" data-1200=\"right:0\">\n                      <div class=\"bg\"></div>\n                      <div class=\"text\">\n                        <h3>INITIATIVES</h3>\n                      </div>\n                    </div>\n                  </a>\n                </div>\n              </div><!--items-->\n          </div>\n        </div><!--casestudies-->\n      </div><!--main-->\n    </div>\n  </div><!--mainWrapper-->\n    </div>\n	\n  <div id=\"contact-us-home-set\">\n  	<div id=\"contact-us\">\n  	 <a href='/Schedule/'>Schedule<span></span></a>\n  	<a href='/About-Us/'>About Us<span></span></a>\n      <a href='/Hospitality/'>Hospitality<span></span></a>\n      <a href='/Deadlines/'>Deadlines<span></span></a>\n      <a href='/Ambassador/'>Ambassador<span></span></a>\n      <a href='/Sponsors/'>Sponsors<span></span></a>\n      <a href='/Archives/'>Archives<span></span></a>\n      <a href='/Contacts/'>Contact Us<span></span></a></div>\n  </div>\n</div>\n<script type=\"text/javascript\">\n/*g+*/\n\n  (function() {\n    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;\n    po.src = 'https://apis.google.com/js/plusone.js';\n    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);\n  })();\n\n  !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');\n</script>\n<?php include_once('loader.php'); ?>\n</body>\n</html>\n\n",
+			"file": "/home/bhanuc/Documents/dev.techkriti.org/index.php",
+			"file_size": -1,
+			"file_write_time": -1,
 			"settings":
 			{
-				"buffer_size": 9831,
+				"buffer_size": 13182,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/home/bhanuc/Documents/dev.techkriti.org/Sponsors/index.php",
+			"settings":
+			{
+				"buffer_size": 74498,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "eventica/templates/Actsuccess.html",
+			"file": "eventica/public/js/eventregister.js",
 			"settings":
 			{
-				"buffer_size": 699,
+				"buffer_size": 5601,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "eventica/templates/login-backup.html",
+			"file": "team/team.go",
 			"settings":
 			{
-				"buffer_size": 15045,
+				"buffer_size": 2387,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "user/user.go",
+			"settings":
+			{
+				"buffer_size": 1752,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "user/models.go",
+			"settings":
+			{
+				"buffer_size": 10536,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "user/handlers.go",
+			"settings":
+			{
+				"buffer_size": 13705,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "team/models.go",
+			"settings":
+			{
+				"buffer_size": 4168,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "eventica/input.txt",
+			"settings":
+			{
+				"buffer_size": 5,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "team/handlers.go",
+			"settings":
+			{
+				"buffer_size": 11903,
 				"line_ending": "Unix"
 			}
 		}
@@ -107,17 +202,26 @@
 	"build_system": "",
 	"command_palette":
 	{
-		"height": 0.0,
+		"height": 306.0,
 		"selected_items":
 		[
+			[
+				"Package Control: ",
+				"Package Control: Install Package"
+			],
+			[
+				"GoSublime: ",
+				"Set Syntax: GoSublime: Go"
+			]
 		],
-		"width": 0.0
+		"width": 449.0
 	},
 	"console":
 	{
-		"height": 0.0,
+		"height": 139.0,
 		"history":
 		[
+			"go"
 		]
 	},
 	"distraction_free":
@@ -133,20 +237,47 @@
 	[
 		"/home/bhanuc/go/src/github.com/eventica",
 		"/home/bhanuc/go/src/github.com/eventica/eventica",
-		"/home/bhanuc/go/src/github.com/eventica/eventica/templates"
+		"/home/bhanuc/go/src/github.com/eventica/eventica/templates",
+		"/home/bhanuc/go/src/github.com/eventica/team",
+		"/home/bhanuc/go/src/github.com/eventica/user"
 	],
 	"file_history":
 	[
+		"/home/bhanuc/go/src/github.com/eventica/eventica/templates/login-backup.html",
+		"/home/bhanuc/go/src/github.com/eventica/eventica/templates/Actsuccess.html",
+		"/home/bhanuc/go/src/github.com/eventica/eventica/public/js/showteam.js",
+		"/home/bhanuc/go/src/github.com/eventica/eventica/templates/showteam.html",
+		"/home/bhanuc/go/src/github.com/eventica/eventica/public/js/register.js",
+		"/home/bhanuc/go/src/github.com/eventica/eventica/templates/register.html",
+		"/home/bhanuc/go/src/github.com/eventica/eventica/templates/registerforevent.html",
+		"/home/bhanuc/go/src/github.com/eventica/user/handlers.go",
+		"/home/bhanuc/go/src/github.com/eventica/eventica/main.go",
+		"/home/bhanuc/go/src/github.com/eventica/format.txt",
+		"/home/bhanuc/Documents/2014.techkriti.org/index.php",
+		"/home/bhanuc/Documents/2014.techkriti.org/Homepage/index.php",
+		"/home/bhanuc/go/src/github.com/eventica/team/models.go",
+		"/home/bhanuc/go/src/github.com/eventica/eventica/input.txt",
+		"/home/bhanuc/go/src/github.com/eventica/user/models.go",
+		"/home/bhanuc/go/src/github.com/eventica/user/input.txt",
+		"/home/bhanuc/go/src/github.com/eventica/eventica/templates/login.html",
+		"/home/bhanuc/go/src/github.com/eventica/eventica/templates/print_team.html",
+		"/home/bhanuc/.config/sublime-text-3/Packages/GoSublime/CHANGELOG.md",
+		"/home/bhanuc/.config/sublime-text-3/Packages/GoSublime/USAGE.md",
+		"/home/bhanuc/.config/sublime-text-3/Packages/User/GoSublime.sublime-settings",
+		"/home/bhanuc/.config/sublime-text-3/Packages/GoSublime/GoSublime.sublime-settings",
+		"/home/bhanuc/.config/sublime-text-3/Packages/GoSublime/Default (Linux).sublime-keymap",
+		"/home/bhanuc/.config/sublime-text-3/Packages/Terminal/Default (Linux).sublime-keymap"
 	],
 	"find":
 	{
-		"height": 25.0
+		"height": 35.0
 	},
 	"find_in_files":
 	{
-		"height": 0.0,
+		"height": 93.0,
 		"where_history":
 		[
+			""
 		]
 	},
 	"find_state":
@@ -154,6 +285,41 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"tek",
+			"Tek",
+			"strings",
+			"Split",
+			"strings",
+			"Spli",
+			"spli",
+			"sp",
+			"spli",
+			"37",
+			"13",
+			"Spli",
+			"Spl",
+			"split",
+			"RemoveId",
+			"ObjectIdHex",
+			"R",
+			"err",
+			"),",
+			"not foun",
+			"println",
+			"p",
+			"setup_tekid",
+			"Tek",
+			"id",
+			"Tek_id",
+			"FindOneByIdHex",
+			"R",
+			"user",
+			")),",
+			"Create",
+			"FindOneByCollege",
+			"CountByEmail",
+			"all",
+			"showteam",
 			"favico.ico",
 			"/assets/img/favico.ico",
 			"favicon"
@@ -164,6 +330,8 @@
 		"regex": false,
 		"replace_history":
 		[
+			"Tech",
+			"Println",
 			"/img/favico.ico"
 		],
 		"reverse": false,
@@ -175,7 +343,7 @@
 	"groups":
 	[
 		{
-			"selected": 2,
+			"selected": 4,
 			"sheets":
 			[
 				{
@@ -191,8 +359,8 @@
 						"selection":
 						[
 							[
-								2018,
-								2018
+								6524,
+								6524
 							]
 						],
 						"settings":
@@ -202,7 +370,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 268.0,
+						"translation.y": 2643.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 4,
@@ -210,190 +378,11 @@
 				},
 				{
 					"buffer": 1,
-					"file": "eventica/templates/admindashboard.html",
+					"file": "eventica/public/js/profile.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2682,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								356,
-								356
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 11,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "eventica/templates/dashboard.html",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 11092,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								3113,
-								3113
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 36574.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "eventica/templates/login.html",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 10742,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1630,
-								1630
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "eventica/main.go",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 6229,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2990,
-								2990
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Go/Go.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 755.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "eventica/templates/print_team.html",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2535,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								339,
-								339
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 5,
-					"type": "text"
-				},
-				{
-					"buffer": 6,
-					"file": "eventica/templates/register.html",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 8797,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								3518,
-								3518
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 863.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 7,
-					"type": "text"
-				},
-				{
-					"buffer": 7,
-					"file": "eventica/templates/login2.html",
-					"semi_transient": true,
-					"settings":
-					{
-						"buffer_size": 6489,
+						"buffer_size": 212364,
 						"regions":
 						{
 						},
@@ -406,7 +395,156 @@
 						],
 						"settings":
 						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1189.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "eventica/templates/dashboard.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 11094,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								5777,
+								5777
+							]
+						],
+						"settings":
+						{
 							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1716.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "eventica/templates/registerforevent.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 15550,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								12360,
+								12360
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 5005.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "/home/bhanuc/Documents/dev.techkriti.org/index.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 13182,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								12427,
+								12427
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 5065.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "/home/bhanuc/Documents/dev.techkriti.org/Sponsors/index.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 74498,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								334,
+								334
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 52.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "eventica/public/js/eventregister.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 5601,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1454,
+								1454
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
 							"tab_size": 2,
 							"translate_tabs_to_spaces": true
 						},
@@ -414,125 +552,209 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 6,
+					"stack_index": 11,
 					"type": "text"
 				},
 				{
-					"buffer": 8,
-					"file": "eventica/templates/registerforevent.html",
+					"buffer": 7,
+					"file": "team/team.go",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 15812,
+						"buffer_size": 2387,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2273,
-								2273
+								1566,
+								1566
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
+							"syntax": "Packages/GoSublime/syntax/GoSublime-Go.tmLanguage",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 268.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 8,
-					"type": "text"
-				},
-				{
-					"buffer": 9,
-					"file": "eventica/templates/showteam.html",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 9831,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2032,
-								2032
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 3679.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 9,
 					"type": "text"
 				},
 				{
-					"buffer": 10,
-					"file": "eventica/templates/Actsuccess.html",
+					"buffer": 8,
+					"file": "user/user.go",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 699,
+						"buffer_size": 1752,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								453,
-								453
+								12,
+								12
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/HTML/HTML.tmLanguage"
+							"syntax": "Packages/GoSublime/syntax/GoSublime-Go.tmLanguage",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 3,
+					"stack_index": 10,
 					"type": "text"
 				},
 				{
-					"buffer": 11,
-					"file": "eventica/templates/login-backup.html",
+					"buffer": 9,
+					"file": "user/models.go",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 15045,
+						"buffer_size": 10536,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								15045,
-								15045
+								2383,
+								2383
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
+							"syntax": "Packages/GoSublime/syntax/GoSublime-Go.tmLanguage",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 5682.0,
+						"translation.y": 341.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 10,
+					"stack_index": 6,
+					"type": "text"
+				},
+				{
+					"buffer": 10,
+					"file": "user/handlers.go",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 13705,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								10601,
+								10601
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/GoSublime/syntax/GoSublime-Go.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 5970.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 7,
+					"type": "text"
+				},
+				{
+					"buffer": 11,
+					"file": "team/models.go",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4168,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								719,
+								719
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/GoSublime/syntax/GoSublime-Go.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 8,
+					"type": "text"
+				},
+				{
+					"buffer": 12,
+					"file": "eventica/input.txt",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 5,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 13,
+					"type": "text"
+				},
+				{
+					"buffer": 13,
+					"file": "team/handlers.go",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 11903,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								324,
+								324
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/GoSublime/syntax/GoSublime-Go.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 12,
 					"type": "text"
 				}
 			]
@@ -569,6 +791,14 @@
 		]
 	},
 	"menu_visible": true,
+	"output.9o:///home/bhanuc/.config/sublime-text-3/Packages/GoSublime":
+	{
+		"height": 112.0
+	},
+	"output.MarGo-output":
+	{
+		"height": 112.0
+	},
 	"output.find_results":
 	{
 		"height": 0.0
@@ -576,7 +806,7 @@
 	"project": "eventica.sublime-project",
 	"replace":
 	{
-		"height": 46.0
+		"height": 64.0
 	},
 	"save_all_on_build": true,
 	"select_file":
@@ -611,7 +841,7 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 260.0,
+	"side_bar_width": 292.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{
