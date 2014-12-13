@@ -169,19 +169,3 @@ $('#SubmitButton').click(function submitbutton () {
                   toastr.error("Your Session seems to expired. Please Login again.")
     }
 });
-
-<script type="text/javascript">
-  var interval = 0;
-
-  function updateActiveElement() {
-    if($(document.activeElement).attr('id') == "fb-iframe") {
-      clearInterval(interval);
-      bodyClicked = true;
-    }
-  }
-
-  $(function() {
-    interval = setInterval("updateActiveElement();", 50);
-  });
-
-</script>
