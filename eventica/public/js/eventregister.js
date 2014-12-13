@@ -37,7 +37,7 @@ $('#submitbutton').click(function() {
         contentType: 'application/json; charset=utf-8',
         data: JSON.stringify({
             'name': $('#teamname').val(),
-            'sport': $('#subject').val(),
+            'event': $('#subject').val(),
             'gender': $('#gender').val(),
             'members': memberscontact
         }),
