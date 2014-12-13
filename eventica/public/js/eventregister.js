@@ -61,41 +61,54 @@ $("#subject").change(function() {
     if (evname == "Hoverush" || evname == "IDEAS" || evname == "Manoeuvre" || evname == "Shuffle") {
         memberno = 5;
         comment = "";
+                $('#submitbutton').show();
     } else if (evname == "FPGA" || evname == "Embedded") {
         memberno = 5;
         comment = "Only for Undergraduate students";
+                    $('#submitbutton').show();
     } else if (evname == "Marketing Villa" || evname == "Do your due" || evname == "Battlefield") {
         memberno = 3;
-        comment = "2 Members are also allowed";
+        comment = "2/3 Members are also allowed. Registration will for this event will open Soon";
+        $('#submitbutton').hide();
     } else if (evname == "IORC" || evname == "29 States") {
         memberno = 1;
         comment = "";
+        $('#submitbutton').show();
     } else if (evname == "Be the Tycoon" ) {
         memberno = 1;
-        comment = "";
+        comment = "Registration will for this event will open Soon";
+        $('#submitbutton').hide();
     } else if (evname == "electromania") {
         memberno = 5;
         comment = "Only for Undergraduate students";
+                    $('#submitbutton').show();
     } else if (evname == "Impulse" || evname == "Hackathon" || evname == "Iarc") {
         memberno = 4;
+                    $('#submitbutton').show();
         comment = "";
     } else if (evname == "Electrade") {
         memberno = 4;
+                        $('#submitbutton').show();
         comment = "Only for Undergraduate students";
     } else if (evname == "Skysparks" || evname == "Soccon" || evname == "Cruise Control" || evname == "Multirover" || evname == "concatenate") {
         memberno = 6;
+                        $('#submitbutton').show();
         comment = "";
     } else if (evname == "Crime Run") {
         memberno = 4;
+                        $('#submitbutton').show();
         comment = "No personal devices or eqipments are allowed";
     } else if (evname == "TGP") {
         memberno = 8;
+                        $('#submitbutton').show();
         comment = "";
     } else if (evname == "IOPC" || evname == "IHPC" || evname == "Chaos" || evname == "Battlecity") {
         memberno = 3;
+                        $('#submitbutton').show();
         comment = "";
     } else if (evname == "Wild soccer") {
         memberno = 10;
+                        $('#submitbutton').show();
         comment = "";
     }
 
