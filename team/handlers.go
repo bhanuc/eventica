@@ -92,7 +92,7 @@ func CreateHandler(w http.ResponseWriter, r *http.Request) {
 			if err != nil {
 				fmt.Println("inside add team")
 				team := new(Team)
-				team.Add(tu.Name, tu.Members, tu.Event, tu.Gender, id, u.College)
+				team.Add(tu.Name, tu.Members, tu.Event, tu.Gender, id, u.UserProfile.College)
 				fmt.Println("made team", members, team.Id)
 				for i := 0; i < len(members); i++ {
 					fmt.Println("in loop", i, members[i], string(team.Id))
@@ -151,6 +151,76 @@ func ApprovalHandler(w http.ResponseWriter, r *http.Request) {
 		}
 
 		data["success"] = status
+
+		//if !status {
+		//	flashes["invalid"] = FlashMessage{"danger", "Your Team seems to already passed by moderators"}
+		//	data["flashes"] = flashes
+		//	}
+	} else {
+		http.Redirect(w, r, "/login", 302)
+	}
+}
+
+func SingleTeamHandler(w http.ResponseWriter, r *http.Request) {
+	session, _ := sessionStore.Get(r, "p")
+	data := make(map[string]interface{})
+	_, ok := session.Values["user"].(string)
+	if ok {
+		status := false
+		tc := struct {
+			Id string `json:"id"`
+		}{}
+		utility.ReadJson(r, &tc)
+
+		team, err := T.FindOneByIdHex(tc.Id)
+
+		// if team not found
+		if err != nil {
+			status = false
+		} else {
+			data["team"] = team
+			status = true
+			utility.WriteJson(w, data)
+		}
+
+		data["success"] = status
+
+		//if !status {
+		//	flashes["invalid"] = FlashMessage{"danger", "Your Team seems to already passed by moderators"}
+		//	data["flashes"] = flashes
+		//	}
+	} else {
+		http.Redirect(w, r, "/login", 302)
+	}
+}
+
+func TeamEditHandler(w http.ResponseWriter, r *http.Request) {
+	session, _ := sessionStore.Get(r, "p")
+	data := make(map[string]interface{})
+	_, ok := session.Values["user"].(string)
+	if ok {
+		status := false
+		tc := struct {
+			Id    string `json:"id"`
+			Name  string `json:"name"`
+			Event string `json:"event"`
+		}{}
+		utility.ReadJson(r, &tc)
+
+		team, err := T.FindOneByIdHex(tc.Id)
+
+		// if team not found
+		if err != nil {
+			status = false
+		} else {
+			team.Name = tc.Name
+			team.Event = tc.Name
+			team.Update()
+			status = true
+		}
+
+		data["success"] = status
+		utility.WriteJson(w, data)
 
 		//if !status {
 		//	flashes["invalid"] = FlashMessage{"danger", "Your Team seems to already passed by moderators"}
@@ -353,6 +423,34 @@ func AllAdminHandler(w http.ResponseWriter, r *http.Request) {
 			data["success"] = true
 			flashes["AllTeams"] = FlashMessage{"success", "The Teams have been fetched."}
 			data["flashes"] = flashes
+		}
+		utility.WriteJson(w, data)
+	} else {
+		http.Redirect(w, r, "/login", 302)
+	}
+}
+
+func UpdateAllTeam(w http.ResponseWriter, r *http.Request) {
+	session, _ := sessionStore.Get(r, "p")
+	data := make(map[string]interface{})
+	flashes := make(map[string]FlashMessage)
+	_, ok := session.Values["user"].(string)
+	if ok {
+		u, err := T.All()
+		if err != nil {
+			flashes["No Team Present"] = FlashMessage{"danger", "No teams are available for mod"}
+			data["Error"] = flashes
+		} else {
+			for i, c := range u {
+				if c.College == "" {
+					fmt.Println(i, c.CreatedBy)
+					u, _ := R.FindOneByIdHex(c.CreatedBy)
+					c.College = u.UserProfile.College
+					c.Update()
+				}
+				//
+
+			}
 		}
 		utility.WriteJson(w, data)
 	} else {
