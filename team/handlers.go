@@ -214,7 +214,7 @@ func TeamEditHandler(w http.ResponseWriter, r *http.Request) {
 			status = false
 		} else {
 			team.Name = tc.Name
-			team.Event = tc.Name
+			team.Event = tc.Event
 			team.Update()
 			status = true
 		}
