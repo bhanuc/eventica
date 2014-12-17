@@ -194,6 +194,32 @@ func SingleTeamHandler(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
+func AdminSingleEvent(w http.ResponseWriter, r *http.Request) {
+	session, _ := sessionStore.Get(r, "p")
+	data := make(map[string]interface{})
+	flashes := make(map[string]FlashMessage)
+	_, ok := session.Values["user"].(string)
+	tc := struct {
+		Event string `json:"event"`
+	}{}
+	utility.ReadJson(r, &tc)
+	if ok && session.Values["usertype"] == "admin" {
+		u, err := T.FindAllByEvent(tc.Event)
+		if err != nil {
+			flashes["No Team Present"] = FlashMessage{"danger", "No teams are available for mod"}
+			data["Error"] = flashes
+		} else {
+			data["teams"] = u
+			data["success"] = true
+			flashes["AllTeams"] = FlashMessage{"success", "The Teams have been fetched."}
+			data["flashes"] = flashes
+		}
+		utility.WriteJson(w, data)
+	} else {
+		http.Redirect(w, r, "/login", 302)
+	}
+}
+
 func TeamEditHandler(w http.ResponseWriter, r *http.Request) {
 	session, _ := sessionStore.Get(r, "p")
 	data := make(map[string]interface{})

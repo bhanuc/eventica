@@ -68,7 +68,7 @@ $("#subject").change(function() {
                     $('#submitbutton').show();
     } else if (evname == "Marketing Villa" || evname == "Do your due" || evname == "Battlefield") {
         memberno = 3;
-        comment = "2/3 Members are also allowed. Registration for this event will open Soon";
+        comment = "Each team will have 2-3 members. Registration for this event will open Soon";
         $('#submitbutton').hide();
     } else if (evname == "IORC" || evname == "29 States") {
         memberno = 1;
