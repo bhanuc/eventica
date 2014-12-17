@@ -22,7 +22,7 @@ function sortevent(){
 $.ajax({
   url: '/team/adminevent',
   type: 'POST',
-  data: JSON.stringify({'event': event: document.getElementById('mevent').value}),
+  data: JSON.stringify({'event': document.getElementById('mevent').value}),
   success: function(data) {
         console.log(data);
         if(data.success && data.teams){
