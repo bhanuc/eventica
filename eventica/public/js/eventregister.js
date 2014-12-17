@@ -68,7 +68,7 @@ $("#subject").change(function() {
                     $('#submitbutton').show();
     } else if (evname == "Marketing Villa" || evname == "Do your due" || evname == "Battlefield") {
         memberno = 3;
-        comment = "2/3 Members are also allowed. Registration will for this event will open Soon";
+        comment = "2/3 Members are also allowed. Registration for this event will open Soon";
         $('#submitbutton').hide();
     } else if (evname == "IORC" || evname == "29 States") {
         memberno = 1;
@@ -76,7 +76,7 @@ $("#subject").change(function() {
         $('#submitbutton').show();
     } else if (evname == "Be the Tycoon" ) {
         memberno = 1;
-        comment = "Registration will for this event will open Soon";
+        comment = "Registration for this event will open Soon";
         $('#submitbutton').hide();
     } else if (evname == "electromania") {
         memberno = 5;
