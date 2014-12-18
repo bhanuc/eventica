@@ -35,16 +35,16 @@ func Route_setter(ms *mgo.Session, ss *sessions.CookieStore, host, mailfrom, dbn
 	DB = mgoSession.DB(Config.DBName)
 	T.Collection = DB.C(Config.DBCollection)
 
-	Router.HandleFunc("/team/create", CreateHandler).Methods("POST")                  //Create a new Team
-	Router.HandleFunc("/team/view", ViewHandler).Methods("GET")                       //View a new Team
-	Router.HandleFunc("/team/register", ApprovalHandler).Methods("GET")               // Make the team ready for approval
-	Router.HandleFunc("/team/payment", paymentHandler).Methods("GET")                 // Once approved, this handles the payment logic
-	Router.HandleFunc("/team/all", AllTeamHandler).Methods("GET")                     //show all the teams
-	Router.HandleFunc("/team/single", SingleTeamHandler).Methods("POST")              //show all the teams
-	Router.HandleFunc("/team/adminevent", AdminSingleEvent).Methods("POST")           //show all the teams
-	Router.HandleFunc("/team/update", TeamEditMembersHandler).Methods("POST")         //show all the teams
-	Router.HandleFunc("/team/all2", AllTeamHandler2).Methods("GET")                   //show all the teams
-	Router.HandleFunc("/team/updatethis", UpdateAllTeamMembers).Methods("GET")        //show all the teams
+	Router.HandleFunc("/team/create", CreateHandler).Methods("POST")          //Create a new Team
+	Router.HandleFunc("/team/view", ViewHandler).Methods("GET")               //View a new Team
+	Router.HandleFunc("/team/register", ApprovalHandler).Methods("GET")       // Make the team ready for approval
+	Router.HandleFunc("/team/payment", paymentHandler).Methods("GET")         // Once approved, this handles the payment logic
+	Router.HandleFunc("/team/all", AllTeamHandler).Methods("GET")             //show all the teams
+	Router.HandleFunc("/team/single", SingleTeamHandler).Methods("POST")      //show all the teams
+	Router.HandleFunc("/team/adminevent", AdminSingleEvent).Methods("POST")   //show all the teams
+	Router.HandleFunc("/team/update", TeamEditMembersHandler).Methods("POST") //show all the teams
+	Router.HandleFunc("/team/all2", AllTeamHandler2).Methods("GET")           //show all the teams
+	//Router.HandleFunc("/team/updatethis", UpdateAllTeamMembers).Methods("GET")        //show all the teams
 	Router.HandleFunc("/team/status/{name}", StatusHandler).Methods("GET")            //show team status
 	Router.HandleFunc("/team/adminall", AllAdminHandler).Methods("GET")               //show all the teams
 	Router.HandleFunc("/team/adminall/{college}", CollegeAdminHandler).Methods("GET") //show all the teams
