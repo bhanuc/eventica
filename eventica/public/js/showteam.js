@@ -42,7 +42,7 @@ $.ajax({
   url: '/team/update',
   type: 'POST',
   contentType: 'application/json; charset=utf-8',
-  data: JSON.stringify({'id': document.getElementById('mid').value, "name" : document.getElementById('mname').value, event: document.getElementById('mevent').value }),
+  data: JSON.stringify({'id': document.getElementById('mid').value, "name" : document.getElementById('mname').value, event: document.getElementById('mevent').value, members : document.getElementById('mmembers').value }),
   success: function(data) {
           if (data.success){
             window.location= "/showteam";

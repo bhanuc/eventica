@@ -18,6 +18,50 @@ type FlashMessage struct {
 
 var R = user.R
 
+func UpdateAllTeamMembers(w http.ResponseWriter, r *http.Request) {
+	//session, _ := sessionStore.Get(r, "p")
+	data := make(map[string]interface{})
+	flashes := make(map[string]FlashMessage)
+	ok := true
+	if ok {
+		u, err := R.All()
+		if err != nil {
+			flashes["No Team Present"] = FlashMessage{"danger", "No teams are available for mod"}
+			data["Error"] = flashes
+		} else {
+			for _, c := range u {
+
+				//	fmt.Println(i, c.Teams)
+				var teamz = strings.Split(c.Teams, ",")
+				temp_team := make([]string, len(teamz))
+				//	fmt.Println("teams are : \n", teamz, len(teamz))
+				index := 0
+				if len(teamz) > 0 {
+					for i := 0; i < len(teamz); i++ {
+						if teamz[i] != "" {
+
+							temp_team[index] = teamz[i][13:37]
+							index++
+							fmt.Println(i, teamz[i], teamz[i][13:37])
+
+						}
+					}
+				}
+				temp_string := temp_team[0]
+				for i := 1; i < len(temp_team); i++ {
+					temp_string = temp_string + "," + temp_team[i]
+				}
+				fmt.Println(temp_string)
+				c.Teams = temp_string
+				c.Update()
+			}
+		}
+		utility.WriteJson(w, data)
+	} else {
+		http.Redirect(w, r, "/login", 302)
+	}
+}
+
 func Addteam(pid string, tek_id string) {
 	u, err := R.FindOneByTechID(tek_id)
 	if err != nil {
@@ -25,15 +69,68 @@ func Addteam(pid string, tek_id string) {
 	} else {
 		fmt.Println(len(u.Teams), u, pid, tek_id)
 		fmt.Println("start push")
+		actualid := pid[13:37]
 		if u.Teams == "" {
-			u.Teams = pid
+			u.Teams = actualid
 		} else {
-			u.Teams = u.Teams + "," + pid
+			u.Teams = u.Teams + "," + actualid
 		}
 		fmt.Println("pushed", u.Teams)
 		u.Update()
 	}
 }
+
+func Removeteam(pid string, tek_id string) {
+	u, err := R.FindOneByTechID(tek_id)
+	if err != nil {
+		fmt.Println(err)
+	} else {
+		fmt.Println("started removal")
+		actualpid := pid[13:37]
+		if u.Teams == "" {
+			return
+		} else {
+			//make a slice of teams
+			teams := strings.Split(u.Teams, ",")
+			//find the index of the element
+			index := -1
+			for i := 0; i < len(teams); i++ {
+				fmt.Println("in Loop : \n", actualpid, teams[i], "\n")
+				if teams[i] == actualpid {
+					index = i
+					fmt.Println(index)
+				}
+			}
+			fmt.Println(index)
+			if index > 0 {
+				if index < len(teams)-1 {
+					//move the found element to the last location and remove the last element
+					teams[index] = teams[len(teams)-1]
+					teams = teams[:len(teams)-1]
+				} else if index == 0 {
+					//do nothing
+				} else {
+					teams = teams[:index]
+				}
+			}
+			fmt.Println(teams)
+			//Now create a new string
+			temp := ""
+			if index == 0 {
+				temp = ""
+			} else {
+				temp = teams[0]
+				for j := 1; j < len(teams); j++ {
+					temp = temp + "," + teams[j]
+				}
+			}
+			u.Teams = temp
+			fmt.Println("temporary is", temp)
+			u.Update()
+		}
+	}
+}
+
 func CreateHandler(w http.ResponseWriter, r *http.Request) {
 	session, _ := sessionStore.Get(r, "p")
 	data := make(map[string]interface{})
@@ -257,6 +354,85 @@ func TeamEditHandler(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
+func TeamEditMembersHandler(w http.ResponseWriter, r *http.Request) {
+	session, _ := sessionStore.Get(r, "p")
+	data := make(map[string]interface{})
+	e := make(map[string]FlashMessage)
+	_, ok := session.Values["user"].(string)
+	if ok {
+		status := false
+		tc := struct {
+			Id      string `json:"id"`
+			Name    string `json:"name"`
+			Event   string `json:"event"`
+			Members string `json:"members"`
+		}{}
+		utility.ReadJson(r, &tc)
+
+		team, err := T.FindOneByIdHex(tc.Id)
+
+		// if team not found
+		if err != nil {
+			status = false
+		} else {
+			members := strings.Split(tc.Members, ",")
+			mlength := len(members)
+			//	fmt.Println(members, mlength)
+			index := 0
+			index2 := 0
+			for i := 0; i < mlength; i++ {
+				if members[i] != "" || members != nil {
+					index++
+					if R.FindCountByTechid(members[i]) != 0 {
+						index2++
+					}
+				}
+			}
+			/**for _, member := range members {
+								//cnum, _ := strconv.Atoi(member)
+			 			if R.FindCountByTechid(member) == 0 {
+			 				index++
+			 			}
+			    	}**/
+			fmt.Println(index2, index)
+			if index != index2 {
+				e["Error"] = FlashMessage{"danger", "Only Techid Needs to be entered. One of your members seems to be not registered"}
+				data["flashes"] = e
+			} else {
+				team.Name = tc.Name
+				team.Event = tc.Event
+				//fmt.Println("\n old team", team.Members, "\n new team", tc.Members)
+				teams := strings.Split(team.Members, ",")
+
+				for i := 0; i < len(teams); i++ {
+					if teams[i] != "" || teams != nil {
+						Removeteam(team.Id.String(), teams[i])
+					}
+				}
+				for i := 0; i < len(members); i++ {
+					fmt.Println("in loop", i, members[i], string(team.Id))
+					if members[i] != "" || members != nil {
+						Addteam(team.Id.String(), members[i])
+					}
+				}
+				team.Members = teams
+				team.Update()
+				status = true
+			}
+
+			data["success"] = status
+			utility.WriteJson(w, data)
+
+			//if !status {
+			//	flashes["invalid"] = FlashMessage{"danger", "Your Team seems to already passed by moderators"}
+			//	data["flashes"] = flashes
+			//	}
+		}
+	} else {
+		http.Redirect(w, r, "/login", 302)
+	}
+}
+
 func paymentHandler(w http.ResponseWriter, r *http.Request) {
 	data := make(map[string]interface{})
 	flashes := make(map[string]FlashMessage)
@@ -311,10 +487,11 @@ func AllTeamHandler2(w http.ResponseWriter, r *http.Request) {
 				temp_team := make([]Team, len(teamz))
 				fmt.Println(teamz, len(teamz))
 				for i := 0; i < len(teamz); i++ {
-					fmt.Println(i, teamz[i], teamz[i][13:37])
+					//fmt.Println(i, teamz[i], teamz[i][13:37])
 					if teamz[i] != "" {
 						fmt.Println(teamz[i])
-						t, err := T.FindOneByIdHex(teamz[i][13:37])
+						//	t, err := T.FindOneByIdHex(teamz[i][13:37])
+						t, err := T.FindOneByIdHex(teamz[i])
 						if err == nil {
 							temp_team[i] = *t
 						}
