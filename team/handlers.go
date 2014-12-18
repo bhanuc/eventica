@@ -415,7 +415,7 @@ func TeamEditMembersHandler(w http.ResponseWriter, r *http.Request) {
 						Addteam(team.Id.String(), members[i])
 					}
 				}
-				team.Members = teams
+				team.Members = tc.Members
 				team.Update()
 				status = true
 			}
