@@ -176,20 +176,6 @@ $("#subject").change(function() {
         comment = "";
     } 
 
-
-
-
-     <tr><td>crypto </td><td>1 </td><td></td></tr>
-<tr><td>What's Up </td><td> 4 </td><td></td></tr>
-<tr><td>Astro Quiz </td><td> 3 </td><td></td></tr>
-<tr><td>Astro Treasure </td><td> 7 </td><td></td></tr>
-<tr><td>Scimatex </td><td> 1 </td><td></td></tr>
-<tr><td>Mix Bowl Quiz </td><td> 5 </td><td></td></tr>
-<tr><td>Innovation in Manufactruning Processes </td><td> 3 </td><td></td></tr>
-<tr><td>Scientoon </td><td> 4 </td><td></td></tr>
-<tr><td>Objectified </td><td> 5 </td><td></td></tr>
-            
-
     $("#comment").html(comment);
 
     for (var i = 0; i < memberno; i++) {
