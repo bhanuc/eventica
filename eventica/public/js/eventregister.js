@@ -2,27 +2,31 @@ $('#submitbutton').click(function() {
     var evname = $("#subject").val();
     var memberno = 0;
 
-    if (evname == "Hoverush" ||  evname == "IDEAS" ||  evname == "Manoeuvre" || evname == "Shuffle") {
+    if (evname == "Hoverush" ||  evname == "IDEAS" ||  evname == "Manoeuvre" || evname == "Shuffle" || evname == "Mix Bowl Quiz") {
         memberno = 5;
-    } else if (evname == "FPGA" || evname == "Embedded" || evname == "electromania") {
+    } else if (evname == "FPGA" || evname == "Embedded" || evname == "electromania" || evname == "Bridge Design Challenge"  || evname == "Objectified") {
         memberno = 5;
-    } else if (evname == "IORC" || evname == "Be the Tycoon" || evname == "29 States" ) {
+    } else if (evname == "IORC" || evname == "Be the Tycoon" || evname == "29 States" || evname == "crypto" || evname == "Scimatex" ) {
         memberno = 1;
     } else if (evname == "Impulse" || evname == "Hackathon" || evname == "Iarc") {
         memberno = 4;
-    } else if (evname == "Electrade") {
+    } else if (evname == "Electrade" || evname == "What's Up") {
         memberno = 4;
     } else if (evname == "Skysparks" || evname == "Soccon" || evname == "Cruise Control" || evname == "Multirover" || evname == "concatenate") {
         memberno = 6;
-    } else if (evname == "Crime Run" || evname == "AISRC") {
+    } else if (evname == "Crime Run" || evname == "AISRC" || evname == "Scientoon") {
         memberno = 4;
     } else if (evname == "TGP") {
         memberno = 8;
-    } else if (evname == "IOPC" || evname == "Battlefield" || evname == "Do your due" ||  evname == "IHPC" || evname == "Marketing Villa" || evname == "Chaos" || evname == "Battlecity" || evname == "Finquest" || evname == "Mark-Ops") {
+    } else if (evname == "IOPC" || evname == "Astro Quiz" || evname == "Innovation in Manufactruning Processes" || evname == "Battlefield" || evname == "Do your due" ||  evname == "IHPC" || evname == "Marketing Villa" || evname == "Chaos" || evname == "Battlecity" || evname == "Finquest" || evname == "Mark-Ops") {
         memberno = 3;
     } else if (evname == "Wild soccer") {
         memberno = 10;
+    } else if (evname == "Astro Treasure") {
+        memberno = 7;
     } 
+
+
     var memberscontact = "";
     for (var i = 0; i < memberno; i++) {
         if (i == 0) {
@@ -130,7 +134,61 @@ $("#subject").change(function() {
         memberno = 3;
         $('#submitbutton').hide();
         comment = "Each team will have 2-3 members.Registration will start from 1st February and closes on 24th February.";
-    }
+    } else if (evname == "crypto") {
+        memberno = 1;
+        $('#submitbutton').show();
+        comment = "";
+    } else if (evname == "What's Up") {
+        memberno = 4;
+        $('#submitbutton').show();
+        comment = "";
+    } else if (evname == "Astro Quiz") {
+        memberno = 3;
+        $('#submitbutton').show();
+        comment = "";
+    } else if (evname == "Astro Treasure") {
+        memberno = 7;
+        $('#submitbutton').show();
+        comment = "";
+    } else if (evname == "Scimatex") {
+        memberno = 1;
+        $('#submitbutton').show();
+        comment = "";
+    } else if (evname == "Mix Bowl Quiz") {
+        memberno = 5;
+        $('#submitbutton').show();
+        comment = "";
+    } else if (evname == "Innovation in Manufactruning Processes") {
+        memberno = 3;
+        $('#submitbutton').show();
+        comment = "";
+    }  else if (evname == "Scientoon") {
+        memberno = 4;
+        $('#submitbutton').show();
+        comment = "";
+    }   else if (evname == "Objectified") {
+        memberno = 5;
+        $('#submitbutton').show();
+        comment = "";
+    }   else if (evname == "Bridge Design Challenge") {
+        memberno = 5;
+        $('#submitbutton').show();
+        comment = "";
+    } 
+
+
+
+
+     <tr><td>crypto </td><td>1 </td><td></td></tr>
+<tr><td>What's Up </td><td> 4 </td><td></td></tr>
+<tr><td>Astro Quiz </td><td> 3 </td><td></td></tr>
+<tr><td>Astro Treasure </td><td> 7 </td><td></td></tr>
+<tr><td>Scimatex </td><td> 1 </td><td></td></tr>
+<tr><td>Mix Bowl Quiz </td><td> 5 </td><td></td></tr>
+<tr><td>Innovation in Manufactruning Processes </td><td> 3 </td><td></td></tr>
+<tr><td>Scientoon </td><td> 4 </td><td></td></tr>
+<tr><td>Objectified </td><td> 5 </td><td></td></tr>
+            
 
     $("#comment").html(comment);
 
