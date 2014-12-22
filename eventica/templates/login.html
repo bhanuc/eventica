@@ -308,6 +308,8 @@
     fjs.parentNode.insertBefore(js, fjs);
   }(document, 'script', 'facebook-jssdk'));
         
+                localStorage.setItem('fname', null);
+                localStorage.setItem('firstname', null);
   window.fbAsyncInit = function() {
   FB.init({
     appId      : '664781020306171',
