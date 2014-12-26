@@ -321,7 +321,7 @@ func ManagerSingleEvent(w http.ResponseWriter, r *http.Request) {
 	data := make(map[string]interface{})
 	flashes := make(map[string]FlashMessage)
 	id, ok := session.Values["user"].(string)
-	if ok && session.Values["usertype"] == "manager" {
+	if ok  {
 		user, err1 := R.FindOneByIdHex(id)
 		if err1 != nil {
 			http.Redirect(w, r, "/login", 302)
