@@ -42,6 +42,7 @@ func Route_setter(ms *mgo.Session, ss *sessions.CookieStore, host, mailfrom, dbn
 	Router.HandleFunc("/team/all", AllTeamHandler).Methods("GET")             //show all the teams
 	Router.HandleFunc("/team/single", SingleTeamHandler).Methods("POST")      //show all the teams
 	Router.HandleFunc("/team/adminevent", AdminSingleEvent).Methods("POST")   //show all the teams
+	Router.HandleFunc("/team/event", ManagerSingleEvent).Methods("POST")   //show all the teams
 	Router.HandleFunc("/team/update", TeamEditMembersHandler).Methods("POST") //show all the teams
 	Router.HandleFunc("/team/all2", AllTeamHandler2).Methods("GET")           //show all the teams
 	//Router.HandleFunc("/team/updatethis", UpdateAllTeamMembers).Methods("GET")        //show all the teams

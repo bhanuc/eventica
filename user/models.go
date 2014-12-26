@@ -37,6 +37,7 @@ type (
 		UserProfile    *Profile      `bson:"userprofile,omitempty" json:"userprofile"`
 		College        string        `bson:"college" json:"college"`
 		UserType       string
+		EventManager   string
 		Teams          string
 		Tech_id        string `bson:"Tech_id" json:"Tech_id"`
 		ProfileStatus  bool

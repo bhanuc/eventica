@@ -316,6 +316,33 @@ func AdminSingleEvent(w http.ResponseWriter, r *http.Request) {
 		http.Redirect(w, r, "/login", 302)
 	}
 }
+func ManagerSingleEvent(w http.ResponseWriter, r *http.Request) {
+	session, _ := sessionStore.Get(r, "p")
+	data := make(map[string]interface{})
+	flashes := make(map[string]FlashMessage)
+	id, ok := session.Values["user"].(string)
+	if ok && session.Values["usertype"] == "manager" {
+		user, err1 := R.FindOneByIdHex(id)
+		if err1 != nil {
+			http.Redirect(w, r, "/login", 302)
+		} else {
+		u, err := T.FindAllByEvent(user.EventManager)
+		if err != nil {
+			flashes["No Team Present"] = FlashMessage{"danger", "No teams are available for mod"}
+			data["Error"] = flashes
+		} else {
+			data["teams"] = u
+			data["success"] = true
+			flashes["AllTeams"] = FlashMessage{"success", "The Teams have been fetched."}
+			data["flashes"] = flashes
+		}
+		utility.WriteJson(w, data)
+	}
+	} else {
+		http.Redirect(w, r, "/login", 302)
+	}
+}
+
 
 func TeamEditHandler(w http.ResponseWriter, r *http.Request) {
 	session, _ := sessionStore.Get(r, "p")

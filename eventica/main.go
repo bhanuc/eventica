@@ -54,6 +54,7 @@ func main() {
 	router.HandleFunc("/register_event", register_event).Methods("GET")
 	router.HandleFunc("/showteam", show_team).Methods("GET")
 	router.HandleFunc("/print", print_team).Methods("GET")
+	router.HandleFunc("/manager", manager_admin).Methods("GET")
 	router.HandleFunc("/signup", signup).Methods("GET")
 	router.HandleFunc("/app", app).Methods("GET")
 	router.HandleFunc("/fb", fblogin).Methods("GET")
@@ -147,6 +148,23 @@ func profile_view(w http.ResponseWriter, r *http.Request) {
 		http.Redirect(w, r, "/login", 302)
 	}
 }
+func manager_admin(w http.ResponseWriter, r *http.Request) {
+	session, _ := sessionStore.Get(r, "p")
+	_, ok := session.Values["user"].(string)
+	if ok {
+		t, err := template.New("manageradmin.html").ParseFiles("templates/manageradmin.html")
+		if err != nil {
+			log.Println(err)
+		}
+		err = t.Execute(w, nil)
+		if err != nil {
+			log.Println(err)
+		}
+	} else {
+		http.Redirect(w, r, "/login", 302)
+	}
+}
+
 
 func register_event(w http.ResponseWriter, r *http.Request) {
 	session, _ := sessionStore.Get(r, "p")
