@@ -1,7 +1,7 @@
 
 $.ajax({
   url: '/team/event',
-  type: 'GET',
+  type: 'POST',
   success: function(data) {
   			console.log(data);
   			if(data.success && data.teams){
