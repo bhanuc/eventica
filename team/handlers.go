@@ -326,7 +326,7 @@ func ManagerSingleEvent(w http.ResponseWriter, r *http.Request) {
 		if err1 != nil {
 			http.Redirect(w, r, "/login", 302)
 		} else {
-		u, err := T.FindAllByEvent(user.EventManager)
+		u, err := T.FindAllByEvent(user.EventName)
 		if err != nil {
 			flashes["No Team Present"] = FlashMessage{"danger", "No teams are available for mod"}
 			data["Error"] = flashes

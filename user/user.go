@@ -36,6 +36,8 @@ func New(ms *mgo.Session, ss *sessions.CookieStore, host, mailfrom, dbname, dbco
 	R.Collection = DB.C(Config.DBCollection)
 
 	Router.HandleFunc("/user/register", RegisterHandler).Methods("POST")
+	Router.HandleFunc("/user/makemanager", MakeManagerHandler).Methods("POST")
+	Router.HandleFunc("/user/register", RegisterHandler).Methods("POST")
 	Router.HandleFunc("/user/authenticate", AuthenticateHandler).Methods("POST")
 	Router.HandleFunc("/user/logout", LogoutHandler).Methods("GET")
 	Router.HandleFunc("/user/profile", ProfileHandler).Methods("GET")
