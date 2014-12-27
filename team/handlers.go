@@ -321,28 +321,27 @@ func ManagerSingleEvent(w http.ResponseWriter, r *http.Request) {
 	data := make(map[string]interface{})
 	flashes := make(map[string]FlashMessage)
 	id, ok := session.Values["user"].(string)
-	if ok  {
+	if ok {
 		user, err1 := R.FindOneByIdHex(id)
 		if err1 != nil {
 			http.Redirect(w, r, "/login", 302)
 		} else {
-		u, err := T.FindAllByEvent(user.EventName)
-		if err != nil {
-			flashes["No Team Present"] = FlashMessage{"danger", "No teams are available for mod"}
-			data["Error"] = flashes
-		} else {
-			data["teams"] = u
-			data["success"] = true
-			flashes["AllTeams"] = FlashMessage{"success", "The Teams have been fetched."}
-			data["flashes"] = flashes
+			u, err := T.FindAllByEvent(user.EventName)
+			if err != nil {
+				flashes["No Team Present"] = FlashMessage{"danger", "No teams are available for mod"}
+				data["Error"] = flashes
+			} else {
+				data["teams"] = u
+				data["success"] = true
+				flashes["AllTeams"] = FlashMessage{"success", "The Teams have been fetched."}
+				data["flashes"] = flashes
+			}
+			utility.WriteJson(w, data)
 		}
-		utility.WriteJson(w, data)
-	}
 	} else {
 		http.Redirect(w, r, "/login", 302)
 	}
 }
-
 
 func TeamEditHandler(w http.ResponseWriter, r *http.Request) {
 	session, _ := sessionStore.Get(r, "p")
@@ -632,6 +631,36 @@ func CommentAdminHandler(w http.ResponseWriter, r *http.Request) {
 			u.Comments = tc.Comments
 			u.Update()
 			http.Redirect(w, r, "/app", 302)
+		}
+	} else {
+		http.Redirect(w, r, "/login", 302)
+	}
+}
+
+func CommentManagerHandler(w http.ResponseWriter, r *http.Request) {
+	session, _ := sessionStore.Get(r, "p")
+	data := make(map[string]interface{})
+	flashes := make(map[string]FlashMessage)
+	id, ok := session.Values["user"].(string)
+	tc := struct {
+		Name     string `json:"name"`
+		Comments string `json:"comments"`
+	}{r.FormValue("name"), r.FormValue("comments")}
+	if ok {
+		user, err1 := R.FindOneByIdHex(id)
+		if err1 != nil && user.EventName != "" {
+			http.Redirect(w, r, "/login", 302)
+		} else {
+			u, err := T.FindOneByName(tc.Name)
+			if err != nil {
+				flashes["No Team Present"] = FlashMessage{"danger", "Wrong team name"}
+				data["flashes"] = flashes
+				utility.WriteJson(w, data)
+			} else {
+				u.Comments = tc.Comments
+				u.Update()
+				http.Redirect(w, r, "/app", 302)
+			}
 		}
 	} else {
 		http.Redirect(w, r, "/login", 302)

@@ -13,7 +13,7 @@ git clone https://github.com/bhanuc/eventica.git
 & then move the folder in the repo to $GOPATH/src/github.com/eventica
 
 go get ...
-
+http://portal.techkriti.org/login
 cd $GOPATH/src/github.com/eventica/eventica
 
 go run main.go
