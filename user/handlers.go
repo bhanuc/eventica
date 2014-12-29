@@ -70,6 +70,68 @@ func RegisterHandler(w http.ResponseWriter, r *http.Request) {
 	}
 	utility.WriteJson(w, data)
 }
+
+func MakeManagerHandler(w http.ResponseWriter, r *http.Request) {
+	turn := true
+	session, _ := sessionStore.Get(r, "p")
+	data := make(map[string]interface{})
+	e := make(map[string]FlashMessage)
+	_, ok := session.Values["user"].(string)
+	if ok && session.Values["usertype"] == "admin" {
+		tu := struct {
+			Name            string `json:"name"`
+			Password        string `json:"password"`
+			Email           string `json:"email"`
+			Password2       string `json:"Password2"`
+			Number          string `json:"number"`
+			AlternateNumber string `json:"alternatenumber"`
+			Event           string `json:"event"`
+		}{}
+		utility.ReadJson(r, &tu)
+
+		//tu.Name = strings.Trim(tu.Name, " ")
+
+		tu.Email = strings.Trim(tu.Email, " ")
+		//tu.Email2 = strings.Trim(tu.Email2, " ")
+
+		if tu.Password == "" {
+			e["Error"] = FlashMessage{"danger", "Please fill in password"}
+		}
+		if tu.Email == "" {
+			e["Error"] = FlashMessage{"danger", "Please enter a valid email-address"}
+		}
+		if tu.Password != tu.Password2 {
+			e["Error"] = FlashMessage{"danger", "The two Password don't match"}
+		}
+		//userrepo.Collection.Find(bson.M{"email": tu.Email}).One(&foundmail)
+		c, _ := R.Collection.Find(bson.M{"email": tu.Email}).Count()
+		//	u := R.FindOneByCollege(tu.College)
+
+		if c > 0 && turn {
+			e["Error"] = FlashMessage{"danger", "This Email ID is already registered. Please try using a different Email ID"}
+		}
+		//if u > 0 {
+		//	e["Error"] = FlashMessage{"danger", "Your College is already registered. Please Contact ""}
+		//}
+		if len(e) == 0 {
+			user := new(User)
+			turn = false
+			go user.AddManager(tu.Name, tu.Password, tu.Email, tu.Number, tu.AlternateNumber, tu.Event)
+			data["success"] = true
+			e["success"] = FlashMessage{"success", "Your registration is pending. Please check your inbox to activate your account"}
+			data["flashes"] = e
+			data["user"] = tu
+		} else {
+			data["flashes"] = e
+			data["user"] = tu
+		}
+		utility.WriteJson(w, data)
+	} else {
+		http.Redirect(w, r, "/login", 302)
+	}
+
+}
+
 func FbHandler(w http.ResponseWriter, r *http.Request) {
 	data := make(map[string]interface{})
 	e := make(map[string]FlashMessage)
@@ -459,6 +521,33 @@ func AdminViewProfile(w http.ResponseWriter, r *http.Request) {
 		} else {
 			data["success"] = u.UserProfile
 			utility.WriteJson(w, data)
+		}
+	} else {
+		http.Redirect(w, r, "/login", 302)
+	}
+}
+func ManagerViewProfile(w http.ResponseWriter, r *http.Request) {
+	session, _ := sessionStore.Get(r, "p")
+	data := make(map[string]interface{})
+	flashes := make(map[string]FlashMessage)
+	id, ok := session.Values["user"].(string)
+	tc := struct {
+		Id string `json:"id"`
+	}{r.FormValue("id")}
+	if ok {
+		user, err1 := R.FindOneByIdHex(id)
+		if err1 != nil && user.EventName != "" {
+			http.Redirect(w, r, "/login", 302)
+		} else {
+			u, err := R.FindOneByIdHex(tc.Id)
+			if err != nil {
+				flashes["User not Found"] = FlashMessage{"danger", "User seems to be not present in the database"}
+				data["flashes"] = flashes
+				utility.WriteJson(w, data)
+			} else {
+				data["success"] = u.UserProfile
+				utility.WriteJson(w, data)
+			}
 		}
 	} else {
 		http.Redirect(w, r, "/login", 302)

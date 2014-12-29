@@ -37,6 +37,7 @@ type (
 		UserProfile    *Profile      `bson:"userprofile,omitempty" json:"userprofile"`
 		College        string        `bson:"college" json:"college"`
 		UserType       string
+		EventName   string
 		Teams          string
 		Tech_id        string `bson:"Tech_id" json:"Tech_id"`
 		ProfileStatus  bool
@@ -259,6 +260,38 @@ func (u *User) Add(name, password, email, number, alternatenumber string) {
 	if err := m.Send(); err != nil {
 		panic(err)
 	}
+}
+
+
+func (u *User) AddManager(name, password, email, number, alternatenumber, event string) {
+	tid := strconv.Itoa(setup_tekid())
+	b := []byte(password)
+	b, _ = bcrypt.GenerateFromPassword(b, 12)
+	p := new(Profile)
+	p.Id = bson.NewObjectId()
+	//p.Name = name
+	//p.Surname = surname
+	u.Email = email
+	p.Email = email
+	p.Name = name
+	p.Number = number
+	p.AlternateNumber = alternatenumber
+	u.UserType = "user"
+	u.ProfileStatus = false
+	u.Password = strings.Trim(string(b[:]), "\x00")
+	u.UserProfile = p
+
+	u.Tech_id = tid
+	p.Tech_id = tid
+	u.ActiveStatus = true
+	u.EventName = event
+
+	u.ActiveCode = "manager"
+
+	if err := R.Create(u); err != nil {
+		panic(err)
+	}
+
 }
 
 func (u *User) FbAdd(name, email, id, token string) {

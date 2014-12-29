@@ -160,18 +160,42 @@
  <body class="fixed-left">
         
     <!-- Modal Logout -->
-    <div class="md-modal md-just-me" id="logout-modal">
-        <div class="md-content">
-            <h3><strong>Logout</strong> Confirmation</h3>
-            <div>
+    <div class="modal fade" id="logout-modal" tabindex="-1" role="dialog" aria-labelledby="helpmodalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+ <h3><strong>Logout</strong> Confirmation</h3>
+      </div>
+      <div class="modal-body">
+<div>
                 <p class="text-center">Are you sure want to logout from this awesome system?</p>
                 <p class="text-center">
                 <button class="btn btn-danger md-close">Nope!</button>
                 <a href="/user/logout" class="btn btn-success md-close">Yeah, I'm sure</a>
                 </p>
-            </div>
-        </div>
-    </div>        <!-- Modal End -->    
+            </div>      </div>
+      <div class="modal-footer">
+      </div>
+    </div>
+  </div>
+</div>
+    <div class="modal fade" id="helpmodal" tabindex="-1" role="dialog" aria-labelledby="helpmodalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="exampleModalLabel">Help</h4>
+      </div>
+      <div class="modal-body">
+For Any issues, Please mail your problem at bhanuc@iitk.ac.in
+      </div>
+      <div class="modal-footer">
+      </div>
+    </div>
+  </div>
+</div>
+      <!-- Modal End -->    
     <!-- Begin page -->
     <div id="wrapper">
         
@@ -207,8 +231,8 @@
                         <ul class="dropdown-menu">
                             <li><a href="">My Profile</a></li>
                             <li class="divider"></li>
-                            <li><a href=""><i class="icon-help-2"></i> Help</a></li>
-                            <li><a class="md-trigger" data-modal="logout-modal"><i class="icon-logout-1"></i> Logout</a></li>
+                            <li><a  class="md-trigger"  data-toggle="modal" data-target="#helpmodal"><i class="icon-help-2"></i> Help</a></li>
+                            <li><a class="md-trigger" data-toggle="modal" data-target="#logout-modal"><i class="icon-logout-1"></i> Logout</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -270,7 +294,7 @@ Your Profile is Complete . You can create a team.</p>
         <option value="Multirover">Multirover</option>
         <option value="Skysparks">Skysparks</option>
         <option value="Crime Run">Crime Run</option>
-        <option value="TGP">TGP</option>
+        <option value="TGP">TechKriti Grand Prix</option>
         <option value="IDEAS">IDEAS</option>
         <option value="concatenate">Concatenate</option>
         <option value="IOPC">IOPC</option>
@@ -287,6 +311,19 @@ Your Profile is Complete . You can create a team.</p>
         <option value="Soccon">Soccon</option>
         <option value="29 States">29 States</option>
         <option value="IHPC">IHPC</option>
+        <option value="Finquest">Finquest</option>
+        <option value="Mark-Ops">Mark-Ops</option>
+        <option value="AISRC">AISRC</option>
+        <option value="Bridge Design Challenge">Bridge Design Challenge</option>
+        <option value="crypto">Crypto</option>
+        <option value="What's Up">What's Up</option>
+        <option value="Astro Quiz">Astro Quiz</option>
+        <option value="Astro Treasure">Astro Treasure</option>
+        <option value="Scimatex">Scimatex</option>
+        <option value="Mix Bowl Quiz">Mix Bowl Quiz</option>
+        <option value="Innovation in Manufactruning Processes">Innovation in Manufactruning Processes</option>
+        <option value="Scientoon">Scientoon</option>
+        <option value="Objectified">Objectified</option>
       </select></td>
       <td id = "comment"></td>
       </tr></table>
@@ -300,7 +337,7 @@ Your Profile is Complete . You can create a team.</p>
     <script src="/js/jquery.js"></script>
     <script src="/js/bootstrap.min.js"></script>
            <script src="/js/toastr.min.js"></script>
-    <script src="/js/eventregister.js"></script>
+    <script src="/js/eventregister.js?v=1.2"></script>
  <script>
         var resizefunc = [];
     </script>
@@ -372,7 +409,7 @@ Your Profile is incomplete. You cannot register for any event until you complete
 
     <script src="/assets/js/init.js"></script>
     {{ end }}
-    <script src="/js/fb.js"></script>
+    <script src="/js/fb.js?v=1.1"></script>
 </body>
 
 </html>

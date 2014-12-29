@@ -24,7 +24,8 @@
                 <link href="/assets/css/style.css" rel="stylesheet" type="text/css" />
                 <!-- Extra CSS Libraries End -->
         <link href="/assets/css/style-responsive.css" rel="stylesheet" />
-
+            <script src="/js/jquery.js"></script>
+      
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
         <!--[if lt IE 9]>
@@ -124,18 +125,41 @@
     <body class="fixed-left">
         
     <!-- Modal Logout -->
-    <div class="md-modal md-just-me" id="logout-modal">
-        <div class="md-content">
-            <h3><strong>Logout</strong> Confirmation</h3>
-            <div>
+    <div class="modal fade" id="logout-modal" tabindex="-1" role="dialog" aria-labelledby="helpmodalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+ <h3><strong>Logout</strong> Confirmation</h3>
+      </div>
+      <div class="modal-body">
+<div>
                 <p class="text-center">Are you sure want to logout from this awesome system?</p>
                 <p class="text-center">
                 <button class="btn btn-danger md-close">Nope!</button>
                 <a href="/user/logout" class="btn btn-success md-close">Yeah, I'm sure</a>
                 </p>
-            </div>
-        </div>
-    </div>        <!-- Modal End -->    
+            </div>      </div>
+      <div class="modal-footer">
+      </div>
+    </div>
+  </div>
+</div>
+    <div class="modal fade" id="helpmodal" tabindex="-1" role="dialog" aria-labelledby="helpmodalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="exampleModalLabel">Help</h4>
+      </div>
+      <div class="modal-body">
+For Any issues, Please mail your problem at bhanuc@iitk.ac.in
+      </div>
+      <div class="modal-footer">
+      </div>
+    </div>
+  </div>
+</div>      <!-- Modal End -->    
     <!-- Begin page -->
     <div id="wrapper">
         
@@ -171,8 +195,8 @@
                         <ul class="dropdown-menu">
                             <li><a href="">My Profile</a></li>
                             <li class="divider"></li>
-                            <li><a href=""><i class="icon-help-2"></i> Help</a></li>
-                            <li><a class="md-trigger" data-modal="logout-modal"><i class="icon-logout-1"></i> Logout</a></li>
+                            <li><a  class="md-trigger"  data-toggle="modal" data-target="#helpmodal"><i class="icon-help-2"></i> Help</a></li>
+                            <li><a class="md-trigger" data-toggle="modal" data-target="#logout-modal"><i class="icon-logout-1"></i> Logout</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -228,11 +252,11 @@
                 
                  
             </div>
-    <script src="/js/jquery.js"></script>
+
     <script src="/js/bootstrap.min.js"></script>
     <script src="/js/profile.js"></script>
     <script src="/js/toastr.min.js"></script>
-    <script src="/js/fb.js"></script>
+    <script src="/js/fb.js?v=1.1"></script>
         </div>
 
     </div>
@@ -262,6 +286,8 @@
     <script src="/assets/libs/pace/pace.min.js"></script>
     <script src="/assets/libs/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
     <script src="/assets/libs/jquery-icheck/icheck.min.js"></script>
+    
+
 
     <!-- Demo Specific JS Libraries -->
     <script src="/assets/libs/prettify/prettify.js"></script>

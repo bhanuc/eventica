@@ -22,7 +22,7 @@ type (
 		PaymentAllowed bool          `bson:"payment" json:"payment"`
 		PaymentStatus  bool          `bson:",omitempty" json:"paymentstatus"`
 		Approved       string        `bson:",omitempty" json:"approved"`
-		Game           string        `bson:",omitempty" json:"game"`
+		Event          string        `bson:",omitempty" json:"event"`
 		Comments       string        `bson:",omitempty" json:"comments"`
 	}
 
@@ -113,14 +113,14 @@ func (u *Team) Update() {
 	}
 }
 
-func (u *Team) Add(name string, members string, game string, gender string, createdby string, college string) {
+func (u *Team) Add(name string, members string, event string, gender string, createdby string, college string) {
 	p := new(Profile)
 	p.Id = bson.NewObjectId()
 	//p.Name = name
 	//p.Surname = surname
-	u.Name = college + name
+	u.Name = name
 	u.Members = members
-	u.Game = game
+	u.Event = event
 	u.CreatedBy = createdby
 	u.Approved = "Not Requested"
 	u.College = college
