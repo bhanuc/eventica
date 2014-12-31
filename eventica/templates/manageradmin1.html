@@ -48,27 +48,7 @@
             </div>
         </div>
     </div>
-    <div id="modal" style="position:fixed;display:none;top:50px;background:#ecf0f1;padding:20px">
-        <div>
-            <p>
-                <table style="border: 1px solid #000" border="1">
-                    <tr><td>id</td><td id="id">none</td></tr>
-                    <tr><td>name</td><td id="name"></td></tr>
-                    <tr><td>number</td><td id="number">none</td></tr>
-                    <tr><td>college</td><td id="college">none</td></tr>
-                    <tr><td>email</td><td id="email">none</td></tr>
-                    <tr><td>alternatenumber</td><td id="alternatenumber">none</td></tr>
-                    <!-- <tr><td>Contact no.</td><td id="contact">none</td></tr> -->
-                    <tr><td>ambassador</td><td id="ambassador">none</td></tr>
-                    <tr><td>sex</td><td id="sex">none</td></tr>
-                    <tr><td>branch</td><td id="branch">none</td></tr>
-                    <tr><td>bookingId</td><td id="bookingid">none</td></tr>
-                    <tr><td>year</td><td id="year">none</td></tr>
-                    <tr><td>Tech_id</td><td id="techid">none</td></tr>
-                </table>            
-            </p>
-        </div>
-    <div>
+    
     <h1 class="page-header">
         Dashboard
     </h1>
@@ -85,33 +65,8 @@
     <script src="/js/bootstrap.min.js"></script>
     <script src="/js/showmanagerteams.js"></script>
     <script src="/js/toastr.min.js"></script>
-    <script type="text/javascript">
-        var array = document.getElementsByClassName('linker');
-        var array1 = document.getElementsByClassName('linked');
-        function myf(anchor_tag){
-            var idx = array.indexOf(anchor_tag);
-            var url = array1[idx].href;
-            $('#modal').display = "block";
-        }
-        var x = $.get( url, function( data ) {
-              $( ".result" ).html( data );
-            });
-        var y = x.responseText;
-        var json = JSON.parse(y);
-        json = json.success;
-        $('#id').innerHTML = json.id;
-        $('#name').innerHTML = json.name;
-        $('#number').innerHTML = json.number;
-        $('#college').innerHTML = json.college;
-        $('#email').innerHTML = json.email;
-        $('#alternatenumber').innerHTML = json.alternatenumber;
-        $('#ambassador').innerHTML = json.ambassador;
-        $('#sex').innerHTML = json.sex;
-        $('#branch').innerHTML = json.branch;
-        $('#bookingid').innerHTML = json.bookingid;
-        $('#year').innerHTML = json.year;
-        $('#techid').innerHTML = json.techid;
-    </script>
+   
+        
 </body>
 
 </html>
