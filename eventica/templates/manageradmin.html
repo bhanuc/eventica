@@ -92,7 +92,7 @@
             var idx = array.indexOf(anchor_tag);
             var url = array1[idx].href;
             $('#modal').display = "block";
-        }
+        
         var x = $.get( url, function( data ) {
               $( ".result" ).html( data );
             });
@@ -111,6 +111,7 @@
         $('#bookingid').innerHTML = json.bookingid;
         $('#year').innerHTML = json.year;
         $('#techid').innerHTML = json.techid;
+    }
     </script>
 </body>
 
