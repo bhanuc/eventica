@@ -14,6 +14,37 @@ $.ajax({
         } else {
           $('#teams').html("No teams have submitted yet");
         }
+        var array = [];
+        var count = 0;
+        array[count]="";
+        var flag = false;
+        for(var counter = 0; counter<data.teams.length; counter++){
+          var str = data.teams[counter].members;
+          for(var i = 0; i<str.length; i++){
+            parseInt(str[i])
+            console.log(str[i]);
+          }
+          for(var i = 0; i<str.length; i++){
+            if(!isNaN(str[i])){
+              array[count] = array[count]+str[i];
+              flag = false;
+            }
+            else{
+              if(!flag){
+                flag = true;
+                count++;
+                array[count] = "";
+              }
+            }
+          }
+          if(!flag){
+            flag = true;
+            count++;
+            array[count] = "";
+          }
+        }
+        window.$team = array;
+
           //success message mybe...
      }
 });
@@ -43,7 +74,5 @@ var showprofile =function(url){
         }
           //success message mybe...
      }
-}); 
-
-       
-      }
+    }); 
+ }
