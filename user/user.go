@@ -43,6 +43,7 @@ func New(ms *mgo.Session, ss *sessions.CookieStore, host, mailfrom, dbname, dbco
 	Router.HandleFunc("/user/profile", ProfileHandler).Methods("GET")
 	Router.HandleFunc("/user/vprofile", AdminViewProfile).Methods("GET")
 	Router.HandleFunc("/user/mprofile", ManagerViewProfile).Methods("GET")
+	Router.HandleFunc("/user/tek-profile", ManagerViewTekProfile).Methods("GET")
 	Router.HandleFunc("/user/profile", UpdateProfileHandler).Methods("POST")
 	Router.HandleFunc("/user/resetrequest", ResetRequestHandler).Methods("POST")
 	Router.HandleFunc("/user/resetpassword", ResetPasswordHandler).Methods("POST")

@@ -75,6 +75,10 @@ func (r TeamRepository) All() (teams Teams, err error) {
 	err = r.Collection.Find(bson.M{}).All(&teams)
 	return
 }
+func (r TeamRepository) AllCount() (c int) {
+	c, _ = r.Collection.Find(bson.M{}).Count()
+	return
+}
 
 func (r TeamRepository) CountByEmail(email string) (c int) {
 	c, _ = r.Collection.Find(bson.M{"email": email}).Count()
@@ -84,8 +88,8 @@ func (r TeamRepository) CountByCollege(college string) (c int) {
 	c, _ = r.Collection.Find(bson.M{"college": college}).Count()
 	return
 }
-func (r TeamRepository) CountByCollegenEvent(college string, event string) (c int) {
-	c, _ = r.Collection.Find(bson.M{"college": college, "event": event}).Count()
+func (r TeamRepository) CountByEvent(event string) (c int) {
+	c, _ = r.Collection.Find(bson.M{"event": event}).Count()
 	return
 }
 

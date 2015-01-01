@@ -553,3 +553,30 @@ func ManagerViewProfile(w http.ResponseWriter, r *http.Request) {
 		http.Redirect(w, r, "/login", 302)
 	}
 }
+func ManagerViewTekProfile(w http.ResponseWriter, r *http.Request) {
+	session, _ := sessionStore.Get(r, "p")
+	data := make(map[string]interface{})
+	flashes := make(map[string]FlashMessage)
+	id, ok := session.Values["user"].(string)
+	tc := struct {
+		Id string `json:"id"`
+	}{r.FormValue("id")}
+	if ok {
+		user, err1 := R.FindOneByTechID(id)
+		if err1 != nil && user.EventName != "" {
+			http.Redirect(w, r, "/login", 302)
+		} else {
+			u, err := R.FindOneByIdHex(tc.Id)
+			if err != nil {
+				flashes["User not Found"] = FlashMessage{"danger", "User seems to be not present in the database"}
+				data["flashes"] = flashes
+				utility.WriteJson(w, data)
+			} else {
+				data["success"] = u.UserProfile
+				utility.WriteJson(w, data)
+			}
+		}
+	} else {
+		http.Redirect(w, r, "/login", 302)
+	}
+}

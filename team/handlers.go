@@ -784,3 +784,37 @@ func EventAdminHandler(w http.ResponseWriter, r *http.Request) {
 	}
 	utility.WriteJson(w, data)
 }
+
+func EventCountHandler(w http.ResponseWriter, r *http.Request) {
+	session, _ := sessionStore.Get(r, "p")
+	data := make(map[string]interface{})
+	_, ok := session.Values["user"].(string)
+	tu := struct {
+		Event string `json:"event"`
+	}{}
+	params := mux.Vars(r)
+	tu.Event = params["event"]
+	if ok && session.Values["usertype"] == "admin" {
+		u := T.CountByEvent(tu.Event)
+		data["count"] = u
+		data["success"] = true
+	}
+	utility.WriteJson(w, data)
+}
+
+func TotalCountHandler(w http.ResponseWriter, r *http.Request) {
+	session, _ := sessionStore.Get(r, "p")
+	data := make(map[string]interface{})
+	_, ok := session.Values["user"].(string)
+	tu := struct {
+		Event string `json:"event"`
+	}{}
+	params := mux.Vars(r)
+	tu.Event = params["event"]
+	if ok && session.Values["usertype"] == "admin" {
+		u := T.AllCount()
+		data["count"] = u
+		data["success"] = true
+	}
+	utility.WriteJson(w, data)
+}
