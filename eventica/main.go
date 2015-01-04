@@ -152,7 +152,7 @@ func manager_admin(w http.ResponseWriter, r *http.Request) {
 	session, _ := sessionStore.Get(r, "p")
 	_, ok := session.Values["user"].(string)
 	if ok {
-		t, err := template.New("manageradmin.html").ParseFiles("templates/manageradmin.html")
+		t, err := template.New("manageradmin1.html").ParseFiles("templates/manageradmin1.html")
 		if err != nil {
 			log.Println(err)
 		}
@@ -164,7 +164,6 @@ func manager_admin(w http.ResponseWriter, r *http.Request) {
 		http.Redirect(w, r, "/login", 302)
 	}
 }
-
 
 func register_event(w http.ResponseWriter, r *http.Request) {
 	session, _ := sessionStore.Get(r, "p")

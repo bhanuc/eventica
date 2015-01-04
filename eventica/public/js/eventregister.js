@@ -128,7 +128,7 @@ $("#subject").change(function() {
         comment = "";
     } else if (evname == "Finquest") {
         memberno = 3;
-        $('#submitbutton').hide();
+        $('#submitbutton').show();
         comment = "2-3 Members are allowed.Registration will start from 1st January and closes on 24th January.";
     } else if (evname == "Mark-Ops") {
         memberno = 3;
@@ -140,14 +140,17 @@ $("#subject").change(function() {
         comment = "";
     } else if (evname == "What's Up") {
         memberno = 4;
+        comment = "Each team will have 1-3 members.";
         $('#submitbutton').show();
         comment = "";
     } else if (evname == "Astro Quiz") {
         memberno = 3;
+        comment = "Each team will have 1-3 members.";
         $('#submitbutton').show();
         comment = "";
     } else if (evname == "Astro Treasure") {
-        memberno = 7;
+        comment = "Each team will have 3-5 members.";
+        memberno = 5;
         $('#submitbutton').show();
         comment = "";
     } else if (evname == "Scimatex") {
@@ -156,6 +159,7 @@ $("#subject").change(function() {
         comment = "";
     } else if (evname == "Mix Bowl Quiz") {
         memberno = 5;
+        comment = "Each team will have 1-5 members.";
         $('#submitbutton').show();
         comment = "";
     } else if (evname == "Innovation in Manufactruning Processes") {

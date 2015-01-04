@@ -50,7 +50,10 @@ func Route_setter(ms *mgo.Session, ss *sessions.CookieStore, host, mailfrom, dbn
 	Router.HandleFunc("/team/adminall", AllAdminHandler).Methods("GET")               //show all the teams
 	Router.HandleFunc("/team/adminall/{college}", CollegeAdminHandler).Methods("GET") //show all the teams
 	Router.HandleFunc("/team/adminall2/{event}", EventAdminHandler).Methods("GET")    //show all the teams
+	Router.HandleFunc("/team/admincount/{event}", EventCountHandler).Methods("GET")   //show all the teams
+	Router.HandleFunc("/team/admintotalcount", TotalCountHandler).Methods("GET")      //show all the teams
 	Router.HandleFunc("/team/adminsapprove", TeamAdminHandler).Methods("GET")         //show all the teams
+	Router.HandleFunc("/team/managersapprove", TeamManagerHandler).Methods("GET")     //show all the teams
 	Router.HandleFunc("/team/adminsdissapprove", DisTeamAdminHandler).Methods("GET")  //show all the teams
 	Router.HandleFunc("/team/adminscomment", CommentAdminHandler).Methods("GET")      //show all the teams
 	Router.HandleFunc("/team/managerscomment", CommentManagerHandler).Methods("GET")  //show all the teams

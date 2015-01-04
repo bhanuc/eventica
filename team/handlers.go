@@ -588,6 +588,30 @@ func TeamAdminHandler(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
+func TeamManagerHandler(w http.ResponseWriter, r *http.Request) {
+	session, _ := sessionStore.Get(r, "p")
+	data := make(map[string]interface{})
+	flashes := make(map[string]FlashMessage)
+	_, ok := session.Values["user"].(string)
+	tc := struct {
+		Name string `json:"name"`
+	}{r.FormValue("name")}
+	if ok {
+		u, err := T.FindOneByName(tc.Name)
+		if err != nil {
+			flashes["No Team Present"] = FlashMessage{"danger", "Wrong team name"}
+			data["flashes"] = flashes
+			utility.WriteJson(w, data)
+		} else {
+			u.Approved = "Approved"
+			u.Update()
+			http.Redirect(w, r, "/app", 302)
+		}
+	} else {
+		http.Redirect(w, r, "/login", 302)
+	}
+}
+
 func DisTeamAdminHandler(w http.ResponseWriter, r *http.Request) {
 	session, _ := sessionStore.Get(r, "p")
 	data := make(map[string]interface{})
@@ -781,6 +805,40 @@ func EventAdminHandler(w http.ResponseWriter, r *http.Request) {
 			data["teams"] = u
 			data["success"] = true
 		}
+	}
+	utility.WriteJson(w, data)
+}
+
+func EventCountHandler(w http.ResponseWriter, r *http.Request) {
+	session, _ := sessionStore.Get(r, "p")
+	data := make(map[string]interface{})
+	_, ok := session.Values["user"].(string)
+	tu := struct {
+		Event string `json:"event"`
+	}{}
+	params := mux.Vars(r)
+	tu.Event = params["event"]
+	if ok && session.Values["usertype"] == "admin" {
+		u := T.CountByEvent(tu.Event)
+		data["count"] = u
+		data["success"] = true
+	}
+	utility.WriteJson(w, data)
+}
+
+func TotalCountHandler(w http.ResponseWriter, r *http.Request) {
+	session, _ := sessionStore.Get(r, "p")
+	data := make(map[string]interface{})
+	_, ok := session.Values["user"].(string)
+	tu := struct {
+		Event string `json:"event"`
+	}{}
+	params := mux.Vars(r)
+	tu.Event = params["event"]
+	if ok && session.Values["usertype"] == "admin" {
+		u := T.AllCount()
+		data["count"] = u
+		data["success"] = true
 	}
 	utility.WriteJson(w, data)
 }

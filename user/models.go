@@ -37,7 +37,7 @@ type (
 		UserProfile    *Profile      `bson:"userprofile,omitempty" json:"userprofile"`
 		College        string        `bson:"college" json:"college"`
 		UserType       string
-		EventName   string
+		EventName      string
 		Teams          string
 		Tech_id        string `bson:"Tech_id" json:"Tech_id"`
 		ProfileStatus  bool
@@ -261,7 +261,6 @@ func (u *User) Add(name, password, email, number, alternatenumber string) {
 		panic(err)
 	}
 }
-
 
 func (u *User) AddManager(name, password, email, number, alternatenumber, event string) {
 	tid := strconv.Itoa(setup_tekid())
