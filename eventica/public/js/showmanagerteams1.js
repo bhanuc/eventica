@@ -90,10 +90,9 @@ function getallemails() {
                             console.log(data);
                             // emails.push[data.email]
                         }
-                    }
+                    });
                 }
-            };
+            }
 
         }
     }
-    
