@@ -7,7 +7,7 @@ $.ajax({
         if(data.success && data.teams){
           var str="<thead><tr><th>name</th><th>Created By</th><th>Event</th><th>Submit Status</th><th>Approval Status</th><th>Members</th><th>Approve</th><th>Comment</th><th>Add Comment</th><th>PrintPage</th></tr></thead><tbody>";
           for (var i = data.teams.length - 1; i >= 0; i--) {
-            str = str+ '<tr><td>'+data.teams[i].name+ '</td><td><a onclick=showprofile("'+data.teams[i].createdby+ '")>'+data.teams[i].createdby+'</a></td><td> '+data.teams[i].event+ '</td><td> '+data.teams[i].requestmod+ '</td><td> '+data.teams[i].approved+ '</td><td onclick=showprofile('+data.teams[i].createdby+ ')> '+ data.teams[i].members+'</td><td> <a href="/team/managersapprove?name='+ data.teams[i].name+'">Approve</a></td><td> '+data.teams[i].comments+ '</td><td><form action="/team/managerscomment" type="GET"><input type="text" name="comments"><input type="hidden" name="name" value='+data.teams[i].name+'><button type ="submit">Submit</button></form></td><td> <a href="/team/adminsdissapprove?name='+ data.teams[i].name+'">DisApprove</a></td><td> <a href="/print#'+ data.teams[i].name+'">Print</a></td></tr>';
+            str = str+ '<tr><td>'+data.teams[i].name+ '</td><td><a onclick=showprofile("'+data.teams[i].createdby+ '")>'+data.teams[i].createdby+'</a></td><td> '+data.teams[i].event+ '</td><td> '+data.teams[i].requestmod+ '</td><td> '+data.teams[i].approved+ '</td><td onclick=showprofile('+data.teams[i].createdby+ ')> '+ data.teams[i].members+'</td><td> <a href="/team/managersapprove?name='+ data.teams[i].name+'">Approve</a></td><td> '+data.teams[i].comments+ '</td><td><form action="/team/managerscomment" type="GET"><input type="text" name="comments"><input type="hidden" name="name" value='+data.teams[i].name+'><button type ="submit">Submit</button></form></td><td> <td> <a href="/print#'+ data.teams[i].name+'">Print</a></td></tr>';
           };
           str += '</tbody>'
           $('#teams').html(str);
@@ -79,3 +79,22 @@ var showprofile =function(url){
      }
     }); 
  }
+
+function getallemails(){
+  if(window.$team && window.$team > 1){
+      var emails = [];
+        for (var i = window.$teams.length - 1; i >= 0; i--) {
+          if (window.$teams[i] != ''){
+          $.ajax({
+            url: '/user/tek-profile?id='+window.$teams[i],
+            type: 'GET',
+            success: function(data) {
+        console.log(data);
+         // emails.push[data.email]
+      }
+     }
+    });
+        };
+
+  }
+}
