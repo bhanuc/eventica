@@ -77,10 +77,5 @@ var showprofile =function(url){
         }
           //success message mybe...
      }
-<<<<<<< HEAD
     }); 
  }
-=======
-}); 
-}
->>>>>>> 7c5e9c4fda494b0b92d3c6dea4f3ae0fb32f9127
