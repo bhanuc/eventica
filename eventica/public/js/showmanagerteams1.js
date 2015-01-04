@@ -78,7 +78,7 @@ var showprofile = function(url) {
     });
 }
 
-function getallemails() {
+var getallemails = function() {
     if (window.$team && window.$team > 1) {
         var emails = [];
         for (var i = window.$teams.length - 1; i >= 0; i--) {
