@@ -4,13 +4,13 @@ $('#submitbutton').click(function() {
 
     if (evname == "Hoverush" ||  evname == "IDEAS" ||  evname == "Manoeuvre" || evname == "Shuffle" || evname == "Mix Bowl Quiz") {
         memberno = 5;
-    } else if (evname == "FPGA" || evname == "Embedded" || evname == "electromania" || evname == "Bridge Design Challenge"  || evname == "Objectified") {
+    } else if (evname == "FPGA" || evname == "Embedded" || evname == "electromania" || evname == "Bridge Design Challenge"  || evname == "Design 3D") {
         memberno = 5;
     } else if (evname == "IORC" || evname == "Be the Tycoon" || evname == "29 States" || evname == "crypto" || evname == "Scimatex" || evname == "Stocksim" ) {
         memberno = 1;
     } else if (evname == "Impulse" || evname == "Hackathon" || evname == "Iarc") {
         memberno = 4;
-    } else if (evname == "Electrade" || evname == "What's Up") {
+    } else if (evname == "Electrade" ) {
         memberno = 4;
     } else if (evname == "Skysparks" || evname == "Soccon" || evname == "Cruise Control" || evname == "Multirover" || evname == "concatenate") {
         memberno = 6;
@@ -18,7 +18,7 @@ $('#submitbutton').click(function() {
         memberno = 4;
     } else if (evname == "TGP") {
         memberno = 8;
-    } else if (evname == "IOPC" || evname == "Astro Quiz" || evname == "Innovation in Manufactruning Processes" || evname == "Battlefield" || evname == "Do your due" ||  evname == "IHPC" || evname == "Marketing Villa" || evname == "Chaos" || evname == "Battlecity" || evname == "Finquest" || evname == "Mark-Ops") {
+    } else if (evname == "IOPC" || evname == "What's Up" || evname == "Astro Quiz" || evname == "Innovation in Manufactruning Processes" || evname == "Battlefield" || evname == "Do your due" ||  evname == "IHPC" || evname == "Marketing Villa" || evname == "Chaos" || evname == "Battlecity" || evname == "Finquest" || evname == "Mark-Ops") {
         memberno = 3;
     } else if (evname == "Wild soccer") {
         memberno = 10;
@@ -133,14 +133,14 @@ $("#subject").change(function() {
         comment = "2-3 Members are allowed.Registration will start from 1st January and closes on 24th January.";
     } else if (evname == "Mark-Ops") {
         memberno = 3;
-        $('#submitbutton').hide();
+        $('#submitbutton').show();
         comment = "Each team will have 2-3 members.Registration will start from 1st February and closes on 24th February.";
     } else if (evname == "crypto") {
         memberno = 1;
         $('#submitbutton').show();
         comment = "";
     } else if (evname == "What's Up") {
-        memberno = 4;
+        memberno = 3;
         comment = "Each team will have 1-3 members.";
         $('#submitbutton').show();
         comment = "";
@@ -171,7 +171,7 @@ $("#subject").change(function() {
         memberno = 4;
         $('#submitbutton').show();
         comment = "";
-    }   else if (evname == "Objectified") {
+    }   else if (evname == "Design 3D") {
         memberno = 5;
         $('#submitbutton').show();
         comment = "";
