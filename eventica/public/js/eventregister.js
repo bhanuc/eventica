@@ -6,7 +6,7 @@ $('#submitbutton').click(function() {
         memberno = 5;
     } else if (evname == "FPGA" || evname == "Embedded" || evname == "electromania" || evname == "Bridge Design Challenge"  || evname == "Objectified") {
         memberno = 5;
-    } else if (evname == "IORC" || evname == "Be the Tycoon" || evname == "29 States" || evname == "crypto" || evname == "Scimatex" ) {
+    } else if (evname == "IORC" || evname == "Be the Tycoon" || evname == "29 States" || evname == "crypto" || evname == "Scimatex" || evname == "Stocksim" ) {
         memberno = 1;
     } else if (evname == "Impulse" || evname == "Hackathon" || evname == "Iarc") {
         memberno = 4;
@@ -25,6 +25,7 @@ $('#submitbutton').click(function() {
     } else if (evname == "Astro Treasure") {
         memberno = 7;
     } 
+
 
 
     var memberscontact = "";
@@ -82,7 +83,7 @@ $("#subject").change(function() {
         memberno = 3;
         comment = "Each team will have 2-3 members. Registration for this event will open on 15th January and will close on 4th February.";
         $('#submitbutton').hide();
-    }  else if (evname == "IORC" || evname == "29 States") {
+    }  else if (evname == "IORC" || evname == "29 States" || evname == "Stocksim") {
         memberno = 1;
         comment = "";
         $('#submitbutton').show();
