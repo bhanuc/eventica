@@ -262,6 +262,27 @@ func (u *User) Add(name, password, email, number, alternatenumber string) {
 	}
 }
 
+func (u *User) ResendActEmail(email string) {
+
+	//rs := u.ActiveCode
+
+	if err := R.Create(u); err != nil {
+		panic(err)
+	}
+	uid := u.Id.String()
+	slice := uid[13:37]
+
+	body := "Hi ,\n\n"
+	body += "welcome to " + Config.Host + ".\nYour account has been created.To Activate your account, please visit http://portal.techkriti.org/user/activate?ui=" + slice + "&us=" + u.ActiveCode + " . Copy and paste the link in the browser to activate.\nYou login credentials are \nEmail-Address.\n"
+	body += "Regards,\n\n"
+	body += Config.Host + " team"
+
+	m := mail.NewMail(Config.MailFrom, []string{email}, "Welcome to "+Config.Host, body)
+	if err := m.Send(); err != nil {
+		panic(err)
+	}
+}
+
 func (u *User) AddManager(name, password, email, number, alternatenumber, event string) {
 	tid := strconv.Itoa(setup_tekid())
 	b := []byte(password)
