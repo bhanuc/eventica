@@ -11,6 +11,9 @@ import (
 	"io/ioutil"
 	"labix.org/v2/mgo"
 	"labix.org/v2/mgo/bson"
+	"log"
+	"net/mail"
+	"net/smtp"
 	"strconv"
 	"strings"
 	"time"
@@ -70,6 +73,12 @@ type (
 		Collection *mgo.Collection
 	}
 )
+
+func encodeRFC2047(String string) string {
+	// use mail's rfc2047 to encode any string
+	addr := mail.Address{String, ""}
+	return strings.Trim(addr.String(), " <>")
+}
 
 func setup_tekid() (num int) {
 	fmt.Println("started read")
@@ -248,6 +257,14 @@ func (u *User) Add(name, password, email, number, alternatenumber string) {
 	uid := u.Id.String()
 	slice := uid[13:37]
 
+	smtpServer := "smtp.163.com"
+	auth := smtp.PlainAuth(
+		"",
+		"fledna@163.com",
+		"password*******",
+		smtpServer,
+	)
+
 	body := "Hi ,\n\n"
 	body += "welcome to " + Config.Host + ".\nYour account has been created.To Activate your account, please visit http://portal.techkriti.org/user/activate?ui=" + slice + "&us=" + u.ActiveCode + " . Copy and paste the link in the browser to activate.\nYou login credentials are \nEmail-Address.\n"
 	body += email + "\n"
@@ -264,6 +281,19 @@ func (u *User) Add(name, password, email, number, alternatenumber string) {
 
 func (u *User) ResendActEmail(email string) {
 
+	// authentication configuration smtp.gmail.com', 587
+	smtpHost := "smtp.gmail.com"         // change to your SMTP provider address
+	smtpPort := 587                      // change to your SMTP provider port number
+	smtpPass := "rememberyourpassword"   // change here
+	smtpUser := "webadmin@techkriti.org" // change here
+
+	emailConf := &EmailConfig{smtpUser, smtpPass, smtpHost, smtpPort}
+
+	emailauth := smtp.PlainAuth("", emailConf.Username, emailConf.Password, emailConf.Host)
+
+	sender := "noreply@techkriti.org" // change here
+
+	receivers := email
 	//rs := u.ActiveCode
 	uid := u.Id.String()
 	slice := uid[13:37]
@@ -273,10 +303,22 @@ func (u *User) ResendActEmail(email string) {
 	body += "Regards,\n\n"
 	body += Config.Host + " team"
 
-	m := mail.NewMail(Config.MailFrom, []string{email}, "Welcome to "+Config.Host, body)
-	if err := m.Send(); err != nil {
-		fmt.Printf("The error is %s", err)
+	// m := mail.NewMail(Config.MailFrom, []string{email}, "Welcome to "+Config.Host, body)
+	// if err := m.Send(); err != nil {
+	// 	fmt.Printf("The error is %s", err)
+	// }
+
+	err := smtp.SendMail(smtpHost+":"+strconv.Itoa(emailConf.Port), //convert port number from int to string
+		emailauth,
+		sender,
+		receivers,
+		body,
+	)
+
+	if err != nil {
+		fmt.Println(err)
 	}
+
 }
 
 func (u *User) AddManager(name, password, email, number, alternatenumber, event string) {
