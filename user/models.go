@@ -273,24 +273,6 @@ func (u *User) Add(name, password, email, number, alternatenumber string) {
 	body += "Regards,\n\n"
 	body += Config.Host + " team"
 
-	to := flag.String("t", "", email)
-	subject := flag.String("s", "", "Activation Email")
-	msg := flag.String("m", "", body)
-	flag.Usage = func() {
-		fmt.Printf("Syntax:\n\tGSend [flags]\nwhere flags are:\n")
-		flag.PrintDefaults()
-	}
-
-	flag.Parse()
-
-	if flag.NFlag() != 5 {
-		flag.Usage()
-		return
-	}
-
-	body1 := "To: " + *to + "\r\nSubject: " +
-		*subject + "\r\n\r\n" + *msg
-
 	auth := smtp.PlainAuth(
 		"",
 		"webadmin@techkriti.org",
@@ -304,7 +286,7 @@ func (u *User) Add(name, password, email, number, alternatenumber string) {
 		auth,
 		"noreply@techkriti.org",
 		[]string{email},
-		[]byte(body1),
+		[]byte(body),
 	)
 	if err2 != nil {
 		log.Fatal(err)
@@ -355,18 +337,6 @@ func (u *User) ResendActEmail(email string) {
 	// e.HTML = []byte(body)
 	// e.Send("smtp.gmail.com:587", smtp.PlainAuth("", "webadmin@techkriti.org", "rememberyourpassword", "smtp.gmail.com"))
 
-	to := flag.String("t", "", email)
-	subject := flag.String("s", "", "Activation Email")
-	msg := flag.String("m", "", body)
-	flag.Usage = func() {
-		fmt.Printf("Syntax:\n\tGSend [flags]\nwhere flags are:\n")
-		flag.PrintDefaults()
-	}
-
-	flag.Parse()
-
-	body1 := "To: " + *to + "\r\nSubject: " +
-		*subject + "\r\n\r\n" + *msg
 	auth := smtp.PlainAuth(
 		"",
 		"webadmin@techkriti.org",
@@ -380,7 +350,7 @@ func (u *User) ResendActEmail(email string) {
 		auth,
 		"noreply@techkriti.org",
 		[]string{email},
-		[]byte(body1),
+		[]byte(body),
 	)
 	if err != nil {
 		log.Fatal(err)
@@ -522,23 +492,6 @@ func (u *User) CreateResetToken() {
 	// 	u.ResetSent = time.Now()
 	// 	u.Update()
 	// }
-	to := flag.String("t", "", u.Email)
-	subject := flag.String("s", "", "Activation Email")
-	msg := flag.String("m", "", body)
-	flag.Usage = func() {
-		fmt.Printf("Syntax:\n\tGSend [flags]\nwhere flags are:\n")
-		flag.PrintDefaults()
-	}
-
-	flag.Parse()
-
-	if flag.NFlag() != 5 {
-		flag.Usage()
-		return
-	}
-
-	body1 := "To: " + *to + "\r\nSubject: " +
-		*subject + "\r\n\r\n" + *msg
 	auth := smtp.PlainAuth(
 		"",
 		"webadmin@techkriti.org",
@@ -552,7 +505,7 @@ func (u *User) CreateResetToken() {
 		auth,
 		"noreply@techkriti.org",
 		[]string{u.Email},
-		[]byte(body1),
+		[]byte(body),
 	)
 	if err != nil {
 		log.Fatal(err)
@@ -591,23 +544,7 @@ func (u *User) ResetPassword() bool {
 		// 	u.Update()
 		// 	return true
 		// }
-		to := flag.String("t", "", u.Email)
-		subject := flag.String("s", "", "Activation Email")
-		msg := flag.String("m", "", body)
-		flag.Usage = func() {
-			fmt.Printf("Syntax:\n\tGSend [flags]\nwhere flags are:\n")
-			flag.PrintDefaults()
-		}
 
-		flag.Parse()
-
-		if flag.NFlag() != 5 {
-			flag.Usage()
-			return false
-		}
-
-		body1 := "To: " + *to + "\r\nSubject: " +
-			*subject + "\r\n\r\n" + *msg
 		auth := smtp.PlainAuth(
 			"",
 			"webadmin@techkriti.org",
@@ -621,7 +558,7 @@ func (u *User) ResetPassword() bool {
 			auth,
 			"noreply@techkriti.org",
 			[]string{u.Email},
-			[]byte(body1),
+			[]byte(body),
 		)
 		if err != nil {
 			log.Fatal(err)
