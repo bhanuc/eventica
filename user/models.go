@@ -4,7 +4,6 @@ import (
 	"code.google.com/p/go.crypto/bcrypt"
 	"crypto/rand"
 	"encoding/base64"
-	"flag"
 	"fmt"
 	"github.com/dchest/uniuri"
 	"io"
