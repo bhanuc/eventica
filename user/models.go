@@ -7,11 +7,11 @@ import (
 	"fmt"
 	"github.com/dalu/mail"
 	"github.com/dchest/uniuri"
+	"gopkg.in/gomail.v1"
 	"io"
 	"io/ioutil"
 	"labix.org/v2/mgo"
 	"labix.org/v2/mgo/bson"
-	"log"
 	"net/mail"
 	"net/smtp"
 	"strconv"
@@ -21,6 +21,13 @@ import (
 
 type (
 	Users []User
+
+	EmailConfig struct {
+		Username string
+		Password string
+		Host     string
+		Port     int
+	}
 
 	User struct {
 		Id             bson.ObjectId `bson:"_id,omitempty" json:"id"`
@@ -281,19 +288,6 @@ func (u *User) Add(name, password, email, number, alternatenumber string) {
 
 func (u *User) ResendActEmail(email string) {
 
-	// authentication configuration smtp.gmail.com', 587
-	smtpHost := "smtp.gmail.com"         // change to your SMTP provider address
-	smtpPort := 587                      // change to your SMTP provider port number
-	smtpPass := "rememberyourpassword"   // change here
-	smtpUser := "webadmin@techkriti.org" // change here
-
-	emailConf := &EmailConfig{smtpUser, smtpPass, smtpHost, smtpPort}
-
-	emailauth := smtp.PlainAuth("", emailConf.Username, emailConf.Password, emailConf.Host)
-
-	sender := "noreply@techkriti.org" // change here
-
-	receivers := email
 	//rs := u.ActiveCode
 	uid := u.Id.String()
 	slice := uid[13:37]
@@ -305,17 +299,22 @@ func (u *User) ResendActEmail(email string) {
 
 	// m := mail.NewMail(Config.MailFrom, []string{email}, "Welcome to "+Config.Host, body)
 	// if err := m.Send(); err != nil {
-	// 	fmt.Printf("The error is %s", err)
+	// 	fmt.Printf("The error is %s", err) techkriti@sharklasers.com
 	// }
 
-	err := smtp.SendMail(smtpHost+":"+strconv.Itoa(emailConf.Port), //convert port number from int to string
-		emailauth,
-		sender,
-		receivers,
-		body,
-	)
-
 	if err != nil {
+		fmt.Println(err)
+	}
+
+	msg := gomail.NewMessage()
+	msg.SetHeader("From", "noreply@techkriti.org")
+	msg.SetHeader("To", mail)
+	msg.SetHeader("Subject", "Hello!")
+	msg.SetBody("text/html", body)
+
+	// Send the email to Bob, Cora and Dan
+	mailer := gomail.NewMailer("smtp.gmail.com", "webadmin@techkriti.org", "rememberyourpassword", 587)
+	if err := mailer.Send(msg); err != nil {
 		fmt.Println(err)
 	}
 
