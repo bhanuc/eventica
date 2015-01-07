@@ -4,7 +4,7 @@ $('#submitbutton').click(function() {
 
     if (evname == "Hoverush" ||  evname == "IDEAS" ||  evname == "Manoeuvre" || evname == "Shuffle" || evname == "Mix Bowl Quiz") {
         memberno = 5;
-    } else if (evname == "FPGA" || evname == "Embedded" || evname == "electromania" || evname == "Bridge Design Challenge"  || evname == "Design 3D") {
+    } else if (evname == "FPGA" || evname == "Embedded" || evname == "electromania"  || evname == "Design 3D") {
         memberno = 5;
     } else if (evname == "IORC" || evname == "Be the Tycoon" || evname == "29 States" || evname == "crypto" || evname == "Scimatex" || evname == "Stocksim" ) {
         memberno = 1;
@@ -12,7 +12,7 @@ $('#submitbutton').click(function() {
         memberno = 4;
     } else if (evname == "Electrade" ) {
         memberno = 4;
-    } else if (evname == "Skysparks" || evname == "Soccon" || evname == "Cruise Control" || evname == "Multirover" || evname == "concatenate") {
+    } else if (evname == "Skysparks" || evname == "Soccon" || evname == "Cruise Control" || evname == "Multirover" || evname == "concatenate" || evname == "Bridge Design Challenge" ) {
         memberno = 6;
     } else if (evname == "Crime Run" || evname == "AISRC" || evname == "Scientoon") {
         memberno = 4;
@@ -176,7 +176,7 @@ $("#subject").change(function() {
         $('#submitbutton').show();
         comment = "";
     }   else if (evname == "Bridge Design Challenge") {
-        memberno = 5;
+        memberno = 6;
         $('#submitbutton').show();
         comment = "";
     } 
