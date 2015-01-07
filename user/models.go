@@ -265,10 +265,6 @@ func (u *User) Add(name, password, email, number, alternatenumber string) {
 func (u *User) ResendActEmail(email string) {
 
 	//rs := u.ActiveCode
-
-	if err := R.Create(u); err != nil {
-		panic(err)
-	}
 	uid := u.Id.String()
 	slice := uid[13:37]
 
