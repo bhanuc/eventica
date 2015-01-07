@@ -320,7 +320,7 @@ func AuthenticateHandler(w http.ResponseWriter, r *http.Request) {
 		} else {
 			unactive = true
 			flashes["Error"] = FlashMessage{"warning", "Your Account is not yet Activated. Please Check your inbox or spam for the activation link.Activation email has been resent to your email id. "}
-			go user.ResendActEmail(user.Email)
+			user.ResendActEmail(user.Email)
 			valid = false
 		}
 	}
