@@ -366,12 +366,12 @@ func ActHandler(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 	} else {
 		if user.ActiveStatus {
-			flashes["Error"] = FlashMessage{"warning", "The Account is already Activated. "}
+			flashes["Error"] = FlashMessage{"warning", "The Account is already Activated.You Can login using the login credentials "}
 		} else {
 			if user.ActiveCode == Ustring {
 				user.ActiveStatus = true
 				user.Update()
-				flashes["success"] = FlashMessage{"success", "Your Profile has been successfully activated."}
+				flashes["success"] = FlashMessage{"success", "Your Profile has been successfully activated. You Can login using the login credentials"}
 			} else {
 				flashes["Error"] = FlashMessage{"warning", "The Activation url is wrong. Please Contact Support"}
 			}

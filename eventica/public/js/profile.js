@@ -10,6 +10,8 @@ var getprofile = function getprofile () {
           var profile = Object.keys(data.profile);
           global.keys = profile;
           var string = "";
+          localStorage.setItem('Tid',data.profile.Tech_id);
+          //data.profile.Tech_id
           for (var i = 1; i <= profile.length - 1; i++) {
             switch (profile[i]) {
                 case "alternatenumber":
