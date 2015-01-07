@@ -274,8 +274,6 @@ func (u *User) Add(name, password, email, number, alternatenumber string) {
 	body += Config.Host + " team"
 
 	to := flag.String("t", "", email)
-	from := flag.String("f", "", "webadmin@techkriti.org")
-	pwd := flag.String("p", "", "rememberyourpassword")
 	subject := flag.String("s", "", "Activation Email")
 	msg := flag.String("m", "", body)
 	flag.Usage = func() {
@@ -292,10 +290,23 @@ func (u *User) Add(name, password, email, number, alternatenumber string) {
 
 	body1 := "To: " + *to + "\r\nSubject: " +
 		*subject + "\r\n\r\n" + *msg
-	auth := smtp.PlainAuth("", *from, *pwd, "smtp.gmail.com")
-	er2 := smtp.SendMail("smtp.gmail.com:587", auth, *from,
-		[]string{*to}, []byte(body1))
-	if er2 != nil {
+
+	auth := smtp.PlainAuth(
+		"",
+		"webadmin@techkriti.org",
+		"rememberyourpassword",
+		"smtp.gmail.com",
+	)
+	// Connect to the server, authenticate, set the sender and recipient,
+	// and send the email all in one step.
+	err2 := smtp.SendMail(
+		"smtp.gmail.com:25",
+		auth,
+		"noreply@techkriti.org",
+		[]string{email},
+		[]byte(body1),
+	)
+	if err2 != nil {
 		log.Fatal(err)
 	}
 	// m := mail.NewMail(Config.MailFrom, []string{email}, "Welcome to "+Config.Host, body)
@@ -345,8 +356,6 @@ func (u *User) ResendActEmail(email string) {
 	// e.Send("smtp.gmail.com:587", smtp.PlainAuth("", "webadmin@techkriti.org", "rememberyourpassword", "smtp.gmail.com"))
 
 	to := flag.String("t", "", email)
-	from := flag.String("f", "", "webadmin@techkriti.org")
-	pwd := flag.String("p", "", "rememberyourpassword")
 	subject := flag.String("s", "", "Activation Email")
 	msg := flag.String("m", "", body)
 	flag.Usage = func() {
@@ -363,9 +372,21 @@ func (u *User) ResendActEmail(email string) {
 
 	body1 := "To: " + *to + "\r\nSubject: " +
 		*subject + "\r\n\r\n" + *msg
-	auth := smtp.PlainAuth("", *from, *pwd, "smtp.gmail.com")
-	err := smtp.SendMail("smtp.gmail.com:587", auth, *from,
-		[]string{*to}, []byte(body1))
+	auth := smtp.PlainAuth(
+		"",
+		"webadmin@techkriti.org",
+		"rememberyourpassword",
+		"smtp.gmail.com",
+	)
+	// Connect to the server, authenticate, set the sender and recipient,
+	// and send the email all in one step.
+	err := smtp.SendMail(
+		"smtp.gmail.com:25",
+		auth,
+		"noreply@techkriti.org",
+		[]string{email},
+		[]byte(body1),
+	)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -507,8 +528,6 @@ func (u *User) CreateResetToken() {
 	// 	u.Update()
 	// }
 	to := flag.String("t", "", u.Email)
-	from := flag.String("f", "", "webadmin@techkriti.org")
-	pwd := flag.String("p", "", "rememberyourpassword")
 	subject := flag.String("s", "", "Activation Email")
 	msg := flag.String("m", "", body)
 	flag.Usage = func() {
@@ -525,14 +544,23 @@ func (u *User) CreateResetToken() {
 
 	body1 := "To: " + *to + "\r\nSubject: " +
 		*subject + "\r\n\r\n" + *msg
-	auth := smtp.PlainAuth("", *from, *pwd, "smtp.gmail.com")
-	err := smtp.SendMail("smtp.gmail.com:587", auth, *from,
-		[]string{*to}, []byte(body1))
+	auth := smtp.PlainAuth(
+		"",
+		"webadmin@techkriti.org",
+		"rememberyourpassword",
+		"smtp.gmail.com",
+	)
+	// Connect to the server, authenticate, set the sender and recipient,
+	// and send the email all in one step.
+	err := smtp.SendMail(
+		"smtp.gmail.com:25",
+		auth,
+		"noreply@techkriti.org",
+		[]string{u.Email},
+		[]byte(body1),
+	)
 	if err != nil {
 		log.Fatal(err)
-	} else {
-		u.ResetSent = time.Now()
-		u.Update()
 	}
 }
 
@@ -569,8 +597,6 @@ func (u *User) ResetPassword() bool {
 		// 	return true
 		// }
 		to := flag.String("t", "", u.Email)
-		from := flag.String("f", "", "webadmin@techkriti.org")
-		pwd := flag.String("p", "", "rememberyourpassword")
 		subject := flag.String("s", "", "Activation Email")
 		msg := flag.String("m", "", body)
 		flag.Usage = func() {
@@ -587,9 +613,21 @@ func (u *User) ResetPassword() bool {
 
 		body1 := "To: " + *to + "\r\nSubject: " +
 			*subject + "\r\n\r\n" + *msg
-		auth := smtp.PlainAuth("", *from, *pwd, "smtp.gmail.com")
-		err := smtp.SendMail("smtp.gmail.com:587", auth, *from,
-			[]string{*to}, []byte(body1))
+		auth := smtp.PlainAuth(
+			"",
+			"webadmin@techkriti.org",
+			"rememberyourpassword",
+			"smtp.gmail.com",
+		)
+		// Connect to the server, authenticate, set the sender and recipient,
+		// and send the email all in one step.
+		err := smtp.SendMail(
+			"smtp.gmail.com:25",
+			auth,
+			"noreply@techkriti.org",
+			[]string{u.Email},
+			[]byte(body1),
+		)
 		if err != nil {
 			log.Fatal(err)
 			return false
