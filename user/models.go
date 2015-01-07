@@ -258,7 +258,7 @@ func (u *User) Add(name, password, email, number, alternatenumber string) {
 
 	m := mail.NewMail(Config.MailFrom, []string{email}, "Welcome to "+Config.Host, body)
 	if err := m.Send(); err != nil {
-		panic(err)
+		fmt.Printf("The error is %s", err)
 	}
 }
 
@@ -275,7 +275,7 @@ func (u *User) ResendActEmail(email string) {
 
 	m := mail.NewMail(Config.MailFrom, []string{email}, "Welcome to "+Config.Host, body)
 	if err := m.Send(); err != nil {
-		panic(err)
+		fmt.Printf("The error is %s", err)
 	}
 }
 
