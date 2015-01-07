@@ -365,11 +365,6 @@ func (u *User) ResendActEmail(email string) {
 
 	flag.Parse()
 
-	if flag.NFlag() != 5 {
-		flag.Usage()
-		return
-	}
-
 	body1 := "To: " + *to + "\r\nSubject: " +
 		*subject + "\r\n\r\n" + *msg
 	auth := smtp.PlainAuth(
