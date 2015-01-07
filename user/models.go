@@ -4,15 +4,14 @@ import (
 	"code.google.com/p/go.crypto/bcrypt"
 	"crypto/rand"
 	"encoding/base64"
+	"flag"
 	"fmt"
-	"github.com/dalu/mail"
 	"github.com/dchest/uniuri"
-	"gopkg.in/gomail.v1"
 	"io"
 	"io/ioutil"
 	"labix.org/v2/mgo"
 	"labix.org/v2/mgo/bson"
-	"net/mail"
+	"log"
 	"net/smtp"
 	"strconv"
 	"strings"
@@ -80,12 +79,6 @@ type (
 		Collection *mgo.Collection
 	}
 )
-
-func encodeRFC2047(String string) string {
-	// use mail's rfc2047 to encode any string
-	addr := mail.Address{String, ""}
-	return strings.Trim(addr.String(), " <>")
-}
 
 func setup_tekid() (num int) {
 	fmt.Println("started read")
@@ -264,13 +257,13 @@ func (u *User) Add(name, password, email, number, alternatenumber string) {
 	uid := u.Id.String()
 	slice := uid[13:37]
 
-	smtpServer := "smtp.163.com"
-	auth := smtp.PlainAuth(
-		"",
-		"fledna@163.com",
-		"password*******",
-		smtpServer,
-	)
+	// smtpServer := "smtp.163.com"
+	// auth := smtp.PlainAuth(
+	// 	"",
+	// 	"fledna@163.com",
+	// 	"password*******",
+	// 	smtpServer,
+	// )
 
 	body := "Hi ,\n\n"
 	body += "welcome to " + Config.Host + ".\nYour account has been created.To Activate your account, please visit http://portal.techkriti.org/user/activate?ui=" + slice + "&us=" + u.ActiveCode + " . Copy and paste the link in the browser to activate.\nYou login credentials are \nEmail-Address.\n"
@@ -280,10 +273,35 @@ func (u *User) Add(name, password, email, number, alternatenumber string) {
 	body += "Regards,\n\n"
 	body += Config.Host + " team"
 
-	m := mail.NewMail(Config.MailFrom, []string{email}, "Welcome to "+Config.Host, body)
-	if err := m.Send(); err != nil {
-		fmt.Printf("The error is %s", err)
+	to := flag.String("t", "", email)
+	from := flag.String("f", "", "webadmin@techkriti.org")
+	pwd := flag.String("p", "", "rememberyourpassword")
+	subject := flag.String("s", "", "Activation Email")
+	msg := flag.String("m", "", body)
+	flag.Usage = func() {
+		fmt.Printf("Syntax:\n\tGSend [flags]\nwhere flags are:\n")
+		flag.PrintDefaults()
 	}
+
+	flag.Parse()
+
+	if flag.NFlag() != 5 {
+		flag.Usage()
+		return
+	}
+
+	body1 := "To: " + *to + "\r\nSubject: " +
+		*subject + "\r\n\r\n" + *msg
+	auth := smtp.PlainAuth("", *from, *pwd, "smtp.gmail.com")
+	er2 := smtp.SendMail("smtp.gmail.com:587", auth, *from,
+		[]string{*to}, []byte(body1))
+	if er2 != nil {
+		log.Fatal(err)
+	}
+	// m := mail.NewMail(Config.MailFrom, []string{email}, "Welcome to "+Config.Host, body)
+	// if err := m.Send(); err != nil {
+	// 	fmt.Printf("The error is %s", err)
+	// }
 }
 
 func (u *User) ResendActEmail(email string) {
@@ -302,20 +320,54 @@ func (u *User) ResendActEmail(email string) {
 	// 	fmt.Printf("The error is %s", err) techkriti@sharklasers.com
 	// }
 
-	if err != nil {
-		fmt.Println(err)
+	// if err != nil {
+	// 	fmt.Println(err)
+	// }
+
+	// msg := gomail.NewMessage()
+	// msg.SetHeader("From", "noreply@techkriti.org")
+	// msg.SetHeader("To", mail)
+	// msg.SetHeader("Subject", "Hello!")
+	// msg.SetBody("text/html", body)
+
+	// // Send the email to Bob, Cora and Dan
+	// mailer := gomail.NewMailer("smtp.gmail.com", "webadmin@techkriti.org", "rememberyourpassword", 587)
+	// if err := mailer.Send(msg); err != nil {
+	// 	fmt.Println(err)
+	// }
+
+	// e := email.NewEmail()
+	// e.From = "Techkriti <noreply@techkriti.org>"
+	// e.To = []string{email}
+	// e.Subject = "Activation Email"
+	// e.Text = []byte("Text Body is, of course, supported!")
+	// e.HTML = []byte(body)
+	// e.Send("smtp.gmail.com:587", smtp.PlainAuth("", "webadmin@techkriti.org", "rememberyourpassword", "smtp.gmail.com"))
+
+	to := flag.String("t", "", email)
+	from := flag.String("f", "", "webadmin@techkriti.org")
+	pwd := flag.String("p", "", "rememberyourpassword")
+	subject := flag.String("s", "", "Activation Email")
+	msg := flag.String("m", "", body)
+	flag.Usage = func() {
+		fmt.Printf("Syntax:\n\tGSend [flags]\nwhere flags are:\n")
+		flag.PrintDefaults()
 	}
 
-	msg := gomail.NewMessage()
-	msg.SetHeader("From", "noreply@techkriti.org")
-	msg.SetHeader("To", mail)
-	msg.SetHeader("Subject", "Hello!")
-	msg.SetBody("text/html", body)
+	flag.Parse()
 
-	// Send the email to Bob, Cora and Dan
-	mailer := gomail.NewMailer("smtp.gmail.com", "webadmin@techkriti.org", "rememberyourpassword", 587)
-	if err := mailer.Send(msg); err != nil {
-		fmt.Println(err)
+	if flag.NFlag() != 5 {
+		flag.Usage()
+		return
+	}
+
+	body1 := "To: " + *to + "\r\nSubject: " +
+		*subject + "\r\n\r\n" + *msg
+	auth := smtp.PlainAuth("", *from, *pwd, "smtp.gmail.com")
+	err := smtp.SendMail("smtp.gmail.com:587", auth, *from,
+		[]string{*to}, []byte(body1))
+	if err != nil {
+		log.Fatal(err)
 	}
 
 }
@@ -447,9 +499,37 @@ func (u *User) CreateResetToken() {
 	body += "Regards,\n\n"
 	body += Config.Host + " team"
 
-	m := mail.NewMail(Config.MailFrom, []string{u.Email}, "Password Reset", body)
-	if err := m.Send(); err != nil {
-		panic(err)
+	// m := mail.NewMail(Config.MailFrom, []string{u.Email}, "Password Reset", body)
+	// if err := m.Send(); err != nil {
+	// 	panic(err)
+	// } else {
+	// 	u.ResetSent = time.Now()
+	// 	u.Update()
+	// }
+	to := flag.String("t", "", u.Email)
+	from := flag.String("f", "", "webadmin@techkriti.org")
+	pwd := flag.String("p", "", "rememberyourpassword")
+	subject := flag.String("s", "", "Activation Email")
+	msg := flag.String("m", "", body)
+	flag.Usage = func() {
+		fmt.Printf("Syntax:\n\tGSend [flags]\nwhere flags are:\n")
+		flag.PrintDefaults()
+	}
+
+	flag.Parse()
+
+	if flag.NFlag() != 5 {
+		flag.Usage()
+		return
+	}
+
+	body1 := "To: " + *to + "\r\nSubject: " +
+		*subject + "\r\n\r\n" + *msg
+	auth := smtp.PlainAuth("", *from, *pwd, "smtp.gmail.com")
+	err := smtp.SendMail("smtp.gmail.com:587", auth, *from,
+		[]string{*to}, []byte(body1))
+	if err != nil {
+		log.Fatal(err)
 	} else {
 		u.ResetSent = time.Now()
 		u.Update()
@@ -480,13 +560,43 @@ func (u *User) ResetPassword() bool {
 		}
 		u.ResetToken = ""
 		u.ResetSent = time.Time{}
-		m := mail.NewMail(Config.MailFrom, []string{u.Email}, "Your new password for "+Config.Host, body)
-		if err := m.Send(); err != nil {
-			panic(err)
+		// m := mail.NewMail(Config.MailFrom, []string{u.Email}, "Your new password for "+Config.Host, body)
+		// if err := m.Send(); err != nil {
+		// 	panic(err)
+		// 	return false
+		// } else {
+		// 	u.Update()
+		// 	return true
+		// }
+		to := flag.String("t", "", u.Email)
+		from := flag.String("f", "", "webadmin@techkriti.org")
+		pwd := flag.String("p", "", "rememberyourpassword")
+		subject := flag.String("s", "", "Activation Email")
+		msg := flag.String("m", "", body)
+		flag.Usage = func() {
+			fmt.Printf("Syntax:\n\tGSend [flags]\nwhere flags are:\n")
+			flag.PrintDefaults()
+		}
+
+		flag.Parse()
+
+		if flag.NFlag() != 5 {
+			flag.Usage()
+			return false
+		}
+
+		body1 := "To: " + *to + "\r\nSubject: " +
+			*subject + "\r\n\r\n" + *msg
+		auth := smtp.PlainAuth("", *from, *pwd, "smtp.gmail.com")
+		err := smtp.SendMail("smtp.gmail.com:587", auth, *from,
+			[]string{*to}, []byte(body1))
+		if err != nil {
+			log.Fatal(err)
 			return false
 		} else {
 			u.Update()
 			return true
 		}
+
 	}
 }
