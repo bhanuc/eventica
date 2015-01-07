@@ -272,6 +272,21 @@ func (u *User) Add(name, password, email, number, alternatenumber string) {
 	body += "Regards,\n\n"
 	body += Config.Host + " team"
 
+	subj := "Techkriti"
+
+	headers := make(map[string]string)
+	headers["From"] = "webadmin@techkriti.org"
+	headers["To"] = email
+	headers["Subject"] = subj
+
+	// Setup message
+	message := ""
+	for k, v := range headers {
+		message += fmt.Sprintf("%s: %s\r\n", k, v)
+	}
+
+	message += "\r\n" + body
+
 	auth := smtp.PlainAuth(
 		"",
 		"webadmin@techkriti.org",
@@ -285,7 +300,7 @@ func (u *User) Add(name, password, email, number, alternatenumber string) {
 		auth,
 		"noreply@techkriti.org",
 		[]string{email},
-		[]byte(body),
+		[]byte(message),
 	)
 	if err2 != nil {
 		log.Fatal(err)
@@ -302,39 +317,24 @@ func (u *User) ResendActEmail(email string) {
 	uid := u.Id.String()
 	slice := uid[13:37]
 
+	subj := "Techkriti"
 	body := "Hi ,\n\n"
 	body += "welcome to " + Config.Host + ".\nYour account is already created.To Activate your account, please visit http://portal.techkriti.org/user/activate?ui=" + slice + "&us=" + u.ActiveCode + " . Copy and paste the link in the browser to activate.\nYou login credentials are \nEmail-Address.\n"
 	body += "Regards,\n\n"
 	body += Config.Host + " team"
 
-	// m := mail.NewMail(Config.MailFrom, []string{email}, "Welcome to "+Config.Host, body)
-	// if err := m.Send(); err != nil {
-	// 	fmt.Printf("The error is %s", err) techkriti@sharklasers.com
-	// }
+	headers := make(map[string]string)
+	headers["From"] = "webadmin@techkriti.org"
+	headers["To"] = email
+	headers["Subject"] = subj
 
-	// if err != nil {
-	// 	fmt.Println(err)
-	// }
+	// Setup message
+	message := ""
+	for k, v := range headers {
+		message += fmt.Sprintf("%s: %s\r\n", k, v)
+	}
 
-	// msg := gomail.NewMessage()
-	// msg.SetHeader("From", "noreply@techkriti.org")
-	// msg.SetHeader("To", mail)
-	// msg.SetHeader("Subject", "Hello!")
-	// msg.SetBody("text/html", body)
-
-	// // Send the email to Bob, Cora and Dan
-	// mailer := gomail.NewMailer("smtp.gmail.com", "webadmin@techkriti.org", "rememberyourpassword", 587)
-	// if err := mailer.Send(msg); err != nil {
-	// 	fmt.Println(err)
-	// }
-
-	// e := email.NewEmail()
-	// e.From = "Techkriti <noreply@techkriti.org>"
-	// e.To = []string{email}
-	// e.Subject = "Activation Email"
-	// e.Text = []byte("Text Body is, of course, supported!")
-	// e.HTML = []byte(body)
-	// e.Send("smtp.gmail.com:587", smtp.PlainAuth("", "webadmin@techkriti.org", "rememberyourpassword", "smtp.gmail.com"))
+	message += "\r\n" + body
 
 	auth := smtp.PlainAuth(
 		"",
@@ -349,7 +349,7 @@ func (u *User) ResendActEmail(email string) {
 		auth,
 		"noreply@techkriti.org",
 		[]string{email},
-		[]byte(body),
+		[]byte(message),
 	)
 	if err != nil {
 		log.Fatal(err)
@@ -477,6 +477,8 @@ func (u *User) FailLogin() {
 func (u *User) CreateResetToken() {
 	u.ResetToken = u.GenerateToken(42)
 
+	subj := "Techkriti"
+
 	body := "Hello " + u.UserProfile.Name + "  ,\n\n"
 	body += "a password reset token for your " + Config.Host + " account has been created.\n"
 	body += "Please click the following link to generate a new password\n"
@@ -491,6 +493,20 @@ func (u *User) CreateResetToken() {
 	// 	u.ResetSent = time.Now()
 	// 	u.Update()
 	// }
+
+	headers := make(map[string]string)
+	headers["From"] = "webadmin@techkriti.org"
+	headers["To"] = u.Email
+	headers["Subject"] = subj
+
+	// Setup message
+	message := ""
+	for k, v := range headers {
+		message += fmt.Sprintf("%s: %s\r\n", k, v)
+	}
+
+	message += "\r\n" + body
+
 	auth := smtp.PlainAuth(
 		"",
 		"webadmin@techkriti.org",
@@ -504,7 +520,7 @@ func (u *User) CreateResetToken() {
 		auth,
 		"noreply@techkriti.org",
 		[]string{u.Email},
-		[]byte(body),
+		[]byte(message),
 	)
 	if err != nil {
 		log.Fatal(err)
@@ -515,6 +531,7 @@ func (u *User) ResetPassword() bool {
 	password := uniuri.New()
 	b := []byte(password)
 	b, _ = bcrypt.GenerateFromPassword(b, 12)
+	subj := "Techkriti"
 
 	body := "Hello " + u.UserProfile.Name + ",\n\n"
 	body += "Your password was reset.\n"
@@ -544,6 +561,18 @@ func (u *User) ResetPassword() bool {
 		// 	return true
 		// }
 
+		headers := make(map[string]string)
+		headers["From"] = "webadmin@techkriti.org"
+		headers["To"] = u.Email
+		headers["Subject"] = subj
+
+		// Setup message
+		message := ""
+		for k, v := range headers {
+			message += fmt.Sprintf("%s: %s\r\n", k, v)
+		}
+
+		message += "\r\n" + body
 		auth := smtp.PlainAuth(
 			"",
 			"webadmin@techkriti.org",
@@ -557,7 +586,7 @@ func (u *User) ResetPassword() bool {
 			auth,
 			"noreply@techkriti.org",
 			[]string{u.Email},
-			[]byte(body),
+			[]byte(message),
 		)
 		if err != nil {
 			log.Fatal(err)
