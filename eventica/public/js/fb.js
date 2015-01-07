@@ -15,6 +15,11 @@ $( "#user-info" ).click(function() {
 $( this ).toggleClass( "open" );
 }); 
 
-if(localStorage.Tid && localStorage.Tid != "null"){
+
+setTimeout(
+  function() 
+  {
+	if(localStorage.Tid && localStorage.Tid != "null"){
         $('#techid').html(localStorage.Tid);
       } 
+  }, 5000);
