@@ -569,7 +569,7 @@ func ManagerViewTekProfile(w http.ResponseWriter, r *http.Request) {
 		if err1 != nil && user.EventName != "" {
 			http.Redirect(w, r, "/login", 302)
 		} else {
-			u, err := R.FindOneByIdHex(tc.Id)
+			u, err := R.FindOneByIdHex(user.Id)
 			if err != nil {
 				flashes["User not Found"] = FlashMessage{"danger", "User seems to be not present in the database"}
 				data["flashes"] = flashes
