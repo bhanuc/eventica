@@ -561,9 +561,6 @@ func ManagerViewTekProfile(w http.ResponseWriter, r *http.Request) {
 	data := make(map[string]interface{})
 	flashes := make(map[string]FlashMessage)
 	id, ok := session.Values["user"].(string)
-	tc := struct {
-		Id string `json:"id"`
-	}{r.FormValue("id")}
 	if ok {
 		user, err1 := R.FindOneByTechID(id)
 		if err1 != nil && user.EventName != "" {
