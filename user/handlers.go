@@ -559,9 +559,12 @@ func ManagerViewProfile(w http.ResponseWriter, r *http.Request) {
 func ManagerViewTekProfile(w http.ResponseWriter, r *http.Request) {
 	session, _ := sessionStore.Get(r, "p")
 	data := make(map[string]interface{})
-	id, ok := session.Values["user"].(string)
+	_, ok := session.Values["user"].(string)
+	tc := struct {
+		Id string `json:"id"`
+	}{r.FormValue("id")}
 	if ok {
-		user, err1 := R.FindOneByTechID(id)
+		user, err1 := R.FindOneByTechID(tc.id)
 		if err1 != nil && user.EventName != "" {
 			http.Redirect(w, r, "/login", 302)
 		} else if user != nil {
