@@ -564,7 +564,7 @@ func ManagerViewTekProfile(w http.ResponseWriter, r *http.Request) {
 		Id string `json:"id"`
 	}{r.FormValue("id")}
 	if ok {
-		user, err1 := R.FindOneByTechID(tc.id)
+		user, err1 := R.FindOneByTechID(tc.Id)
 		if err1 != nil && user.EventName != "" {
 			http.Redirect(w, r, "/login", 302)
 		} else if user != nil {
