@@ -18,6 +18,15 @@ import (
 )
 
 type (
+	A struct {
+		UserProfile struct {
+			Id string
+		}
+	}
+
+	b struct {
+		Id string
+	}
 	Users []User
 
 	EmailConfig struct {
@@ -129,11 +138,13 @@ func (r UserRepository) FindOneByEmail(email string) (result *User, err error) {
 func (r UserRepository) FindOneByTechID(id string) (result *User, err error) {
 	result = new(User)
 	fmt.Println(id)
-	err = r.Collection.Find(bson.M{"Tech_id": id}).One(result)
+	a := &A{b{id}}
+	err = r.Collection.Find(a).One(result)
 	return
 }
 func (r UserRepository) FindCountByTechid(id string) (c int) {
-	c, _ = r.Collection.Find(bson.M{"Tech_id": id}).Count()
+	a := &A{b{id}}
+	c, _ = r.Collection.Find(a).Count()
 	return
 }
 func (r UserRepository) FindOneByCollege(college string) (c int) {
