@@ -559,13 +559,12 @@ func ManagerViewProfile(w http.ResponseWriter, r *http.Request) {
 func ManagerViewTekProfile(w http.ResponseWriter, r *http.Request) {
 	session, _ := sessionStore.Get(r, "p")
 	data := make(map[string]interface{})
-	flashes := make(map[string]FlashMessage)
 	id, ok := session.Values["user"].(string)
 	if ok {
 		user, err1 := R.FindOneByTechID(id)
 		if err1 != nil && user.EventName != "" {
 			http.Redirect(w, r, "/login", 302)
-		} else if user {
+		} else if user != nil {
 			data["success"] = true
 			data["user"] = user.UserProfile
 			utility.WriteJson(w, data)
