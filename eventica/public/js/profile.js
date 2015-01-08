@@ -81,7 +81,7 @@ $('#EditButton').click(function editbutton () {
               form = form+'<div class="row profile"><div class="col-md-6">Entering Booking ID</div><div class="col-md-6"><input type="text" value="'+( global.profile[global.keys[i]] || ' ')+'" id="'+global.keys[i]+'" name="profileForm"></div></div>';
                break;
                case "name":
-              form = form+'<div class="row profile"><div class="col-md-6">*Name</div><div class="col-md-6"><input type="text" value="'+(global.profile[global.keys[i]] || ' ')+'" id="'+global.keys[i]+'" name="profileForm" disabled ></div></div>';
+              form = form+'<div class="row profile"><div class="col-md-6">*Name</div><div class="col-md-6"><input type="text" value="'+(global.profile[global.keys[i]] || ' ')+'" id="'+global.keys[i]+'" name="profileForm" ></div></div>';
                break;
                case "email":
               form = form+'<div class="row profile"><div class="col-md-6">*Email</div><div class="col-md-6"><input type="text" value="'+(global.profile[global.keys[i]] || ' ')+'" id="'+global.keys[i]+'" name="profileForm" disabled ></div></div>';
@@ -136,14 +136,6 @@ $('#SubmitButton').click(function submitbutton () {
           console.log(new RegExp(regex).test(num), num.length );
             if( !(new RegExp(regex).test(num)) && num.length != 10){
                   toastr.error("Please enter a correct phone number");
-                  index = 0;
-                  break;
-            }
-       }
-       if(global.keys[i] == "sportincharge" ){
-          var sic = $('#'+global.keys[i]).val();
-            if(sic==" "){
-                  toastr.error("Please enter sport in charge");
                   index = 0;
                   break;
             }

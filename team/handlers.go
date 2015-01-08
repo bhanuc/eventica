@@ -654,7 +654,7 @@ func CommentAdminHandler(w http.ResponseWriter, r *http.Request) {
 		} else {
 			u.Comments = tc.Comments
 			u.Update()
-			http.Redirect(w, r, "/app", 302)
+			http.Redirect(w, r, "/manager", 302)
 		}
 	} else {
 		http.Redirect(w, r, "/login", 302)
@@ -683,7 +683,7 @@ func CommentManagerHandler(w http.ResponseWriter, r *http.Request) {
 			} else {
 				u.Comments = tc.Comments
 				u.Update()
-				http.Redirect(w, r, "/app", 302)
+				http.Redirect(w, r, "/manager", 302)
 			}
 		}
 	} else {

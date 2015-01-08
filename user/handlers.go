@@ -428,6 +428,7 @@ func UpdateProfileHandler(w http.ResponseWriter, r *http.Request) {
 			u.UserProfile.AlternateNumber = p.AlternateNumber
 			u.UserProfile.Ambassador = p.Ambassador
 			u.UserProfile.Sex = p.Sex
+			u.UserProfile.Name = p.Name
 			u.UserProfile.Branch = p.Branch
 			u.UserProfile.Year = p.Year
 			u.UserProfile.BookingID = p.BookingID

@@ -51,3 +51,12 @@ $.ajax({
      }
 });
 
+var Techinfo = function(){
+ var tid = document.getElementById('techid').value;
+ if (tid){
+
+  
+
+ }
+}
+

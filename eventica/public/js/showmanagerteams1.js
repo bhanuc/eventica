@@ -96,3 +96,37 @@ var getallemails = function() {
 
         }
     }
+
+
+var Techinfo = function(){
+ var tid = document.getElementById('techid').value;
+ if (tid){
+        $.ajax({
+        url: '/user/tek-profile?id=' + url,
+        type: 'GET',
+        success: function(data) {
+            console.log(data);
+            if (data.success) {
+                var json = data.success;
+                $('#name').html(json.name);
+                $('#number').html(json.number);
+                $('#college').html(json.college);
+                $('#email').html(json.email);
+                $('#alternatenumber').html(json.alternatenumber);
+                $('#ambassador').html(json.ambassador);
+                $('#sex').html(json.sex);
+                $('#branch').html(json.branch);
+                $('#bookingid').html(json.bookingid);
+                $('#year').html(json.year);
+                $('#techid').html(json.techid);
+                $('#modal').modal('show');
+            } else {
+                alert('Some error has occured. Contact support.')
+            }
+            //success message mybe...
+        }
+    });    
+    
+ }
+}
+
