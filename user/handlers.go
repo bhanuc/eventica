@@ -565,18 +565,13 @@ func ManagerViewTekProfile(w http.ResponseWriter, r *http.Request) {
 		user, err1 := R.FindOneByTechID(id)
 		if err1 != nil && user.EventName != "" {
 			http.Redirect(w, r, "/login", 302)
+		} else if user {
+			data["success"] = true
+			data["user"] = user.UserProfile
+			utility.WriteJson(w, data)
 		} else {
-			uid := user.Id.String()
-			slice := uid[13:37]
-			u, err := R.FindOneByIdHex(slice)
-			if err != nil {
-				flashes["User not Found"] = FlashMessage{"danger", "User seems to be not present in the database"}
-				data["flashes"] = flashes
-				utility.WriteJson(w, data)
-			} else {
-				data["success"] = u.UserProfile
-				utility.WriteJson(w, data)
-			}
+			data["success"] = false
+			utility.WriteJson(w, data)
 		}
 	} else {
 		http.Redirect(w, r, "/login", 302)
