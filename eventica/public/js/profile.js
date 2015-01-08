@@ -132,8 +132,10 @@ $('#SubmitButton').click(function submitbutton() {
             console.log(global.keys[i], $('#' + global.keys[i]).val());
             if (global.keys[i] == "number") {
                 var num = $('#number').val()
-                num = num.replace(/[^0-9]/g, '');
-                if (phone.length != 10) {
+              //  num = num.replace(/[^0-9]/g, '');
+                
+                value[global.keys[i]] = num
+                if (!num.match(/^\d{10}/)) {
                     toastr.error("Please enter a correct phone number");
                     index = 0;
                     break;
@@ -149,7 +151,7 @@ $('#SubmitButton').click(function submitbutton() {
                 success: function(data) {
                     if (data.success) {
                         toastr.success(data.flashes.profile_updated.message);
-                        window.getprofile;
+                        window.getprofile();
                     } else {
                         toastr.error("Your Session seems to expired. Please Login again.")
                     }

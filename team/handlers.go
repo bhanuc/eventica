@@ -143,6 +143,7 @@ func CreateHandler(w http.ResponseWriter, r *http.Request) {
 			Event   string `json:"event"`
 			Gender  string `json:"gender"`
 		}{}
+
 		utility.ReadJson(r, &tu)
 
 		if tu.Name == "" {
@@ -164,6 +165,7 @@ func CreateHandler(w http.ResponseWriter, r *http.Request) {
 				}
 			}
 		}
+
 		/**for _, member := range members {
 							//cnum, _ := strconv.Atoi(member)
 		 			if R.FindCountByTechid(member) == 0 {

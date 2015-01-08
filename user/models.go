@@ -136,15 +136,13 @@ func (r UserRepository) FindOneByEmail(email string) (result *User, err error) {
 }
 
 func (r UserRepository) FindOneByTechID(id string) (result *User, err error) {
-	result = new(User)
-	fmt.Println(id)
-	a := &A{b{id}}
-	err = r.Collection.Find(a).One(result)
+	err = r.Collection.Find(bson.M{"Tech_id": id}).One(result)
 	return
 }
 func (r UserRepository) FindCountByTechid(id string) (c int) {
-	a := &A{b{id}}
-	c, _ = r.Collection.Find(a).Count()
+	//a := &A{b{id}}
+	c, err := r.Collection.Find(bson.M{"Tech_id": id}).Count()
+	fmt.Println(c, err)
 	return
 }
 func (r UserRepository) FindOneByCollege(college string) (c int) {

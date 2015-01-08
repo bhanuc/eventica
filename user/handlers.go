@@ -2,7 +2,6 @@ package user
 
 import (
 	"encoding/json"
-	"fmt"
 	"github.com/eventica/utility"
 	"github.com/gorilla/sessions"
 	fb "github.com/huandu/facebook"
@@ -147,7 +146,6 @@ func FbHandler(w http.ResponseWriter, r *http.Request) {
 	})
 
 	if err != nil {
-		fmt.Printf("%+v\n", res)
 		e["Error"] = FlashMessage{"danger", "Facebook Login was not successful. Please use the traditional method"}
 	} else {
 		tr := struct {
@@ -159,13 +157,11 @@ func FbHandler(w http.ResponseWriter, r *http.Request) {
 		//buf := new(bytes.Buffer)
 		b, err := json.Marshal(res)
 		if err != nil {
-			fmt.Println(2)
 
 			e["Error"] = FlashMessage{"danger", "Response could not be parsed. Please login again."}
 		}
 		nerr := json.Unmarshal(b, &tr)
 		if nerr != nil {
-			fmt.Println(3)
 
 			e["Error"] = FlashMessage{"danger", "Response could not be parsed. Please login again."}
 		}
@@ -181,8 +177,6 @@ func FbHandler(w http.ResponseWriter, r *http.Request) {
 		//userrepo.Collection.Find(bson.M{"email": tu.Email}).One(&foundmail)
 		c, _ := R.Collection.Find(bson.M{"email": tr.Email}).Count()
 		uzer, err := R.FindOneByEmail(tr.Email)
-		fmt.Println(1)
-
 		if c > 0 {
 			// login into the account
 			uzer.CheckTechID()
@@ -307,22 +301,22 @@ func AuthenticateHandler(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		valid = false
 	} else {
-		if user.ActiveStatus { //check email activation
-			// check if login allowed
-			if user.LoginAllowed() {
-				if valid = user.VerifyCredentials(tc.Email, tc.Password); valid == false {
-					user.FailLogin()
-				}
-			} else {
-				// login not allowed
-				flashes["Error"] = FlashMessage{"warning", "You have failed 3 login attempts in the last 15 Minutes. Please wait 15 Minutes from now on and try again."}
+		// if user.ActiveStatus { //check email activation
+		// check if login allowed
+		if user.LoginAllowed() {
+			if valid = user.VerifyCredentials(tc.Email, tc.Password); valid == false {
+				user.FailLogin()
 			}
 		} else {
-			unactive = true
-			flashes["Error"] = FlashMessage{"warning", "Your Account is not yet Activated. Please Check your inbox or spam for the activation link.Activation email has been resent to your email id. "}
-			user.ResendActEmail(user.Email)
-			valid = false
+			// login not allowed
+			flashes["Error"] = FlashMessage{"warning", "You have failed 3 login attempts in the last 15 Minutes. Please wait 15 Minutes from now on and try again."}
 		}
+		// } else {
+		// 	unactive = true
+		// 	flashes["Error"] = FlashMessage{"warning", "Your Account is not yet Activated. Please Check your inbox or spam for the activation link.Activation email has been resent to your email id. "}
+		// 	user.ResendActEmail(user.Email)
+		// 	valid = false
+		// }
 	}
 	data["valid"] = valid
 	if valid {
@@ -359,7 +353,6 @@ func ActHandler(w http.ResponseWriter, r *http.Request) {
 	Uid := params["ui"][0]
 	Ustring := params["us"][0]
 	flashes := make(map[string]FlashMessage)
-	fmt.Print(Uid, Ustring, r.URL.Query()["ui"])
 
 	Uid = strings.Trim(Uid, " ")
 	user, err := R.FindOneByIdHex(Uid)
@@ -435,10 +428,8 @@ func UpdateProfileHandler(w http.ResponseWriter, r *http.Request) {
 			u.Update()
 			if u.CheckProfile() {
 				u.ProfileStatus = true
-				fmt.Println(u.ProfileStatus)
 			} else {
 				u.ProfileStatus = false
-				fmt.Println(u.ProfileStatus)
 			}
 			u.Update()
 			data["success"] = true
