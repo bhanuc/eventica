@@ -206,6 +206,9 @@ func (u *User) CheckProfile() (stat bool) {
 	if u.UserProfile.Email == "" {
 		stat = false
 	}
+	if u.UserProfile.Year == "" {
+		stat = false
+	}
 	return
 }
 
