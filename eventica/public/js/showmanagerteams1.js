@@ -102,7 +102,7 @@ var Techinfo = function(){
  var tid = document.getElementById('techid').value;
  if (tid){
         $.ajax({
-        url: '/user/tek-profile?id=' + url,
+        url: '/user/tek-profile?id=' + tid,
         type: 'GET',
         success: function(data) {
             console.log(data);
@@ -126,7 +126,7 @@ var Techinfo = function(){
             //success message mybe...
         }
     });    
-    
+
  }
 }
 
