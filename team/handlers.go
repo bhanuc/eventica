@@ -64,6 +64,7 @@ func UpdateAllTeamMembers(w http.ResponseWriter, r *http.Request) {
 
 func Addteam(pid string, tek_id string) {
 	u, err := R.FindOneByTechID(tek_id)
+	fmt.Println(u, err)
 	if err != nil {
 		fmt.Println(err)
 	} else {
@@ -189,13 +190,14 @@ func CreateHandler(w http.ResponseWriter, r *http.Request) {
 			//} else {
 			_, err := T.FindOneByName(tu.Name)
 			if err != nil {
-				fmt.Println("inside add team")
+				fmt.Println("inside add team", tu.Members)
 				team := new(Team)
 				team.Add(tu.Name, tu.Members, tu.Event, tu.Gender, id, u.UserProfile.College)
 				fmt.Println("made team", members, team.Id)
 				for i := 0; i < len(members); i++ {
-					fmt.Println("in loop", i, members[i], string(team.Id))
+					fmt.Println("in loop", i, members[i], string(team.Id.String()))
 					if members[i] != "" || members != nil {
+						fmt.Println(team.Id.String(), members[i])
 						Addteam(team.Id.String(), members[i])
 					}
 				}

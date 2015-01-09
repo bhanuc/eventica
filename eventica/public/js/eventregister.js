@@ -2,29 +2,29 @@ $('#submitbutton').click(function() {
     var evname = $("#subject").val();
     var memberno = 0;
 
-    if (evname == "Hoverush" ||  evname == "IDEAS" ||  evname == "Manoeuvre" || evname == "Shuffle" || evname == "Mix Bowl Quiz") {
+    if (evname == "Hoverush" || evname == "IDEAS" || evname == "Manoeuvre" || evname == "Shuffle" || evname == "Mix Bowl Quiz") {
         memberno = 5;
-    } else if (evname == "FPGA" || evname == "Embedded" || evname == "electromania"  || evname == "Design 3D") {
+    } else if (evname == "FPGA" || evname == "Embedded" || evname == "electromania" || evname == "Design 3D") {
         memberno = 5;
-    } else if (evname == "IORC" || evname == "Be the Tycoon" || evname == "29 States" || evname == "crypto" || evname == "Scimatex" || evname == "Stocksim" ) {
+    } else if (evname == "IORC" || evname == "Be the Tycoon" || evname == "29 States" || evname == "crypto" || evname == "Scimatex" || evname == "Stocksim") {
         memberno = 1;
     } else if (evname == "Impulse" || evname == "Hackathon" || evname == "Iarc") {
         memberno = 4;
-    } else if (evname == "Electrade" ) {
+    } else if (evname == "Electrade") {
         memberno = 4;
-    } else if (evname == "Skysparks" || evname == "Soccon" || evname == "Cruise Control" || evname == "Multirover" || evname == "concatenate" || evname == "Bridge Design Challenge" ) {
+    } else if (evname == "Skysparks" || evname == "Soccon" || evname == "Cruise Control" || evname == "Multirover" || evname == "concatenate" || evname == "Bridge Design Challenge") {
         memberno = 6;
     } else if (evname == "Crime Run" || evname == "AISRC" || evname == "Scientoon") {
         memberno = 4;
     } else if (evname == "TGP") {
         memberno = 8;
-    } else if (evname == "IOPC" || evname == "What's Up" || evname == "Astro Quiz" || evname == "Innovation in Manufactruning Processes" || evname == "Battlefield" || evname == "Do your due" ||  evname == "IHPC" || evname == "Marketing Villa" || evname == "Chaos" || evname == "Battlecity" || evname == "Finquest" || evname == "Mark-Ops") {
+    } else if (evname == "IOPC" || evname == "What's Up" || evname == "Astro Quiz" || evname == "Innovation in Manufactruning Processes" || evname == "Battlefield" || evname == "Do your due" || evname == "IHPC" || evname == "Marketing Villa" || evname == "Chaos" || evname == "Battlecity" || evname == "Finquest" || evname == "Mark-Ops") {
         memberno = 3;
     } else if (evname == "Wild soccer") {
         memberno = 10;
     } else if (evname == "Astro Treasure") {
         memberno = 7;
-    } 
+    }
 
 
 
@@ -33,9 +33,12 @@ $('#submitbutton').click(function() {
         if (i == 0) {
             memberscontact = $("#members" + (i + 1)).val();
         } else {
-            memberscontact = memberscontact + ',' + $("#members" + (i + 1)).val();
+            if ($("#members" + (i + 1)).val() != '') {
+                memberscontact = memberscontact + ',' + $("#members" + (i + 1)).val();
+            }
         }
     }
+    console.log(memberscontact);
     $.ajax({
         url: '/team/create',
         type: 'POST',
@@ -66,28 +69,28 @@ $("#subject").change(function() {
     if (evname == "Hoverush" || evname == "IDEAS" || evname == "Manoeuvre" || evname == "Shuffle") {
         memberno = 5;
         comment = "";
-                $('#submitbutton').show();
+        $('#submitbutton').show();
     } else if (evname == "FPGA" || evname == "Embedded") {
         memberno = 5;
         comment = "Only for Undergraduate students";
-                    $('#submitbutton').show();
+        $('#submitbutton').show();
     } else if (evname == "Battlefield") {
         memberno = 3;
         comment = "Each team will have 2-3 members. Registration for this event will open on 15th January and will close on 10th February.";
         $('#submitbutton').hide();
-    }  else if (evname == "Marketing Villa" ) {
+    } else if (evname == "Marketing Villa") {
         memberno = 3;
         comment = "Each team will have 2-3 members. Registration for this event will open on 10th January and will close on 31st January.";
         $('#submitbutton').hide();
-    }  else if (evname == "Do your due") {
+    } else if (evname == "Do your due") {
         memberno = 3;
         comment = "Each team will have 2-3 members. Registration for this event will open on 15th January and will close on 4th February.";
         $('#submitbutton').hide();
-    }  else if (evname == "IORC" || evname == "29 States" || evname == "Stocksim") {
+    } else if (evname == "IORC" || evname == "29 States" || evname == "Stocksim") {
         memberno = 1;
         comment = "";
         $('#submitbutton').show();
-    } else if (evname == "Be the Tycoon" ) {
+    } else if (evname == "Be the Tycoon") {
         memberno = 1;
         comment = "Registration for this event will open on 25th January and will close on 15th February.";
         $('#submitbutton').hide();
@@ -97,27 +100,27 @@ $("#subject").change(function() {
         $('#submitbutton').show();
     } else if (evname == "Impulse" || evname == "Hackathon" || evname == "Iarc") {
         memberno = 4;
-                    $('#submitbutton').show();
+        $('#submitbutton').show();
         comment = "";
     } else if (evname == "Electrade") {
         memberno = 4;
-                        $('#submitbutton').show();
+        $('#submitbutton').show();
         comment = "Only for Undergraduate students";
     } else if (evname == "Skysparks" || evname == "Soccon" || evname == "Cruise Control" || evname == "Multirover" || evname == "concatenate") {
         memberno = 6;
-                        $('#submitbutton').show();
+        $('#submitbutton').show();
         comment = "";
     } else if (evname == "Crime Run") {
         memberno = 4;
-                        $('#submitbutton').show();
+        $('#submitbutton').show();
         comment = "No personal devices or eqipments are allowed";
     } else if (evname == "TGP") {
         memberno = 8;
-                        $('#submitbutton').show();
+        $('#submitbutton').show();
         comment = "";
     } else if (evname == "IOPC" || evname == "IHPC" || evname == "Chaos" || evname == "Battlecity") {
         memberno = 3;
-                        $('#submitbutton').show();
+        $('#submitbutton').show();
         comment = "";
     } else if (evname == "Wild soccer") {
         memberno = 10;
@@ -167,19 +170,19 @@ $("#subject").change(function() {
         memberno = 3;
         $('#submitbutton').show();
         comment = "";
-    }  else if (evname == "Scientoon") {
+    } else if (evname == "Scientoon") {
         memberno = 4;
         $('#submitbutton').show();
         comment = "";
-    }   else if (evname == "Design 3D") {
+    } else if (evname == "Design 3D") {
         memberno = 5;
         $('#submitbutton').show();
         comment = "";
-    }   else if (evname == "Bridge Design Challenge") {
+    } else if (evname == "Bridge Design Challenge") {
         memberno = 6;
         $('#submitbutton').show();
         comment = "";
-    } 
+    }
 
     $("#comment").html(comment);
 

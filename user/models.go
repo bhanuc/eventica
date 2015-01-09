@@ -137,6 +137,7 @@ func (r UserRepository) FindOneByEmail(email string) (result *User, err error) {
 
 func (r UserRepository) FindOneByTechID(id string) (result *User, err error) {
 	err = r.Collection.Find(bson.M{"Tech_id": id}).One(result)
+	fmt.Println(id, err, result)
 	return
 }
 func (r UserRepository) FindCountByTechid(id string) (c int) {

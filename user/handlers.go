@@ -235,7 +235,7 @@ func AuthenticateHandler(w http.ResponseWriter, r *http.Request) {
 		valid = false
 	} else {
 		fmt.Println(user.ActiveStatus)
-		if user.ActiveStatus { //check email activation
+//		if user.ActiveStatus { //check email activation
 			// check if login allowed
 			if user.LoginAllowed() {
 				if valid = user.VerifyCredentials(tc.Email, tc.Password); valid == false {
@@ -245,10 +245,10 @@ func AuthenticateHandler(w http.ResponseWriter, r *http.Request) {
 				// login not allowed
 				flashes["Error"] = FlashMessage{"warning", "You have failed 3 login attempts in the last 15 Minutes. Please wait 15 Minutes from now on and try again."}
 			}
-		} else {
-			unactive = true
-			flashes["Error"] = FlashMessage{"warning", "Your Account is not yet Activated. Please Check your inbox or spam for the activation link. "}
-		}
+//		} else {
+//			unactive = true
+//			flashes["Error"] = FlashMessage{"warning", "Your Account is not yet Activated. Please Check your inbox or spam for the activation link. "}
+//		}
 
 	}
 	data["valid"] = valid
