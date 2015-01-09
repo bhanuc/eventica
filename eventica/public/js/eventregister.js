@@ -6,7 +6,7 @@ $('#submitbutton').click(function() {
         memberno = 5;
     } else if (evname == "FPGA" || evname == "Embedded" || evname == "electromania" || evname == "Design 3D") {
         memberno = 5;
-    } else if (evname == "IORC" || evname == "Be the Tycoon" || evname == "29 States" || evname == "crypto" || evname == "Scimatex" || evname == "Stocksim") {
+    } else if (evname == "IORC"  || evname == "Zonals" || evname == "Be the Tycoon" || evname == "29 States" || evname == "crypto" || evname == "Scimatex" || evname == "Stocksim") {
         memberno = 1;
     } else if (evname == "Impulse" || evname == "Hackathon" || evname == "Iarc") {
         memberno = 4;
@@ -157,7 +157,7 @@ $("#subject").change(function() {
         memberno = 5;
         $('#submitbutton').show();
         comment = "";
-    } else if (evname == "Scimatex") {
+    } else if (evname == "Scimatex" || evname == "Zonals") {
         memberno = 1;
         $('#submitbutton').show();
         comment = "";

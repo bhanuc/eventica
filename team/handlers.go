@@ -64,19 +64,16 @@ func UpdateAllTeamMembers(w http.ResponseWriter, r *http.Request) {
 
 func Addteam(pid string, tek_id string) {
 	u, err := R.FindOneByTechID(tek_id)
-	fmt.Println(u, err)
 	if err != nil {
 		fmt.Println(err)
 	} else {
 		fmt.Println(len(u.Teams), u, pid, tek_id)
-		fmt.Println("start push")
 		actualid := pid[13:37]
 		if u.Teams == "" {
 			u.Teams = actualid
 		} else {
 			u.Teams = u.Teams + "," + actualid
 		}
-		fmt.Println("pushed", u.Teams)
 		u.Update()
 	}
 }
