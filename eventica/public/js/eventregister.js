@@ -39,6 +39,8 @@ $('#submitbutton').click(function() {
         }
     }
     console.log(memberscontact);
+    var l = memberscontact.split(',');
+    memberscontact = _.uniq(l, true).toString();
 
     var teamname = $('#teamname').val();
     var rezcheck = /[a-zA-Z0-9]+/
@@ -58,6 +60,7 @@ $('#submitbutton').click(function() {
         success: function(data) {
             if (data.success) {
                 toastr.success("Team created");
+
                 //document.location = host+"app"
             } else {
                 toastr.error(data.flashes.Error.message);
