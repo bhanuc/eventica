@@ -488,7 +488,6 @@ func (u *User) FailLogin() {
 
 func (u *User) CreateResetToken() {
 	u.ResetToken = u.GenerateToken(42)
-	u.Update()
 
 	subj := "Techkriti"
 
@@ -537,7 +536,11 @@ func (u *User) CreateResetToken() {
 	)
 	if err != nil {
 		log.Fatal(err)
+	} else {
+		u.ResetSent = time.Now()
+		u.Update()
 	}
+
 }
 
 func (u *User) ResetPassword() bool {

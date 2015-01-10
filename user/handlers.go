@@ -453,7 +453,7 @@ func ResetRequestHandler(w http.ResponseWriter, r *http.Request) {
 	user, err := R.FindOneByEmail(tc.Email)
 	fmt.Println(user, err)
 	if err != nil {
-		flashes["user_not_found"] = FlashMessage{"danger", "This user does not exist"}
+		flashes["Error"] = FlashMessage{"danger", "This user does not exist"}
 	} else {
 		user.CreateResetToken()
 		flashes["success"] = FlashMessage{"success", "An Email has been sent to " + tc.Email + ". Please check your mailbox."}
@@ -479,7 +479,7 @@ func ResetPasswordHandler(w http.ResponseWriter, r *http.Request) {
 			if s == true {
 				flashes["success"] = FlashMessage{"success", "An Email with your new password has been sent to " + user.Email + ". Please check your mailbox."}
 			} else {
-				flashes["token_expired"] = FlashMessage{"danger", "The Token expired. Please request a new password reset token."}
+				flashes["Error"] = FlashMessage{"danger", "The Token expired. Please request a new password reset token."}
 			}
 		}
 		data["flashes"] = flashes

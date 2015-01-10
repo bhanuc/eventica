@@ -10,13 +10,17 @@ function submitreset() {
         }),
         success: function(data) {
             console.log(data);
-            if (data.valid) {
-                toastr.success("Login was successful, You will be redirected to Dashboard");
-               // / document.location = "/profile";
+            if (data.flashes && data.flashes.success) {
+                toastr.success(data.flashes.success.message);
+                // / document.location = "/profile";
             } else {
                 toastr.error(data.flashes.Error.message)
             }
-            //success message mybe...
+            $('#ResetButton').one("click", function() {
+                if (validate() && validateEmail()) {
+                    submitreset();
+                }
+            });
         }
     });
 }
@@ -47,7 +51,8 @@ $('#password').keypress(function(e) {
     }
 });
 
-$('#ResetButton').click(function() {
-    if (validateEmail())
+$('#ResetButton').one("click", function() {
+    if (validate() && validateEmail()) {
         submitreset();
+    }
 });
