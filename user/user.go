@@ -46,7 +46,7 @@ func New(ms *mgo.Session, ss *sessions.CookieStore, host, mailfrom, dbname, dbco
 	Router.HandleFunc("/user/tek-profile", ManagerViewTekProfile).Methods("GET")
 	Router.HandleFunc("/user/profile", UpdateProfileHandler).Methods("POST")
 	Router.HandleFunc("/user/resetrequest", ResetRequestHandler).Methods("POST")
-	Router.HandleFunc("/user/resetpassword", ResetPasswordHandler).Methods("POST")
+	Router.HandleFunc("/user/resetpassword", ResetPasswordHandler).Methods("GET")
 	Router.HandleFunc("/user/status", StatusHandler).Methods("GET")
 	Router.HandleFunc("/user/fb", FbHandler).Methods("POST")
 	Router.HandleFunc("/user/activate", ActHandler).Methods("GET")

@@ -2,6 +2,7 @@ package user
 
 import (
 	"encoding/json"
+	"fmt"
 	"github.com/eventica/utility"
 	"github.com/gorilla/sessions"
 	fb "github.com/huandu/facebook"
@@ -448,7 +449,9 @@ func ResetRequestHandler(w http.ResponseWriter, r *http.Request) {
 	}{}
 	utility.ReadJson(r, &tc)
 	tc.Email = strings.Trim(tc.Email, " ")
+	fmt.Println(tc.Email)
 	user, err := R.FindOneByEmail(tc.Email)
+	fmt.Println(user, err)
 	if err != nil {
 		flashes["user_not_found"] = FlashMessage{"danger", "This user does not exist"}
 	} else {
@@ -464,12 +467,12 @@ func ResetPasswordHandler(w http.ResponseWriter, r *http.Request) {
 	flashes := make(map[string]FlashMessage)
 	tc := struct {
 		Token string `json:"token"`
-	}{}
-	utility.ReadJson(r, &tc)
+	}{r.FormValue("token")}
 	tc.Token = strings.Trim(tc.Token, " ")
+	fmt.Println(tc.Token)
 	if tc.Token != "" {
 		user, err := R.FindOneByResetToken(tc.Token)
-		if err != nil {
+		if err != nil && user.ResetToken != tc.Token {
 			flashes["user_not_found"] = FlashMessage{"danger", "Invalid token"}
 		} else {
 			s := user.ResetPassword()

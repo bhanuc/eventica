@@ -49,6 +49,7 @@ func main() {
 	router.PathPrefix("/api").Handler(http.StripPrefix("/api", router))
 	router.HandleFunc("/profilea/{name}", profile)
 	router.HandleFunc("/login", login).Methods("GET")
+	router.HandleFunc("/reset", reset).Methods("GET")
 	router.HandleFunc("/faqs", faqs).Methods("GET")
 	router.HandleFunc("/logintemp", logintemp).Methods("GET")
 	router.HandleFunc("/profile", profile_view).Methods("GET")
@@ -102,6 +103,16 @@ func login(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
+func reset(w http.ResponseWriter, r *http.Request) {
+	t, err := template.New("reset-pass.html").ParseFiles("templates/reset-pass.html")
+	if err != nil {
+		log.Println(err)
+	}
+	err = t.Execute(w, nil)
+	if err != nil {
+		log.Println(err)
+	}
+}
 func logintemp(w http.ResponseWriter, r *http.Request) {
 	t, err := template.New("login-backup.html").ParseFiles("templates/login-backup.html")
 	if err != nil {
