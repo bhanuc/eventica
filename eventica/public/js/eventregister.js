@@ -39,10 +39,20 @@ $('#submitbutton').click(function() {
         }
     }
     console.log(memberscontact);
+<<<<<<< HEAD
     var l = memberscontact.split(',');
     memberscontact = _.uniq(l, true).toString();
 
     $.ajax({
+=======
+
+    var teamname = $('#teamname').val();
+    var rezcheck = /[a-zA-Z0-9]+/
+        if (rezcheck.exec(teamname)[0] != teamname){
+                            toastr.error("Please Enter team name in correct format");
+                        } else {
+                                $.ajax({
+>>>>>>> 2883cbcb5c47c9416059edd0c18bc135f5b30393
         url: '/team/create',
         type: 'POST',
         contentType: 'application/json; charset=utf-8',
@@ -62,6 +72,8 @@ $('#submitbutton').click(function() {
             }
         }
     });
+                        }
+
 });
 
 $("#subject").change(function() {
