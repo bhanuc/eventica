@@ -39,7 +39,13 @@ $('#submitbutton').click(function() {
         }
     }
     console.log(memberscontact);
-    $.ajax({
+
+    var teamname = $('#teamname').val();
+    var rezcheck = /[a-zA-Z0-9]+/
+        if (rezcheck.exec(teamname)[0] != teamname){
+                            toastr.success("Please Enter team name in correctformat");
+                        } else {
+                                $.ajax({
         url: '/team/create',
         type: 'POST',
         contentType: 'application/json; charset=utf-8',
@@ -58,6 +64,8 @@ $('#submitbutton').click(function() {
             }
         }
     });
+                        }
+
 });
 
 $("#subject").change(function() {
