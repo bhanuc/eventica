@@ -52,7 +52,7 @@ $('#password').keypress(function(e) {
 });
 
 $('#ResetButton').one("click", function() {
-    if (validate() && validateEmail()) {
+    if (validateEmail()) {
         submitreset();
     }
 });
