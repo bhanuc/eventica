@@ -107,7 +107,7 @@ var Techinfo = function(){
         success: function(data) {
             console.log(data);
             if (data.success) {
-                var json = data.success;
+                var json = data.user;
                 $('#name').html(json.name);
                 $('#number').html(json.number);
                 $('#college').html(json.college);
