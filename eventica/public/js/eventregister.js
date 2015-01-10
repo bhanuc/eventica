@@ -80,8 +80,8 @@ $("#subject").change(function() {
         $('#submitbutton').hide();
     } else if (evname == "Marketing Villa") {
         memberno = 3;
-        comment = "Each team will have 2-3 members. Registration for this event will open on 10th January and will close on 31st January.";
-        $('#submitbutton').hide();
+        comment = "Each team will have 2-3 members. Registration for this event will close on 31st January.";
+        $('#submitbutton').show();
     } else if (evname == "Do your due") {
         memberno = 3;
         comment = "Each team will have 2-3 members. Registration for this event will open on 15th January and will close on 4th February.";
