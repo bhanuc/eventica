@@ -39,6 +39,9 @@ $('#submitbutton').click(function() {
         }
     }
     console.log(memberscontact);
+    var l = memberscontact.split(',');
+    memberscontact = _.uniq(l, true).toString();
+
     $.ajax({
         url: '/team/create',
         type: 'POST',
@@ -52,6 +55,7 @@ $('#submitbutton').click(function() {
         success: function(data) {
             if (data.success) {
                 toastr.success("Team created");
+
                 //document.location = host+"app"
             } else {
                 toastr.error(data.flashes.Error.message);
