@@ -1,5 +1,27 @@
 var host = "http://portal.techkriti.org/"
+
+
 function Register() {
+  var opts = {
+  lines: 13, // The number of lines to draw
+  length: 26, // The length of each line
+  width: 10, // The line thickness
+  radius: 57, // The radius of the inner circle
+  corners: 1, // Corner roundness (0..1)
+  rotate: 19, // The rotation offset
+  direction: 1, // 1: clockwise, -1: counterclockwise
+  color: '#000', // #rgb or #rrggbb or array of colors
+  speed: 1.6, // Rounds per second
+  trail: 89, // Afterglow percentage
+  shadow: false, // Whether to render a shadow
+  hwaccel: false, // Whether to use hardware acceleration
+  className: 'spinner', // The CSS class to assign to the spinner
+  zIndex: 2e9, // The z-index (defaults to 2000000000)
+  top: '50%', // Top position relative to parent
+  left: '50%' // Left position relative to parent
+};
+  var target = document.getElementById('container-page');
+var spinner = new Spinner(opts).spin(target);
 $.ajax({
   url: '/api/user/register',
   type: 'POST',
@@ -13,6 +35,12 @@ $.ajax({
         } else {
           toastr.error(data.flashes.Error.message);
         }
+        spinner.stop()
+        $( "#registerbutton" ).one( "click", function() {
+if(validate()  && validateEmail() ){
+          Register();
+}
+});
           //success message mybe...
      }
 });
@@ -75,8 +103,11 @@ if(e.which=='13'){
 	}
 });
 
-$('#registerbutton').click(function(){
-	if(validate()  && validateEmail() )
-        Register();
+$( "#registerbutton" ).one( "click", function() {
+if(validate()  && validateEmail() ){
+          Register();
+
+}
 });
+
 

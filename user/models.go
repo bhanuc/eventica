@@ -331,7 +331,7 @@ func (u *User) ResendActEmail(email string) {
 
 	subj := "Techkriti"
 	body := "Hi ,\n\n"
-	body += "welcome to " + Config.Host + ".\nYour account is already created.To Activate your account, please visit http://portal.techkriti.org/user/activate?ui=" + slice + "&us=" + u.ActiveCode + " . Copy and paste the link in the browser to activate.\nYou login credentials are \nEmail-Address.\n"
+	body += "welcome to " + Config.Host + ".\nYour account is already created.To Activate your account, please visit http://portal.techkriti.org/user/activate?ui=" + slice + "&us=" + u.ActiveCode + " . Copy and paste the link in the browser to activate.\n"
 	body += "Regards,\n\n"
 	body += Config.Host + " team"
 
