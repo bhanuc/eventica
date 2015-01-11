@@ -1,4 +1,9 @@
-$('#submitbutton').click(function() {
+$('#submitbutton').one("click", function() {
+    createteam();
+});
+
+
+var createteam = function() {
     var evname = $("#subject").val();
     var memberno = 0;
 
@@ -6,7 +11,7 @@ $('#submitbutton').click(function() {
         memberno = 5;
     } else if (evname == "FPGA" || evname == "Embedded" || evname == "electromania" || evname == "Design 3D") {
         memberno = 5;
-    } else if (evname == "IORC"  || evname == "Zonals" || evname == "Be the Tycoon" || evname == "29 States" || evname == "crypto" || evname == "Nut Cracker" || evname == "Stocksim") {
+    } else if (evname == "IORC" || evname == "Zonals" || evname == "Be the Tycoon" || evname == "29 States" || evname == "crypto" || evname == "Nut Cracker" || evname == "Stocksim") {
         memberno = 1;
     } else if (evname == "Impulse" || evname == "Hackathon" || evname == "Iarc") {
         memberno = 4;
@@ -44,32 +49,35 @@ $('#submitbutton').click(function() {
 
     var teamname = $('#teamname').val();
     var rezcheck = /[a-zA-Z0-9]+/
-        if (rezcheck.exec(teamname)[0] != teamname){
-                            toastr.error("Please Enter team name in correct format");
-                        } else {
-                                $.ajax({
-        url: '/team/create',
-        type: 'POST',
-        contentType: 'application/json; charset=utf-8',
-        data: JSON.stringify({
-            'name': $('#teamname').val(),
-            'event': $('#subject').val(),
-            'gender': $('#gender').val(),
-            'members': memberscontact
-        }),
-        success: function(data) {
-            if (data.success) {
-                toastr.success("Team created");
+    if (rezcheck.exec(teamname)[0] != teamname) {
+        toastr.error("Please Enter team name in correct format");
+    } else {
+        $.ajax({
+            url: '/team/create',
+            type: 'POST',
+            contentType: 'application/json; charset=utf-8',
+            data: JSON.stringify({
+                'name': $('#teamname').val(),
+                'event': $('#subject').val(),
+                'gender': $('#gender').val(),
+                'members': memberscontact
+            }),
+            success: function(data) {
+                if (data.success) {
+                    toastr.success("Team created");
 
-                //document.location = host+"app"
-            } else {
-                toastr.error(data.flashes.Error.message);
+                    //document.location = host+"app"
+                } else {
+                    toastr.error(data.flashes.Error.message);
+                }
+                $('#submitbutton').one("click", function() {
+                    createteam();
+                });
             }
-        }
-    });
-                        }
+        });
+    }
 
-});
+};
 
 $("#subject").change(function() {
     $("#sport").empty();
