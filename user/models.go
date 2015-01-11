@@ -494,7 +494,7 @@ func (u *User) CreateResetToken() {
 	body := "Hello " + u.UserProfile.Name + "  ,\n\n"
 	body += "a password reset token for your " + Config.Host + " account has been created.\n"
 	body += "Please click the following link to generate a new password\n"
-	body += "http://" + Config.Host + "/user/resetpassword?token=" + u.ResetToken + "\n\n"
+	body += "http://portal.techkriti.org/user/resetpassword?token=" + u.ResetToken + "\n\n"
 	body += "Regards,\n\n"
 	body += Config.Host + " team"
 
