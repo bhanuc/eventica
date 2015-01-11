@@ -9,7 +9,10 @@ $.ajax({
                 str = str + '<tr><td>' + data.teams[i].name + '</td><td> ' + data.teams[i].event + '</td><td> ' + (function() {
                     if (data.teams[i].requestmod) return "Submitted";
                     else return "Not Submitted"
-                })() + '</td><td> ' + data.teams[i].members + '</td><td> <a href="/team/register?name=' + data.teams[i].name + '&createdby=' + data.teams[i].createdby + '">Submit</a></td><td> ' + data.teams[i].approved + '</td><td> ' + data.teams[i].comments + '</td><td> <button onclick=editmyteam("' + data.teams[i].id + '") type="button" class="btn btn-primary btn-lg">Edit</button></td></tr>';
+                })() + '</td><td> ' + data.teams[i].members + '</td>'+(function(){if(data.teams[i].requestmod){ return "Submitted";
+        } else{
+            return '<td> <a href="/team/register?name=' + data.teams[i].name + '&createdby=' + data.teams[i].createdby + '">Click to Submit</a></td>'
+        }})()+ '<td> ' + data.teams[i].approved + '</td><td> ' + data.teams[i].comments + '</td><td> <button onclick=editmyteam("' + data.teams[i].id + '") type="button" class="btn btn-primary btn-lg">Edit</button></td></tr>';
             };
             str += '</tbody>'
             $('#teams').html(str);
