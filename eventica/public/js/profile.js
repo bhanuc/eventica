@@ -1,5 +1,6 @@
 var global = Object.create(null);
 
+localStorage.setItem('Tid', null);
 window.getprofile = function getprofile() {
     $.ajax({
         url: '/api/user/profile',
