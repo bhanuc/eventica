@@ -139,7 +139,7 @@ var Excel = function() {
         var csvString = 'name,createdby,Event,requestmod,approved,members,comments,id,inactivesince%0A';
         for (var i = teams.length - 1; i >= 0; i--) {
             var re = /,/gi;
-            var memberz = str.replace(re, teams[i].members);
+            var memberz = teams[i].members.replace(re, ':');
             var row = teams[i].name+','+teams[i].createdby+','+teams[i].event+','+teams[i].requestmod+','+teams[i].approved+','+memberz+','+teams[i].comments+','+teams[i].id+','+teams[i].inactivesince;
             csvRows.push(row);
         };
