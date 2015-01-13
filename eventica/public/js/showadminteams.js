@@ -128,7 +128,9 @@ var Excel = function() {
         var teams = window.teams;
         var csvString = 'name,createdby,Event,requestmod,approved,members,comments,id,inactivesince%0A';
         for (var i = teams.length - 1; i >= 0; i--) {
-            var row = teams[i].name+','+teams[i].createdby+','+teams[i].Event+','+teams[i].requestmod+','+teams[i].approved+','+teams[i].members+','+teams[i].comments+','+teams[i].id+','+teams[i].inactivesince;
+            var re = /,/gi;
+            var memberz = str.replace(re, teams[i].members);
+            var row = teams[i].name+','+teams[i].createdby+','+teams[i].event+','+teams[i].requestmod+','+teams[i].approved+','+memberz+','+teams[i].comments+','+teams[i].id+','+teams[i].inactivesince;
             csvRows.push(row);
         };
 
