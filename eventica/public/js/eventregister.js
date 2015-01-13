@@ -17,7 +17,7 @@ var createteam = function() {
         memberno = 4;
     } else if (evname == "Electrade") {
         memberno = 4;
-    } else if (evname == "Skysparks" || evname == "Soccon" || evname == "Cruise Control" || evname == "Multirover" || evname == "concatenate" || evname == "Bridge Design Challenge") {
+    } else if (evname == "Skysparks" || evname == 'Gearloose' || evname == "Soccon" || evname == "Cruise Control" || evname == "Multirover" || evname == "concatenate" || evname == "Bridge Design Challenge") {
         memberno = 6;
     } else if (evname == "Crime Run" || evname == "AISRC" || evname == "Scientoon") {
         memberno = 4;
@@ -27,7 +27,9 @@ var createteam = function() {
         memberno = 3;
     } else if (evname == "Wild soccer") {
         memberno = 10;
-    } else if (evname == "Astro Treasure") {
+    } else if (evname == "Astro Treasure" || evname == 'Junkyard Wars') {
+        memberno = 5;
+    }else if ( evname == 'Junkyard Wars') {
         memberno = 7;
     }
 
@@ -125,7 +127,7 @@ $("#subject").change(function() {
         memberno = 4;
         $('#submitbutton').show();
         comment = "Only for Undergraduate students";
-    } else if (evname == "Skysparks" || evname == "Soccon" || evname == "Cruise Control" || evname == "Multirover" || evname == "concatenate") {
+    } else if (evname == "Skysparks" || evname == "Soccon" || evname == 'Gearloose' || evname == "Cruise Control" || evname == "Multirover" || evname == "concatenate") {
         memberno = 6;
         $('#submitbutton').show();
         comment = "";
@@ -199,6 +201,10 @@ $("#subject").change(function() {
         comment = "";
     } else if (evname == "Bridge Design Challenge") {
         memberno = 6;
+        $('#submitbutton').show();
+        comment = "";
+    } else if (evname == 'Junkyard Wars'){
+         memberno = 7;
         $('#submitbutton').show();
         comment = "";
     }
