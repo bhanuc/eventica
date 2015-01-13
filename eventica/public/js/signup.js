@@ -31,7 +31,10 @@ $.ajax({
         } else {
           toastr.error(data.flashes.general.message);
         }
-          //success message mybe...
+          $( "#registerbutton" ).one( "click", function() {
+    Register();
+});
+//success message mybe...
      }
 });
 }
@@ -54,8 +57,7 @@ if(e.which=='13'){
     Register();
 	}
 });
-
-$('#registerbutton').click(function(){
+$( "#registerbutton" ).one( "click", function() {
     Register();
 });
 
