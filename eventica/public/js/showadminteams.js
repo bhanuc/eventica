@@ -39,3 +39,83 @@ $.ajax({
      }
 });
 }
+
+var showprofile = function(url) {
+    $.ajax({
+        url: '/user/mprofile?id=' + url,
+        type: 'GET',
+        success: function(data) {
+            console.log(data);
+            if (data.success) {
+                var json = data.success;
+                $('#name').html(json.name);
+                $('#number').html(json.number);
+                $('#college').html(json.college);
+                $('#email').html(json.email);
+                $('#alternatenumber').html(json.alternatenumber);
+                $('#ambassador').html(json.ambassador);
+                $('#sex').html(json.sex);
+                $('#branch').html(json.branch);
+                $('#bookingid').html(json.bookingid);
+                $('#year').html(json.year);
+                $('#techid').html(json.techid);
+                $('#modal').modal('show');
+            } else {
+                alert('Some error has occured. Contact support.')
+            }
+            //success message mybe...
+        }
+    });
+}
+
+var getallemails = function() {
+    if (window.$team && window.$team > 1) {
+        var emails = [];
+        for (var i = window.$teams.length - 1; i >= 0; i--) {
+            if (window.$teams[i] != '') {
+                $.ajax({
+                        url: '/user/tek-profile?id=' + window.$teams[i],
+                        type: 'GET',
+                        success: function(data) {
+                            console.log(data);
+                            // emails.push[data.email]
+                        }
+                    });
+                }
+            }
+
+        }
+    }
+
+
+var Techinfo = function(){
+ var tid = document.getElementById('techid').value;
+ if (tid){
+        $.ajax({
+        url: '/user/tek-profile?id=' + tid,
+        type: 'GET',
+        success: function(data) {
+            console.log(data);
+            if (data.success) {
+                var json = data.user;
+                $('#name').html(json.name);
+                $('#number').html(json.number);
+                $('#college').html(json.college);
+                $('#email').html(json.email);
+                $('#alternatenumber').html(json.alternatenumber);
+                $('#ambassador').html(json.ambassador);
+                $('#sex').html(json.sex);
+                $('#branch').html(json.branch);
+                $('#bookingid').html(json.bookingid);
+                $('#year').html(json.year);
+                $('#techid').html(json.techid);
+                $('#modal').modal('show');
+            } else {
+                alert('Some error has occured. Contact support.')
+            }
+            //success message mybe...
+        }
+    });    
+
+ }
+}
