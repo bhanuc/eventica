@@ -5,6 +5,7 @@ $.ajax({
   success: function(data) {
   			console.log(data);
   			if(data.success && data.teams){
+          window.teams =data.teams;
           var str="<thead><tr><th>name</th><th>Created By</th><th>Event</th><th>Submit Status</th><th>Approval Status</th><th>Members</th><th>Approve</th><th>Comment</th><th>Add Comment</th><th>Decline</th><th>PrintPage</th></tr></thead><tbody>";
           for (var i = data.teams.length - 1; i >= 0; i--) {
             str = str+ '<tr><td>'+data.teams[i].name+ '</td><td><a onclick=showprofile("' + data.teams[i].createdby + '")>' + data.teams[i].createdby + '</a></td><td> '+data.teams[i].event+ '</td><td> '+data.teams[i].requestmod+ '</td><td> '+data.teams[i].approved+ '</td><td> '+ data.teams[i].members+'</td><td> <a href="/team/adminsapprove?name='+ data.teams[i].name+'">Approve</a></td><td> '+data.teams[i].comments+ '</td><td><form action="/team/adminscomment" type="GET"><input type="text" name="comments"><input type="hidden" name="name" value='+data.teams[i].name+'><button type ="submit">Submit</button></form></td><td> <a href="/team/adminsdissapprove?name='+ data.teams[i].name+'">DisApprove</a></td><td> <a href="/print#'+ data.teams[i].name+'">Print</a></td></tr>';
@@ -26,6 +27,7 @@ $.ajax({
   success: function(data) {
         console.log(data);
         if(data.success && data.teams){
+                    window.teams =data.teams;
           var str="<thead><tr><th>name</th><th>Created By</th><th>Event</th><th>Submit Status</th><th>Approval Status</th><th>Members</th><th>Approve</th><th>Comment</th><th>Add Comment</th><th>Decline</th><th>PrintPage</th></tr></thead><tbody>";
           for (var i = data.teams.length - 1; i >= 0; i--) {
             str = str+ '<tr><td>'+data.teams[i].name+ '</td><td><a onclick=showprofile("' + data.teams[i].createdby + '")>' + data.teams[i].createdby + '</a></td><td> '+data.teams[i].event+ '</td><td> '+data.teams[i].requestmod+ '</td><td> '+data.teams[i].approved+ '</td><td> '+ data.teams[i].members+'</td><td> <a href="/team/adminsapprove?name='+ data.teams[i].name+'">Approve</a></td><td> '+data.teams[i].comments+ '</td><td><form action="/team/adminscomment" type="GET"><input type="text" name="comments"><input type="hidden" name="name" value='+data.teams[i].name+'><button type ="submit">Submit</button></form></td><td> <a href="/team/adminsdissapprove?name='+ data.teams[i].name+'">DisApprove</a></td><td> <a href="/print#'+ data.teams[i].name+'">Print</a></td></tr>';
@@ -118,4 +120,28 @@ var Techinfo = function(){
     });    
 
  }
+}
+
+var Excel = function() {
+    if (window.teams) {
+        var csvRows = [];
+        var teams = window.teams;
+        var csvString = 'name,createdby,Event,requestmod,approved,members,comments,id,inactivesince%0A';
+        for (var i  teams.length - 1; i >= 0; i--) {
+            var row = teams[i].name+','+teams[i].createdby+','+teams[i].Event+','+teams[i].requestmod+','+teams[i].approved+','+teams[i].members+','+teams[i].comments+','+teams[i].id+','+teams[i].inactivesince;
+            csvRows.push(row);
+        };
+
+        csvString += csvRows.join("%0A");
+        var a = document.createElement('a');
+        a.href = 'data:attachment/csv,' + csvString;
+        a.target = '_blank';
+        a.download = 'myFile.csv';
+
+        document.body.appendChild(a);
+        a.click();
+    } else {
+        alert('Wait you nigger! Have some patience :p. Try Again Later')
+    }
+
 }

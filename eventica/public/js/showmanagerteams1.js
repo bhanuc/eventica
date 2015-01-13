@@ -4,6 +4,7 @@ $.ajax({
     success: function(data) {
         console.log(data);
         if (data.success && data.teams) {
+            window.teams = data.teams;
             $('#nots').html(data.teams.length);
             var str = "<thead><tr><th>name</th><th>Created By</th><th>Event</th><th>Submit Status</th><th>Approval Status</th><th>Members</th><th>Approve</th><th>Comment</th><th>Add Comment</th><th>PrintPage</th></tr></thead><tbody>";
             for (var i = data.teams.length - 1; i >= 0; i--) {
@@ -85,49 +86,71 @@ var getallemails = function() {
         for (var i = window.$teams.length - 1; i >= 0; i--) {
             if (window.$teams[i] != '') {
                 $.ajax({
-                        url: '/user/tek-profile?id=' + window.$teams[i],
-                        type: 'GET',
-                        success: function(data) {
-                            console.log(data);
-                            // emails.push[data.email]
-                        }
-                    });
-                }
+                    url: '/user/tek-profile?id=' + window.$teams[i],
+                    type: 'GET',
+                    success: function(data) {
+                        console.log(data);
+                        // emails.push[data.email]
+                    }
+                });
             }
-
         }
+
     }
-
-
-var Techinfo = function(){
- var tid = document.getElementById('techid').value;
- if (tid){
-        $.ajax({
-        url: '/user/tek-profile?id=' + tid,
-        type: 'GET',
-        success: function(data) {
-            console.log(data);
-            if (data.success) {
-                var json = data.user;
-                $('#name').html(json.name);
-                $('#number').html(json.number);
-                $('#college').html(json.college);
-                $('#email').html(json.email);
-                $('#alternatenumber').html(json.alternatenumber);
-                $('#ambassador').html(json.ambassador);
-                $('#sex').html(json.sex);
-                $('#branch').html(json.branch);
-                $('#bookingid').html(json.bookingid);
-                $('#year').html(json.year);
-                $('#techid').html(json.techid);
-                $('#modal').modal('show');
-            } else {
-                alert('Some error has occured. Contact support.')
-            }
-            //success message mybe...
-        }
-    });    
-
- }
 }
 
+
+var Techinfo = function() {
+    var tid = document.getElementById('techid').value;
+    if (tid) {
+        $.ajax({
+            url: '/user/tek-profile?id=' + tid,
+            type: 'GET',
+            success: function(data) {
+                console.log(data);
+                if (data.success) {
+                    var json = data.user;
+                    $('#name').html(json.name);
+                    $('#number').html(json.number);
+                    $('#college').html(json.college);
+                    $('#email').html(json.email);
+                    $('#alternatenumber').html(json.alternatenumber);
+                    $('#ambassador').html(json.ambassador);
+                    $('#sex').html(json.sex);
+                    $('#branch').html(json.branch);
+                    $('#bookingid').html(json.bookingid);
+                    $('#year').html(json.year);
+                    $('#techid').html(json.techid);
+                    $('#modal').modal('show');
+                } else {
+                    alert('Some error has occured. Contact support.')
+                }
+                //success message mybe...
+            }
+        });
+
+    }
+}
+var Excel = function() {
+    if (window.teams) {
+        var csvRows = [];
+        var teams = window.teams;
+        var csvString = 'name,createdby,Event,requestmod,approved,members,comments,id,inactivesince%0A';
+        for (var i  teams.length - 1; i >= 0; i--) {
+            var row = teams[i].name+','+teams[i].createdby+','+teams[i].Event+','+teams[i].requestmod+','+teams[i].approved+','+teams[i].members+','+teams[i].comments+','+teams[i].id+','+teams[i].inactivesince;
+            csvRows.push(row);
+        };
+
+        csvString += csvRows.join("%0A");
+        var a = document.createElement('a');
+        a.href = 'data:attachment/csv,' + csvString;
+        a.target = '_blank';
+        a.download = 'myFile.csv';
+
+        document.body.appendChild(a);
+        a.click();
+    } else {
+        alert('Wait you nigger! Have some patience :p. Try Again Later')
+    }
+
+}
