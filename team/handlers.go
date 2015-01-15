@@ -189,7 +189,94 @@ func CreateHandler(w http.ResponseWriter, r *http.Request) {
 			if err != nil {
 				fmt.Println("inside add team", tu.Members)
 				team := new(Team)
-				team.Add(tu.Name, tu.Members, tu.Event, tu.Gender, id, u.UserProfile.College)
+				team.Add(tu.Name, tu.Members, tu.Event, tu.Gender, id, u.UserProfile.College, "false")
+				fmt.Println("made team", members, team.Id)
+				for i := 0; i < len(members); i++ {
+					fmt.Println("in loop", i, members[i], string(team.Id.String()))
+					if members[i] != "" || members != nil {
+						fmt.Println(team.Id.String(), members[i])
+						Addteam(team.Id.String(), members[i])
+					}
+				}
+				fmt.Println("completed team")
+				data["success"] = true
+				e["success"] = FlashMessage{"success", "Your Team registration was successful."}
+				data["flashes"] = e
+				data["team"] = tu
+			} else {
+				e["Error"] = FlashMessage{"danger", "This team Name is already registered. Please choose a difference name for your team"}
+				data["flashes"] = e
+				data["team"] = tu
+			}
+		}
+		utility.WriteJson(w, data)
+
+	} else {
+		http.Redirect(w, r, "/login", 302)
+	}
+}
+
+func WCreateHandler(w http.ResponseWriter, r *http.Request) {
+	session, _ := sessionStore.Get(r, "p")
+	data := make(map[string]interface{})
+	id, ok := session.Values["user"].(string)
+	if ok {
+		e := make(map[string]FlashMessage)
+		tu := struct {
+			Name    string `json:"name"`
+			Members string `json:"members"`
+			Event   string `json:"event"`
+			Gender  string `json:"gender"`
+		}{}
+
+		utility.ReadJson(r, &tu)
+
+		if tu.Name == "" {
+			e["Error"] = FlashMessage{"danger", "Please fill in the name of team"}
+		}
+		if tu.Members == "" {
+			e["Error"] = FlashMessage{"danger", "Please add team members"}
+		}
+		members := strings.Split(tu.Members, ",")
+		mlength := len(members)
+		fmt.Println(members, mlength)
+		index := 0
+		index2 := 0
+		for i := 0; i < mlength; i++ {
+			if members[i] != "" || members != nil {
+				index++
+				if R.FindCountByTechid(members[i]) != 0 {
+					index2++
+				}
+			}
+		}
+
+		/**for _, member := range members {
+							//cnum, _ := strconv.Atoi(member)
+		 			if R.FindCountByTechid(member) == 0 {
+		 				index++
+		 			}
+		    	}**/
+		fmt.Println(index2, index)
+		if index != index2 {
+			e["Error"] = FlashMessage{"danger", "Only Techid Needs to be entered. One of your members seems to be not registered"}
+			data["flashes"] = e
+		} else {
+			u, _ := R.FindOneByIdHex(id)
+
+			//	d := T.CountByCollegenEvent(u.College, tu.Event)
+			//	fmt.Println(d)
+
+			//if d > 0 {
+			//	e["Error"] = FlashMessage{"danger", "You have already registered for this event. Repeat registration of same game is not allowed"}
+			//	data["flashes"] = e
+			//	data["team"] = tu
+			//} else {
+			_, err := T.FindOneByName(tu.Name)
+			if err != nil {
+				fmt.Println("inside add team", tu.Members)
+				team := new(Team)
+				team.Add(tu.Name, tu.Members, tu.Event, tu.Gender, id, u.UserProfile.College, "true")
 				fmt.Println("made team", members, team.Id)
 				for i := 0; i < len(members); i++ {
 					fmt.Println("in loop", i, members[i], string(team.Id.String()))

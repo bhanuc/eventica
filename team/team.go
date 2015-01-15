@@ -58,6 +58,7 @@ func Route_setter(ms *mgo.Session, ss *sessions.CookieStore, host, mailfrom, dbn
 	Router.HandleFunc("/team/adminscomment", CommentAdminHandler).Methods("GET")      //show all the teams
 	Router.HandleFunc("/team/managerscomment", CommentManagerHandler).Methods("GET")  //show all the teams
 
+	Router.HandleFunc("/workshop/create", WCreateHandler).Methods("POST") //Create a new Team
 }
 
 //}

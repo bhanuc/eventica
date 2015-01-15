@@ -24,6 +24,7 @@ type (
 		Approved       string        `bson:",omitempty" json:"approved"`
 		Event          string        `bson:",omitempty" json:"event"`
 		Comments       string        `bson:",omitempty" json:"comments"`
+		Workshop       string        `bson:",omitempty" json:"workshop"`
 	}
 
 	Profile struct {
@@ -117,7 +118,7 @@ func (u *Team) Update() {
 	}
 }
 
-func (u *Team) Add(name string, members string, event string, gender string, createdby string, college string) {
+func (u *Team) Add(name string, members string, event string, gender string, createdby string, college string, workshop string) {
 	p := new(Profile)
 	p.Id = bson.NewObjectId()
 	//p.Name = name
@@ -128,6 +129,7 @@ func (u *Team) Add(name string, members string, event string, gender string, cre
 	u.CreatedBy = createdby
 	u.Approved = "Not Requested"
 	u.College = college
+	u.Workshop = workshop
 	if err := T.Create(u); err != nil {
 		panic(err)
 	}
