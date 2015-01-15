@@ -56,6 +56,8 @@
             text-align: left;
         }
 
+        
+
         .profile-image
         {
             border: 4px solid white;
@@ -222,6 +224,9 @@ For Any issues, Please mail your problem at bhanuc@iitk.ac.in
                         <a href="/register_event" class="dropdown-toggle"><b>Register for a event</b></a>
                     </li>
                     <li class="dropdown iconify ">
+                        <a href="/register_workshop" class="dropdown-toggle"><b>Register for a workshop</b></a>
+                    </li>
+                    <li class="dropdown iconify ">
                         <a href="/showteam" class="dropdown-toggle"><b>Your Teams</b></a>
                     </li>
                     <li class="dropdown iconify ">
@@ -275,7 +280,7 @@ For Any issues, Please mail your problem at bhanuc@iitk.ac.in
 
     <div class="content-page content">
         <h1 class="page-header">
-            Register for a Event
+            Register for a Workshop
         </h1><div id ="maincontent"><p>
 {{ if .Status }}
 Your Profile is Complete . You can create a team.</p>
@@ -285,57 +290,33 @@ For team Name - Use Only Alphabet and numbers only.<br>
 <tr><td width="300px">Event</td>   
     <td><select id="subject" name="game">
         <option value="">Select a Event..</option>
-        <option value="29 States">29 States</option>      
-        <option value="AISRC">AISRC</option>
-        <option value="Astro Quiz">Astro Quiz</option>
-        <option value="Astro Treasure">Astro Treasure</option>
-        <option value="Be the Tycoon">Be the Tycoon</option>
-        <option value="Battlecity">Battlecity</option>
-        <option value="Battlefield">Battlefield</option>
-        <option value="Bridge Design Challenge">Bridge Design Challenge</option>
-        <option value="concatenate">Concatenate</option>       
-        <option value="Chaos">Chaos</option>
-        <option value="Crime Run">Crime Run</option>
-        <option value="crypto">Crypto</option>
-        <option value="Cruise Control">Cruise Control</option>
-        <option value="Design 3D">Design 3D (Previously Objectified)</option> <!-- the event was previously called Objectified -->
-        <option value="Do your due">Do your due</option>
-        <option value="Electrade">Electrade</option> 
-        <option value="electromania">ElectroMania</option>
-        <option value="Embedded">Embedded</option>
-        <option value="Finquest">Finquest</option>
-        <option value="FPGA">FPGA</option>
-        <option value="Gearloose">Gearloose</option>
-        <option value="Hoverush">Hoverush</option>
-        <option value="Iarc">Iarc</option>
-        <option value="IDEAS">IDEAS</option>
-        <option value="IHPC">IHPC</option>
-        <option value="Impulse">Impulse</option>        
-        <option value="Innovation in Manufactruning Processes">Innovation in Manufactruning Processes</option>
-        <option value="IOPC">IOPC</option>       
-        <option value="IORC">IORC</option>
-        <option value="Junkyard Wars">Junkyard Wars</option>
-        <option value="Manoeuvre">Manoeuvre</option>
-        <option value="Mark-Ops">Mark-Ops</option>
-        <option value="Marketing Villa">Marketing Villa</option>
-        <option value="Mix Bowl Quiz">Mix Bowl Quiz</option>
-         <option value="Nut Cracker">Nut Cracker ( Previously Scimatex)</option>
-        <option value="Multirover">Multirover</option>
-        <option value="Scientoon">Scientoon</option>
-        <option value="Shuffle">Shuffle</option>
-        <option value="Skysparks">Skysparks</option>
-        <option value="Soccon">Soccon</option>
-        <option value="Stocksim">Stocksim</option>
-        <option value="TGP">TechKriti Grand Prix</option>        
-        <option value="Wild soccer">Wild soccer</option>       
-        <option value="What's Up">What's Up</option>
-        <option value="Zonals">Zonals</option>
+        <option value="3-D CAD & Printing">3-D CAD & Printing</option>      
+        <option value="Advanced AutoMobile Mechanics and Technology">Advanced AutoMobile Mechanics and Technology</option>
+        <option value="Android Application Development">Android Application Development</option>
+        <option value="Application Forensics">Application Forensics</option>
+        <option value="Automobile Mechanics & IC Engine">Automobile Mechanics & IC Engine</option>
+        <option value="Automobile Sketching">Automobile Sketching</option>
+        <option value="CAN-SAT Satellite Designing">CAN-SAT Satellite Designing</option>
+        <option value="Cloud Computing">Cloud Computing</option>
+        <option value="Digital VLSI Design">Digital VLSI Design</option>       
+        <option value="Embedded Systems">Embedded Systems</option>
+        <option value="Ethical Hacking & Cyber Forensics">Ethical Hacking & Cyber Forensics</option>
+        <option value="Mobile Hacking">Mobile Hacking</option>
+        <option value="Multi-Touch and Augmented Reality">Multi-Touch and Augmented Reality</option>
+        <option value="Propeller Clock">Propeller Clock</option> <!-- the event was previously called Objectified -->
+        <option value="Python">Python</option>
+        <option value="Quadcoptor">Quadcoptor</option> 
+        <option value="Raspberry Pi">Raspberry Pi</option>
+        <option value="Share Market and Investment">Share Market and Investment</option>
+        <option value="Speech Robo">Speech Robo</option>
+        <option value="Touch Screen Robotics">Touch Screen Robotics</option>
+        <option value="Whatshack">Whatshack</option>
       </select></td>
       <td id = "comment"></td>
       </tr></table>
       <table id="sport">
             <td><tr><b>Enter TechID of all the team Members including yours.You Can find the Tech-id in your profile section.</b></tr></td>
-      </table>e
+      </table>
     <button type="button" class="btn btn-primary" id="submitbutton">Submit</button>
     </div>
 </div>
@@ -343,7 +324,7 @@ For team Name - Use Only Alphabet and numbers only.<br>
     <script src="/js/jquery.js"></script>
     <script src="/js/bootstrap.min.js"></script>
            <script src="/js/toastr.min.js"></script>
-    <script src="/js/eventregister.js?v=1.7"></script>
+    <script src="/js/workshopregister.js?v=1.7"></script>
     <script src="/js/underscore.js"></script>
  <script>
         var resizefunc = [];
