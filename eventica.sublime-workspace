@@ -4,6 +4,22 @@
 		"selected_items":
 		[
 			[
+				"mem",
+				"memberz"
+			],
+			[
+				"cs",
+				"csvString"
+			],
+			[
+				"co",
+				"comments"
+			],
+			[
+				"csv",
+				"csvRows"
+			],
+			[
 				"Pri",
 				"Println	n int, err error ƒ"
 			],
@@ -34,10 +50,6 @@
 			[
 				"Coll",
 				"College"
-			],
-			[
-				"mem",
-				"members"
 			],
 			[
 				"Te",
@@ -103,7 +115,7 @@
 			"file": "eventica/templates/dashboard.html",
 			"settings":
 			{
-				"buffer_size": 15555,
+				"buffer_size": 15681,
 				"line_ending": "Unix"
 			}
 		},
@@ -111,7 +123,15 @@
 			"file": "eventica/templates/registerforevent.html",
 			"settings":
 			{
-				"buffer_size": 17959,
+				"buffer_size": 18073,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "eventica/templates/showteam.html",
+			"settings":
+			{
+				"buffer_size": 16119,
 				"line_ending": "Unix"
 			}
 		},
@@ -119,15 +139,31 @@
 			"file": "eventica/public/js/eventregister.js",
 			"settings":
 			{
-				"buffer_size": 9937,
+				"buffer_size": 10205,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "team/team.go",
+			"file": "eventica/public/js/showmanagerteams1.js",
 			"settings":
 			{
-				"buffer_size": 3242,
+				"buffer_size": 6147,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "eventica/templates/admindashboard.html",
+			"settings":
+			{
+				"buffer_size": 8278,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "eventica/public/js/showadminteams.js",
+			"settings":
+			{
+				"buffer_size": 6775,
 				"line_ending": "Unix"
 			}
 		},
@@ -218,11 +254,21 @@
 	[
 		"/home/bhanuc/go/src/github.com/eventica",
 		"/home/bhanuc/go/src/github.com/eventica/eventica",
+		"/home/bhanuc/go/src/github.com/eventica/eventica/public",
+		"/home/bhanuc/go/src/github.com/eventica/eventica/public/js",
+		"/home/bhanuc/go/src/github.com/eventica/eventica/templates",
 		"/home/bhanuc/go/src/github.com/eventica/team",
 		"/home/bhanuc/go/src/github.com/eventica/user"
 	],
 	"file_history":
 	[
+		"/home/bhanuc/go/src/github.com/eventica/team/team.go",
+		"/home/bhanuc/go/src/github.com/eventica/eventica/public/js/showmanagerteams1.js",
+		"/home/bhanuc/go/src/github.com/eventica/eventica/public/js/showadminteams.js",
+		"/home/bhanuc/go/src/github.com/eventica/eventica/templates/admindashboard.html",
+		"/home/bhanuc/go/src/github.com/eventica/eventica/templates/manageradmin1.html",
+		"/home/bhanuc/go/src/github.com/eventica/eventica/public/js/eventregister.js",
+		"/home/bhanuc/go/src/github.com/eventica/eventica/public/js/signup.js",
 		"/home/bhanuc/Documents/dev.techkriti.org/index.php",
 		"/home/bhanuc/Documents/dev.techkriti.org/Sponsors/index.php",
 		"/home/bhanuc/go/src/github.com/eventica/eventica/templates/login-backup.html",
@@ -267,6 +313,9 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"Astro Treasure",
+			"7",
+			"Gearloose",
 			"tek",
 			"Tek",
 			"strings",
@@ -325,7 +374,7 @@
 	"groups":
 	[
 		{
-			"selected": 3,
+			"selected": 8,
 			"sheets":
 			[
 				{
@@ -355,7 +404,7 @@
 						"translation.y": 2643.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 7,
 					"type": "text"
 				},
 				{
@@ -385,7 +434,7 @@
 						"translation.y": 1189.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 3,
+					"stack_index": 8,
 					"type": "text"
 				},
 				{
@@ -394,15 +443,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 15555,
+						"buffer_size": 15681,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								10373,
+								10373
 							]
 						],
 						"settings":
@@ -412,10 +461,10 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 1716.0,
+						"translation.y": 4810.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 6,
 					"type": "text"
 				},
 				{
@@ -424,15 +473,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 17959,
+						"buffer_size": 18073,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								6000,
-								6000
+								12105,
+								12105
 							]
 						],
 						"settings":
@@ -442,27 +491,87 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 1241.0,
+						"translation.y": 4709.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 5,
 					"type": "text"
 				},
 				{
 					"buffer": 4,
-					"file": "eventica/public/js/eventregister.js",
+					"file": "eventica/templates/showteam.html",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 9937,
+						"buffer_size": 16119,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								13193,
+								13193
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 3961.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "eventica/public/js/eventregister.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 10205,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								8220,
+								8220
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 2950.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "eventica/public/js/showmanagerteams1.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 6147,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								237,
+								237
 							]
 						],
 						"settings":
@@ -475,40 +584,71 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 9,
+					"stack_index": 1,
 					"type": "text"
 				},
 				{
-					"buffer": 5,
-					"file": "team/team.go",
+					"buffer": 7,
+					"file": "eventica/templates/admindashboard.html",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 3242,
+						"buffer_size": 8278,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								2546,
+								2546
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/GoSublime/syntax/GoSublime-Go.tmLanguage",
-							"translate_tabs_to_spaces": false
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 612.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 7,
+					"stack_index": 2,
 					"type": "text"
 				},
 				{
-					"buffer": 6,
+					"buffer": 8,
+					"file": "eventica/public/js/showadminteams.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 6775,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1507,
+								1507
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 204.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 9,
 					"file": "user/user.go",
 					"semi_transient": false,
 					"settings":
@@ -533,11 +673,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 8,
+					"stack_index": 12,
 					"type": "text"
 				},
 				{
-					"buffer": 7,
+					"buffer": 10,
 					"file": "user/models.go",
 					"semi_transient": false,
 					"settings":
@@ -562,11 +702,11 @@
 						"translation.y": 341.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 4,
+					"stack_index": 9,
 					"type": "text"
 				},
 				{
-					"buffer": 8,
+					"buffer": 11,
 					"file": "user/handlers.go",
 					"semi_transient": false,
 					"settings":
@@ -591,11 +731,11 @@
 						"translation.y": 5970.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 5,
+					"stack_index": 10,
 					"type": "text"
 				},
 				{
-					"buffer": 9,
+					"buffer": 12,
 					"file": "team/models.go",
 					"semi_transient": false,
 					"settings":
@@ -620,11 +760,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 6,
+					"stack_index": 11,
 					"type": "text"
 				},
 				{
-					"buffer": 10,
+					"buffer": 13,
 					"file": "eventica/input.txt",
 					"semi_transient": false,
 					"settings":
@@ -648,11 +788,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 11,
+					"stack_index": 14,
 					"type": "text"
 				},
 				{
-					"buffer": 11,
+					"buffer": 14,
 					"file": "team/handlers.go",
 					"semi_transient": false,
 					"settings":
@@ -677,7 +817,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 10,
+					"stack_index": 13,
 					"type": "text"
 				}
 			]
