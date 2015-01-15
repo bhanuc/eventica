@@ -7,7 +7,7 @@ $.ajax({
             var str = '<thead><tr><th>Name</th><th>Event/Workshop Name</th><th>Type of Team</th><th>Submitted Team for approval</th><th>Members</th><th>Submit your team</th><th>Approval Status</th><th>Comments</th><th>Edit</th></tr></thead><tbody>';
             for (var i = data.teams.length - 1; i >= 0; i--) {
                 str = str + '<tr><td>' + data.teams[i].name + '</td><td> ' + data.teams[i].event + '</td><td>'+ (function() {
-                    if (data.teams[i].Workshop) return "Workshop";
+                    if (data.teams[i].workshop) return "Workshop";
                     else return "Event"
                 })() + '</td><td> ' + (function() {
                     if (data.teams[i].requestmod) return "Submitted";

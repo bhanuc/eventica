@@ -52,6 +52,9 @@ var createteam = function() {
     var teamname = $('#teamname').val();
     var rezcheck = /[a-zA-Z0-9]+/
     if (rezcheck.exec(teamname)[0] != teamname) {
+                        $('#submitbutton').one("click", function() {
+                    createteam();
+                });
         toastr.error("Please Enter team name in correct format");
     } else {
         $.ajax({

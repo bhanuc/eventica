@@ -26,10 +26,13 @@ var createteam = function() {
         var teamname = $('#teamname').val();
         var rezcheck = /[a-zA-Z0-9]+/
         if (rezcheck.exec(teamname)[0] != teamname) {
+                    $('#submitbutton').one("click", function() {
+    createteam();
+});
             toastr.error("Please Enter team name in correct format");
         } else {
             $.ajax({
-                url: '/workshop/create',
+                url: '/team/wcreate',
                 type: 'POST',
                 contentType: 'application/json; charset=utf-8',
                 data: JSON.stringify({
@@ -53,7 +56,10 @@ var createteam = function() {
             });
         }
     } else {
-        console.log('Go Home .. The Developer was drunk :p')
+        toastr.error("Select a Workshop");
+        $('#submitbutton').one("click", function() {
+    createteam();
+});
     }
 };
 
