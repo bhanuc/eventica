@@ -80,7 +80,7 @@ var showprofile = function(url) {
     });
 }
 
-windows.$emails = [];
+window.$emails = [];
 
 var getallemails = function() {
     if (window.$team && window.$team.length > 1) {
@@ -95,7 +95,7 @@ var getallemails = function() {
                        // console.log(data);
                         k++;
                          windows.$emails.push[data.user.email];
-                         checkmodal(k, window.$team.length)
+                         checkmodal(k, window.$team.length);
 
                     }
                 });
