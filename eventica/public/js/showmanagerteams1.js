@@ -83,6 +83,7 @@ var showprofile = function(url) {
 window.$emails = [];
 
 var getallemails = function() {
+    window.$emails = [];
     if (window.$team && window.$team.length > 1) {
 
         var k = 0;
@@ -110,6 +111,7 @@ var getallemails = function() {
 var checkmodal = function(k, total) {
     console.log(k, total)
     if(k == total-1){
+       window.$emails =  _.uniq(window.$emails);
         $('#emailall').html(window.$emails.toString());
                 $('#modal2').modal('show');
     }
