@@ -55,6 +55,7 @@ func main() {
 	router.HandleFunc("/profile", profile_view).Methods("GET")
 	router.HandleFunc("/register_event", register_event).Methods("GET")
 	router.HandleFunc("/register_workshop", register_workshop).Methods("GET")
+	router.HandleFunc("/register_zonals", register_zonals).Methods("GET")
 	router.HandleFunc("/showteam", show_team).Methods("GET")
 	router.HandleFunc("/print", print_team).Methods("GET")
 	router.HandleFunc("/manager", manager_admin).Methods("GET")
@@ -220,6 +221,28 @@ func register_workshop(w http.ResponseWriter, r *http.Request) {
 			Status bool
 		}{profilestatus}
 		t, err := template.New("registerforworkshop.html").ParseFiles("templates/registerforworkshop.html")
+		if err != nil {
+			log.Println(err)
+		}
+		err = t.Execute(w, data)
+		if err != nil {
+			log.Println(err)
+		}
+	} else {
+		http.Redirect(w, r, "/login", 302)
+	}
+}
+
+func register_zonals(w http.ResponseWriter, r *http.Request) {
+	session, _ := sessionStore.Get(r, "p")
+	id, ok := session.Values["user"].(string)
+	if ok {
+		u, _ := R.FindOneByIdHex(id)
+		profilestatus := u.ProfileStatus
+		data := struct {
+			Status bool
+		}{profilestatus}
+		t, err := template.New("registerforzonals.html").ParseFiles("templates/registerforzonals.html")
 		if err != nil {
 			log.Println(err)
 		}
