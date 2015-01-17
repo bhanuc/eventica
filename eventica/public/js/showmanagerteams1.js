@@ -92,9 +92,9 @@ var getallemails = function() {
                     url: '/user/tek-profile?id=' + window.$team[i],
                     type: 'GET',
                     success: function(data) {
-                       // console.log(data);
-                        k++;
-                         windows.$emails.push[data.user.email];
+                        console.log(data.user.email);
+                            k++;
+                         window.$emails.push(data.user.email);
                          checkmodal(k, window.$team.length);
 
                     }
@@ -109,8 +109,8 @@ var getallemails = function() {
 
 var checkmodal = function(k, total) {
     console.log(k, total)
-    if(k == total){
-        $('#emailall').html(windows.$emails.toString());
+    if(k == total-1){
+        $('#emailall').html(window.$emails.toString());
                 $('#modal2').modal('show');
     }
 }
