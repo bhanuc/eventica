@@ -80,19 +80,23 @@ var showprofile = function(url) {
     });
 }
 
+windows.$emails = [];
+
 var getallemails = function() {
     if (window.$team && window.$team.length > 1) {
-        var emails = [];
+
+        var k = 0;
         for (var i = window.$team.length - 1; i >= 0; i--) {
             if (window.$team[i] != '') {
                 $.ajax({
                     url: '/user/tek-profile?id=' + window.$team[i],
                     type: 'GET',
                     success: function(data) {
-                        console.log(data);
-                         emails.push[data.user.email]
-                         $('#emailall').html(emails.toString());
-                        $('#modal2').modal('show');
+                       // console.log(data);
+                        k++;
+                         windows.$emails.push[data.user.email];
+                         checkmodal(k, window.$team.length)
+
                     }
                 });
             }
@@ -103,6 +107,13 @@ var getallemails = function() {
     }
 }
 
+var checkmodal = function(k, total) {
+    console.log(k, total)
+    if(k == total){
+        $('#emailall').html(windows.$emails.toString());
+                $('#modal2').modal('show');
+    }
+}
 
 var Techinfo = function() {
     var tid = document.getElementById('techid@').value;
