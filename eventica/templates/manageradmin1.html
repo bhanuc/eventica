@@ -56,6 +56,7 @@
                 <input type="text" id="techid" placeholder="Get Info for a TECHID"  /> 
                       <button  onclick="Techinfo()" >Get info of a TECHID</button>
                        <button  onclick="Excel()" >Get EXcel Sheet</button>
+                        <button  onclick="getallemails()" >Get All Emails</button>
 </center>
 
         <center><h5>You can leave a comment to a particular team and it will be visible in their dashboard.</h5></center>
@@ -97,12 +98,30 @@
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
+
+<div class="modal fade" id="modal2">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Emails of all the persons</h4>
+      </div>
+      <div class="modal-body">
+      <div id="emailall" style="word-wrap: break-word;"></div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
              
   </div>
 
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="/js/jquery.js"></script>
     <script src="/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.7.0/underscore-min.js"></script>
     <script src="/js/showmanagerteams1.js?v=1.2"></script>
     <script src="/js/toastr.min.js"></script>
 

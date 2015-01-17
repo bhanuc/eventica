@@ -80,28 +80,45 @@ var showprofile = function(url) {
     });
 }
 
+window.$emails = [];
+
 var getallemails = function() {
-    if (window.$team && window.$team > 1) {
-        var emails = [];
-        for (var i = window.$teams.length - 1; i >= 0; i--) {
-            if (window.$teams[i] != '') {
+    window.$emails = [];
+    if (window.$team && window.$team.length > 1) {
+
+        var k = 0;
+        for (var i = window.$team.length - 1; i >= 0; i--) {
+            if (window.$team[i] != '') {
                 $.ajax({
-                    url: '/user/tek-profile?id=' + window.$teams[i],
+                    url: '/user/tek-profile?id=' + window.$team[i],
                     type: 'GET',
                     success: function(data) {
-                        console.log(data);
-                        // emails.push[data.email]
+                        console.log(data.user.email);
+                            k++;
+                         window.$emails.push(data.user.email);
+                         checkmodal(k, window.$team.length);
+
                     }
                 });
             }
         }
 
+    } else {
+        console.log('dd');
     }
 }
 
+var checkmodal = function(k, total) {
+    console.log(k, total)
+    if(k == total-1){
+       window.$emails =  _.uniq(window.$emails);
+        $('#emailall').html(window.$emails.toString());
+                $('#modal2').modal('show');
+    }
+}
 
 var Techinfo = function() {
-    var tid = document.getElementById('techid').value;
+    var tid = document.getElementById('techid@').value;
     if (tid) {
         $.ajax({
             url: '/user/tek-profile?id=' + tid,
