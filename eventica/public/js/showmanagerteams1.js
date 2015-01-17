@@ -81,7 +81,7 @@ var showprofile = function(url) {
 }
 
 var getallemails = function() {
-    if (window.$team && window.$team > 1) {
+    if (window.$team && window.$team.length > 1) {
         var emails = [];
         for (var i = window.$teams.length - 1; i >= 0; i--) {
             if (window.$teams[i] != '') {
@@ -90,12 +90,14 @@ var getallemails = function() {
                     type: 'GET',
                     success: function(data) {
                         console.log(data);
-                        // emails.push[data.email]
+                         emails.push[data.email]
                     }
                 });
             }
         }
 
+    } else {
+        console.log('dd')
     }
 }
 
