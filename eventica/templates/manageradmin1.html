@@ -56,6 +56,7 @@
                 <input type="text" id="techid" placeholder="Get Info for a TECHID"  /> 
                       <button  onclick="Techinfo()" >Get info of a TECHID</button>
                        <button  onclick="Excel()" >Get EXcel Sheet</button>
+                        <button  onclick="getallemails()" >Get All Emails</button>
 </center>
 
         <center><h5>You can leave a comment to a particular team and it will be visible in their dashboard.</h5></center>
@@ -90,6 +91,23 @@
                     <tr><td>year</td><td id="year">none</td></tr>
                     <tr><td>Tech_id</td><td id="techid">none</td></tr>
                     </table>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<div class="modal fade" id="modal2">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Emails of all the persons</h4>
+      </div>
+      <div class="modal-body">
+      <div id="emailall"></div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

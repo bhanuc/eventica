@@ -83,27 +83,29 @@ var showprofile = function(url) {
 var getallemails = function() {
     if (window.$team && window.$team.length > 1) {
         var emails = [];
-        for (var i = window.$teams.length - 1; i >= 0; i--) {
-            if (window.$teams[i] != '') {
+        for (var i = window.$team.length - 1; i >= 0; i--) {
+            if (window.$team[i] != '') {
                 $.ajax({
-                    url: '/user/tek-profile?id=' + window.$teams[i],
+                    url: '/user/tek-profile?id=' + window.$team[i],
                     type: 'GET',
                     success: function(data) {
                         console.log(data);
-                         emails.push[data.email]
+                         emails.push[data.user.email]
+                         $('#emailall').html(emails.toString());
+                        $('#modal2').modal('show');
                     }
                 });
             }
         }
 
     } else {
-        console.log('dd')
+        console.log('dd');
     }
 }
 
 
 var Techinfo = function() {
-    var tid = document.getElementById('techid').value;
+    var tid = document.getElementById('techid@').value;
     if (tid) {
         $.ajax({
             url: '/user/tek-profile?id=' + tid,
