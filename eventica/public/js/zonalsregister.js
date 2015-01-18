@@ -33,13 +33,14 @@ var createteam = function() {
 });
             toastr.error("Please Enter team name in correct format");
         } else {
+            var k = $('#subject').val()+"-"+$('#zcities').val();
             $.ajax({
                 url: '/team/wcreate',
                 type: 'POST',
                 contentType: 'application/json; charset=utf-8',
                 data: JSON.stringify({
                     'name': $('#teamname').val(),
-                    'event': $('#subject').val(),
+                    'event': k,
                     'gender': $('#gender').val(),
                     'members': memberscontact
                 }),
