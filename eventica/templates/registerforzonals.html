@@ -291,7 +291,7 @@ Your Profile is Complete . You can create a team.</p>
     <tr><td width="150px">Team Name</td><td><input type="text" id="teamname" name="name"></td></tr>
     For team Name - Use Only Alphabet and numbers only.<br>
     <tr><td width="300px">City</td>   
-        <td><select id="zcities" name="game" onmouseup="myfunction()">
+        <td><select id="zcities" name="game">
             <option value="">Select City..</option>
             <option value="Amlapuram">Amlapuram</option>
             <option value="Bhopal">Bhopal</option>
@@ -430,7 +430,9 @@ Your Profile is incomplete. You cannot register for any event until you complete
         document.getElementById('datez').innerHTML = date;
         document.getElementById('institutez').innerHTML = institute;
     }
-
+    $("#zcities").change(function() {
+        myfunction();
+    });
     </script>
 </body>
 
