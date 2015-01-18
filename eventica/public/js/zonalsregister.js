@@ -5,10 +5,12 @@ $('#submitbutton').one("click", function() {
 var zonals = { 'Amlapuram': { 'date': '28/1//2015','institute':'Bonam Venkata Chalamayya Institute of Technogy and Science', 'comment':"", 'no':1}, 'Bhopal': { 'date': '12/2/2015','institute':'Oriental College of Technology', 'comment':"", 'no':1}, 'Bhubneshwar(t)(Ch)': { 'date': '18/1/2015','institute':'Kalinga Institute of Industrial Technology ', 'comment':"", 'no':1}, 'Faridabad': { 'date': '30/1//2015','institute': 'YMCA institute of science and Technology', 'comment':"", 'no':1}, 'Gwalior(c)': { 'date': '27/2/2015','institute':'ITM UNiversity (Jivaji in case ITM not confirmed)', 'comment':"", 'no':1}, 'Indore': { 'date': '30/1//2015','institute':'Indore Institute of Science and Technology', 'comment':"", 'no':1}, 'Jaipur(c)': { 'date': '12/3/2015','institute':'Vivekananda Institute Of Technology', 'comment':"", 'no':1}, 'Jhansi': { 'date': '8/3/2015','institute':'SR Group of institutions', 'comment':"", 'no':1}, 'Lucknow': { 'date': '25/2/2015','institute':'Babu Banarasi Das University ', 'comment':"", 'no':1}, 'meerut(c)': { 'date': '4/3/2015','institute':'IIMT group of colleges', 'comment':"", 'no':1}, 'Mumbai': { 'date': '17/1/2015','institute': 'Thakur college of Engineering and Technology', 'comment':"", 'no':1}, 'Nagpur': { 'date': '1/3/2015','institute':'Rajeev Gandhi College of Engineering and Research', 'comment':"", 'no':1}, 'Noida(c)': { 'date': '23/2/2015','institute':'IEC University', 'comment':"", 'no':1}, 'Raipur': { 'date': '21/2/2015','institute':'MATS University RAIPUR', 'comment':"", 'no':1}, 'Solan(c)': { 'date': '12/3/2015','institute':'IEC university', 'comment':"", 'no':1}
     };
 
+var workshops = {'IPDC':{'no':1, 'comment':""},'Android':{'no':1, 'comment':""},'Ethical Hacking':{'no':1, 'comment':""},"Rubik's CUbe":{'no':1, 'comment':""}};
+
 var createteam = function() {
     var evname = $("#subject").val();
-    if( zonals.hasOwnProperty(evname)){
-        var memberno = zonals[evname]['no'];
+    if( workshops.hasOwnProperty(evname)){
+        var memberno = workshops[evname]['no'];
         var memberscontact = "";
         for (var i = 0; i < memberno; i++) {
             if (i == 0) {
@@ -63,7 +65,6 @@ var createteam = function() {
     }
 };
 
-var workshops = {'IPDC':{'no':1, 'comment':""},'Android':{'no':1, 'comment':""},'Ethical Hacking':{'no':1, 'comment':""},"Rubik's CUbe":{'no':1, 'comment':""}}
 
 $("#subject").change(function() {
     $("#sport").empty();
