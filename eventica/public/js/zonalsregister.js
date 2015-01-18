@@ -2,13 +2,13 @@ $('#submitbutton').one("click", function() {
     createteam();
 });
 
-var workshopname = { 'Amlapuram': { 'date': '28/1//2015','institute':'Bonam Venkata Chalamayya Institute of Technogy and Science', 'comment':"", 'no':0}, 'Bhopal': { 'date': '12/2/2015','institute':'Oriental College of Technology', 'comment':"", 'no':0}, 'Bhubneshwar(t)(Ch)': { 'date': '18/1/2015','institute':'Kalinga Institute of Industrial Technology ', 'comment':"", 'no':0}, 'Faridabad': { 'date': '30/1//2015','institute': 'YMCA institute of science and Technology', 'comment':"", 'no':0}, 'Gwalior(c)': { 'date': '27/2/2015','institute':'ITM UNiversity (Jivaji in case ITM not confirmed)', 'comment':"", 'no':0}, 'Indore': { 'date': '30/1//2015','institute':'Indore Institute of Science and Technology', 'comment':"", 'no':0}, 'Jaipur(c)': { 'date': '12/3/2015','institute':'Vivekananda Institute Of Technology', 'comment':"", 'no':0}, 'Jhansi': { 'date': '8/3/2015','institute':'SR Group of institutions', 'comment':"", 'no':0}, 'Lucknow': { 'date': '25/2/2015','institute':'Babu Banarasi Das University ', 'comment':"", 'no':0}, 'meerut(c)': { 'date': '4/3/2015','institute':'IIMT group of colleges', 'comment':"", 'no':0}, 'Mumbai': { 'date': '17/1/2015','institute': 'Thakur college of Engineering and Technology', 'comment':"", 'no':0}, 'Nagpur': { 'date': '1/3/2015','institute':'Rajeev Gandhi College of Engineering and Research', 'comment':"", 'no':0}, 'Noida(c)': { 'date': '23/2/2015','institute':'IEC University', 'comment':"", 'no':0}, 'Raipur': { 'date': '21/2/2015','institute':'MATS University RAIPUR', 'comment':"", 'no':0}, 'Solan(c)': { 'date': '12/3/2015','institute':'IEC university', 'comment':"", 'no':0}
+var zonals = { 'Amlapuram': { 'date': '28/1//2015','institute':'Bonam Venkata Chalamayya Institute of Technogy and Science', 'comment':"", 'no':0}, 'Bhopal': { 'date': '12/2/2015','institute':'Oriental College of Technology', 'comment':"", 'no':0}, 'Bhubneshwar(t)(Ch)': { 'date': '18/1/2015','institute':'Kalinga Institute of Industrial Technology ', 'comment':"", 'no':0}, 'Faridabad': { 'date': '30/1//2015','institute': 'YMCA institute of science and Technology', 'comment':"", 'no':0}, 'Gwalior(c)': { 'date': '27/2/2015','institute':'ITM UNiversity (Jivaji in case ITM not confirmed)', 'comment':"", 'no':0}, 'Indore': { 'date': '30/1//2015','institute':'Indore Institute of Science and Technology', 'comment':"", 'no':0}, 'Jaipur(c)': { 'date': '12/3/2015','institute':'Vivekananda Institute Of Technology', 'comment':"", 'no':0}, 'Jhansi': { 'date': '8/3/2015','institute':'SR Group of institutions', 'comment':"", 'no':0}, 'Lucknow': { 'date': '25/2/2015','institute':'Babu Banarasi Das University ', 'comment':"", 'no':0}, 'meerut(c)': { 'date': '4/3/2015','institute':'IIMT group of colleges', 'comment':"", 'no':0}, 'Mumbai': { 'date': '17/1/2015','institute': 'Thakur college of Engineering and Technology', 'comment':"", 'no':0}, 'Nagpur': { 'date': '1/3/2015','institute':'Rajeev Gandhi College of Engineering and Research', 'comment':"", 'no':0}, 'Noida(c)': { 'date': '23/2/2015','institute':'IEC University', 'comment':"", 'no':0}, 'Raipur': { 'date': '21/2/2015','institute':'MATS University RAIPUR', 'comment':"", 'no':0}, 'Solan(c)': { 'date': '12/3/2015','institute':'IEC university', 'comment':"", 'no':0}
     };
 
 var createteam = function() {
     var evname = $("#subject").val();
-    if( workshopname.hasOwnProperty(evname)){
-        var memberno = workshopname[evname]['no'];
+    if( zonals.hasOwnProperty(evname)){
+        var memberno = zonals[evname]['no'];
         var memberscontact = "";
         for (var i = 0; i < memberno; i++) {
             if (i == 0) {
@@ -66,8 +66,8 @@ var createteam = function() {
 $("#subject").change(function() {
     $("#sport").empty();
     var evname = $("#subject").val();
-    var memberno = workshopname[evname]['no'];
-    var comment = workshopname[evname]["comment"];
+    var memberno = zonals[evname]['no'];
+    var comment = zonals[evname]["comment"];
     $('#submitbutton').show();
     $("#comment").html(comment);
 
