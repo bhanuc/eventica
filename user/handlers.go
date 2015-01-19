@@ -9,6 +9,7 @@ import (
 	"labix.org/v2/mgo/bson"
 	"net/http"
 	"strings"
+	"sync"
 )
 
 type FlashMessage struct {
@@ -17,6 +18,7 @@ type FlashMessage struct {
 }
 
 //var T = team.T
+var wg sync.WaitGroup
 
 func RegisterHandler(w http.ResponseWriter, r *http.Request) {
 	turn := true
@@ -59,7 +61,9 @@ func RegisterHandler(w http.ResponseWriter, r *http.Request) {
 	if len(e) == 0 {
 		user := new(User)
 		turn = false
-		go user.Add(tu.Name, tu.Password, tu.Email, tu.Number, tu.AlternateNumber)
+		wg.Add(1)
+		go user.Add(tu.Name, tu.Password, tu.Email, tu.Number, tu.AlternateNumber, &wg)
+		wg.Wait()
 		data["success"] = true
 		e["success"] = FlashMessage{"success", "Your registration is pending. Please check your inbox to activate your account"}
 		data["flashes"] = e
