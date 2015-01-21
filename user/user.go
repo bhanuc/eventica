@@ -50,4 +50,5 @@ func New(ms *mgo.Session, ss *sessions.CookieStore, host, mailfrom, dbname, dbco
 	Router.HandleFunc("/user/status", StatusHandler).Methods("GET")
 	Router.HandleFunc("/user/fb", FbHandler).Methods("POST")
 	Router.HandleFunc("/user/activate", ActHandler).Methods("GET")
+	Router.HandleFunc("/user/payactivate", PayHandler).Methods("GET")
 }

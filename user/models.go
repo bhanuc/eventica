@@ -61,7 +61,6 @@ type (
 		ProfileStatus  bool
 		ActiveStatus   bool
 		ActiveCode     string
-		PaymentStatus  string
 	}
 
 	LoginEntry struct {
@@ -83,6 +82,7 @@ type (
 		BookingID       string        `bson:"bookingid" json:"bookingid"`
 		Year            string        `bson:"year" json:"year"`
 		Tech_id         string
+		PaymentStatus   string
 	}
 	UserRepository struct {
 		Collection *mgo.Collection

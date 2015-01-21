@@ -351,6 +351,33 @@ func AuthenticateHandler(w http.ResponseWriter, r *http.Request) {
 	utility.WriteJson(w, data)
 }
 
+func PayHandler(w http.ResponseWriter, r *http.Request) {
+	session, _ := sessionStore.Get(r, "p")
+	_, ok2 := session.Values["user"].(string)
+	tc := struct {
+		Id string `json:"id"`
+	}{r.FormValue("id")}
+	if ok2 && session.Values["usertype"] == "admin" {
+		data := make(map[string]interface{})
+		flashes := make(map[string]FlashMessage)
+		user, err := R.FindOneByIdHex(tc.Id)
+		// if user not found
+		if err != nil {
+		} else {
+			if user.ActiveStatus {
+				flashes["Error"] = FlashMessage{"warning", "The Profile payment is updated"}
+			} else {
+				user.UserProfile.PaymentStatus = "Completed"
+				user.Update()
+				flashes["success"] = FlashMessage{"success", "Your Profile has been successfully activated. You Can login using the login credentials"}
+			}
+		}
+		data["flashes"] = flashes
+		utility.WriteJson(w, data)
+	} else {
+		http.Redirect(w, r, "/login", 302)
+	}
+}
 func ActHandler(w http.ResponseWriter, r *http.Request) {
 	data := make(map[string]interface{})
 	params := r.URL.Query()
@@ -364,16 +391,12 @@ func ActHandler(w http.ResponseWriter, r *http.Request) {
 	// if user not found
 	if err != nil {
 	} else {
-		if user.ActiveStatus {
-			flashes["Error"] = FlashMessage{"warning", "The Account is already Activated.You Can login using the login credentials "}
+		if user.ActiveCode == Ustring {
+			user.UserProfile.PaymentStatus = "Done"
+			user.Update()
+			flashes["success"] = FlashMessage{"success", "The Account is already Activated.You Can login using the login credentials"}
 		} else {
-			if user.ActiveCode == Ustring {
-				user.ActiveStatus = true
-				user.Update()
-				flashes["success"] = FlashMessage{"success", "Your Profile has been successfully activated. You Can login using the login credentials"}
-			} else {
-				flashes["Error"] = FlashMessage{"warning", "The Activation url is wrong. Please Contact Support"}
-			}
+			flashes["Error"] = FlashMessage{"warning", "The Activation url is wrong. Please Contact Support"}
 		}
 	}
 	data["flashes"] = flashes
