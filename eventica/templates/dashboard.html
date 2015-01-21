@@ -1,281 +1,474 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <title>Dashboard -TECHKRITI'15</title>   
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-        <meta name="apple-mobile-web-app-capable" content="yes" />
-        <meta name="description" content="">
 
-        <!-- Base Css Files -->
-        <link href="/assets/libs/jqueryui/ui-lightness/jquery-ui-1.10.4.custom.min.css" rel="stylesheet" />
-        <link href="/assets/libs/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
-        <link href="/assets/libs/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
-        <link href="/assets/libs/fontello/css/fontello.css" rel="stylesheet" />
-        <link href="/assets/libs/animate-css/animate.min.css" rel="stylesheet" />
-        <link href="/assets/libs/nifty-modal/css/component.css" rel="stylesheet" />
-        <link href="/assets/libs/magnific-popup/magnific-popup.css" rel="stylesheet" /> 
-        <link href="/assets/libs/ios7-switch/ios7-switch.css" rel="stylesheet" /> 
-        <link href="/assets/libs/pace/pace.css" rel="stylesheet" />
-        <link href="/assets/libs/sortable/sortable-theme-bootstrap.css" rel="stylesheet" />
-        <link href="/assets/libs/bootstrap-datepicker/css/datepicker.css" rel="stylesheet" />
-        <link href="/assets/libs/jquery-icheck/skins/all.css" rel="stylesheet" />
-        <!-- Code Highlighter for Demo -->
-        <link href="/assets/libs/prettify/github.css" rel="stylesheet" />
-        
-                <!-- Extra CSS Libraries Start -->
-                <link href="/assets/libs/rickshaw/rickshaw.min.css" rel="stylesheet" type="text/css" />
-                <link href="/assets/libs/morrischart/morris.css" rel="stylesheet" type="text/css" />
-                <link href="/assets/libs/jquery-jvectormap/css/jquery-jvectormap-1.2.2.css" rel="stylesheet" type="text/css" />
-                <link href="/assets/libs/jquery-clock/clock.css" rel="stylesheet" type="text/css" />
-                <link href="/assets/libs/bootstrap-calendar/css/bic_calendar.css" rel="stylesheet" type="text/css" />
-                <link href="/assets/libs/sortable/sortable-theme-bootstrap.css" rel="stylesheet" type="text/css" />
-                <link href="/assets/libs/jquery-weather/simpleweather.css" rel="stylesheet" type="text/css" />
-                <link href="/assets/libs/bootstrap-xeditable/css/bootstrap-editable.css" rel="stylesheet" type="text/css" />
-                <link href="/assets/css/style.css" rel="stylesheet" type="text/css" />
-                <!-- Extra CSS Libraries End -->
-        <link href="/assets/css/style-responsive.css" rel="stylesheet" />
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard -TECHKRITI'15</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="description" content="">
 
-        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-        <!--[if lt IE 9]>
+    <!-- Base Css Files -->
+    <link href="/assets/libs/jqueryui/ui-lightness/jquery-ui-1.10.4.custom.min.css" rel="stylesheet" />
+    <link href="/assets/libs/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="/assets/libs/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="/assets/libs/fontello/css/fontello.css" rel="stylesheet" />
+    <link href="/assets/libs/animate-css/animate.min.css" rel="stylesheet" />
+    <link href="/assets/libs/nifty-modal/css/component.css" rel="stylesheet" />
+    <link href="/assets/libs/magnific-popup/magnific-popup.css" rel="stylesheet" />
+    <link href="/assets/libs/ios7-switch/ios7-switch.css" rel="stylesheet" />
+    <link href="/assets/libs/pace/pace.css" rel="stylesheet" />
+    <link href="/assets/libs/sortable/sortable-theme-bootstrap.css" rel="stylesheet" />
+    <link href="/assets/libs/bootstrap-datepicker/css/datepicker.css" rel="stylesheet" />
+    <link href="/assets/libs/jquery-icheck/skins/all.css" rel="stylesheet" />
+    <!-- Code Highlighter for Demo -->
+    <link href="/assets/libs/prettify/github.css" rel="stylesheet" />
+
+    <!-- Extra CSS Libraries Start -->
+    <link href="/assets/libs/rickshaw/rickshaw.min.css" rel="stylesheet" type="text/css" />
+    <link href="/assets/libs/morrischart/morris.css" rel="stylesheet" type="text/css" />
+    <link href="/assets/libs/jquery-jvectormap/css/jquery-jvectormap-1.2.2.css" rel="stylesheet" type="text/css" />
+    <link href="/assets/libs/jquery-clock/clock.css" rel="stylesheet" type="text/css" />
+    <link href="/assets/libs/bootstrap-calendar/css/bic_calendar.css" rel="stylesheet" type="text/css" />
+    <link href="/assets/libs/sortable/sortable-theme-bootstrap.css" rel="stylesheet" type="text/css" />
+    <link href="/assets/libs/jquery-weather/simpleweather.css" rel="stylesheet" type="text/css" />
+    <link href="/assets/libs/bootstrap-xeditable/css/bootstrap-editable.css" rel="stylesheet" type="text/css" />
+    <link href="/assets/css/style.css" rel="stylesheet" type="text/css" />
+    <!-- Extra CSS Libraries End -->
+    <link href="/assets/css/style-responsive.css" rel="stylesheet" />
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
         <![endif]-->
 
-        <link rel="shortcut icon" href="/img/favico.ico">
+    <link rel="shortcut icon" href="/img/favico.ico">
 
-        <script type="text/javascript" src="/js/jquery.js"></script>
-        <script src="/js/script.js"></script>
-
-
-        <style type="text/css">
-
-        .profile-image
-        {
-            border: 4px solid white;
-            box-shadow: -1px 1px 3px grey, 1px 1px 3px grey, 1px -1px 3px grey;
-        }
-
-        .side-menu.left
-        {
-            box-shadow: 0 0 5px grey;
-            z-index: 100;
-        }
-
-        li#user-info
-        {
-            cursor: pointer;
-        }
-
-        .profile-info .col-xs-4
-        {
-            padding: 10px;
-        }
-
-        .col-xs-8
-        {
-            padding: 10px;
-        }
+    <script type="text/javascript" src="/js/jquery.js"></script>
+    <script src="/js/script.js"></script>
 
 
-        </style>
+    <style type="text/css">
+    .profile-image {
+        border: 4px solid white;
+        box-shadow: -1px 1px 3px grey, 1px 1px 3px grey, 1px -1px 3px grey;
+    }
+    .side-menu.left {
+        box-shadow: 0 0 5px grey;
+        z-index: 100;
+    }
+    li#user-info {
+        cursor: pointer;
+    }
+    .profile-info .col-xs-4 {
+        padding: 10px;
+    }
+    .col-xs-8 {
+        padding: 10px;
+    }
+    </style>
 
 
-    </head>
-    <body class="fixed-left">
-        <!-- Modal Start -->
+</head>
+
+<body class="fixed-left">
+    <!-- Modal Start -->
     <!-- Modal Logout -->
-        <div class="modal fade" id="logout-modal" tabindex="-1" role="dialog" aria-labelledby="helpmodalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
- <h3><strong>Logout</strong> Confirmation</h3>
-      </div>
-      <div class="modal-body">
-<div>
-                <p class="text-center">Are you sure want to logout from this awesome system?</p>
-                <p class="text-center">
-                <button class="btn btn-danger md-close">Nope!</button>
-                <a href="/user/logout" class="btn btn-success md-close">Yeah, I'm sure</a>
-                </p>
-            </div>      </div>
-      <div class="modal-footer">
-      </div>
-    </div>
-  </div>
-</div>
-    <div class="modal fade" id="helpmodal" tabindex="-1" role="dialog" aria-labelledby="helpmodalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-        <h4 class="modal-title" id="exampleModalLabel">Help</h4>
-      </div>
-      <div class="modal-body">
-For Any issues, Please mail your problem at bhanuc@iitk.ac.in
-      </div>
-      <div class="modal-footer">
-      </div>
-    </div>
-  </div>
-</div>
-     <!-- Modal End -->    
-    <!-- Begin page -->       
-<!-- Top Bar Start -->
-<div class="topbar">
-    <div class="topbar-left">
-        <div class="logo">
-            <h1><a style="color:white;">TechKriti</a></h1>
+    <div class="modal fade" id="logout-modal" tabindex="-1" role="dialog" aria-labelledby="helpmodalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+                    </button>
+                    <h3><strong>Logout</strong> Confirmation</h3>
+                </div>
+                <div class="modal-body">
+                    <div>
+                        <p class="text-center">Are you sure want to logout from this awesome system?</p>
+                        <p class="text-center">
+                            <button class="btn btn-danger md-close">Nope!</button>
+                            <a href="/user/logout" class="btn btn-success md-close">Yeah, I'm sure</a>
+                        </p>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                </div>
+            </div>
         </div>
-        <button class="button-menu-mobile open-left">
-        <i class="fa fa-bars"></i>
-        </button>
     </div>
-    <!-- Button mobile view to collapse sidebar menu -->
-    <div class="navbar navbar-default" role="navigation">
-        <div class="container">
-            <div class="navbar-collapse2">
-                <ul class="nav navbar-nav navbar-right top-navbar" style="background-color: rgb(66, 74, 85);">
-                    <li class="dropdown iconify ">
-                        <a href="/app" class="dropdown-toggle"><b>Dashboard</b></a>
-                    </li>
-                    <li class="dropdown iconify ">
-                        <a href="/register_event" class="dropdown-toggle"><b>Register for a event</b></a>
-                    </li>
-                    <li class="dropdown iconify ">
-                        <a href="/register_workshop" class="dropdown-toggle"><b>Register for a workshop</b></a>
-                    </li>
-                    <!-- <li class="dropdown iconify ">
+    <div class="modal fade" id="helpmodal" tabindex="-1" role="dialog" aria-labelledby="helpmodalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+                    </button>
+                    <h4 class="modal-title" id="exampleModalLabel">Help</h4>
+                </div>
+                <div class="modal-body">
+                    For Any issues, Please mail your problem at bhanuc@iitk.ac.in
+                </div>
+                <div class="modal-footer">
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal End -->
+    <!-- Begin page -->
+    <!-- Top Bar Start -->
+    <div class="topbar">
+        <div class="topbar-left">
+            <div class="logo">
+                <h1><a style="color:white;">TechKriti</a></h1>
+            </div>
+            <button class="button-menu-mobile open-left">
+                <i class="fa fa-bars"></i>
+            </button>
+        </div>
+        <!-- Button mobile view to collapse sidebar menu -->
+        <div class="navbar navbar-default" role="navigation">
+            <div class="container">
+                <div class="navbar-collapse2">
+                    <ul class="nav navbar-nav navbar-right top-navbar" style="background-color: rgb(66, 74, 85);">
+                        <li class="dropdown iconify ">
+                            <a href="/app" class="dropdown-toggle"><b>Dashboard</b></a>
+                        </li>
+                        <li class="dropdown iconify ">
+                            <a href="/register_event" class="dropdown-toggle"><b>Register for a event</b></a>
+                        </li>
+                        <li class="dropdown iconify ">
+                            <a href="/register_workshop" class="dropdown-toggle"><b>Register for a workshop</b></a>
+                        </li>
+                        <!-- <li class="dropdown iconify ">
                         <a href="/register_zonals" class="dropdown-toggle"><b>Register for Zonals</b></a>
                     </li> -->
-                    <li class="dropdown iconify ">
-                        <a href="/showteam" class="dropdown-toggle"><b>Your Teams</b></a>
-                    </li>
-                    <li class="dropdown iconify ">
-                        <a href="/profile" class="dropdown-toggle">Profile</a>
-                    </li>
-                    <li class="dropdown topbar-profile" id="user-info">
-                        <a  class="dropdown-toggle" data-toggle="dropdown"><span class="rounded-image topbar-profile-image"><img src="img/default-user.png" id="top-pic"></span> <strong id="top-name">User</strong> <i class="fa fa-caret-down"></i></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="">My Profile</a></li>
-                            <li class="divider"></li>
-                            <li><a  class="md-trigger"  data-toggle="modal" data-target="#helpmodal"><i class="icon-help-2"></i> Help</a></li>
-                            <li><a class="md-trigger" data-toggle="modal" data-target="#logout-modal"><i class="icon-logout-1"></i> Logout</a></li>
-                        </ul>
-                    </li>
-                </ul>
+                        <li class="dropdown iconify ">
+                            <a href="/showteam" class="dropdown-toggle"><b>Your Teams</b></a>
+                        </li>
+                        <li class="dropdown iconify ">
+                            <a href="/profile" class="dropdown-toggle">Profile</a>
+                        </li>
+                        <li class="dropdown topbar-profile" id="user-info">
+                            <a class="dropdown-toggle" data-toggle="dropdown"><span class="rounded-image topbar-profile-image"><img src="img/default-user.png" id="top-pic"></span> <strong id="top-name">User</strong> <i class="fa fa-caret-down"></i></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="">My Profile</a>
+                                </li>
+                                <li class="divider"></li>
+                                <li><a class="md-trigger" data-toggle="modal" data-target="#helpmodal"><i class="icon-help-2"></i> Help</a>
+                                </li>
+                                <li><a class="md-trigger" data-toggle="modal" data-target="#logout-modal"><i class="icon-logout-1"></i> Logout</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <!--/.nav-collapse -->
             </div>
-            <!--/.nav-collapse -->
         </div>
     </div>
-</div>
-<!-- Top Bar End -->
-            <!-- Left Sidebar Start -->
-        <div class="left side-menu">
-            <div class="sidebar-inner slimscrollleft">
-                <!--- Profile -->
-                <div class="profile-info">
-                    <div class="col-xs-4">
-                      <a class="rounded-image profile-image"><img src="img/default-user.png" id="side-pic"></a>
+    <!-- Top Bar End -->
+    <!-- Left Sidebar Start -->
+    <div class="left side-menu">
+        <div class="sidebar-inner slimscrollleft">
+            <!--- Profile -->
+            <div class="profile-info">
+                <div class="col-xs-4">
+                    <a class="rounded-image profile-image"><img src="img/default-user.png" id="side-pic">
+                    </a>
+                </div>
+                <div class="col-xs-8">
+                    <div class="profile-text">Welcome <b id="side-name">User</b>
                     </div>
-                    <div class="col-xs-8">
-                        <div class="profile-text">Welcome <b id="side-name">User</b></div>
-                        <div class="profile-buttons">
-                         <a>TechID: <div id="techid"></div></a>
-                         <!--  <a href="connect" class="open-right"><i class="fa fa-comments"></i></a>--> 
-                          <a href="/user/logout" title="Sign Out"><i class="fa fa-power-off text-red-1"></i></a>
-                        </div>
+                    <div class="profile-buttons">
+                        <a>TechID: <div id="techid"></div></a>
+                        <!--  <a href="connect" class="open-right"><i class="fa fa-comments"></i></a>-->
+                        <a href="/user/logout" title="Sign Out"><i class="fa fa-power-off text-red-1"></i></a>
                     </div>
                 </div>
-                <!--- Divider -->
-                <div class="clearfix"></div>
-                <hr class="divider" />
-                    <a href="/faqs" title="FAQs">Frequently Asked Questions<i class="fa fa-question"></i></a>
-                <div class="clearfix"></div>
-                <!--- Divider -->
-               
+            </div>
+            <!--- Divider -->
             <div class="clearfix"></div>
-            <div class="clearfix"></div><br><br><br>
+            <div id="sidebar-menu">
+                <ul>
+                    <li><li class="has_sub"><a href="javascript:void(0);"><i class="icon-feather"></i><span>Useful Shortcuts</span> <span class="pull-right"><i class="fa fa-angle-down"></i></span></a>
+                        <ul style="">
+                         <li><a href="/app"><span>Dashboard</span></a>
+                            </li>
+                            <li><a href="/register_event"><span>Register for an Event</span></a>
+                            </li>
+                            <li><a href="/register_workshop"><span>Register for a workshop</span></a>
+                            </li>
+                            <li><a href="/showteam"><span>Your Teams</span></a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li ><a href="javascript:void(0);"><a href="/faqs"><i class="fa fa-question"></i><span>Frequently Asked Questions</span>
+                    </li>
+                    <li ><a href="javascript:void(0);"><i class="fa fa-table"></i><span>Your Profile</span> <span class="pull-right"></span></a>
+                    </li>
+                    </ul>
+                    </li>
+                </ul>
+                <div class="clearfix"></div>
+            </div>
+         <!--    <hr class="divider" />
+            <a href="/faqs" title="FAQs">Frequently Asked Questions<i class="fa fa-question"></i></a>
+            <div class="clearfix"></div>
+            <!--- Divider -->
+
+            <div class="clearfix"></div> -->
+            <div class="clearfix"></div>
+            <br>
+            <br>
+            <br>
         </div>
-        </div>
-        <!-- Left Sidebar End -->          
+    </div>
+    <!-- Left Sidebar End -->
 
     <div class="content-page content">
-                <ol class="breadcrumb">
-                <li><a href="">Home</a></li><li class="active">Dashboard v2</li>
-            </ol>
-            <div class="content">
-                <table id = "teams" style="border: 1px solid #000" border="1"></table>
-                <div style="color:black" class="dbcontent">
-                    <h1 class="page-header">
+        <ol class="breadcrumb">
+            <li><a href="">Home</a>
+            </li>
+            <li class="active">Dashboard v2</li>
+        </ol>
+        <div class="content">
+            <table id="teams" style="border: 1px solid #000" border="1"></table>
+            <div style="color:black" class="dbcontent">
+                <h1 class="page-header">
                         Dashboard
                     </h1>
-                    <p>
-                    {{ if .Status }}
-                    Profile is complete . Please Move to Register for any event to complete the registration.
-                    {{ else }}
-                    Profile is incomplete . You cannot register for any event until you complete it{{ end }}
-                    </p>
-                </div>
-                </div>
-            <h5>Team Structure per competition </h5>
-
-            <table class="table table-striped table-bordered">
-            <thead><tr><th>Event</th><th>Teams Members Required</th><th>Extra Comments</th></tr></thead>
-            <tr><td>Hoverush</td><td>5</td><td></td></tr>
-            <tr><td>Gearloose</td><td>3-5</td><td></td></tr>
-            <tr><td>Junkyard Wars</td><td>5-7</td><td></td></tr>
-            <tr><td>IDEAS</td><td>5</td><td></td></tr>
-            <tr><td>Stocksim</td><td>5</td><td></td></tr>
-            <tr><td>Manoeuvre</td><td>5</td><td></td></tr>
-            <tr><td>Shuffle</td><td>5</td><td></td></tr>
-            <tr><td>FPGA</td><td>5</td><td>Only for Undergraduate students</td></tr>
-            <tr><td>Embedded</td><td>5</td><td>Only for Undergraduate students</td></tr>
-            <tr><td>Marketing Villa</td><td>3</td><td>Each team will have 2-3 members. Registration for this event will open on 10th January and will close on 31st January.</td></tr>
-            <tr><td>Do your due</td><td>3</td><td>Each team will have 2-3 members. Registration for this event will open on 15th January and will close on 4th February.</td></tr>
-            <tr><td>Battlefield</td><td>3</td><td>Each team will have 2-3 members. Registration for this event will open on 15th January and will close on 10th February.</td></tr>
-            <tr><td>IORC</td><td>1</td><td></td></tr>
-            <tr><td>29 States</td><td>1</td><td></td></tr>
-            <tr><td>Be the Tycoon</td><td>1</td><td>Registration for this event will open on 25th January and will close on 15th February.</td></tr>
-            <tr><td>Electromania</td><td>5</td><td>Only for Undergraduate students</td></tr>
-            <tr><td>Electrade</td><td>4</td><td>Only for Undergraduate students</td></tr>
-            <tr><td>Skysparks</td><td>6</td><td></td></tr>
-            <tr><td>Soccon</td><td>6</td><td></td></tr>
-            <tr><td>Cruise Control</td><td>6</td><td></td></tr>
-            <tr><td>Multirover</td><td>6</td><td></td></tr>
-            <tr><td>Concatenate</td><td>6</td><td></td></tr>
-            <tr><td>Crime Run</td><td>4</td><td>No personal devices or eqipments are allowed</td></tr>
-            <tr><td>IOPC</td><td>3</td><td></td></tr>
-            <tr><td>IHPC</td><td>3</td><td></td></tr>
-            <tr><td>Chaos</td><td>3</td><td></td></tr>
-            <tr><td>Battlecity</td><td>3</td><td></td></tr>
-            <tr><td>Wild soccer</td><td>10</td><td></td></tr>
-            <tr><td>Finquest</td><td>2-3</td><td>Registration will start from 1st January</td></tr>
-            <tr><td>Mark-Ops</td><td>2-3</td><td>Registration will start from 1st January</td></tr>
-            <tr><td>AISRC</td><td>4</td><td></td></tr>
-            <tr><td>Bridge Design Challenge</td><td> 4-6</td><td></td></tr>
-            <tr><td>crypto </td><td>1 </td><td></td></tr>
-            <tr><td>What's Up </td><td> 1-3 </td><td></td></tr>
-            <tr><td>Astro Quiz </td><td> 1-3 </td><td></td></tr>
-            <tr><td>Astro Treasure </td><td> 3-5 </td><td></td></tr>
-            <tr><td>Nut Cracker ( Previously Scimatex) </td><td> 1 </td><td></td></tr>
-            <tr><td>Mix Bowl Quiz </td><td> 1-5 </td><td></td></tr>
-            <tr><td>Innovation in Manufacturing Processes </td><td> 3 </td><td></td></tr>
-            <tr><td>Scientoon </td><td> 4 </td><td></td></tr>
-            <tr><td>Design 3D (Previously Objectified)</td><td> 5 </td><td></td></tr>
-            </table>
+                <p>
+                    {{ if .Status }} Profile is complete . Please Move to Register for any event to complete the registration. {{ else }} Profile is incomplete . You cannot register for any event until you complete it{{ end }}
+                </p>
             </div>
         </div>
+        <h5>Team Structure per competition </h5>
+
+        <table class="table table-striped table-bordered">
+            <thead>
+                <tr>
+                    <th>Event</th>
+                    <th>Teams Members Required</th>
+                    <th>Extra Comments</th>
+                </tr>
+            </thead>
+            <tr>
+                <td>Hoverush</td>
+                <td>5</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Gearloose</td>
+                <td>3-5</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Junkyard Wars</td>
+                <td>5-7</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>IDEAS</td>
+                <td>5</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Stocksim</td>
+                <td>5</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Manoeuvre</td>
+                <td>5</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Shuffle</td>
+                <td>5</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>FPGA</td>
+                <td>5</td>
+                <td>Only for Undergraduate students</td>
+            </tr>
+            <tr>
+                <td>Embedded</td>
+                <td>5</td>
+                <td>Only for Undergraduate students</td>
+            </tr>
+            <tr>
+                <td>Marketing Villa</td>
+                <td>3</td>
+                <td>Each team will have 2-3 members. Registration for this event will open on 10th January and will close on 31st January.</td>
+            </tr>
+            <tr>
+                <td>Do your due</td>
+                <td>3</td>
+                <td>Each team will have 2-3 members. Registration for this event will open on 15th January and will close on 4th February.</td>
+            </tr>
+            <tr>
+                <td>Battlefield</td>
+                <td>3</td>
+                <td>Each team will have 2-3 members. Registration for this event will open on 15th January and will close on 10th February.</td>
+            </tr>
+            <tr>
+                <td>IORC</td>
+                <td>1</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>29 States</td>
+                <td>1</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Be the Tycoon</td>
+                <td>1</td>
+                <td>Registration for this event will open on 25th January and will close on 15th February.</td>
+            </tr>
+            <tr>
+                <td>Electromania</td>
+                <td>5</td>
+                <td>Only for Undergraduate students</td>
+            </tr>
+            <tr>
+                <td>Electrade</td>
+                <td>4</td>
+                <td>Only for Undergraduate students</td>
+            </tr>
+            <tr>
+                <td>Skysparks</td>
+                <td>6</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Soccon</td>
+                <td>6</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Cruise Control</td>
+                <td>6</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Multirover</td>
+                <td>6</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Concatenate</td>
+                <td>6</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Crime Run</td>
+                <td>4</td>
+                <td>No personal devices or eqipments are allowed</td>
+            </tr>
+            <tr>
+                <td>IOPC</td>
+                <td>3</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>IHPC</td>
+                <td>3</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Chaos</td>
+                <td>3</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Battlecity</td>
+                <td>3</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Wild soccer</td>
+                <td>10</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Finquest</td>
+                <td>2-3</td>
+                <td>Registration will start from 1st January</td>
+            </tr>
+            <tr>
+                <td>Mark-Ops</td>
+                <td>2-3</td>
+                <td>Registration will start from 1st January</td>
+            </tr>
+            <tr>
+                <td>AISRC</td>
+                <td>4</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Bridge Design Challenge</td>
+                <td> 4-6</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>crypto </td>
+                <td>1 </td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>What's Up </td>
+                <td> 1-3 </td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Astro Quiz </td>
+                <td> 1-3 </td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Astro Treasure </td>
+                <td> 3-5 </td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Nut Cracker ( Previously Scimatex) </td>
+                <td> 1 </td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Mix Bowl Quiz </td>
+                <td> 1-5 </td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Innovation in Manufacturing Processes </td>
+                <td> 3 </td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Scientoon </td>
+                <td> 4 </td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Design 3D (Previously Objectified)</td>
+                <td> 5 </td>
+                <td></td>
+            </tr>
+        </table>
+    </div>
+    </div>
 
     </div>
     <!-- End of page -->
-        <!-- the overlay modal element -->
+    <!-- the overlay modal element -->
     <div class="md-overlay"></div>
     <!-- End of eoverlay modal -->
     <script>
-        var resizefunc = [];
+    var resizefunc = [];
     </script>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="/assets/libs/jquery/jquery-1.11.1.min.js"></script>
@@ -296,7 +489,7 @@ For Any issues, Please mail your problem at bhanuc@iitk.ac.in
     <script src="/assets/libs/bootstrap-fileinput/bootstrap.file-input.js"></script>
     <script src="/assets/libs/bootstrap-select/bootstrap-select.min.js"></script>
     <script src="/assets/libs/bootstrap-select2/select2.min.js"></script>
-    <script src="/assets/libs/magnific-popup/jquery.magnific-popup.min.js"></script> 
+    <script src="/assets/libs/magnific-popup/jquery.magnific-popup.min.js"></script>
     <script src="/assets/libs/pace/pace.min.js"></script>
     <script src="/assets/libs/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
     <script src="/assets/libs/jquery-icheck/icheck.min.js"></script>
@@ -305,7 +498,7 @@ For Any issues, Please mail your problem at bhanuc@iitk.ac.in
     <script src="/assets/libs/prettify/prettify.js"></script>
 
     <script src="/assets/js/init.js"></script>
-        <script src="/js/fb.js?v=1.1"></script>
-        </body>
+    <script src="/js/fb.js?v=1.1"></script>
+</body>
 
 </html>
