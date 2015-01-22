@@ -9,11 +9,11 @@ var createteam = function() {
 
     if (evname == "Hoverush" || evname == "IDEAS" || evname == "Manoeuvre" || evname == "Shuffle" || evname == "Mix Bowl Quiz") {
         memberno = 5;
-    } else if (evname == "FPGA" || evname == "Embedded" || evname == "electromania" || evname == "Design 3D") {
+    } else if (evname == "FPGA"  || evname == "electromania" || evname == "Design 3D") {
         memberno = 5;
     } else if (evname == "IORC" || evname == "Zonals" || evname == "Be the Tycoon" || evname == "29 States" || evname == "crypto" || evname == "Nut Cracker" || evname == "Stocksim") {
         memberno = 1;
-    } else if (evname == "Impulse" || evname == "Hackathon" || evname == "Iarc") {
+    } else if (evname == "Impulse" || evname == "Hackathon" || evname == "Iarc"|| evname == "Embedded") {
         memberno = 4;
     } else if (evname == "Electrade") {
         memberno = 4;
@@ -94,7 +94,7 @@ $("#subject").change(function() {
         memberno = 5;
         comment = "";
         $('#submitbutton').show();
-    } else if (evname == "FPGA" || evname == "Embedded") {
+    } else if (evname == "FPGA") {
         memberno = 5;
         comment = "Only for Undergraduate students";
         $('#submitbutton').show();
@@ -126,7 +126,7 @@ $("#subject").change(function() {
         memberno = 4;
         $('#submitbutton').show();
         comment = "";
-    } else if (evname == "Electrade") {
+    } else if (evname == "Electrade"  || evname == "Embedded") {
         memberno = 4;
         $('#submitbutton').show();
         comment = "Only for Undergraduate students";
