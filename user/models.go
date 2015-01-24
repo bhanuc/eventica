@@ -14,6 +14,7 @@ import (
 	"net/smtp"
 	"strconv"
 	"strings"
+	"sync"
 	"time"
 )
 
@@ -60,7 +61,6 @@ type (
 		ProfileStatus  bool
 		ActiveStatus   bool
 		ActiveCode     string
-		PaymentStatus  string
 	}
 
 	LoginEntry struct {
@@ -82,6 +82,7 @@ type (
 		BookingID       string        `bson:"bookingid" json:"bookingid"`
 		Year            string        `bson:"year" json:"year"`
 		Tech_id         string
+		PaymentStatus   string
 	}
 	UserRepository struct {
 		Collection *mgo.Collection
@@ -110,6 +111,7 @@ func setup_tekid() (num int) {
 			num = num + 2
 		}
 	}
+	fmt.Println("after loop", num)
 	err = ioutil.WriteFile("input.txt", []byte(strconv.Itoa(num)), 0644)
 	if err != nil {
 		panic(err)
@@ -227,7 +229,7 @@ func (u *User) CheckProfileStatus() bool {
 	return u.ProfileStatus
 }
 
-func (u *User) Add(name, password, email, number, alternatenumber string) {
+func (u *User) Add(name, password, email, number, alternatenumber string, wg *sync.WaitGroup) {
 	tid := strconv.Itoa(setup_tekid())
 	b := []byte(password)
 	b, _ = bcrypt.GenerateFromPassword(b, 12)
@@ -321,6 +323,7 @@ func (u *User) Add(name, password, email, number, alternatenumber string) {
 	// if err := m.Send(); err != nil {
 	// 	fmt.Printf("The error is %s", err)
 	// }
+	wg.Done()
 }
 
 func (u *User) ResendActEmail(email string) {

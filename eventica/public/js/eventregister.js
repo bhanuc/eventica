@@ -9,11 +9,11 @@ var createteam = function() {
 
     if (evname == "Hoverush" || evname == "IDEAS" || evname == "Manoeuvre" || evname == "Shuffle" || evname == "Mix Bowl Quiz") {
         memberno = 5;
-    } else if (evname == "FPGA" || evname == "Embedded" || evname == "electromania" || evname == "Design 3D") {
+    } else if (evname == "FPGA"  || evname == "electromania" || evname == "Design 3D") {
         memberno = 5;
     } else if (evname == "IORC" || evname == "Zonals" || evname == "Be the Tycoon" || evname == "29 States" || evname == "crypto" || evname == "Nut Cracker" || evname == "Stocksim") {
         memberno = 1;
-    } else if (evname == "Impulse" || evname == "Hackathon" || evname == "Iarc") {
+    } else if (evname == "Impulse" || evname == "Hackathon" || evname == "Iarc"|| evname == "Embedded") {
         memberno = 4;
     } else if (evname == "Electrade") {
         memberno = 4;
@@ -94,14 +94,14 @@ $("#subject").change(function() {
         memberno = 5;
         comment = "";
         $('#submitbutton').show();
-    } else if (evname == "FPGA" || evname == "Embedded") {
+    } else if (evname == "FPGA") {
         memberno = 5;
         comment = "Only for Undergraduate students";
         $('#submitbutton').show();
     } else if (evname == "Battlefield") {
         memberno = 3;
         comment = "Each team will have 2-3 members. Registration for this event will open on 15th January and will close on 10th February.";
-        $('#submitbutton').hide();
+        $('#submitbutton').show();
     } else if (evname == "Marketing Villa") {
         memberno = 3;
         comment = "Each team will have 2-3 members. Registration for this event will close on 31st January.";
@@ -109,7 +109,7 @@ $("#subject").change(function() {
     } else if (evname == "Do your due") {
         memberno = 3;
         comment = "Each team will have 2-3 members. Registration for this event will open on 15th January and will close on 4th February.";
-        $('#submitbutton').hide();
+        $('#submitbutton').show();
     } else if (evname == "IORC" || evname == "29 States" || evname == "Stocksim") {
         memberno = 1;
         comment = "";
@@ -117,7 +117,7 @@ $("#subject").change(function() {
     } else if (evname == "Be the Tycoon") {
         memberno = 1;
         comment = "Registration for this event will open on 25th January and will close on 15th February.";
-        $('#submitbutton').hide();
+        $('#submitbutton').show();
     } else if (evname == "electromania") {
         memberno = 5;
         comment = "Only for Undergraduate students";
@@ -126,7 +126,7 @@ $("#subject").change(function() {
         memberno = 4;
         $('#submitbutton').show();
         comment = "";
-    } else if (evname == "Electrade") {
+    } else if (evname == "Electrade"  || evname == "Embedded") {
         memberno = 4;
         $('#submitbutton').show();
         comment = "Only for Undergraduate students";
