@@ -5,39 +5,40 @@ $.ajax({
   success: function(data) {
   			console.log(data);
   			if(data.success && data.teams){
-          var nops;
-          for (var i = data.teams.length - 1; i >= 0; i--) {
-            data.teams[i].members.c
-          };
-          var array = [];
-          var count = 0;
-          array[count] = "";
-          var flag = false;
-          for (var counter = 0; counter < data.teams.length; counter++) {
-              var str = data.teams[counter].members;
-              for (var i = 0; i < str.length; i++) {
-                  parseInt(str[i]);
-              }
-              for (var i = 0; i < str.length; i++) {
-                  if (!isNaN(str[i])) {
-                      array[count] = array[count] + str[i];
-                      flag = false;
-                  } else {
-                      if (!flag) {
-                          flag = true;
-                          count++;
-                          array[count] = "";
-                      }
-                  }
-              }
-              if (!flag) {
-                  flag = true;
-                  count++;
-                  array[count] = "";
-              }
-          }
-          $('#nots').html(data.teams.length);
-          $('#nops').html(array.length);
+           $('#nots').html(data.teams.length);
+          // var nops;
+          // for (var i = data.teams.length - 1; i >= 0; i--) {
+          //   data.teams[i].members.c
+          // };
+          // var array = [];
+          // var count = 0;
+          // array[count] = "";
+          // var flag = false;
+          // for (var counter = 0; counter < data.teams.length; counter++) {
+          //     var str = data.teams[counter].members;
+          //     for (var i = 0; i < str.length; i++) {
+          //         parseInt(str[i]);
+          //     }
+          //     for (var i = 0; i < str.length; i++) {
+          //         if (!isNaN(str[i])) {
+          //             array[count] = array[count] + str[i];
+          //             flag = false;
+          //         } else {
+          //             if (!flag) {
+          //                 flag = true;
+          //                 count++;
+          //                 array[count] = "";
+          //             }
+          //         }
+          //     }
+          //     if (!flag) {
+          //         flag = true;
+          //         count++;
+          //         array[count] = "";
+          //     }
+          // }
+          // $('#nots').html(data.teams.length);
+          // $('#nops').html(array.length);
           window.teams =data.teams;
           var str="<thead><tr><th>name</th><th>Created By</th><th>Event</th><th>Submit Status</th><th>Approval Status</th><th>Members</th><th>Approve</th><th>Comment</th><th>Add Comment</th><th>Decline</th><th>PrintPage</th></tr></thead><tbody>";
           for (var i = data.teams.length - 1; i >= 0; i--) {
@@ -60,52 +61,41 @@ $.ajax({
   success: function(data) {
         console.log(data);
         if(data.success && data.teams){
-          var array = [];
-          var count = 0;
-          array[count] = "";
-          var flag = false;
-          for (var counter = 0; counter < data.teams.length; counter++) {
-              var str = data.teams[counter].members;
-              for (var i = 0; i < str.length; i++) {
-                  parseInt(str[i]);
-              }
-              for (var i = 0; i < str.length; i++) {
-                  if (!isNaN(str[i])) {
-                      array[count] = array[count] + str[i];
-                      flag = false;
-                  } else {
-                      if (!flag) {
-                          flag = true;
-                          count++;
-                          array[count] = "";
-                      }
-                  }
-              }
-              if (!flag) {
-                  flag = true;
-                  count++;
-                  array[count] = "";
-              }
-          }
           $('#nots').html(data.teams.length);
-          $('#nops').html(array.length);
           window.teams =data.teams;
+          // var array = [];
+          // var count = 0;
+          // array[count] = "";
+          // var flag = false;
+          // for (var counter = 0; counter < data.teams.length; counter++) {
+          //     var str = data.teams[counter].members;
+          //     for (var i = 0; i < str.length; i++) {
+          //         parseInt(str[i]);
+          //     }
+          //     for (var i = 0; i < str.length; i++) {
+          //         if (!isNaN(str[i])) {
+          //             array[count] = array[count] + str[i];
+          //             flag = false;
+          //         } else {
+          //             if (!flag) {
+          //                 flag = true;
+          //                 count++;
+          //                 array[count] = "";
+          //             }
+          //         }
+          //     }
+          //     if (!flag) {
+          //         flag = true;
+          //         count++;
+          //         array[count] = "";
+          //     }
+          // }
+          // $('#nots').html(data.teams.length);
+          // $('#nops').html(array.length);
+          // window.teams =data.teams;
           var str="<thead><tr><th>name</th><th>Created By</th><th>Event</th><th>Submit Status</th><th>Approval Status</th><th>Members</th><th>Approve</th><th>Comment</th><th>Add Comment</th><th>Decline</th><th>PrintPage</th></tr></thead><tbody>";
           for (var i = data.teams.length - 1; i >= 0; i--) {
-            var url1;
-            $.ajax({
-              url: '/user/vprofile?id=' + url,
-              type: 'GET',
-              success: function(data) {
-                  console.log(data);
-                  if (data.success) {
-                      var json = data.success;
-                      url1 = json.techid;   
-                  }
-                  //success message mybe...
-              }
-            });
-            str = str+ '<tr><td>'+data.teams[i].name+ '</td><td><a onclick=showprofile("' + data.teams[i].createdby + '")>' +url1+ '</a></td><td> '+data.teams[i].event+ '</td><td> '+data.teams[i].requestmod+ '</td><td> '+data.teams[i].approved+ '</td><td> '+ data.teams[i].members+'</td><td> <a href="/team/adminsapprove?name='+ data.teams[i].name+'">Approve</a></td><td> '+data.teams[i].comments+ '</td><td><form action="/team/adminscomment" type="GET"><input type="text" name="comments"><input type="hidden" name="name" value='+data.teams[i].name+'><button type ="submit">Submit</button></form></td><td> <a href="/team/adminsdissapprove?name='+ data.teams[i].name+'">DisApprove</a></td><td> <a href="/print#'+ data.teams[i].name+'">Print</a></td></tr>';
+             str = str+ '<tr><td>'+data.teams[i].name+ '</td><td><a onclick=showprofile("' + data.teams[i].createdby + '")>' + data.teams[i].createdby + '</a></td><td> '+data.teams[i].event+ '</td><td> '+data.teams[i].requestmod+ '</td><td> '+data.teams[i].approved+ '</td><td> '+ data.teams[i].members+'</td><td> <a href="/team/adminsapprove?name='+ data.teams[i].name+'">Approve</a></td><td> '+data.teams[i].comments+ '</td><td><form action="/team/adminscomment" type="GET"><input type="text" name="comments"><input type="hidden" name="name" value='+data.teams[i].name+'><button type ="submit">Submit</button></form></td><td> <a href="/team/adminsdissapprove?name='+ data.teams[i].name+'">DisApprove</a></td><td> <a href="/print#'+ data.teams[i].name+'">Print</a></td></tr>';
           };
           str += '</tbody>'
           $('#teams').html(str);
@@ -201,11 +191,12 @@ var Excel = function() {
     if (window.teams) {
         var csvRows = [];
         var teams = window.teams;
-        var csvString = 'name,createdby,Event,College,requestmod,approved,members,comments,id';
+        var csvString = 'name,createdby,Event,requestmod,approved,members,comments,id,inactivesince%0A';
+        // var csvString = 'name,createdby,Event,College,requestmod,approved,members,comments,id';
         for (var i = teams.length - 1; i >= 0; i--) {
             var re = /,/gi;
             var memberz = teams[i].members.replace(re, ':');
-            var row = teams[i].name+','+teams[i].createdby+','+teams[i].event+','+teams[i].college+','+teams[i].requestmod+','+teams[i].approved+','+memberz+','+teams[i].comments+','+teams[i].id;
+            var row = teams[i].name+','+teams[i].createdby+','+teams[i].event+','+teams[i].requestmod+','+teams[i].approved+','+memberz+','+teams[i].comments+','+teams[i].id+','+teams[i].inactivesince;
             csvRows.push(row);
         };
 
