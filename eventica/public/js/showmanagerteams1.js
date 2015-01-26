@@ -25,7 +25,6 @@ $.ajax({
             for (var i = 0; i < str.length; i++) {
                 parseInt(str[i])
                 console.log(str[i]);
-
             }
             for (var i = 0; i < str.length; i++) {
                 if (!isNaN(str[i])) {
