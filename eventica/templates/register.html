@@ -101,6 +101,11 @@
               <div class="col-sm-6">
               Email Signup is temporarily closed. Please Use Facebook login to Signup.
               </div>
+              <div class="row">
+             <div class="col-sm-12">
+              <div class="fb-login-button" data-max-rows="1" data-size="xlarge" data-show-faces="false" data-auto-logout-link="false" scope="public_profile,email" onlogin="checkLoginState();"></div>
+              </div>
+            </div>
               <div class="col-sm-6">
                               <a href="/login" class="btn btn-default btn-block">To Login Here</a>
 </div>
@@ -194,6 +199,91 @@ Techkriti does not warrant that the functions contained in this website are free
     </div>
   </div>
 </div>
+  <script type="text/javascript">
+   (function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_US/sdk.js";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));
+        
+                localStorage.setItem('fname', null);
+                localStorage.setItem('firstname', null);
+                localStorage.setItem('token', null)
+                localStorage.setItem('fpic',null)
+  window.fbAsyncInit = function() {
+  FB.init({
+    appId      : '664781020306171',
+    cookie     : true,  // enable cookies to allow the server to access 
+                        // the session
+    xfbml      : true,  // parse social plugins on this page
+    version    : 'v2.1' // use version 2.1
+  });
+   /* FB.getLoginStatus(function(response) {
+          localStorage.setItem('token',response.authResponse.accessToken);
+    statusChangeCallback(response);
+  });*/
+}
+
+
+
+ function statusChangeCallback(response) {
+    console.log('statusChangeCallback');
+    console.log(response);
+    if(response.status == 'connected'){
+        localStorage.setItem('token',response.authResponse.accessToken)
+        localStorage.setItem('fpic',response.authResponse.userID)
+    }
+    // The response object is returned with a status field that lets the
+    // app know the current login status of the person.
+    // Full docs on the response object can be found in the documentation
+    // for FB.getLoginStatus().
+    if (response.status === 'connected') {
+      // Logged into your app and Facebook.
+      testAPI();
+    } else if (response.status === 'not_authorized') {
+      // The person is logged into Facebook, but not your app.
+      document.getElementById('status').innerHTML = 'Please log ' +
+        'into this app.';
+    } else {
+      // The person is not logged into Facebook, so we're not sure if
+      // they are logged into this app or not.
+      document.getElementById('status').innerHTML = 'Please log ' +
+        'into Facebook.';
+    }
+  }
+    function testAPI() {
+    FB.api('/me', function(response) {
+      console.log('Successful login for: ' + response.name, response);
+                localStorage.setItem('fname',response.name);
+                localStorage.setItem('firstname',response.first_name);
+      document.getElementById('status').innerHTML =
+        'Thanks for logging in, ' + response.name + '!';
+        var email = response.email;
+        if(email.length){email = email[0]}; //In case of multiple emails being sent
+                    $.ajax({
+              type: "POST",
+              url: "user/fb",
+                contentType: 'application/json; charset=utf-8',
+              data: JSON.stringify({ name: response.name, email: response.email, id: response.id, token: localStorage.token  })
+            })
+              .done(function( msg ) {
+                console.log(msg);
+                if(msg.flashes['success']['type'] == 'success'){
+                  document.location = '/profile'
+                }
+              });
+   });
+  }
+function checkLoginState() {
+  console.log('checkLoginState');
+    FB.getLoginStatus(function(response) {
+      statusChangeCallback(response);
+    });
+  }
+
+    </script>
     <!-- Placed at the end of the document so the pages load faster -->
      <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
   <script src="assets/libs/jquery/jquery-1.11.1.min.js"></script>
