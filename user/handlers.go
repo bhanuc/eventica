@@ -307,22 +307,22 @@ func AuthenticateHandler(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		valid = false
 	} else {
-		// if user.ActiveStatus { //check email activation
-		// check if login allowed
-		if user.LoginAllowed() {
-			if valid = user.VerifyCredentials(tc.Email, tc.Password); valid == false {
-				user.FailLogin()
+		if user.ActiveStatus { //check email activation
+			// check if login allowed
+			if user.LoginAllowed() {
+				if valid = user.VerifyCredentials(tc.Email, tc.Password); valid == false {
+					user.FailLogin()
+				}
+			} else {
+				// login not allowed
+				flashes["Error"] = FlashMessage{"warning", "You have failed 3 login attempts in the last 15 Minutes. Please wait 15 Minutes from now on and try again."}
 			}
 		} else {
-			// login not allowed
-			flashes["Error"] = FlashMessage{"warning", "You have failed 3 login attempts in the last 15 Minutes. Please wait 15 Minutes from now on and try again."}
+			unactive = true
+			flashes["Error"] = FlashMessage{"warning", "Your Account is not yet Activated. Please Check your inbox or spam for the activation link.Activation email has been resent to your email id. "}
+			user.ResendActEmail(user.Email)
+			valid = false
 		}
-		// } else {
-		// 	unactive = true
-		// 	flashes["Error"] = FlashMessage{"warning", "Your Account is not yet Activated. Please Check your inbox or spam for the activation link.Activation email has been resent to your email id. "}
-		// 	user.ResendActEmail(user.Email)
-		// 	valid = false
-		// }
 	}
 	data["valid"] = valid
 	if valid {
@@ -393,9 +393,9 @@ func ActHandler(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 	} else {
 		if user.ActiveCode == Ustring {
-			user.UserProfile.PaymentStatus = "Done"
+			user.ActiveStatus = true
 			user.Update()
-			flashes["success"] = FlashMessage{"success", "The Account is already Activated.You Can login using the login credentials"}
+			flashes["success"] = FlashMessage{"success", "The Account has been Activated.You Can login using the login credentials"}
 		} else {
 			flashes["Error"] = FlashMessage{"warning", "The Activation url is wrong. Please Contact Support"}
 		}
