@@ -113,7 +113,7 @@ var populateteam = function() {
         for (var i = window.teams.length - 1; i >= 0; i--) {
             var memberz = window.teams[i].members.split(',');
             for (var j = memberz.length - 1; j >= 0; j--) {
-                window.team[i]['memberzz'] = []
+                window.teams[i]['memberzz'] = []
                 if (memberz[j] != '') {
                     index++;
                 (function(s,index,l){
@@ -129,7 +129,7 @@ var populateteam = function() {
                             techid: data.user.Tech_id
                         }
                             k++;
-                         window.team[l]['memberzz'].push(uzer);
+                         window.teams[l]['memberzz'].push(uzer);
                         // ExcelMember();
                         checkpopulate(k,index,l);
                     }
