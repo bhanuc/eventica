@@ -108,17 +108,16 @@ var getallemails = function() {
 }
 
 var populateteam = function() {
-    if (window.$team && window.$team.length > 1) {
-        window.$team = [];
-        var k = 0;
-        for (var i = window.$team.length - 1; i >= 0; i--) {
-            if(!window.$team[i].hasOwnProperty('memberzz')){
-                window.$team[i]['memberzz'] = [];
-            }
-            if (window.$team[i] != '') {
-                (function(s){
+
+        var k = 0,index = 0;
+        for (var i = window.teams.length - 1; i >= 0; i--) {
+            var memberz = window.teams[i].members.split(',');
+            for (var j = memberz.length - 1; j >= 0; j--) {
+                if (memberz[j] != '') {
+                    index++;
+                (function(s,index,l){
                 $.ajax({
-                    url: '/user/tek-profile?id=' + window.$team[i],
+                    url: '/user/tek-profile?id=' + memberz.[s],
                     type: 'GET',
                     success: function(data) {
                         console.log(data.user);
@@ -129,21 +128,23 @@ var populateteam = function() {
                             techid: data.user.Tech_id
                         }
                             k++;
-                         window.$team[s]['memberzz'].push(uzer);
-                         ExcelMember();
+                         window.team[l]['memberzz'].push(uzer);
+                        // ExcelMember();
+                        checkpopulate(k,index,l);
                     }
                 });
-            })(i);
-            }
-        }
-
-    } else {
+            })(j,index,i);
+            } else {
         console.log('dd');
     }
+            };
+        }
+
+    } 
 }
 
 var getallteams = function() {
-    if(!window.$emails){
+    if(!window.$teams){
         getallteams();
         populateteam();
     } else {
