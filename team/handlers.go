@@ -693,7 +693,7 @@ func TeamManagerHandler(w http.ResponseWriter, r *http.Request) {
 		} else {
 			u.Approved = "Approved"
 			u.Update()
-			http.Redirect(w, r, "/app", 302)
+			http.Redirect(w, r, "/manager", 302)
 		}
 	} else {
 		http.Redirect(w, r, "/login", 302)

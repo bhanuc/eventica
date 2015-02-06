@@ -107,6 +107,39 @@ var getallemails = function() {
     }
 }
 
+var populateteam = function() {
+    if (window.$team && window.$team.length > 1) {
+        window.$teamz = [];
+        var k = 0;
+        for (var i = window.$team.length - 1; i >= 0; i--) {
+            if (window.$team[i] != '') {
+                $.ajax({
+                    url: '/user/tek-profile?id=' + window.$team[i],
+                    type: 'GET',
+                    success: function(data) {
+                        console.log(data.user);
+                            k++;
+                         window.$user.push(data.user);
+                         ExcelMember();
+                    }
+                });
+            }
+        }
+
+    } else {
+        console.log('dd');
+    }
+}
+
+var getallteams = function() {
+    if(!window.$emails){
+        getallteams();
+        populateteam();
+    } else {
+        populateteam();
+    }
+}
+
 var checkmodal = function(k, total) {
     console.log(k, total)
     if(k == total-1){
@@ -148,6 +181,33 @@ var Techinfo = function() {
     }
 }
 var Excel = function() {
+    if (window.teams) {
+        var csvRows = [];
+        
+        var teams = window.teams;
+        var csvString = 'name,createdby,Event,requestmod,approved,members,comments,id,inactivesince%0A';
+        for (var i = teams.length - 1; i >= 0; i--) {
+            var re = /,/gi;
+            var memberz = teams[i].members.replace(re, ':');
+            var row = teams[i].name+','+teams[i].createdby+','+teams[i].event+','+teams[i].requestmod+','+teams[i].approved+','+memberz+','+teams[i].comments+','+teams[i].id+','+teams[i].inactivesince;
+            csvRows.push(row);
+        };
+
+        csvString += csvRows.join("%0A");
+        var a = document.createElement('a');
+        a.href = 'data:attachment/csv,' + csvString;
+        a.target = '_blank';
+        a.download = 'myFile.csv';
+
+        document.body.appendChild(a);
+        a.click();
+    } else {
+        alert('Wait you nigger! Have some patience :p. Try Again Later')
+    }
+
+}
+
+var ExcelMember = function() {
     if (window.teams) {
         var csvRows = [];
         
