@@ -142,7 +142,7 @@ var populateteam = function() {
 
     } 
 
-var checkpopulate = (i,j,l){
+var checkpopulate = function(i,j,l){
     console.log(i,j,l)
 }
 var getallteams = function() {
