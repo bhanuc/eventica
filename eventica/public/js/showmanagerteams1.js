@@ -117,7 +117,7 @@ var populateteam = function() {
                     index++;
                 (function(s,index,l){
                 $.ajax({
-                    url: '/user/tek-profile?id=' + memberz.[s],
+                    url: '/user/tek-profile?id=' + memberz[s],
                     type: 'GET',
                     success: function(data) {
                         console.log(data.user);
@@ -143,6 +143,9 @@ var populateteam = function() {
     } 
 }
 
+var checkpopulate = (i,j,l){
+    console.log(i,j,l)
+}
 var getallteams = function() {
     if(!window.$teams){
         getallteams();
