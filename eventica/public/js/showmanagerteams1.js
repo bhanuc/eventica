@@ -141,7 +141,6 @@ var populateteam = function() {
         }
 
     } 
-}
 
 var checkpopulate = (i,j,l){
     console.log(i,j,l)
