@@ -113,6 +113,7 @@ var populateteam = function() {
         for (var i = window.teams.length - 1; i >= 0; i--) {
             var memberz = window.teams[i].members.split(',');
             for (var j = memberz.length - 1; j >= 0; j--) {
+                window.team[i]['memberzz'] = []
                 if (memberz[j] != '') {
                     index++;
                 (function(s,index,l){
