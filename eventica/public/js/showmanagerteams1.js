@@ -121,8 +121,7 @@ var populateteam = function() {
                     url: '/user/tek-profile?id=' + memberz[s],
                     type: 'GET',
                     success: function(data) {
-                        console.log(data.user);
-                        var uzer = 'name: 'data.user.name+';email:'+ data.user.email+';number:'+data.user.number+';techid: '+data.user.Tech_id;
+                        var uzer = 'name: '+data.user.name+';email:'+ data.user.email+';number:'+data.user.number+';techid: '+data.user.Tech_id;
                             k++;
                          window.teams[l]['memberzz'] += uzer;
                         // ExcelMember();
@@ -226,7 +225,7 @@ var ExcelMember = function() {
         for (var i = teams.length - 1; i >= 0; i--) {
             var re = /,/gi;
             var memberz = teams[i].members.replace(re, ':');
-            var row = teams[i].name+','+teams[i].createdby+','+teams[i].event+','+teams[i].requestmod+','+teams[i].approved+','+memberz+','+JSON.stringify(teams[i].memberzz)+teams[i].comments+','+teams[i].id+','+teams[i].inactivesince;
+            var row = teams[i].name+','+teams[i].createdby+','+teams[i].event+','+teams[i].requestmod+','+teams[i].approved+','+memberz+','+teams[i].memberzz+teams[i].comments+','+teams[i].id+','+teams[i].inactivesince;
             csvRows.push(row);
         };
 
