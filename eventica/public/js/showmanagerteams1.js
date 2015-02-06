@@ -109,20 +109,31 @@ var getallemails = function() {
 
 var populateteam = function() {
     if (window.$team && window.$team.length > 1) {
-        window.$teamz = [];
+        window.$team = [];
         var k = 0;
         for (var i = window.$team.length - 1; i >= 0; i--) {
+            if(!window.$team[i].hasOwnProperty('memberzz')){
+                window.$team[i]['memberzz'] = [];
+            }
             if (window.$team[i] != '') {
+                (function(s){
                 $.ajax({
                     url: '/user/tek-profile?id=' + window.$team[i],
                     type: 'GET',
                     success: function(data) {
                         console.log(data.user);
+                        var uzer = {
+                            name: data.user.name,
+                            email: data.user.email,
+                            number: data.user.numberm,
+                            techid: data.user.Tech_id
+                        }
                             k++;
-                         window.$user.push(data.user);
+                         window.$team[s]['memberzz'].push(uzer);
                          ExcelMember();
                     }
                 });
+            })(i);
             }
         }
 
@@ -212,11 +223,11 @@ var ExcelMember = function() {
         var csvRows = [];
         
         var teams = window.teams;
-        var csvString = 'name,createdby,Event,requestmod,approved,members,comments,id,inactivesince%0A';
+        var csvString = 'name,createdby,Event,requestmod,approved,membersid,members,comments,id,inactivesince%0A';
         for (var i = teams.length - 1; i >= 0; i--) {
             var re = /,/gi;
             var memberz = teams[i].members.replace(re, ':');
-            var row = teams[i].name+','+teams[i].createdby+','+teams[i].event+','+teams[i].requestmod+','+teams[i].approved+','+memberz+','+teams[i].comments+','+teams[i].id+','+teams[i].inactivesince;
+            var row = teams[i].name+','+teams[i].createdby+','+teams[i].event+','+teams[i].requestmod+','+teams[i].approved+','+memberz+','+JSON.stringify(teams[i].memberzz)+teams[i].comments+','+teams[i].id+','+teams[i].inactivesince;
             csvRows.push(row);
         };
 
