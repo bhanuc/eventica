@@ -92,7 +92,6 @@ var getallemails = function() {
                     url: '/user/tek-profile?id=' + window.$team[i],
                     type: 'GET',
                     success: function(data) {
-                        console.log(data.user.email);
                             k++;
                          window.$emails.push(data.user.email);
                          checkmodal(k, window.$team.length);
@@ -151,15 +150,15 @@ var getallteams = function() {
 
 var checkmodal = function(k, total) {
     console.log(k, total)
-    if(k == total-1){
+   // if(k == total-1){
        window.$emails =  _.uniq(window.$emails);
         $('#emailall').html(window.$emails.toString());
                 $('#modal2').modal('show');
-    }
+//   }
 }
 
 var Techinfo = function() {
-    var tid = document.getElementById('techid@').value;
+    var tid = document.getElementById('techid').value;
     if (tid) {
         $.ajax({
             url: '/user/tek-profile?id=' + tid,
