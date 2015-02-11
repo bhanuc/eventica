@@ -114,6 +114,12 @@ var approve = function(name) {
         type: 'GET',
         success: function(data) {
             console.log(data);
+            if(data.success){
+              alert("Team has been approved");
+            } else {
+                            alert("There was an error. Contact support :p");
+
+            }
             //success message mybe...
         }
     });
