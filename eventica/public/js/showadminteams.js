@@ -109,6 +109,40 @@ $.ajax({
 });
 }
 
+var populateteam = function() {
+
+        var k = 0,index = 0;
+        for (var i = window.teams.length - 1; i >= 0; i--) {
+            var memberz = window.teams[i].members.split(',');
+            for (var j = memberz.length - 1; j >= 0; j--) {
+                window.teams[i]['memberzz'] = ''
+                if (memberz[j] != '') {
+                    index++;
+                (function(s,index,l){
+                $.ajax({
+                    url: '/user/tek-profile?id=' + memberz[s],
+                    type: 'GET',
+                    success: function(data) {
+                        var uzer = 'name: '+data.user.name+';email:'+ data.user.email+';number:'+data.user.number+';techid: '+data.user.Tech_id;
+                            k++;
+                         window.teams[l]['memberzz'] += uzer;
+                        // ExcelMember();
+                        checkpopulate(k,index,l);
+                    }
+                });
+            })(j,index,i);
+            } else {
+        console.log('dd');
+    }
+            };
+        }
+
+    } 
+
+var checkpopulate = function(i,j,l){
+    console.log(i,j,l)
+}
+
 var approve = function(name) {
     $.ajax({
         url: '/team/adminsapprove?name=' + name,
