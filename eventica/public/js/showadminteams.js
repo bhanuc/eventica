@@ -1,4 +1,5 @@
 
+
 $.ajax({
   url: '/team/adminall',
   type: 'GET',
@@ -153,24 +154,62 @@ var showprofile = function(url) {
     });
 }
 
-var getallemails = function() {
-    if (window.$team && window.$team > 1) {
-        var emails = [];
-        for (var i = window.$teams.length - 1; i >= 0; i--) {
-            if (window.$teams[i] != '') {
-                $.ajax({
-                        url: '/user/tek-profile?id=' + window.$teams[i],
-                        type: 'GET',
-                        success: function(data) {
-                            console.log(data);
-                            // emails.push[data.email]
-                        }
-                    });
-                }
-            }
 
+var getallemails = function() {
+    window.$emails = [];
+    if (window.$team && window.$team.length > 1) {
+
+        var k = 0;
+        for (var i = window.$team.length - 1; i >= 0; i--) {
+            if (window.$team[i] != '') {
+                $.ajax({
+                    url: '/user/tek-profile?id=' + window.$team[i],
+                    type: 'GET',
+                    success: function(data) {
+                            k++;
+                         window.$emails.push(data.user.email);
+                         checkmodal(k, window.$team.length);
+
+                    }
+                });
+            }
         }
+
+    } else {
+        console.log('dd');
     }
+}
+
+
+var populateteam = function() {
+
+        var k = 0,index = 0;
+        for (var i = window.teams.length - 1; i >= 0; i--) {
+            var memberz = window.teams[i].members.split(',');
+            for (var j = memberz.length - 1; j >= 0; j--) {
+                window.teams[i]['memberzz'] = ''
+                if (memberz[j] != '') {
+                    index++;
+                (function(s,index,l){
+                $.ajax({
+                    url: '/user/tek-profile?id=' + memberz[s],
+                    type: 'GET',
+                    success: function(data) {
+                        var uzer = 'name: '+data.user.name+';email:'+ data.user.email+';number:'+data.user.number+';techid: '+data.user.Tech_id;
+                            k++;
+                         window.teams[l]['memberzz'] += uzer;
+                        // ExcelMember();
+                        checkpopulate(k,index,l);
+                    }
+                });
+            })(j,index,i);
+            } else {
+        console.log('dd');
+    }
+            };
+        }
+
+    } 
 
 
 var Techinfo = function(){
@@ -215,6 +254,34 @@ var Excel = function() {
             var re = /,/gi;
             var memberz = teams[i].members.replace(re, ':');
             var row = teams[i].name+','+teams[i].createdby+','+teams[i].event+','+teams[i].requestmod+','+teams[i].approved+','+memberz+','+teams[i].comments+','+teams[i].id+','+teams[i].inactivesince;
+            csvRows.push(row);
+        };
+
+        csvString += csvRows.join("%0A");
+        var a = document.createElement('a');
+        a.href = 'data:attachment/csv,' + csvString;
+        a.target = '_blank';
+        a.download = 'myFile.csv';
+
+        document.body.appendChild(a);
+        a.click();
+    } else {
+        alert('Wait you nigger! Have some patience :p. Try Again Later')
+    }
+
+}
+
+
+var ExcelMember = function() {
+    if (window.teams) {
+        var csvRows = [];
+        
+        var teams = window.teams;
+        var csvString = 'name,createdby,Event,requestmod,approved,membersid,members,comments,id,inactivesince%0A';
+        for (var i = teams.length - 1; i >= 0; i--) {
+            var re = /,/gi;
+            var memberz = teams[i].members.replace(re, ':');
+            var row = teams[i].name+','+teams[i].createdby+','+teams[i].event+','+teams[i].requestmod+','+teams[i].approved+','+memberz+','+teams[i].memberzz+teams[i].comments+','+teams[i].id+','+teams[i].inactivesince;
             csvRows.push(row);
         };
 
