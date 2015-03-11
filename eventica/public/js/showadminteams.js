@@ -203,6 +203,7 @@ var populateteam = function() {
                             k++;
                          window.teams[l]['memberzz'] += uzer;
                         // ExcelMember();
+                        window.teams[l]['College'] = data.user.college;
                         checkpopulate(k,index,l);
                     }
                 });
@@ -281,11 +282,11 @@ var ExcelMember = function() {
         var csvRows = [];
         
         var teams = window.teams;
-        var csvString = 'name,createdby,Event,requestmod,approved,membersid,members,comments,id,inactivesince%0A';
+        var csvString = 'name,createdby,Event,requestmod,approved,membersid,College,comments,id,inactivesince%0A,members';
         for (var i = teams.length - 1; i >= 0; i--) {
             var re = /,/gi;
             var memberz = teams[i].members.replace(re, ':');
-            var row = teams[i].name+','+teams[i].createdby+','+teams[i].event+','+teams[i].requestmod+','+teams[i].approved+','+memberz+','+teams[i].memberzz+teams[i].comments+','+teams[i].id+','+teams[i].inactivesince;
+            var row = teams[i].name+','+teams[i].createdby+','+teams[i].event+','+teams[i].requestmod+','+teams[i].approved+','+teams[i].College+','+teams[i].memberzz+teams[i].comments+','+teams[i].id+','+teams[i].inactivesince+memberz;
             csvRows.push(row);
         };
 
