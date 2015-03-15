@@ -63,7 +63,7 @@ $.ajax({
         console.log(data);
         if(data.success && data.teams){
           $('#nots').html(data.teams.length);
-          window.teams =data.teams;
+          window.teams = data.teams;
           // var array = [];
           // var count = 0;
           // array[count] = "";
