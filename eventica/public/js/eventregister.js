@@ -13,7 +13,7 @@ var createteam = function() {
         memberno = 5;
     } else if (evname == "IORC" || evname == "Zonals" || evname == "Be the Tycoon" || evname == "29 States" || evname == "crypto" || evname == "Nut Cracker" || evname == "Stocksim") {
         memberno = 1;
-    } else if (evname == "Impulse" || evname == "Hackathon" || evname == "Iarc"|| evname == "Embedded") {
+    } else if (evname == "Impulse" || evname == "Hackathon" || evname == "Iarc"|| evname == "Embedded" || evname == "Aerotrix Automobile Challenge"  || evname == "Roboversity Animatronics Challenge" ) {
         memberno = 4;
     } else if (evname == "Electrade") {
         memberno = 4;
